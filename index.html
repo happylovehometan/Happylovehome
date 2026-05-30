@@ -1,1 +1,79 @@
 
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>開心愛家園療癒</title>
+
+<style>
+body{
+font-family:sans-serif;
+background:#f8f5f2;
+padding:20px;
+text-align:center;
+}
+
+.card{
+background:white;
+padding:20px;
+margin:15px auto;
+border-radius:20px;
+max-width:500px;
+box-shadow:0 5px 20px rgba(0,0,0,.1);
+}
+
+button{
+background:#8b5a83;
+color:white;
+border:none;
+padding:12px 25px;
+border-radius:30px;
+font-size:16px;
+}
+
+h1{
+color:#8b5a83;
+}
+
+.message{
+margin-top:15px;
+font-size:20px;
+color:#555;
+}
+</style>
+</head>
+
+<body>
+
+<h1>🌈 開心愛家園療癒</h1>
+
+<div class="card">
+<h2>❤️ 今日宇宙訊息</h2>
+<button onclick="drawMessage()">抽訊息</button>
+<div id="result" class="message"></div>
+</div>
+
+<script>
+
+const messages=[
+"今天的你值得被溫柔對待。",
+"慢慢來，也是一種力量。",
+"你比自己想像中更勇敢。",
+"放下比較，回到自己。",
+"宇宙正在為你安排更好的道路。",
+"休息不是偷懶，是照顧自己。",
+"真正重要的東西，用心才能看見。"
+];
+
+function drawMessage(){
+const random=
+messages[Math.floor(Math.random()*messages.length)];
+
+document.getElementById("result").innerHTML=random;
+}
+
+</script>
+
+</body>
+</html>
