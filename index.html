@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>開心愛家園療癒</title>
+<style>
+body{
+font-family:sans-serif;
+background:#f8f5f2;
+text-align:center;
+padding:50px;
+}
+h1{
+color:#8b5a83;
+}
+.card{
+background:white;
+padding:20px;
+border-radius:20px;
+max-width:500px;
+margin:auto;
+box-shadow:0 5px 20px rgba(0,0,0,.1);
+}
+button{
+background:#8b5a83;
+color:white;
+border:none;
+padding:12px 25px;
+border-radius:30px;
+font-size:18px;
+}
+</style>
+</head>
+
+<body>
+
+<h1>🌈 開心愛家園療癒</h1>
+
+<div class="card">
+
+<h2>今日宇宙訊息</h2>
+
+<p id="msg">
+點擊按鈕接收訊息
+</p>
+
+<button onclick="draw()">
+抽訊息
+</button>
+
+</div>
+
+<script>
+
+const messages=[
+"真正重要的答案在你心裡。",
+"慢下來也沒有關係。",
+"你比想像中更有力量。",
+"宇宙正在為你安排最好的道路。",
+"今天適合相信自己。"
+];
+
+function draw(){
+let n=Math.floor(Math.random()*messages.length);
+document.getElementById("msg").innerHTML=messages[n];
+}
+
+</script>
+
+</body>
+</html>
