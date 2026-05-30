@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
@@ -8,71 +7,179 @@
 
 <style>
 body{
-font-family:sans-serif;
-background:#f8f5f2;
-padding:20px;
+margin:0;
+font-family:Arial,"Microsoft JhengHei",sans-serif;
+background:#fbf5f2;
+color:#5f4b56;
 text-align:center;
 }
-
+.hero{
+padding:40px 20px 20px;
+}
+h1{
+font-size:38px;
+color:#8b5a83;
+margin:10px 0;
+}
+.subtitle{
+font-size:18px;
+line-height:1.8;
+}
+.grid{
+max-width:600px;
+margin:20px auto;
+padding:0 16px;
+}
 .card{
 background:white;
-padding:20px;
-margin:15px auto;
-border-radius:20px;
-max-width:500px;
-box-shadow:0 5px 20px rgba(0,0,0,.1);
+border-radius:26px;
+padding:26px 18px;
+margin:18px 0;
+box-shadow:0 10px 28px rgba(0,0,0,.08);
 }
-
-button{
-background:#8b5a83;
+.card h2{
+font-size:26px;
+margin:8px 0 14px;
+color:#6d4d68;
+}
+button,.linkbtn{
+display:inline-block;
+background:#9b6a91;
 color:white;
 border:none;
-padding:12px 25px;
-border-radius:30px;
-font-size:16px;
+padding:14px 28px;
+border-radius:999px;
+font-size:18px;
+text-decoration:none;
+margin-top:12px;
 }
-
-h1{
-color:#8b5a83;
+.result{
+margin-top:18px;
+font-size:22px;
+line-height:1.8;
+color:#65535d;
 }
-
-.message{
-margin-top:15px;
-font-size:20px;
-color:#555;
+.about{
+font-size:17px;
+line-height:1.9;
+text-align:left;
+}
+.footer{
+padding:30px 20px;
+font-size:14px;
+color:#9b8790;
 }
 </style>
 </head>
 
 <body>
 
+<div class="hero">
 <h1>🌈 開心愛家園療癒</h1>
+<div class="subtitle">
+BoBo Tan｜Happy Love Home Healing<br>
+一個讓你每天回來安住自己的療癒小空間
+</div>
+</div>
+
+<div class="grid">
 
 <div class="card">
 <h2>❤️ 今日宇宙訊息</h2>
-<button onclick="drawMessage()">抽訊息</button>
-<div id="result" class="message"></div>
+<button onclick="draw('universe')">抽訊息</button>
+<div id="universe" class="result">今天，讓心慢慢回到自己。</div>
+</div>
+
+<div class="card">
+<h2>☕ 今日溫柔提醒</h2>
+<button onclick="draw('gentle')">抽提醒</button>
+<div id="gentle" class="result">你不需要一直很堅強。</div>
+</div>
+
+<div class="card">
+<h2>🌙 睡前一句安撫</h2>
+<button onclick="draw('sleep')">抽安撫</button>
+<div id="sleep" class="result">今晚，先好好休息就好。</div>
+</div>
+
+<div class="card">
+<h2>💰 金錢能量訊息</h2>
+<button onclick="draw('money')">抽金錢訊息</button>
+<div id="money" class="result">我願意慢慢接住更好的生活。</div>
+</div>
+
+<div class="card">
+<h2>🐉 今日龍族能量</h2>
+<button onclick="draw('dragon')">抽龍族能量</button>
+<div id="dragon" class="result">水龍提醒你：允許情緒流動。</div>
+</div>
+
+<div class="card">
+<h2>📖 關於 BoBo</h2>
+<div class="about">
+我是 BoBo Tan，來自馬來西亞，現居新加坡。<br><br>
+曾經歷情感、金錢、健康與低谷，也透過冥想、天使牌卡、金錢靈氣、希塔療癒、催眠、龍族療癒等學習與實踐，慢慢從被療癒的人，成為陪伴他人療癒的人。<br><br>
+開心愛家園療癒，希望陪你找回內在力量、平靜與愛自己的能力。
+</div>
+</div>
+
+<div class="card">
+<h2>📱 預約療癒／工作坊</h2>
+<div class="result">想了解療癒服務、工作坊或合作，歡迎聯絡 BoBo。</div>
+<a class="linkbtn" href="https://wa.me/6594574732">WhatsApp 聯絡</a>
+</div>
+
+</div>
+
+<div class="footer">
+本內容屬於個人成長與情緒陪伴分享，不涉及醫療、臨床診斷或宗教預言。<br>
+© BoBo Tan｜開心愛家園療癒
 </div>
 
 <script>
+const data={
+universe:[
+"真正重要的答案，其實一直在你心裡。",
+"慢下來，也是一種力量。",
+"今天適合相信自己。",
+"你的心正在慢慢回到平衡。",
+"你比想像中更有力量。"
+],
+gentle:[
+"你不需要一直很堅強。",
+"累了就休息，不代表你輸了。",
+"今天先溫柔對待自己。",
+"慢慢來，也會到達。",
+"你值得被好好照顧。"
+],
+sleep:[
+"今晚，先把自己抱回來。",
+"今天辛苦了，可以休息了。",
+"不用想太多，明天再說。",
+"現在的你，值得被好好抱抱。",
+"願你的夜晚被溫柔包圍。"
+],
+money:[
+"我願意慢慢接住更好的生活。",
+"金錢可以用安心的方式靠近我。",
+"我值得擁有豐盛與支持。",
+"今天適合相信自己的價值。",
+"豐盛正在用適合的方式靠近。"
+],
+dragon:[
+"水龍：允許情緒流動，不需要壓抑。",
+"金龍：你的豐盛能量正在打開。",
+"火龍：請拿回你的勇氣。",
+"風龍：放下執著，讓新的路出現。",
+"土龍：先穩住自己，答案會慢慢清楚。"
+]
+};
 
-const messages=[
-"今天的你值得被溫柔對待。",
-"慢慢來，也是一種力量。",
-"你比自己想像中更勇敢。",
-"放下比較，回到自己。",
-"宇宙正在為你安排更好的道路。",
-"休息不是偷懶，是照顧自己。",
-"真正重要的東西，用心才能看見。"
-];
-
-function drawMessage(){
-const random=
-messages[Math.floor(Math.random()*messages.length)];
-
-document.getElementById("result").innerHTML=random;
+function draw(id){
+let arr=data[id];
+let msg=arr[Math.floor(Math.random()*arr.length)];
+document.getElementById(id).innerHTML=msg;
 }
-
 </script>
 
 </body>
