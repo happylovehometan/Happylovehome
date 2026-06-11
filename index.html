@@ -673,62 +673,138 @@ target="_blank">
     font-weight:bold;
     cursor:pointer;
   ">
-    🎡 轉動情緒輪盤
+    💖 領取今日情緒祝福
   </button>
 </div>
-
 <script>
+
 function drawEmotion() {
-  const emotions = [
-    {
-      name: "😢 悲傷",
-      msg: "悲傷不是脆弱，而是你的心還在乎。請溫柔抱抱自己。"
-    },
-    {
-      name: "😡 生氣",
-      msg: "生氣不是錯，它正在提醒你：你的界線很重要。"
-    },
-    {
-      name: "😨 害怕",
-      msg: "害怕不代表你不能前進，只是這件事對你很重要。"
-    },
-    {
-      name: "🥺 委屈",
-      msg: "你不是太敏感，你只是太久沒有被好好理解。"
-    },
-    {
-      name: "😩 疲憊",
-      msg: "你已經很努力了。休息不是放棄，是重新蓄力。"
-    },
-    {
-      name: "😌 平靜",
-      msg: "此刻的安靜，就是你正在回到自己的頻率。"
-    },
-    {
-      name: "💖 感恩",
-      msg: "感恩不是假裝一切都好，而是在生活裡看見還存在的光。"
-    },
-    {
-      name: "🌱 希望",
-      msg: "願望不一定立刻實現，但當你願意種下希望，改變往往已經開始。"
-    },
-    {
-      name: "🌈 勇氣",
-      msg: "勇氣不是不害怕，而是帶著害怕，仍然願意往前一步。"
-    },
-    {
-      name: "❤️ 愛自己",
-      msg: "今天，請把一點溫柔留給自己。你值得被愛，也值得被自己善待。"
-    }
-  ];
 
-  const random = emotions[Math.floor(Math.random() * emotions.length)];
+const emotions = [
 
-  document.getElementById("emotionBox").innerHTML =
-    "<strong>" + random.name + "</strong><br><br>" +
-    random.msg + "<br><br>" +
-    "BoBo ❤️ 我在";
+{
+name:"😢 悲傷",
+msg:"悲傷不是脆弱，而是你的心還在乎。",
+practice:"🌱 小練習<br>把手放在心口，深呼吸三次。<br>對自己說：<br><strong>我願意溫柔陪伴現在的自己。</strong>"
+},
+
+{
+name:"😡 生氣",
+msg:"生氣不是錯，它正在提醒你：你的界線很重要。",
+practice:"🌱 小練習<br>問問自己：<br>我真正想保護的是什麼？"
+},
+
+{
+name:"😨 害怕",
+msg:"害怕不代表你不能前進，只是這件事對你很重要。",
+practice:"🌱 小練習<br>深呼吸三次。<br>對自己說：<br><strong>即使害怕，我依然願意相信自己。</strong>"
+},
+
+{
+name:"🥺 委屈",
+msg:"你不是太敏感，你只是太久沒有被理解。",
+practice:"🌱 小練習<br>寫下一句：<br><strong>我的感受值得被看見。</strong>"
+},
+
+{
+name:"😩 疲憊",
+msg:"你已經很努力了。休息不是放棄，而是重新蓄力。",
+practice:"🌱 小練習<br>給自己10分鐘什麼都不做。"
+},
+
+{
+name:"😌 平靜",
+msg:"此刻的安靜，就是你正在回到自己的頻率。",
+practice:"🌱 小練習<br>感受此刻的呼吸。"
+},
+
+{
+name:"💖 感恩",
+msg:"感恩不是假裝一切都好，而是在生活裡看見仍然存在的光。",
+practice:"🌱 小練習<br>寫下今天感謝的三件事。"
+},
+
+{
+name:"🌱 希望",
+msg:"願望不一定立刻實現，但當你願意種下希望，改變往往已經開始。",
+practice:"🌱 小練習<br>寫下一個最想實現的願望。"
+},
+
+{
+name:"🌈 勇氣",
+msg:"勇氣不是不害怕，而是帶著害怕仍願意前進。",
+practice:"🌱 小練習<br>今天做一件平常不敢做的小事。"
+},
+
+{
+name:"❤️ 愛自己",
+msg:"今天，請把一點溫柔留給自己。",
+practice:"🌱 小練習<br>對鏡子裡的自己微笑30秒。"
 }
+
+];
+
+const random =
+emotions[Math.floor(Math.random() * emotions.length)];
+
+document.getElementById("emotionBox").innerHTML =
+
+"<div style='font-size:34px;font-weight:bold;margin-bottom:20px;'>"
+
++ random.name +
+
+"</div>"
+
++
+
+"<div style='font-size:24px;line-height:1.8;'>"
+
++ random.msg +
+
+"</div><br>"
+
++
+
+"<div style='font-size:20px;line-height:1.8;background:#fff;padding:15px;border-radius:15px;'>"
+
++ random.practice +
+
+"</div><br>"
+
++
+
+"<div style='font-size:22px;color:#9b6a91;font-weight:bold;'>"
+
++
+
+"BoBo ❤️ 我在"
+
++
+
+"</div><br>"
+
++
+
+"<hr style='margin:20px 0;'>"
+
++
+
+"💖 想獲得更多祝福與陪伴？<br><br>"
+
++
+
+"<a href='#hope-seed' style='color:#a7749d;font-weight:bold;text-decoration:none;'>"
+
++
+
+"🌱 希望種子祝福計畫"
+
++
+
+"</a>";
+
+}
+
 </script>
   
 
