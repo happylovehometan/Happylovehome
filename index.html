@@ -846,14 +846,15 @@ color:#9b6a91;
   </div>
 
 <div class="card">
+<div class="card">
   <h2>🌈 BoBo 情緒覺察輪盤</h2>
 
   <div class="about" style="text-align:center; line-height:1.7;">
     今天的你，心裡住著什麼情緒？<br>
-    點一下，接收一段溫柔提醒。
+    先接收一段溫柔提醒。
   </div>
 
-  <div id="emotionBox" style="
+  <div style="
     text-align:center;
     margin:20px auto;
     padding:18px;
@@ -864,36 +865,25 @@ color:#9b6a91;
     line-height:1.6;
     box-shadow:0 4px 12px rgba(0,0,0,0.08);
   ">
-    🌱 點擊下方按鈕開始
-  </div>
+    🌱 今日提醒<br><br>
 
-  <button onclick="
-    const e=[
-      ['😢 悲傷','悲傷不是脆弱，而是你的心還在乎。','把手放在心口，深呼吸三次。'],
-      ['😡 生氣','生氣不是錯，它正在提醒你：你的界線很重要。','問問自己：我真正想保護的是什麼？'],
-      ['😨 害怕','害怕不代表你不能前進，只是這件事對你很重要。','對自己說：即使害怕，我依然願意相信自己。'],
-      ['🥺 委屈','你不是太敏感，你只是太久沒有被理解。','對自己說：我的感受值得被看見。'],
-      ['😩 疲憊','你已經很努力了，休息不是放棄，是重新蓄力。','給自己10分鐘，什麼都不做。'],
-      ['🌱 希望','願望不一定立刻實現，但當你願意種下希望，改變往往已經開始。','寫下一個你現在最想祝福自己的願望。']
-    ];
-    const r=e[Math.floor(Math.random()*e.length)];
-    document.getElementById('emotionBox').innerHTML =
-      '<strong style=&quot;font-size:24px;&quot;>'+r[0]+'</strong><br><br>'+
-      r[1]+'<br><br>'+
-      '<div style=&quot;background:white;padding:14px;border-radius:14px;font-size:16px;&quot;>🌱 <strong>小練習</strong><br>'+r[2]+'</div><br>'+
-      '<strong style=&quot;color:#9b6a91;&quot;>BoBo ❤️ 我在</strong>';
-  " style="
-    background:#a7749d;
-    color:white;
-    border:none;
-    padding:14px 30px;
-    border-radius:40px;
-    font-size:18px;
-    font-weight:bold;
-    cursor:pointer;
-  ">
-    💖 領取今日情緒祝福
-  </button>
+    你已經很努力了。<br>
+    休息不是放棄，<br>
+    是重新蓄力。<br><br>
+
+    <div style="
+      background:white;
+      padding:14px;
+      border-radius:14px;
+      font-size:16px;
+    ">
+      🌱 小練習<br>
+      給自己 10 分鐘，什麼都不做。
+    </div>
+
+    <br>
+    <strong style="color:#9b6a91;">BoBo ❤️ 我在</strong>
+  </div>
 </div>
   
 
