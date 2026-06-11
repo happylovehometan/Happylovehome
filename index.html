@@ -641,6 +641,96 @@ target="_blank">
     💖 送自己一份祝福
   </a>
 </div>
+<div class="card">
+  <h2>🌈 BoBo 情緒覺察輪盤</h2>
+
+  <div class="about" style="text-align:center; line-height:1.8;">
+    今天的你，心裡住著什麼情緒？<br>
+    點一下，接收一段溫柔提醒。
+  </div>
+
+  <div id="emotionBox" style="
+    text-align:center;
+    margin:25px auto;
+    padding:25px;
+    border-radius:25px;
+    background:#fff7f2;
+    color:#6f536b;
+    font-size:22px;
+    line-height:1.8;
+    box-shadow:0 4px 12px rgba(0,0,0,0.08);
+  ">
+    🌱 點擊下方按鈕開始
+  </div>
+
+  <button onclick="drawEmotion()" style="
+    background:#a7749d;
+    color:white;
+    border:none;
+    padding:18px 38px;
+    border-radius:50px;
+    font-size:22px;
+    font-weight:bold;
+    cursor:pointer;
+  ">
+    🎡 轉動情緒輪盤
+  </button>
+</div>
+
+<script>
+function drawEmotion() {
+  const emotions = [
+    {
+      name: "😢 悲傷",
+      msg: "悲傷不是脆弱，而是你的心還在乎。請溫柔抱抱自己。"
+    },
+    {
+      name: "😡 生氣",
+      msg: "生氣不是錯，它正在提醒你：你的界線很重要。"
+    },
+    {
+      name: "😨 害怕",
+      msg: "害怕不代表你不能前進，只是這件事對你很重要。"
+    },
+    {
+      name: "🥺 委屈",
+      msg: "你不是太敏感，你只是太久沒有被好好理解。"
+    },
+    {
+      name: "😩 疲憊",
+      msg: "你已經很努力了。休息不是放棄，是重新蓄力。"
+    },
+    {
+      name: "😌 平靜",
+      msg: "此刻的安靜，就是你正在回到自己的頻率。"
+    },
+    {
+      name: "💖 感恩",
+      msg: "感恩不是假裝一切都好，而是在生活裡看見還存在的光。"
+    },
+    {
+      name: "🌱 希望",
+      msg: "願望不一定立刻實現，但當你願意種下希望，改變往往已經開始。"
+    },
+    {
+      name: "🌈 勇氣",
+      msg: "勇氣不是不害怕，而是帶著害怕，仍然願意往前一步。"
+    },
+    {
+      name: "❤️ 愛自己",
+      msg: "今天，請把一點溫柔留給自己。你值得被愛，也值得被自己善待。"
+    }
+  ];
+
+  const random = emotions[Math.floor(Math.random() * emotions.length)];
+
+  document.getElementById("emotionBox").innerHTML =
+    "<strong>" + random.name + "</strong><br><br>" +
+    random.msg + "<br><br>" +
+    "BoBo ❤️ 我在";
+}
+</script>
+  
 
 <div class="footer">
 本內容屬於個人成長與情緒陪伴分享，不涉及醫療、臨床診斷或宗教預言。<br>
