@@ -642,7 +642,156 @@ target="_blank">
   </a>
 </div>
 
+<div class="card">
 
+<h2>🌈 BoBo 情緒覺察</h2>
+
+<div class="about" style="
+text-align:center;
+line-height:1.8;
+">
+請選擇你現在最接近的感受 ❤️
+</div>
+
+<br>
+
+<div style="text-align:center;">
+
+<button onclick="showEmotion('sad')">😢 悲傷</button>
+
+<button onclick="showEmotion('angry')">😡 生氣</button>
+
+<button onclick="showEmotion('fear')">😨 害怕</button>
+
+<button onclick="showEmotion('hurt')">🥺 委屈</button>
+
+<br><br>
+
+<button onclick="showEmotion('tired')">😩 疲憊</button>
+
+<button onclick="showEmotion('hope')">🌱 希望</button>
+
+<button onclick="showEmotion('grateful')">💖 感恩</button>
+
+<button onclick="showEmotion('courage')">🌈 勇氣</button>
+
+</div>
+
+<div id="emotionResult" style="
+margin-top:20px;
+padding:18px;
+border-radius:20px;
+background:#fff7f2;
+color:#6f536b;
+font-size:18px;
+line-height:1.8;
+box-shadow:0 4px 12px rgba(0,0,0,.08);
+">
+
+💖 選擇一個情緒開始
+
+</div>
+
+</div>
+
+<script>
+
+function showEmotion(type){
+
+const emotions={
+
+sad:{
+title:"😢 悲傷",
+msg:"悲傷不是脆弱，而是你的心還在乎。",
+practice:"把手放在心口，深呼吸三次。"
+},
+
+angry:{
+title:"😡 生氣",
+msg:"生氣不是錯，它正在提醒你：你的界線很重要。",
+practice:"問問自己：我真正想保護的是什麼？"
+},
+
+fear:{
+title:"😨 害怕",
+msg:"害怕不代表你不能前進，只是這件事對你很重要。",
+practice:"對自己說：即使害怕，我依然願意前進。"
+},
+
+hurt:{
+title:"🥺 委屈",
+msg:"你不是太敏感，你只是太久沒有被理解。",
+practice:"寫下一句：我的感受值得被看見。"
+},
+
+tired:{
+title:"😩 疲憊",
+msg:"你已經很努力了。休息不是放棄，而是重新蓄力。",
+practice:"給自己10分鐘，什麼都不做。"
+},
+
+hope:{
+title:"🌱 希望",
+msg:"願望不一定立刻實現，但改變往往已經開始。",
+practice:"寫下一個最想祝福自己的願望。"
+},
+
+grateful:{
+title:"💖 感恩",
+msg:"感恩不是假裝一切都好，而是在生活裡看見仍然存在的光。",
+practice:"寫下今天感謝的三件事。"
+},
+
+courage:{
+title:"🌈 勇氣",
+msg:"勇氣不是不害怕，而是帶著害怕仍願意前進。",
+practice:"今天做一件平常不敢做的小事。"
+}
+
+};
+
+const e = emotions[type];
+
+document.getElementById("emotionResult").innerHTML =
+
+"<div style='font-size:24px;font-weight:bold;margin-bottom:15px;'>"
+
++ e.title +
+
+"</div>"
+
++
+
+"<div style='margin-bottom:15px;'>"
+
++ e.msg +
+
+"</div>"
+
++
+
+"<div style='background:white;padding:15px;border-radius:15px;'>"
+
++
+
+"🌱 小練習<br><br>"
+
++
+
+e.practice
+
++
+
+"</div><br>"
+
++
+
+"<strong style='color:#9b6a91;'>BoBo ❤️ 我在</strong>";
+
+}
+
+</script>
+  
 <div class="footer">
 本內容屬於個人成長與情緒陪伴分享，不涉及醫療、臨床診斷或宗教預言。<br>
 © BoBo Tan｜開心愛家園療癒
