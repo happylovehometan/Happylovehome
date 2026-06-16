@@ -1,15 +1,15 @@
 {
-  "id": "/?app=happy-love-home-v6",
+  "id": "/?app=happy-love-home-v7",
   "name": "開心愛家園療癒",
-  "short_name": "開心家園",
-  "start_url": "/?app=happy-love-home-v6",
+  "short_name": "開心療癒",
+  "start_url": "/?app=happy-love-home-v7",
   "scope": "/",
   "display": "standalone",
   "background_color": "#fbf5f2",
   "theme_color": "#9b6a91",
   "icons": [
     {
-      "src": "/icon-512.png?v=6",
+      "src": "/icon-512.png?v=7",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
