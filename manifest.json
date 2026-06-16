@@ -1,6 +1,6 @@
 {
   "name": "開心愛家園療癒",
-  "short_name": "BoBo療癒",
+  "short_name": "BoBo",
   "start_url": "/index.html",
   "display": "standalone",
   "background_color": "#fbf5f2",
@@ -9,7 +9,8 @@
     {
       "src": "icon-512.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ]
 }
