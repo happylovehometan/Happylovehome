@@ -722,7 +722,10 @@ Windows / Mac Chrome：右上角 ⋮ → 安裝開心療癒<br>
 歡迎留言給我。🌻
 </p>
 
-<form id="contactForm">
+<form id="contactForm"
+action="https://script.google.com/macros/s/AKfycbzx8yT0wQulzWK5cU9eUDkL5-9LLJHDe7nz12fvKbX03nnwXTMr2wmeN9kQiQ7RT6Qk_A/exec"
+method="POST"
+target="hiddenFrame">
 
 <input type="hidden" name="type" value="contact">
 
@@ -758,7 +761,10 @@ style="background:#9b6a91;color:white;border:none;padding:15px 35px;border-radiu
 留下 Email，收到最新文章、活動、療癒資源與免費下載通知。
 </p>
 
-<form id="subscribeForm">
+<form id="subscribeForm"
+action="https://script.google.com/macros/s/AKfycbzx8yT0wQulzWK5cU9eUDkL5-9LLJHDe7nz12fvKbX03nnwXTMr2wmeN9kQiQ7RT6Qk_A/exec"
+method="POST"
+target="hiddenFrame">
 
 <input type="hidden" name="type" value="subscribe">
 
@@ -777,37 +783,8 @@ style="background:#9b6a91;color:white;border:none;padding:15px 35px;border-radiu
 </div>
 
 
-<script>
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzx8yT0wQulzWK5cU9eUDkL5-9LLJHDe7nz12fvKbX03nnwXTMr2wmeN9kQiQ7RT6Qk_A/exec";
 
-document.getElementById("contactForm").addEventListener("submit", function(e){
-  e.preventDefault();
-
-  fetch(SCRIPT_URL, {
-    method: "POST",
-    body: new FormData(this),
-    mode: "no-cors"
-  });
-
-  document.getElementById("contactMsg").innerHTML = "❤️ 已收到訊息，BoBo 會盡快回覆你。";
-  this.reset();
-});
-
-document.getElementById("subscribeForm").addEventListener("submit", function(e){
-  e.preventDefault();
-
-  fetch(SCRIPT_URL, {
-    method: "POST",
-    body: new FormData(this),
-    mode: "no-cors"
-  });
-
-  document.getElementById("subscribeMsg").innerHTML = "❤️ 訂閱成功，歡迎加入開心療癒。";
-  this.reset();
-});
-</script>
-
-  
+<iframe name="hiddenFrame" style="display:none;"></iframe>
   
 </body>
 </html> 
