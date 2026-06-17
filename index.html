@@ -713,7 +713,99 @@ Windows / Mac Chrome：右上角 ⋮ → 安裝開心療癒<br>
 </div>
 
 </div>
+<div class="card" id="contact">
 
+<h2>📩 聯絡 BoBo</h2>
+
+<p>
+預約安排療癒、活動合作、工作坊詢問，
+歡迎留言給我。🌻
+</p>
+
+<form id="contactForm">
+
+<input type="hidden" name="type" value="contact">
+
+<input name="name" placeholder="你的名字" required
+style="width:100%;padding:15px;margin:10px 0;border-radius:15px;border:1px solid #ddd;font-size:16px;">
+
+<input name="email" type="email" placeholder="你的 Email" required
+style="width:100%;padding:15px;margin:10px 0;border-radius:15px;border:1px solid #ddd;font-size:16px;">
+
+<input name="phone" placeholder="聯絡電話（選填）"
+style="width:100%;padding:15px;margin:10px 0;border-radius:15px;border:1px solid #ddd;font-size:16px;">
+
+<textarea name="message" placeholder="想對 BoBo 說的話" required
+style="width:100%;height:140px;padding:15px;margin:10px 0;border-radius:15px;border:1px solid #ddd;font-size:16px;"></textarea>
+
+<button type="submit"
+style="background:#9b6a91;color:white;border:none;padding:15px 35px;border-radius:30px;font-size:18px;">
+送出訊息
+</button>
+
+<p id="contactMsg" style="color:#9b6a91;font-weight:bold;"></p>
+
+</form>
+
+</div>
+
+
+<div class="card" id="subscribe">
+
+<h2>🔔 訂閱最新消息</h2>
+
+<p>
+留下 Email，收到最新文章、活動、療癒資源與免費下載通知。
+</p>
+
+<form id="subscribeForm">
+
+<input type="hidden" name="type" value="subscribe">
+
+<input name="email" type="email" placeholder="輸入你的 Email" required
+style="width:100%;padding:15px;margin:10px 0;border-radius:15px;border:1px solid #ddd;font-size:16px;">
+
+<button type="submit"
+style="background:#9b6a91;color:white;border:none;padding:15px 35px;border-radius:30px;font-size:18px;">
+我要訂閱
+</button>
+
+<p id="subscribeMsg" style="color:#9b6a91;font-weight:bold;"></p>
+
+</form>
+
+</div>
+
+
+<script>
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzx8yT0wQulzWK5cU9eUDkL5-9LLJHDe7nz12fvKbX03nnwXTMr2wmeN9kQiQ7RT6Qk_A/exec";
+
+document.getElementById("contactForm").addEventListener("submit", function(e){
+  e.preventDefault();
+
+  fetch(SCRIPT_URL, {
+    method: "POST",
+    body: new FormData(this),
+    mode: "no-cors"
+  });
+
+  document.getElementById("contactMsg").innerHTML = "❤️ 已收到訊息，BoBo 會盡快回覆你。";
+  this.reset();
+});
+
+document.getElementById("subscribeForm").addEventListener("submit", function(e){
+  e.preventDefault();
+
+  fetch(SCRIPT_URL, {
+    method: "POST",
+    body: new FormData(this),
+    mode: "no-cors"
+  });
+
+  document.getElementById("subscribeMsg").innerHTML = "❤️ 訂閱成功，歡迎加入開心療癒。";
+  this.reset();
+});
+</script>
 
   
   
