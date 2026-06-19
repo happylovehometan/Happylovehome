@@ -1,0 +1,22 @@
+body{
+margin:0;
+font-family:Arial,"Microsoft JhengHei",sans-serif;
+background:#fff7f4;
+color:#5f525c;
+}
+
+.btn{
+display:block;
+width:85%;
+max-width:420px;
+margin:20px auto;
+padding:18px;
+background:#9b6a91;
+color:white;
+text-decoration:none;
+font-size:22px;
+font-weight:bold;
+text-align:center;
+border-radius:999px;
+box-shadow:0 4px 12px rgba(0,0,0,.15);
+}
