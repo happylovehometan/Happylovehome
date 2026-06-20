@@ -186,3 +186,51 @@ input[type="email"],
   font-size:15px;
   color:#a396a1;
 }
+
+/* free.html final fix */
+
+.hero-card h1 {
+  font-size: 32px !important;
+  line-height: 1.35 !important;
+}
+
+.resource-card h2,
+.subscribe-card h2,
+.more-card h2 {
+  font-size: 28px !important;
+  line-height: 1.4 !important;
+}
+
+.hero-card p,
+.resource-card p,
+.subscribe-card p {
+  font-size: 20px !important;
+  line-height: 1.9 !important;
+}
+
+.more-links {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 16px !important;
+}
+
+.more-links a {
+  display: block !important;
+  width: auto !important;
+  font-size: 20px !important;
+  line-height: 1.5 !important;
+  color: #7b5b7e !important;
+  text-decoration: none !important;
+  background: #fff7f6 !important;
+}
+
+footer a {
+  color: #7b5b7e !important;
+  text-decoration: none !important;
+  font-weight: bold !important;
+}
+
+footer {
+  font-size: 17px !important;
+  line-height: 1.8 !important;
+}
