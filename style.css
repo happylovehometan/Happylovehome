@@ -1,4 +1,4 @@
-Yu 7body{
+body{
 margin:0;
 font-family:Arial,"Microsoft JhengHei",sans-serif;
 background:#fff7f4;
@@ -263,3 +263,82 @@ box-shadow:0 4px 12px rgba(0,0,0,.15);
   }
 }
 
+/* ===== 訂閱區 ===== */
+.subscribe-card{
+  width: 90%;
+  max-width: 720px;
+  margin: 40px auto;
+  background: #fff;
+  border-radius: 28px;
+  padding: 40px 24px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,.06);
+}
+
+.subscribe-card h2{
+  font-size: 42px;
+  color: #7e5d7b;
+  margin-bottom: 18px;
+}
+
+.subscribe-card p{
+  font-size: 20px;
+  line-height: 1.8;
+  color: #6f6270;
+}
+
+.subscribe-form{
+  margin-top: 24px;
+}
+
+.subscribe-form input{
+  width: 85%;
+  max-width: 500px;
+  padding: 18px 22px;
+  border-radius: 999px;
+  border: 1px solid #ddd;
+  font-size: 20px;
+  margin-bottom: 18px;
+  box-sizing: border-box;
+}
+
+.small-btn{
+  display: inline-block;
+  min-width: 220px;
+  padding: 18px 30px;
+  background: #a7749e;
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  font-size: 22px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(0,0,0,.10);
+}
+
+.subscribe-note{
+  margin-top: 16px;
+  font-size: 16px;
+  color: #8a7c88;
+}
+
+/* ===== Footer ===== */
+.site-footer{
+  text-align: center;
+  padding: 50px 24px 70px;
+  color: #8a7c88;
+  line-height: 1.9;
+}
+
+.footer-disclaimer{
+  max-width: 720px;
+  margin: 0 auto 24px;
+  font-size: 16px;
+  color: #9b8e98;
+}
+
+.footer-copy{
+  margin-top: 12px;
+  font-size: 15px;
+  color: #a396a1;
+}
