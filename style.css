@@ -98,3 +98,91 @@ input[type="email"],
     padding:24px 0 40px;
   }
 
+.card,.hero-card,.resource-card,.subscribe-card{
+    border-radius:28px;
+    padding:28px 18px;
+    margin:20px auto;
+  }
+
+  h1{
+    font-size:34px;
+  }
+
+  h2{
+    font-size:28px;
+  }
+
+  p{
+    font-size:18px;
+  }
+
+  .btn{
+    width:85%;
+    font-size:21px;
+    padding:18px 22px;
+  }
+}
+
+/* ===== hero / 資源卡片細節 ===== */
+.hero-card{
+  text-align:center;
+}
+
+.hero-card h1{
+  margin-top:0;
+  margin-bottom:16px;
+}
+
+.hero-card p{
+  margin:0;
+}
+
+.resource-card h2{
+  margin-top:0;
+  margin-bottom:16px;
+}
+
+.resource-card p{
+  margin:0 0 18px;
+}
+
+/* ===== 訂閱區 ===== */
+.subscribe-card h2{
+  margin-top:0;
+  margin-bottom:16px;
+}
+
+.subscribe-card p{
+  margin:0 0 18px;
+}
+
+.subscribe-form{
+  margin-top:20px;
+}
+
+.subscribe-note{
+  font-size:16px;
+  color:#8a7c88;
+  margin-top:12px;
+}
+
+/* ===== 底部按鈕區 ===== */
+.nav-buttons,
+.bottom-links,
+.btn-stack{
+  margin:20px auto 10px;
+}
+
+/* ===== Footer 細節 ===== */
+.footer-disclaimer{
+  max-width:760px;
+  margin:0 auto 18px;
+  font-size:16px;
+  color:#9b8e98;
+}
+
+.footer-copy{
+  margin-top:10px;
+  font-size:15px;
+  color:#a396a1;
+}
