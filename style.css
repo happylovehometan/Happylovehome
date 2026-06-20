@@ -1,311 +1,289 @@
-/* ===== 全站基礎 ===== */
-*{
-  box-sizing:border-box;
-}
-
-html{
-  scroll-behavior:smooth;
-}
+/* =========================
+   Happy Love Home Healing
+   全站統一樣式 style.css
+========================= */
 
 body{
   margin:0;
-  font-family:Arial,"Microsoft JhengHei","PingFang TC",sans-serif;
-  background:linear-gradient(180deg,#fdf4f5 0%,#fffafa 100%);
-  color:#6f6770;
-  line-height:1.9;
+  background:#f6efef;
+  color:#756a73;
+  font-family:Arial,"Microsoft JhengHei","Noto Sans TC",sans-serif;
+  line-height:1.8;
+}
+
+img{
+  max-width:100%;
+  height:auto;
 }
 
 a{
   color:inherit;
 }
 
-/* ===== 頁面主容器 ===== */
 .page-wrap{
-  max-width:860px;
+  width:min(92%, 920px);
   margin:0 auto;
-  padding:28px 18px 60px;
+  padding:34px 0 60px;
 }
 
-/* ===== 共用卡片 ===== */
-.card,
+/* =========================
+   卡片
+========================= */
 .hero-card,
 .resource-card,
 .subscribe-card,
 .more-card{
-  background:#ffffff;
+  background:#fff;
   border-radius:34px;
-  padding:34px 24px;
-  margin:0 auto 26px;
-  box-shadow:0 10px 30px rgba(190,170,180,0.12);
+  box-shadow:0 10px 28px rgba(0,0,0,.05);
+  padding:38px 28px;
+  margin-bottom:26px;
   text-align:center;
 }
 
-/* ===== Hero 區 ===== */
-.hero-card{
-  padding-top:38px;
-  padding-bottom:38px;
-}
-
+/* =========================
+   Hero 區
+========================= */
 .hero-card h1{
   margin:0 0 18px;
-  color:#835d88;
-  font-size:clamp(34px,6vw,64px);
-  line-height:1.2;
+  color:#8f668b;
+  font-size:3rem;
+  line-height:1.25;
   font-weight:800;
 }
 
-.hero-card p{
+.hero-sub{
   margin:0;
-  color:#7b727b;
-  font-size:clamp(18px,3.8vw,28px);
+  color:#7c717a;
+  font-size:1.55rem;
   line-height:1.9;
 }
 
-/* ===== 每個資源卡 ===== */
-.resource-card h2{
-  margin:0 0 18px;
-  color:#835d88;
-  font-size:clamp(28px,5vw,56px);
-  line-height:1.25;
-  font-weight:800;
-}
-
-.resource-card p{
-  margin:0 auto 14px;
-  color:#7b727b;
-  font-size:clamp(18px,3.8vw,28px);
-  line-height:1.95;
-  max-width:680px;
-}
-
-/* ===== 免費領取按鈕 ===== */
-.resource-btn,
-.download-btn{
-  display:inline-block;
-  margin-top:20px;
-  padding:16px 34px;
-  min-width:220px;
-  border-radius:999px;
-  background:#9a7ba3;
-  color:#fff !important;
-  text-decoration:none;
-  font-size:clamp(20px,3.6vw,30px);
-  font-weight:800;
-  box-shadow:0 10px 24px rgba(154,123,163,0.24);
-  transition:transform .2s ease, opacity .2s ease;
-}
-
-.resource-btn:hover,
-.download-btn:hover{
-  transform:translateY(-2px);
-  opacity:.95;
-}
-
-/* ===== 訂閱區 ===== */
-.subscribe-card h2{
-  margin:0 0 18px;
-  color:#835d88;
-  font-size:clamp(28px,5vw,56px);
-  line-height:1.25;
-  font-weight:800;
-}
-
-.subscribe-card p{
-  margin:0 auto 18px;
-  max-width:680px;
-  color:#7b727b;
-  font-size:clamp(18px,3.8vw,28px);
-  line-height:1.95;
-}
-
-.subscribe-form{
-  margin-top:20px;
-}
-
-.subscribe-form input[type="email"]{
-  width:100%;
-  max-width:520px;
-  display:block;
-  margin:0 auto 18px;
-  padding:18px 22px;
-  border-radius:999px;
-  border:1px solid #e3d9df;
-  background:#fff;
-  font-size:clamp(18px,3.6vw,26px);
-  color:#6f6770;
-  outline:none;
-}
-
-.subscribe-form input[type="email"]::placeholder{
-  color:#b0a5ad;
-}
-
-.submit-btn{
-  display:inline-block;
-  border:none;
-  cursor:pointer;
-  padding:16px 34px;
-  min-width:220px;
-  border-radius:999px;
-  background:#9a7ba3;
-  color:#fff;
-  font-size:clamp(20px,3.6vw,30px);
-  font-weight:800;
-  box-shadow:0 10px 24px rgba(154,123,163,0.24);
-  transition:transform .2s ease, opacity .2s ease;
-}
-
-.submit-btn:hover{
-  transform:translateY(-2px);
-  opacity:.95;
-}
-
-.subscribe-note{
-  margin-top:18px !important;
-}
-
-/* ===== 更多陪伴 ===== */
+/* =========================
+   內容卡片
+========================= */
+.resource-card h2,
+.subscribe-card h2,
 .more-card h2{
-  margin:0 0 22px;
-  color:#835d88;
-  font-size:clamp(28px,5vw,54px);
-  line-height:1.25;
+  margin:0 0 20px;
+  color:#8f668b;
+  font-size:2.35rem;
+  line-height:1.35;
   font-weight:800;
 }
 
-/* 這個 class 專門給 free.html 用 */
-.free-more-links{
-  display:flex;
-  flex-direction:column;
-  gap:16px;
-  margin-top:22px;
-}
-
-.free-more-links a{
-  display:block;
-  width:100%;
-  padding:20px 22px;
-  border-radius:24px;
-  background:#fff7f6;
-  border:1px solid #eadde5;
-  color:#7b5b7e;
-  text-decoration:none;
-  font-size:clamp(20px,3.8vw,30px);
-  font-weight:800;
-  line-height:1.5;
-  box-shadow:none;
-  transition:transform .2s ease, background .2s ease;
-}
-
-.free-more-links a:hover{
-  transform:translateY(-2px);
-  background:#fff3f6;
-}
-
-/* ===== 注意聲明 ===== */
-.notice{
-  max-width:760px;
-  margin:36px auto 26px;
-  text-align:center;
-  color:#aaa0a8;
-  font-size:clamp(16px,3vw,24px);
+.resource-card p,
+.subscribe-card p,
+.more-card p{
+  margin:0 0 18px;
+  color:#7c717a;
+  font-size:1.28rem;
   line-height:2;
-  padding:0 12px;
 }
 
-/* ===== Footer ===== */
-footer{
-  max-width:860px;
-  margin:0 auto 40px;
-  padding:10px 18px 46px;
-  text-align:center;
-  color:#918791;
+.note{
+  margin-top:18px !important;
+  color:#8f848c !important;
+  font-size:1.08rem !important;
+  line-height:1.9 !important;
 }
 
-footer strong{
-  display:block;
-  margin-bottom:14px;
-  color:#835d88;
-  font-size:clamp(22px,4.6vw,40px);
-}
-
-footer p{
-  margin:0 0 14px;
-  font-size:clamp(18px,3.6vw,28px);
-  line-height:1.9;
-}
-
-.footer-links{
-  margin:16px 0 18px;
-  display:flex;
-  justify-content:center;
-  flex-wrap:wrap;
-  gap:14px 22px;
-}
-
-.footer-links a{
-  color:#835d88 !important;
-  text-decoration:none !important;
-  font-weight:800;
-  font-size:clamp(18px,3.6vw,28px);
-}
-
-.footer-copy{
-  margin-top:10px;
-  color:#a298a1;
-  font-size:clamp(16px,3vw,24px);
-  line-height:1.8;
-}
-
-/* ===== 手機微調 ===== */
-@media (max-width:640px){
-  .page-wrap{
-    padding:20px 14px 48px;
-  }
-
-  .card,
-  .hero-card,
-  .resource-card,
-  .subscribe-card,
-  .more-card{
-    border-radius:28px;
-    padding:28px 18px;
-    margin-bottom:22px;
-  }
-
-  .resource-btn,
-  .download-btn,
-  .submit-btn{
-    width:100%;
-    max-width:360px;
-    padding:15px 24px;
-  }
-
-  .free-more-links a{
-    padding:18px 18px;
-    border-radius:22px;
-  }
-}
-
-/* ===== 統一按鈕：所有頁面共用 ===== */
+/* =========================
+   全站統一主按鈕
+========================= */
 .btn{
   display:block;
-  width:85%;
-  max-width:420px;
-  margin:20px auto;
-  padding:18px 22px;
-  background:#9b6a91;
+  width:100%;
+  max-width:540px;
+  margin:24px auto 0;
+  padding:22px 28px;
+  background:#a6789f;
   color:#fff !important;
   text-decoration:none !important;
-  font-size:22px;
-  font-weight:800;
   text-align:center;
+  font-size:1.9rem;
+  font-weight:800;
+  line-height:1.35;
+  border:none;
   border-radius:999px;
-  box-shadow:0 8px 20px rgba(0,0,0,.12);
+  box-shadow:0 12px 26px rgba(0,0,0,.12);
   box-sizing:border-box;
+  transition:.2s ease;
 }
 
 .btn:hover{
   transform:translateY(-2px);
-  box-shadow:0 10px 24px rgba(0,0,0,.16);
+  box-shadow:0 14px 30px rgba(0,0,0,.16);
+}
+
+.btn:visited,
+.btn:active{
+  color:#fff !important;
+  text-decoration:none !important;
+}
+
+/* =========================
+   訂閱區
+========================= */
+.subscribe-form{
+  margin-top:24px;
+}
+
+.subscribe-form input{
+  width:100%;
+  max-width:620px;
+  display:block;
+  margin:0 auto 18px;
+  padding:20px 22px;
+  border-radius:999px;
+  border:1px solid #e2d7dd;
+  background:#fff;
+  font-size:1.2rem;
+  color:#756a73;
+  box-sizing:border-box;
+  text-align:center;
+  outline:none;
+}
+
+.subscribe-form input:focus{
+  border-color:#b68bab;
+  box-shadow:0 0 0 4px rgba(182,139,171,.12);
+}
+
+/* =========================
+   更多陪伴按鈕區
+========================= */
+.more-card .btn{
+  margin-top:18px;
+}
+
+/* =========================
+   Footer
+========================= */
+.site-footer{
+  text-align:center;
+  padding:24px 22px 60px;
+  color:#9a8f97;
+}
+
+.footer-disclaimer{
+  max-width:860px;
+  margin:0 auto 26px;
+  font-size:1.08rem;
+  line-height:2;
+  color:#9f949b;
+}
+
+.footer-brand{
+  margin:0 0 10px;
+  color:#8f668b;
+  font-size:2rem;
+  font-weight:800;
+  line-height:1.4;
+}
+
+.footer-tagline{
+  margin:0 0 20px;
+  font-size:1.2rem;
+  color:#8b8088;
+  line-height:1.9;
+}
+
+.footer-links{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:16px 28px;
+  margin:0 0 18px;
+}
+
+.footer-links a{
+  color:#8f668b;
+  text-decoration:none;
+  font-weight:700;
+  font-size:1.08rem;
+}
+
+.footer-links a:hover{
+  text-decoration:underline;
+}
+
+.footer-copy{
+  margin:0;
+  color:#a69aa3;
+  font-size:1rem;
+  line-height:1.8;
+}
+
+/* =========================
+   手機版
+========================= */
+@media (max-width:768px){
+  .page-wrap{
+    width:min(93%, 720px);
+    padding:24px 0 46px;
+  }
+
+  .hero-card,
+  .resource-card,
+  .subscribe-card,
+  .more-card{
+    border-radius:30px;
+    padding:30px 20px;
+    margin-bottom:20px;
+  }
+
+  .hero-card h1{
+    font-size:2.4rem;
+  }
+
+  .hero-sub{
+    font-size:1.2rem;
+    line-height:1.9;
+  }
+
+  .resource-card h2,
+  .subscribe-card h2,
+  .more-card h2{
+    font-size:2rem;
+    line-height:1.35;
+  }
+
+  .resource-card p,
+  .subscribe-card p,
+  .more-card p{
+    font-size:1.12rem;
+    line-height:1.95;
+  }
+
+  .btn{
+    max-width:100%;
+    font-size:1.25rem;
+    padding:20px 18px;
+  }
+
+  .subscribe-form input{
+    font-size:1.08rem;
+    padding:18px 18px;
+  }
+
+  .footer-brand{
+    font-size:1.7rem;
+  }
+
+  .footer-tagline{
+    font-size:1.08rem;
+  }
+
+  .footer-links{
+    gap:12px 18px;
+  }
+
+  .footer-links a{
+    font-size:1rem;
+  }
+
+  .footer-disclaimer{
+    font-size:1rem;
+  }
 }
