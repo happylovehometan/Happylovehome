@@ -390,3 +390,40 @@ p{
     font-size:1.55rem;
   }
 }
+
+/* =========================
+   Recommend page extra blocks
+========================= */
+.recommend-tips,
+.recommend-ideas {
+  display: grid;
+  gap: 18px;
+  margin-top: 22px;
+}
+
+.tip-item,
+.idea-card {
+  background: #faf6f8;
+  border: 1px solid rgba(155, 106, 145, 0.12);
+  border-radius: 22px;
+  padding: 22px 20px;
+  text-align: center;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+}
+
+.tip-item h3,
+.idea-card h3 {
+  margin: 0 0 12px;
+  color: #8f6790;
+  font-size: 1.25rem;
+  line-height: 1.45;
+  font-weight: 800;
+}
+
+.tip-item p,
+.idea-card p {
+  margin: 0;
+  color: #7b7279;
+  line-height: 2;
+  font-size: 1.02rem;
+}
