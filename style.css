@@ -1,7 +1,15 @@
 /* =========================
    Happy Love Home Healing
-   全站統一樣式 style.css
+   整站共用 style.css 最終版
 ========================= */
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  -webkit-text-size-adjust:100%;
+}
 
 body{
   margin:0;
@@ -14,25 +22,44 @@ body{
 img{
   max-width:100%;
   height:auto;
+  display:block;
 }
 
 a{
   color:inherit;
+  text-decoration:none;
 }
 
-.page-wrap{
-  width:min(92%, 920px);
-  margin:0 auto;
-  padding:34px 0 60px;
+hr{
+  border:none;
+  border-top:1px solid #eee3e8;
+  margin:28px 0;
 }
 
 /* =========================
-   卡片
+   Page Layout
 ========================= */
+
+.page-wrap{
+  width:min(92%,920px);
+  margin:0 auto;
+  padding:34px 0 56px;
+}
+
+/* 舊頁面也可沿用 */
+.container{
+  width:min(92%,920px);
+  margin:0 auto;
+  padding:34px 0 56px;
+}
+
+/* =========================
+   Cards
+========================= */
+
 .hero-card,
 .resource-card,
-.subscribe-card,
-.more-card{
+.card{
   background:#fff;
   border-radius:34px;
   box-shadow:0 10px 28px rgba(0,0,0,.05);
@@ -41,10 +68,9 @@ a{
   text-align:center;
 }
 
-/* =========================
-   Hero 區
-========================= */
-.hero-card h1{
+.hero-card h1,
+.card h1,
+h1{
   margin:0 0 18px;
   color:#8f668b;
   font-size:3rem;
@@ -55,81 +81,141 @@ a{
 .hero-sub{
   margin:0;
   color:#7c717a;
-  font-size:1.55rem;
+  font-size:1.35rem;
   line-height:1.9;
 }
 
-/* =========================
-   內容卡片
-========================= */
 .resource-card h2,
-.subscribe-card h2,
-.more-card h2{
+.card h2,
+h2{
   margin:0 0 20px;
   color:#8f668b;
-  font-size:2.35rem;
+  font-size:2.15rem;
   line-height:1.35;
   font-weight:800;
 }
 
+.resource-card h3,
+.card h3,
+h3{
+  margin:22px 0 10px;
+  color:#8f668b;
+  font-size:1.65rem;
+  line-height:1.4;
+}
+
 .resource-card p,
-.subscribe-card p,
-.more-card p{
-  margin:0 0 18px;
+.card p,
+p{
   color:#7c717a;
-  font-size:1.28rem;
+  font-size:1.15rem;
   line-height:2;
 }
 
-.note{
-  margin-top:18px !important;
-  color:#8f848c !important;
-  font-size:1.08rem !important;
-  line-height:1.9 !important;
+/* story / 舊頁文字 */
+.story{
+  font-size:1.15rem;
+  line-height:2;
+  text-align:left;
+  color:#7c717a;
 }
 
 /* =========================
-   全站統一主按鈕
+   Images inside cards
 ========================= */
+
+.card-img{
+  width:100%;
+  max-width:680px;
+  border-radius:22px;
+  margin:20px auto;
+  box-shadow:0 8px 25px rgba(0,0,0,.12);
+}
+
+.card-img-soft{
+  width:100%;
+  max-width:680px;
+  border-radius:22px;
+  margin:0 auto 20px;
+}
+
+/* =========================
+   Buttons
+========================= */
+
 .btn{
   display:block;
   width:100%;
   max-width:540px;
-  margin:24px auto 0;
-  padding:22px 28px;
+  margin:22px auto 0;
+  padding:21px 24px;
   background:#a6789f;
   color:#fff !important;
   text-decoration:none !important;
   text-align:center;
-  font-size:1.9rem;
+  font-size:1.4rem;
   font-weight:800;
   line-height:1.35;
   border:none;
   border-radius:999px;
   box-shadow:0 12px 26px rgba(0,0,0,.12);
-  box-sizing:border-box;
+  cursor:pointer;
   transition:.2s ease;
+  box-sizing:border-box;
 }
 
 .btn:hover{
   transform:translateY(-2px);
-  box-shadow:0 14px 30px rgba(0,0,0,.16);
 }
 
 .btn:visited,
-.btn:active{
+.btn:active,
+.btn:focus{
   color:#fff !important;
   text-decoration:none !important;
 }
 
+.btn-stack{
+  margin-top:10px;
+}
+
+.btn-stack .btn:first-child{
+  margin-top:0;
+}
+
 /* =========================
-   訂閱區
+   List / small text blocks
 ========================= */
-.subscribe-form{
+
+.soft-list{
+  list-style:none;
+  padding:0;
+  margin:0;
+}
+
+.soft-list li{
+  margin:10px 0;
+  font-size:1.12rem;
+  line-height:1.9;
+  color:#7c717a;
+}
+
+.note{
+  margin-top:18px !important;
+  color:#8f848c !important;
+  font-size:1rem !important;
+  line-height:1.8 !important;
+}
+
+/* =========================
+   Email Form
+========================= */
+
+.email-form{
   margin-top:24px;
 }
 
-.subscribe-form input{
+.email-form input{
   width:100%;
   max-width:620px;
   display:block;
@@ -138,38 +224,38 @@ a{
   border-radius:999px;
   border:1px solid #e2d7dd;
   background:#fff;
-  font-size:1.2rem;
+  font-size:1.1rem;
   color:#756a73;
-  box-sizing:border-box;
   text-align:center;
   outline:none;
 }
 
-.subscribe-form input:focus{
-  border-color:#b68bab;
-  box-shadow:0 0 0 4px rgba(182,139,171,.12);
-}
-
-/* =========================
-   更多陪伴按鈕區
-========================= */
-.more-card .btn{
-  margin-top:18px;
+.email-form input:focus{
+  border-color:#a6789f;
+  box-shadow:0 0 0 4px rgba(166,120,159,.12);
 }
 
 /* =========================
    Footer
 ========================= */
-.site-footer{
+
+.site-footer,
+.footer{
   text-align:center;
-  padding:24px 22px 60px;
+  padding:22px 22px 56px;
   color:#9a8f97;
+  font-size:1rem;
+  line-height:1.9;
+}
+
+.footer-inner{
+  width:min(92%,920px);
+  margin:0 auto;
 }
 
 .footer-disclaimer{
-  max-width:860px;
-  margin:0 auto 26px;
-  font-size:1.08rem;
+  margin:0 auto 24px;
+  font-size:1rem;
   line-height:2;
   color:#9f949b;
 }
@@ -177,16 +263,14 @@ a{
 .footer-brand{
   margin:0 0 10px;
   color:#8f668b;
-  font-size:2rem;
+  font-size:1.8rem;
   font-weight:800;
-  line-height:1.4;
 }
 
 .footer-tagline{
-  margin:0 0 20px;
-  font-size:1.2rem;
-  color:#8b8088;
-  line-height:1.9;
+  margin:0 0 18px;
+  font-size:1.08rem;
+  line-height:1.8;
 }
 
 .footer-links{
@@ -194,14 +278,14 @@ a{
   justify-content:center;
   flex-wrap:wrap;
   gap:16px 28px;
-  margin:0 0 18px;
+  margin:18px 0;
 }
 
 .footer-links a{
   color:#8f668b;
   text-decoration:none;
   font-weight:700;
-  font-size:1.08rem;
+  font-size:1.05rem;
 }
 
 .footer-links a:hover{
@@ -212,78 +296,97 @@ a{
   margin:0;
   color:#a69aa3;
   font-size:1rem;
-  line-height:1.8;
+}
+
+/* 舊 footer 也能吃到 */
+.footer a{
+  color:#8f668b;
+  font-weight:700;
 }
 
 /* =========================
-   手機版
+   Utility
 ========================= */
+
+.text-left{
+  text-align:left;
+}
+
+.text-center{
+  text-align:center;
+}
+
+.mt-0{ margin-top:0 !important; }
+.mt-10{ margin-top:10px !important; }
+.mt-20{ margin-top:20px !important; }
+.mt-30{ margin-top:30px !important; }
+.mb-0{ margin-bottom:0 !important; }
+
+/* =========================
+   Mobile
+========================= */
+
 @media (max-width:768px){
-  .page-wrap{
-    width:min(93%, 720px);
-    padding:24px 0 46px;
+
+  .page-wrap,
+  .container{
+    width:min(93%,720px);
+    padding:24px 0 44px;
   }
 
   .hero-card,
   .resource-card,
-  .subscribe-card,
-  .more-card{
+  .card{
     border-radius:30px;
     padding:30px 20px;
-    margin-bottom:20px;
+    margin-bottom:22px;
   }
 
-  .hero-card h1{
-    font-size:2.4rem;
+  .hero-card h1,
+  .card h1,
+  h1{
+    font-size:2.25rem;
   }
 
   .hero-sub{
-    font-size:1.2rem;
-    line-height:1.9;
+    font-size:1.12rem;
   }
 
   .resource-card h2,
-  .subscribe-card h2,
-  .more-card h2{
-    font-size:2rem;
-    line-height:1.35;
+  .card h2,
+  h2{
+    font-size:1.8rem;
+  }
+
+  .resource-card h3,
+  .card h3,
+  h3{
+    font-size:1.35rem;
   }
 
   .resource-card p,
-  .subscribe-card p,
-  .more-card p{
-    font-size:1.12rem;
+  .card p,
+  p,
+  .story{
+    font-size:1.05rem;
     line-height:1.95;
   }
 
   .btn{
-    max-width:100%;
-    font-size:1.25rem;
-    padding:20px 18px;
+    font-size:1.18rem;
+    padding:19px 18px;
   }
 
-  .subscribe-form input{
-    font-size:1.08rem;
+  .email-form input{
+    font-size:1.02rem;
     padding:18px 18px;
   }
 
-  .footer-brand{
-    font-size:1.7rem;
-  }
-
-  .footer-tagline{
-    font-size:1.08rem;
-  }
-
   .footer-links{
-    gap:12px 18px;
+    gap:12px 20px;
   }
 
-  .footer-links a{
-    font-size:1rem;
-  }
-
-  .footer-disclaimer{
-    font-size:1rem;
+  .footer-brand{
+    font-size:1.55rem;
   }
 }
