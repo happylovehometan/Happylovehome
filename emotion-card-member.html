@@ -2,66 +2,142 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8">
-  <title>BoBo 情緒牌卡｜買家專屬頁</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>把自己抱回來｜30天情緒安撫陪伴</title>
+
   <style>
     body {
-      font-family: "Microsoft JhengHei", sans-serif;
-      background: #fff7f1;
+      margin: 0;
+      font-family: "Microsoft JhengHei", "Noto Sans TC", sans-serif;
+      background: linear-gradient(180deg, #fff7f1, #f7e6d8);
       color: #4a3428;
       text-align: center;
-      padding: 40px 20px;
+      padding: 40px 18px;
     }
+
     .box {
-      max-width: 520px;
+      max-width: 620px;
       margin: auto;
-      background: white;
-      padding: 30px;
-      border-radius: 20px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      background: rgba(255,255,255,0.9);
+      padding: 32px 24px;
+      border-radius: 24px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
     }
-    input, button {
-      padding: 12px 16px;
-      border-radius: 10px;
-      border: 1px solid #d8b8a5;
-      margin-top: 10px;
+
+    h1 {
+      font-size: 30px;
+      margin-bottom: 8px;
+    }
+
+    h2 {
+      font-size: 22px;
+      color: #8a5a44;
+      margin-top: 24px;
+    }
+
+    p {
+      line-height: 1.8;
       font-size: 16px;
     }
+
+    input {
+      padding: 12px 16px;
+      border-radius: 12px;
+      border: 1px solid #d8b8a5;
+      font-size: 16px;
+      width: 80%;
+      max-width: 300px;
+      margin-top: 12px;
+    }
+
     button {
-      background: #b88968;
+      margin-top: 18px;
+      padding: 13px 24px;
+      border: none;
+      border-radius: 999px;
+      background: #a87458;
       color: white;
+      font-size: 16px;
       cursor: pointer;
     }
+
+    button:hover {
+      background: #8d5f47;
+    }
+
     #memberContent {
       display: none;
+    }
+
+    .message-card {
+      margin-top: 28px;
+      padding: 26px 20px;
+      background: #fffaf6;
+      border-radius: 20px;
+      border: 1px solid #ead2c2;
+      text-align: left;
+    }
+
+    .label {
+      color: #a87458;
+      font-weight: bold;
+      margin-top: 18px;
+    }
+
+    .footer-note {
+      font-size: 13px;
+      color: #8a7568;
+      margin-top: 28px;
+    }
+
+    #errorMsg {
+      color: #b45a4a;
+      margin-top: 12px;
     }
   </style>
 </head>
 
 <body>
 
-<div class="box" id="passwordBox">
-  <h1>BoBo 情緒安撫牌卡</h1>
-  <p>這是買家專屬測試頁面。</p>
-  <p>請輸入密碼進入：</p>
+  <!-- 密碼區 -->
+  <div class="box" id="passwordBox">
+    <h1>把自己抱回來</h1>
+    <h2>30 天情緒安撫陪伴</h2>
+    <p>
+      這是 BoBo 陪伴個案使用的專屬入口。<br>
+      請輸入密碼進入。
+    </p>
 
-  <input type="password" id="passwordInput" placeholder="輸入密碼">
-  <br>
-  <button onclick="checkPassword()">進入牌卡頁</button>
+    <input type="password" id="passwordInput" placeholder="請輸入密碼">
+    <br>
+    <button onclick="checkPassword()">進入陪伴入口</button>
 
-  <p id="errorMsg" style="color:#b45a4a;"></p>
-</div>
+    <p id="errorMsg"></p>
+  </div>
 
-<div class="box" id="memberContent">
-  <h1>🌙 BoBo 情緒安撫牌卡</h1>
-  <p>深呼吸一下，按下按鈕，抽一張今天給你的安撫訊息。</p>
+  <!-- 內容區 -->
+  <div class="box" id="memberContent">
+    <h1>把自己抱回來</h1>
+    <h2>30 天情緒安撫陪伴</h2>
 
-  <button onclick="drawCard()">抽一張牌</button>
+    <p>
+      當你很累、很亂、很委屈，或不知道怎麼陪自己的時候，<br>
+      先來這裡，讓今天的訊息陪你一下。
+    </p>
 
-  <div id="cardResult" style="margin-top:25px;"></div>
-</div>
+    <button onclick="drawMessage()">今天，陪我一下</button>
+
+    <div id="messageResult"></div>
+
+    <p class="footer-note">
+      本頁內容僅限購買者本人使用，請勿轉發、公開分享或提供他人使用。<br>
+      晚上 8:30pm 後 BoBo 不回覆訊息；已看到的陪伴提問，將於隔天下午 2:00pm 後依序回覆。
+    </p>
+  </div>
 
 <script>
-const password = "bobo888"; // 這裡可以改成你自己的密碼
+const password = "bobo888"; 
+// 之後你可以把 bobo888 改成自己的密碼
 
 function checkPassword() {
   const input = document.getElementById("passwordInput").value;
@@ -74,27 +150,75 @@ function checkPassword() {
   }
 }
 
-const cards = [
+const messages = [
   {
-    name: "我很累了",
-    message: "你不是懶，你只是撐太久了。今天先不要逼自己變好。"
+    title: "你不是懶，你只是撐太久了。",
+    bobo: "最近的你，不一定是遇到什麼大事。可能只是很多小小的疲憊、責任、委屈和害怕，慢慢堆在一起，堆到你連呼吸都覺得有點重。今天先不要急著把自己拉起來，先承認：你真的很累了。",
+    practice: "把手放在胸口，吸氣 4 秒，吐氣 6 秒，做 3 次。然後問自己：如果我今天不用再撐，我最需要的是什麼？"
   },
   {
-    name: "我很委屈",
-    message: "你可以承認自己受傷了，不需要一直裝沒事。"
+    title: "不是你太敏感，是你真的委屈了。",
+    bobo: "有些話、有些眼神、有些被忽略的瞬間，可能別人覺得沒什麼，但你的心是真的有感覺。你不需要一直說服自己不要在意。先允許自己承認：我其實受傷了。",
+    practice: "寫下一句：我最委屈的是…… 不用寫得漂亮，只要誠實。"
   },
   {
-    name: "把自己抱回來",
-    message: "別人的情緒是別人的，你先回到自己身上。"
+    title: "今天先不要逼自己變好。",
+    bobo: "有時候你越急著變好，心反而越累。今天不需要逼自己馬上振作，也不需要證明自己已經沒事。你可以只是慢慢呼吸，慢慢回來。",
+    practice: "對自己說 3 次：我可以慢一點，我現在不需要立刻變好。"
+  },
+  {
+    title: "把別人的情緒，先放回去。",
+    bobo: "你可能很習慣接住別人的不開心、失望、生氣或冷淡。可是親愛的，不是每一份情緒都需要你負責。你可以關心別人，但不必把所有東西都背在自己身上。",
+    practice: "想像把不屬於你的情緒，輕輕放回對方身邊。然後說：我把你的情緒還給你，我回到我自己。"
+  },
+  {
+    title: "你可以有界線，這不是冷漠。",
+    bobo: "你不需要因為害怕別人不高興，就一直委屈自己。真正溫柔的人，也可以有界線。你可以愛人，也可以保護自己。",
+    practice: "今天寫下一句你想練習的界線：我可以……，但我不需要……"
+  },
+  {
+    title: "不是所有離開，都是你的錯。",
+    bobo: "有些關係走遠，不一定是你不夠好。有些人只是在某個階段陪你一段路。你可以難過，但不必把所有離開都解讀成自己不值得被愛。",
+    practice: "把手放在心口，對自己說：有人離開，不代表我不好。"
+  },
+  {
+    title: "你不用靠受苦證明自己值得。",
+    bobo: "你不需要一直很辛苦，才證明自己有努力。也不需要把自己耗乾，才換來一點點被看見。你值得被善待，不是因為你撐到最後，而是因為你本來就值得。",
+    practice: "今天為自己做一件很小的善待：喝一杯水、早點睡、少回一則讓你累的訊息。"
+  },
+  {
+    title: "你可以慢慢回到身體裡。",
+    bobo: "當情緒很滿的時候，人會一直跑進頭腦裡，想很多、猜很多、怕很多。現在先不急著想答案。先回到身體，回到呼吸，回到腳底。",
+    practice: "雙腳踩地，感覺腳底接觸地面。慢慢吸氣，慢慢吐氣，做 5 次。"
+  },
+  {
+    title: "你不是不夠好，你只是太久沒被好好對待。",
+    bobo: "有些自我懷疑，不是真的因為你不好，而是你太久沒有被溫柔地看見。請不要用別人曾經對待你的方式，繼續對待自己。",
+    practice: "寫下：如果我是我最好的朋友，我今天會怎麼安慰自己？"
+  },
+  {
+    title: "把自己抱回來。",
+    bobo: "你可能又把注意力放到別人身上了：他怎麼想、他會不會不開心、他是不是不要我了。現在，先回來。先回到你自己。你也需要被你照顧。",
+    practice: "抱抱自己的肩膀，輕輕說：我回來了，我先陪我自己。"
   }
 ];
 
-function drawCard() {
-  const card = cards[Math.floor(Math.random() * cards.length)];
+function drawMessage() {
+  const message = messages[Math.floor(Math.random() * messages.length)];
 
-  document.getElementById("cardResult").innerHTML = `
-    <h2>${card.name}</h2>
-    <p>${card.message}</p>
+  document.getElementById("messageResult").innerHTML = `
+    <div class="message-card">
+      <h2>此刻的陪伴訊息</h2>
+
+      <div class="label">給現在的你</div>
+      <p><strong>${message.title}</strong></p>
+
+      <div class="label">BoBo 想陪你說</div>
+      <p>${message.bobo}</p>
+
+      <div class="label">今天的小練習</div>
+      <p>${message.practice}</p>
+    </div>
   `;
 }
 </script>
