@@ -427,3 +427,25 @@ p{
   line-height: 2;
   font-size: 1.02rem;
 }
+
+.site-footer {
+  margin-top: 40px;
+  padding: 24px 16px 40px;
+  text-align: center;
+  font-size: 14px;
+  color: #666;
+  border-top: 1px solid #eee;
+}
+
+.site-footer p {
+  margin: 8px 0;
+}
+
+.site-footer a {
+  color: #666;
+  text-decoration: none;
+}
+
+.site-footer a:hover {
+  text-decoration: underline;
+}
