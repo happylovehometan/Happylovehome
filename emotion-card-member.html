@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>BoBo 情緒牌卡｜買家專屬頁</title>
+  <style>
+    body {
+      font-family: "Microsoft JhengHei", sans-serif;
+      background: #fff7f1;
+      color: #4a3428;
+      text-align: center;
+      padding: 40px 20px;
+    }
+    .box {
+      max-width: 520px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    }
+    input, button {
+      padding: 12px 16px;
+      border-radius: 10px;
+      border: 1px solid #d8b8a5;
+      margin-top: 10px;
+      font-size: 16px;
+    }
+    button {
+      background: #b88968;
+      color: white;
+      cursor: pointer;
+    }
+    #memberContent {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="box" id="passwordBox">
+  <h1>BoBo 情緒安撫牌卡</h1>
+  <p>這是買家專屬測試頁面。</p>
+  <p>請輸入密碼進入：</p>
+
+  <input type="password" id="passwordInput" placeholder="輸入密碼">
+  <br>
+  <button onclick="checkPassword()">進入牌卡頁</button>
+
+  <p id="errorMsg" style="color:#b45a4a;"></p>
+</div>
+
+<div class="box" id="memberContent">
+  <h1>🌙 BoBo 情緒安撫牌卡</h1>
+  <p>深呼吸一下，按下按鈕，抽一張今天給你的安撫訊息。</p>
+
+  <button onclick="drawCard()">抽一張牌</button>
+
+  <div id="cardResult" style="margin-top:25px;"></div>
+</div>
+
+<script>
+const password = "bobo888"; // 這裡可以改成你自己的密碼
+
+function checkPassword() {
+  const input = document.getElementById("passwordInput").value;
+
+  if (input === password) {
+    document.getElementById("passwordBox").style.display = "none";
+    document.getElementById("memberContent").style.display = "block";
+  } else {
+    document.getElementById("errorMsg").innerText = "密碼不正確，請重新輸入。";
+  }
+}
+
+const cards = [
+  {
+    name: "我很累了",
+    message: "你不是懶，你只是撐太久了。今天先不要逼自己變好。"
+  },
+  {
+    name: "我很委屈",
+    message: "你可以承認自己受傷了，不需要一直裝沒事。"
+  },
+  {
+    name: "把自己抱回來",
+    message: "別人的情緒是別人的，你先回到自己身上。"
+  }
+];
+
+function drawCard() {
+  const card = cards[Math.floor(Math.random() * cards.length)];
+
+  document.getElementById("cardResult").innerHTML = `
+    <h2>${card.name}</h2>
+    <p>${card.message}</p>
+  `;
+}
+</script>
+
+</body>
+</html>
