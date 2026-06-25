@@ -18,41 +18,44 @@
     .box {
       max-width: 620px;
       margin: auto;
-      background: rgba(255,255,255,0.9);
-      padding: 32px 24px;
-      border-radius: 24px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      background: rgba(255,255,255,0.92);
+      padding: 36px 24px;
+      border-radius: 28px;
+      box-shadow: 0 12px 34px rgba(0,0,0,0.08);
     }
 
     h1 {
       font-size: 30px;
-      margin-bottom: 8px;
+      margin-bottom: 12px;
+      font-weight: 800;
     }
 
     h2 {
-      font-size: 22px;
+      font-size: 18px;
       color: #8a5a44;
-      margin-top: 24px;
+      margin-top: 8px;
+      margin-bottom: 24px;
+      font-weight: 700;
     }
 
     p {
-      line-height: 1.8;
+      line-height: 1.85;
       font-size: 16px;
     }
 
     input {
-      padding: 12px 16px;
-      border-radius: 12px;
+      padding: 13px 16px;
+      border-radius: 14px;
       border: 1px solid #d8b8a5;
       font-size: 16px;
-      width: 80%;
-      max-width: 300px;
-      margin-top: 12px;
+      width: 82%;
+      max-width: 330px;
+      margin-top: 14px;
     }
 
     button {
-      margin-top: 18px;
-      padding: 13px 24px;
+      margin-top: 22px;
+      padding: 14px 30px;
       border: none;
       border-radius: 999px;
       background: #a87458;
@@ -70,10 +73,10 @@
     }
 
     .message-card {
-      margin-top: 28px;
+      margin-top: 30px;
       padding: 26px 20px;
       background: #fffaf6;
-      border-radius: 20px;
+      border-radius: 22px;
       border: 1px solid #ead2c2;
       text-align: left;
     }
@@ -87,7 +90,8 @@
     .footer-note {
       font-size: 13px;
       color: #8a7568;
-      margin-top: 28px;
+      margin-top: 30px;
+      line-height: 1.9;
     }
 
     #errorMsg {
@@ -99,10 +103,11 @@
 
 <body>
 
-  <!-- 密碼區 -->
+  <!-- 密碼頁 -->
   <div class="box" id="passwordBox">
     <h1>把自己抱回來</h1>
     <h2>30 天情緒安撫陪伴</h2>
+
     <p>
       這是 BoBo 陪伴個案使用的專屬入口。<br>
       請輸入密碼進入。
@@ -115,7 +120,7 @@
     <p id="errorMsg"></p>
   </div>
 
-  <!-- 內容區 -->
+  <!-- 內容頁 -->
   <div class="box" id="memberContent">
     <h1>把自己抱回來</h1>
     <h2>30 天情緒安撫陪伴</h2>
@@ -125,11 +130,13 @@
       先來這裡，讓今天的訊息陪你一下。
     </p>
 
-    <button onclick="drawMessage()">今天，陪我一下</button>
+    <button onclick="drawMessage()">收下今天的訊息</button>
 
     <div id="messageResult"></div>
 
     <p class="footer-note">
+      你也許會抽到一樣的訊息。<br>
+      沒關係，那可能只是今天的你，還需要再被溫柔地抱一次、提醒一次：你不用一個人撐。<br><br>
       本頁內容僅限購買者本人使用，請勿轉發、公開分享或提供他人使用。<br>
       晚上 8:30pm 後 BoBo 不回覆訊息；已看到的陪伴提問，將於隔天下午 2:00pm 後依序回覆。
     </p>
