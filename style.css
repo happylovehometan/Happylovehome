@@ -428,24 +428,123 @@ p{
   font-size: 1.02rem;
 }
 
-.site-footer {
-  margin-top: 40px;
-  padding: 24px 16px 40px;
-  text-align: center;
-  font-size: 14px;
-  color: #666;
-  border-top: 1px solid #eee;
+/* =========================
+   POLICY PAGE
+========================= */
+
+.policy-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 24px 18px 60px;
+  box-sizing: border-box;
 }
 
-.site-footer p {
+.policy-hero {
+  margin-bottom: 32px;
+}
+
+.policy-hero h1 {
+  font-size: 34px;
+  line-height: 1.25;
+  color: #8f6791;
+  margin: 0 0 12px;
+  word-break: break-word;
+}
+
+.policy-hero p {
   margin: 8px 0;
+  font-size: 18px;
+  line-height: 1.7;
+  color: #666;
 }
 
-.site-footer a {
+.policy-section {
+  margin-bottom: 42px;
+}
+
+.policy-section h2 {
+  font-size: 38px;
+  line-height: 1.25;
+  color: #8f6791;
+  margin: 0 0 18px;
+  word-break: break-word;
+}
+
+.policy-section h3 {
+  font-size: 24px;
+  line-height: 1.4;
+  color: #8f6791;
+  margin: 28px 0 12px;
+}
+
+.policy-section p,
+.policy-section li {
+  font-size: 19px;
+  line-height: 1.95;
   color: #666;
+}
+
+.policy-section ul {
+  padding-left: 22px;
+  margin: 10px 0 0;
+}
+
+.policy-footer {
+  margin-top: 50px;
+  padding-top: 24px;
+  border-top: 1px solid #e6dfe4;
+}
+
+.policy-footer p {
+  margin: 8px 0;
+  font-size: 16px;
+  color: #777;
+}
+
+.policy-footer a {
+  color: #8f6791;
   text-decoration: none;
 }
 
-.site-footer a:hover {
+.policy-footer a:hover {
   text-decoration: underline;
+}
+
+/* =========================
+   MOBILE
+========================= */
+@media (max-width: 768px) {
+  .policy-page {
+    padding: 22px 16px 50px;
+  }
+
+  .policy-hero h1 {
+    font-size: 26px;
+    line-height: 1.35;
+  }
+
+  .policy-hero p {
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  .policy-section h2 {
+    font-size: 24px;
+    line-height: 1.35;
+  }
+
+  .policy-section h3 {
+    font-size: 20px;
+    line-height: 1.45;
+  }
+
+  .policy-section p,
+  .policy-section li {
+    font-size: 17px;
+    line-height: 1.9;
+  }
+
+  .policy-footer p {
+    font-size: 14px;
+  }
 }
