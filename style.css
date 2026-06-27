@@ -570,3 +570,69 @@ p{
     font-size: 22px !important;
   }
 }
+
+.healing-card{
+  max-width:1000px;
+  margin:50px auto;
+  padding:35px 22px;
+  background:#fffaf6;
+  border-radius:22px;
+  box-shadow:0 8px 25px rgba(0,0,0,0.08);
+}
+
+.healing-card h2{
+  text-align:center;
+  color:#5b4034;
+}
+
+.healing-card p,
+.healing-card li{
+  line-height:1.8;
+}
+
+.course-box{
+  display:flex;
+  gap:24px;
+  flex-wrap:wrap;
+  margin-top:28px;
+}
+
+.course-item{
+  flex:1;
+  min-width:260px;
+  background:#ffffff;
+  padding:24px;
+  border-radius:18px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.06);
+}
+
+.course-item h3{
+  color:#8a5a44;
+}
+
+.price{
+  font-size:26px;
+  font-weight:bold;
+  color:#b67c57;
+}
+
+.btn{
+  display:inline-block;
+  margin-top:10px;
+  padding:12px 24px;
+  background:#b67c57;
+  color:white;
+  text-decoration:none;
+  border-radius:999px;
+}
+
+.btn:hover{
+  background:#9d6849;
+}
+
+.note{
+  text-align:center;
+  margin-top:30px;
+  font-style:italic;
+  color:#7a6258;
+}
