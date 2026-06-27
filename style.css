@@ -571,65 +571,106 @@ p{
   }
 }
 
+/* ===== BoBo 15/30 天陪伴方案：最後修正版 ===== */
+
 .companion-section{
-  max-width:1000px;
+  width:92%;
+  max-width:920px;
   margin:50px auto;
-  padding:35px 20px;
+  padding:28px 18px;
   background:#fffaf6;
   border-radius:28px;
+  text-align:center;
+  overflow:hidden;
 }
 
-.companion-section h3,
-.companion-section > p{
+.companion-section h3{
+  color:#8f668b;
+  font-size:1.8rem;
+  text-align:center;
+}
+
+.companion-section p{
   text-align:center;
 }
 
 .companion-box{
-  display:flex;
-  gap:28px;
-  flex-wrap:wrap;
-  margin-top:30px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:24px;
+  margin-top:28px;
 }
 
 .companion-item{
-  flex:1;
-  min-width:280px;
-  background:#fff;
-  padding:28px;
-  border-radius:24px;
-  box-shadow:0 8px 22px rgba(0,0,0,.08);
-  text-align:left;
+  background:#ffffff;
+  border-radius:26px;
+  padding:28px 22px;
+  box-shadow:0 10px 28px rgba(0,0,0,.08);
+  text-align:center;
 }
 
 .companion-item h4{
-  color:#7a4f75;
+  color:#8f668b;
+  font-size:1.45rem;
+  text-align:center;
 }
 
 .companion-item p{
+  text-align:left;
+  font-size:1.05rem;
   line-height:1.9;
 }
 
 .companion-price{
-  font-size:26px;
-  font-weight:bold;
-  color:#7a4f75;
-  text-align:center;
+  text-align:center !important;
+  font-size:1.9rem !important;
+  font-weight:800;
+  color:#8f668b !important;
+  margin:24px 0 14px;
 }
 
 .companion-btn{
   display:block;
-  width:fit-content;
-  margin:25px auto 0;
-  padding:14px 30px;
-  background:#a46b9a;
+  width:100%;
+  max-width:300px;
+  margin:20px auto 0;
+  padding:16px 20px;
+  background:#a6789f;
   color:#fff !important;
-  text-decoration:none !important;
   border-radius:999px;
-  font-weight:bold;
   text-align:center;
+  text-decoration:none !important;
+  font-size:1.15rem;
+  font-weight:800;
+  box-shadow:0 10px 22px rgba(0,0,0,.12);
 }
 
-.companion-btn:hover{
-  background:#8c5883;
+/* 手機版：一個一個排，中間對齊 */
+@media (max-width:768px){
+  .companion-section{
+    width:92%;
+    padding:26px 16px;
+  }
+
+  .companion-box{
+    grid-template-columns:1fr;
+  }
+
+  .companion-item{
+    padding:26px 20px;
+  }
+
+  .companion-btn{
+    max-width:280px;
+    margin-left:auto;
+    margin-right:auto;
+  }
 }
-  
+
+/* 防止下面回饋文字爆出去 */
+.about,
+.card,
+.resource-card{
+  overflow-wrap:break-word;
+  word-break:break-word;
+}
