@@ -666,7 +666,22 @@ p{
     margin-right:auto;
   }
 }
+.companion-intro{
+  text-align:center;
+  margin-bottom:30px;
+}
 
+.companion-intro h2{
+  color:#8f668b;
+  font-size:2.4rem;
+  margin-bottom:18px;
+}
+
+.companion-intro p{
+  color:#756a73;
+  font-size:1.18rem;
+  line-height:2;
+}
 /* 防止下面回饋文字爆出去 */
 .about,
 .card,
@@ -674,3 +689,4 @@ p{
   overflow-wrap:break-word;
   word-break:break-word;
 }
+
