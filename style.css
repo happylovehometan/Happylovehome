@@ -755,33 +755,77 @@ p{
 
 }
 
-/* ===== Happy Home 呼吸效果 ===== */
+/* ==========================================
+   Happy Home 終極動畫版
+========================================== */
 
+/* 幸福家園卡片呼吸 */
 .happy-home-box{
-    animation: happyBreath 8s ease-in-out infinite;
-    transition: all .3s ease;
+    animation:happyBreath 10s ease-in-out infinite;
+    transition:.35s;
 }
 
 .happy-home-box:hover{
-    animation-play-state: paused;
-    transform: scale(1.02);
+    transform:translateY(-3px);
+    box-shadow:0 18px 45px rgba(0,0,0,.12);
 }
 
+/* 葉子／樹苗輕輕搖動 */
+.tree,
+#treeIcon{
+    display:inline-block;
+    transform-origin:center bottom;
+    animation:leafSway 4.5s ease-in-out infinite;
+}
+
+/* 幸福家園按鈕微微呼吸 */
+.happy-home-btn{
+    animation:buttonGlow 6s ease-in-out infinite;
+}
+
+/* 卡片呼吸動畫 */
 @keyframes happyBreath{
+    0%,100%{
+        transform:scale(1);
+        box-shadow:0 12px 30px rgba(0,0,0,.08);
+    }
 
-0%{
-    transform:scale(1);
-    box-shadow:0 10px 30px rgba(0,0,0,.08);
+    50%{
+        transform:scale(1.012);
+        box-shadow:0 20px 42px rgba(0,0,0,.12);
+    }
 }
 
-50%{
-    transform:scale(1.015);
-    box-shadow:0 18px 40px rgba(0,0,0,.12);
+/* 葉子搖動動畫 */
+@keyframes leafSway{
+    0%{
+        transform:rotate(-2deg) scale(1);
+    }
+
+    25%{
+        transform:rotate(2deg) scale(1.03);
+    }
+
+    50%{
+        transform:rotate(-1deg) scale(1.06);
+    }
+
+    75%{
+        transform:rotate(2deg) scale(1.03);
+    }
+
+    100%{
+        transform:rotate(-2deg) scale(1);
+    }
 }
 
-100%{
-    transform:scale(1);
-    box-shadow:0 10px 30px rgba(0,0,0,.08);
-}
+/* 按鈕呼吸動畫 */
+@keyframes buttonGlow{
+    0%,100%{
+        transform:scale(1);
+    }
 
+    50%{
+        transform:scale(1.02);
+    }
 }
