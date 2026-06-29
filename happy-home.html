@@ -110,88 +110,119 @@
 
     .note {
       margin-top: 25px;
-      font-size: 0.85rem;
-      opacity: 0.75;
+      font-size: 0.9rem;
+      opacity: 0.8;
+      line-height: 1.8;
+    }
+
+    .resource-card {
+      max-width: 520px;
+      margin: 45px auto 20px;
+      padding: 28px 22px;
+      background: rgba(255,255,255,0.65);
+      border-radius: 28px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+    }
+
+    .resource-card h2 {
+      margin: 0 0 8px;
+      font-size: 1.7rem;
+    }
+
+    .resource-subtitle {
+      margin: 0 0 20px;
+      font-size: 0.95rem;
+      opacity: 0.8;
       line-height: 1.7;
     }
-  .site-footer{
-    margin-top:40px;
-    padding:30px 20px;
-    text-align:center;
-}
 
-.footer-inner{
-    max-width:520px;
-    margin:auto;
-}
+    .more-links {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
 
-.footer-brand{
-    margin-top:20px;
-    margin-bottom:10px;
-}
+    .more-links a {
+      display: block;
+      background: #0c5d5d;
+      color: #ffffff;
+      text-decoration: none;
+      padding: 15px 18px;
+      border-radius: 999px;
+      font-weight: 700;
+      box-shadow: 0 10px 22px rgba(0,0,0,0.10);
+    }
 
-.footer-tagline,
-.footer-copy,
-.footer-disclaimer{
-    line-height:1.8;
-    margin:12px 0;
-}
+    .more-links a:active {
+      transform: scale(0.98);
+    }
 
-.footer-links{
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-    gap:12px;
-    margin:20px 0;
-}
+    .site-footer {
+      max-width: 560px;
+      margin: 35px auto 0;
+      padding: 28px 20px 45px;
+      text-align: center;
+      color: #24504a;
+    }
 
-.footer-links a{
-    color:#24504a;
-    text-decoration:none;
-    font-weight:600;
-}
+    .footer-inner {
+      margin: auto;
+    }
 
-.footer-links a:hover{
-    text-decoration:underline;
-}
+    .footer-disclaimer,
+    .footer-copy,
+    .footer-tagline {
+      line-height: 1.8;
+      margin: 12px 0;
+    }
 
-@media(max-width:600px){
+    .footer-brand {
+      margin: 20px 0 10px;
+      font-size: 1.25rem;
+    }
 
-.footer-links{
-    display:grid;
-    grid-template-columns:1fr;
-    gap:8px;
-}
+    .footer-links {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 8px;
+      margin: 20px 0;
+    }
 
-}  
-.more-links{
-    display:flex;
-    flex-direction:column;
-    gap:12px;
-    margin-top:20px;
-}
+    .footer-links a {
+      color: #24504a;
+      text-decoration: none;
+      font-weight: 600;
+    }
 
-.more-links a{
-    display:block;
-    background:white;
-    color:#24504a;
-    text-decoration:none;
-    padding:14px;
-    border-radius:16px;
-    font-weight:600;
-    box-shadow:0 4px 12px rgba(0,0,0,.08);
-}
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 480px) {
+      .page {
+        padding: 24px 16px 40px;
+      }
+
+      h1 {
+        font-size: 1.8rem;
+      }
+
+      .resource-card {
+        margin-left: 0;
+        margin-right: 0;
+      }
+    }
   </style>
 </head>
 
 <body>
-  <div class="page">
+  <main class="page">
     <a href="index.html" class="back">← 回到首頁</a>
 
     <h1>🏡 開心幸福家園</h1>
     <p class="subtitle">
       每一次專注，都是在照顧自己。<br>
-      今天，為自己的生活種下一點希望。
+      今天，為自己的生活種下一點幸福。
     </p>
 
     <div class="garden">
@@ -221,7 +252,24 @@
       不是比賽，也不是壓力。<br>
       今天有做到一點點，就已經很好。
     </p>
-  </div>
+
+    <section class="resource-card">
+      <h2>🌷 更多陪伴</h2>
+      <p class="resource-subtitle">
+        想陪自己更多一點，可以從這裡開始。
+      </p>
+
+      <div class="more-links">
+        <a href="healing.html">💜 療癒服務</a>
+        <a href="testimonial.html">🌟 學員回饋</a>
+        <a href="free.html">🎁 免費療癒資源館</a>
+        <a href="recommend.html">🌍 BoBo 慢活推薦館</a>
+        <a href="blog.html">🌿 BoBo 部落格</a>
+        <a href="https://wa.me/6594574732" target="_blank" rel="noopener">📱 免費諮詢</a>
+        <a href="index.html">🏠 返回首頁</a>
+      </div>
+    </section>
+  </main>
 
   <script>
     let seconds = 25 * 60;
@@ -231,8 +279,8 @@
     let count = Number(localStorage.getItem("happyCount")) || 0;
 
     const treeStages = [
-      { min: 0, icon: "🌱", text: "今天種下一顆希望種子" },
-      { min: 50, icon: "🌿", text: "希望正在發芽" },
+      { min: 0, icon: "🌱", text: "今天種下一顆幸福種子" },
+      { min: 50, icon: "🌿", text: "幸福正在發芽" },
       { min: 150, icon: "🪴", text: "你的內在開始安定" },
       { min: 300, icon: "🌳", text: "幸福樹正在長大" },
       { min: 600, icon: "🌸", text: "家園開始開花" },
@@ -263,6 +311,7 @@
     function updateTimer() {
       let min = Math.floor(seconds / 60);
       let sec = seconds % 60;
+
       document.getElementById("timer").innerText =
         String(min).padStart(2, "0") + ":" + String(sec).padStart(2, "0");
 
@@ -270,6 +319,7 @@
         clearInterval(timerInterval);
         timerInterval = null;
         completeFocus();
+        return;
       }
 
       seconds--;
@@ -314,62 +364,42 @@
     updateStats();
   </script>
 
-  <!-- 更多陪伴 -->
-    <section class="resource-card">
-      <h2>🌷 更多陪伴</h2>
-      <div class="more-links">
-        <a href="free.html" class="btn">🎁 免費療癒資源館</a>
-        <a href="story.html" class="btn">🌈 BoBo 的故事</a>
-        <a href="testimonial.html" class="btn">🌟 學員回饋</a>
-        <a href="seed.html" class="btn">🌻 幸福種子計畫</a>
-        <a href="recommend.html" class="btn">🌍 BoBo 慢活推薦館</a>
-        <a href="https://wa.me/6594574732" class="btn" target="_blank" rel="noopener">📱 免費諮詢</a>
-        <a href="index.html" class="btn">🏠 返回首頁</a>
-      </div>
-    </section>
-
-  </main>
-
   <footer class="site-footer">
-  <div class="footer-inner">
+    <div class="footer-inner">
+      <p class="footer-disclaimer">
+        本內容屬於個人成長與情緒陪伴分享，<br>
+        不涉及醫療、臨床診斷或宗教預言。
+      </p>
 
-    <p class="footer-disclaimer">
-      本內容屬於個人成長與情緒陪伴分享，<br>
-      不涉及醫療、臨床診斷或宗教預言。
-    </p>
+      <p class="footer-copy">
+        © 2026 BoBo Tan
+      </p>
 
-    <p class="footer-copy">
-      © 2026 BoBo Tan
-    </p>
+      <h3 class="footer-brand">
+        🌿 開心愛家園療癒
+      </h3>
 
-    <h3 class="footer-brand">
-      🌿 開心愛家園療癒
-    </h3>
+      <p class="footer-tagline">
+        Happy Love Home Healing
+      </p>
 
-    <p class="footer-tagline">
-      Happy Love Home Healing
-    </p>
+      <p class="footer-tagline">
+        ❤️ BoBo 我在<br>
+        黑暗中的光．生活的燈塔
+      </p>
 
-    <p class="footer-tagline">
-      ❤️ BoBo 我在<br>
-      黑暗中的光．生活的燈塔
-    </p>
+      <div class="footer-links">
+        <a href="index.html">首頁</a>
+        <a href="free.html">免費資源</a>
+        <a href="about.html">BoBo 的故事</a>
+        <a href="blog.html">部落格</a>
+        <a href="policy.html">退款政策 / 服務條款 / 隱私聲明</a>
+      </div>
 
-    <div class="footer-links">
-      <a href="index.html">首頁</a>
-      <a href="free.html">免費資源</a>
-      <a href="about.html">BoBo 的故事</a>
-      <a href="blog.html">部落格</a>
-      <a href="policy.html">退款政策 / 服務條款 / 隱私聲明</a>
+      <p class="footer-copy">
+        All Rights Reserved.
+      </p>
     </div>
-
-    <p class="footer-copy">
-      All Rights Reserved.
-    </p>
-
-  </div>
-</footer>
-
+  </footer>
 </body>
 </html>
-
