@@ -461,227 +461,212 @@
   </main>
 
   <script>
-    let seconds = 25 * 60;
-    let timerInterval = null;
 
-    const DAILY_LIMIT = 2;
-    const BIG_GIFT_POINTS = 500;
+   let seconds = 25 * 60;
+let timerInterval = null;
 
-    const now = new Date();
-    const todayKey = now.toISOString().slice(0, 10);
-    const monthKey = now.toISOString().slice(0, 7);
+const BIG_GIFT_POINTS = 500;
 
-    let points = Number(localStorage.getItem("happyPoints")) || 0;
-    let count = Number(localStorage.getItem("happyCount")) || 0;
-    let dailyCount = Number(localStorage.getItem("happyDailyCount_" + todayKey)) || 0;
-    let giftMonth = localStorage.getItem("happyGiftMonth");
-    let streak = Number(localStorage.getItem("happyStreak")) || 0;
-    let lastActiveDate = localStorage.getItem("happyLastActiveDate");
+const now = new Date();
+const todayKey = now.toISOString().slice(0, 10);
+const monthKey = now.toISOString().slice(0, 7);
 
-    const treeStages = [
-      { min: 0, icon: "🌱", text: "今天種下一顆幸福種子" },
-      { min: 50, icon: "🌿", text: "幸福正在發芽" },
-      { min: 150, icon: "🍀", text: "幸福慢慢長葉" },
-      { min: 300, icon: "🌳", text: "幸福樹正在成長" },
-      { min: 500, icon: "🌸", text: "恭喜！你已解鎖本月幸福禮物" },
-      { min: 1000, icon: "🏡", text: "你的開心幸福家園完成第一階段" }
-    ];
+let points = Number(localStorage.getItem("happyPoints")) || 0;
+let count = Number(localStorage.getItem("happyCount")) || 0;
+let dailyCount = Number(localStorage.getItem("happyDailyCount_" + todayKey)) || 0;
+let giftMonth = localStorage.getItem("happyGiftMonth");
+let streak = Number(localStorage.getItem("happyStreak")) || 0;
+let lastActiveDate = localStorage.getItem("happyLastActiveDate");
 
-    const messages = [
-      "🌱 今天，你願意陪伴自己。",
-      "🌿 幸福正在慢慢發芽。",
-      "🌸 今天的你，比昨天更溫柔。",
-      "🌳 你的幸福家園，又長大了一點。",
-      "💚 謝謝今天沒有放棄自己。",
-      "🏡 幸福，不需要很快，只需要一直往前。",
-      "✨ 今天也值得為自己鼓掌。"
-    ];
+const treeStages = [
+  { min: 0, icon: "🌱", text: "今天種下一顆幸福種子" },
+  { min: 50, icon: "🌿", text: "幸福正在發芽" },
+  { min: 150, icon: "🍀", text: "幸福慢慢長葉" },
+  { min: 300, icon: "🌳", text: "幸福樹正在成長" },
+  { min: 500, icon: "🌸", text: "恭喜！你已解鎖本月幸福禮物" },
+  { min: 1000, icon: "🏡", text: "你的開心幸福家園完成第一階段" }
+];
 
-    const dailyQuotes = [
-      "今天也謝謝你，願意陪伴自己。",
-      "慢慢來，幸福也是一天一天種出來的。",
-      "你不用很完美，你只要願意回來自己身邊。",
-      "今天的專注，是送給未來自己的禮物。",
-      "小小一步，也是在照顧自己的生活。",
-      "你沒有放棄自己，這就已經很好。",
-      "幸福不一定很大，但可以很真實。"
-    ];
+const messages = [
+  "🌱 今天，你願意陪伴自己。",
+  "🌿 幸福正在慢慢發芽。",
+  "🌸 今天的你，比昨天更溫柔。",
+  "🌳 你的幸福家園，又長大了一點。",
+  "💚 謝謝今天沒有放棄自己。",
+  "🏡 幸福，不需要很快，只需要一直往前。",
+  "✨ 今天也值得為自己鼓掌。"
+];
 
-    function setDailyQuote() {
-      const index = new Date().getDate() % dailyQuotes.length;
-      document.getElementById("dailyQuote").innerText = dailyQuotes[index];
-    }
+const dailyQuotes = [
+  "今天也謝謝你，願意陪伴自己。",
+  "慢慢來，幸福也是一天一天種出來的。",
+  "你不用很完美，你只要願意回來自己身邊。",
+  "今天的專注，是送給未來自己的禮物。",
+  "小小一步，也是在照顧自己的生活。",
+  "你沒有放棄自己，這就已經很好。",
+  "幸福不一定很大，但可以很真實。"
+];
 
-    function getYesterdayKey() {
-      const yesterday = new Date();
-      yesterday.setDate(yesterday.getDate() - 1);
-      return yesterday.toISOString().slice(0, 10);
-    }
+function setDailyQuote() {
+  const index = new Date().getDate() % dailyQuotes.length;
+  document.getElementById("dailyQuote").innerText = dailyQuotes[index];
+}
 
-    function updateStreakOnComplete() {
-      if (lastActiveDate === todayKey) {
-        return;
-      }
+function getYesterdayKey() {
+  const yesterday = new Date();
+  yesterday.setDate(yesterday.getDate() - 1);
+  return yesterday.toISOString().slice(0, 10);
+}
 
-      if (lastActiveDate === getYesterdayKey()) {
-        streak += 1;
-      } else {
-        streak = 1;
-      }
+function updateStreakOnComplete() {
+  if (lastActiveDate === todayKey) return;
 
-      lastActiveDate = todayKey;
+  if (lastActiveDate === getYesterdayKey()) {
+    streak += 1;
+  } else {
+    streak = 1;
+  }
 
-      localStorage.setItem("happyStreak", streak);
-      localStorage.setItem("happyLastActiveDate", lastActiveDate);
-    }
+  lastActiveDate = todayKey;
+  localStorage.setItem("happyStreak", streak);
+  localStorage.setItem("happyLastActiveDate", lastActiveDate);
+}
 
-    function updateStats() {
-      document.getElementById("points").innerText = points;
-      document.getElementById("count").innerText = count;
-      document.getElementById("dailyCount").innerText = dailyCount;
-      document.getElementById("streak").innerText = streak;
+function updateStats() {
+  document.getElementById("points").innerText = points;
+  document.getElementById("count").innerText = count;
+  document.getElementById("dailyCount").innerText = dailyCount;
+  document.getElementById("streak").innerText = streak;
 
-      let stage = treeStages[0];
-      treeStages.forEach(s => {
-        if (points >= s.min) stage = s;
-      });
+  let stage = treeStages[0];
 
-      document.getElementById("treeIcon").innerText = stage.icon;
-      document.getElementById("levelText").innerText = stage.text;
+  treeStages.forEach(function(s) {
+    if (points >= s.min) stage = s;
+  });
 
-      updateGiftStatus();
-    }
+  document.getElementById("treeIcon").innerText = stage.icon;
+  document.getElementById("levelText").innerText = stage.text;
 
-    function getNextMilestone() {
-      const milestones = [100, 300, 500, 1000];
+  updateGiftStatus();
+}
 
-      for (let i = 0; i < milestones.length; i++) {
-        if (points < milestones[i]) {
-          return milestones[i];
-        }
-      }
+function getNextMilestone() {
+  const milestones = [100, 300, 500, 1000];
 
-      return null;
-    }
+  for (let i = 0; i < milestones.length; i++) {
+    if (points < milestones[i]) return milestones[i];
+  }
 
-    function updateGiftStatus() {
-      const giftStatus = document.getElementById("giftStatus");
-      const claimGift = document.getElementById("claimGift");
+  return null;
+}
 
-      if (points >= BIG_GIFT_POINTS && giftMonth !== monthKey) {
-        giftStatus.innerText =
-          "🎉 恭喜！你已解鎖本月幸福禮物。請截圖幸福紀錄，再私訊 BoBo。";
-        claimGift.style.display = "block";
-        return;
-      }
+function updateGiftStatus() {
+  const giftStatus = document.getElementById("giftStatus");
+  const claimGift = document.getElementById("claimGift");
 
-      if (points >= BIG_GIFT_POINTS && giftMonth === monthKey) {
-        giftStatus.innerText =
-          "🌸 本月幸福禮物已經解鎖。新的幸福旅程，下個月再開始。";
-        claimGift.style.display = "none";
-        return;
-      }
+  if (points >= BIG_GIFT_POINTS && giftMonth !== monthKey) {
+    giftStatus.innerText =
+      "🎉 恭喜！你已解鎖本月幸福禮物。請截圖幸福紀錄，再私訊 BoBo。";
+    claimGift.style.display = "block";
+    return;
+  }
 
-      const next = getNextMilestone();
+  if (points >= BIG_GIFT_POINTS && giftMonth === monthKey) {
+    giftStatus.innerText =
+      "🌸 本月幸福禮物已經解鎖。你仍然可以繼續陪伴自己。";
+    claimGift.style.display = "none";
+    return;
+  }
 
-      if (next) {
-        giftStatus.innerText =
-          "🌷 距離下一個里程碑，還需要 " + (next - points) + " 幸福值。";
-      } else {
-        giftStatus.innerText =
-          "🏡 你已完成第一階段幸福家園。謝謝你一路陪伴自己。";
-      }
+  const next = getNextMilestone();
 
-      claimGift.style.display = "none";
-    }
+  if (next) {
+    giftStatus.innerText =
+      "🌷 距離下一個里程碑，還需要 " + (next - points) + " 幸福值。";
+  } else {
+    giftStatus.innerText =
+      "🏡 你已完成第一階段幸福家園。謝謝你一路陪伴自己。";
+  }
 
-    function updateTimer() {
-      const min = Math.floor(seconds / 60);
-      const sec = seconds % 60;
+  claimGift.style.display = "none";
+}
 
-      document.getElementById("timer").innerText =
-        String(min).padStart(2, "0") + ":" + String(sec).padStart(2, "0");
+function updateTimer() {
+  const min = Math.floor(seconds / 60);
+  const sec = seconds % 60;
 
-      if (seconds <= 0) {
-        clearInterval(timerInterval);
-        timerInterval = null;
-        completeFocus();
-        return;
-      }
+  document.getElementById("timer").innerText =
+    String(min).padStart(2, "0") + ":" + String(sec).padStart(2, "0");
 
-      seconds--;
-    }
+  if (seconds <= 0) {
+    clearInterval(timerInterval);
+    timerInterval = null;
+    completeFocus();
+    return;
+  }
 
-    function startTimer() {
-      if (timerInterval) return;
+  seconds--;
+}
 
-      if (dailyCount >= DAILY_LIMIT) {
-        document.getElementById("message").innerText =
-          "🌷 今天的幸福值已經足夠了。休息一下，也是在照顧自己。";
-        return;
-      }
+function startTimer() {
+  if (timerInterval) return;
 
-      document.getElementById("message").innerText =
-        "我會陪你。這 25 分鐘，只要回到當下。";
+  document.getElementById("message").innerText =
+    "我會陪你。這 25 分鐘，只要回到當下。";
 
-      updateTimer();
-      timerInterval = setInterval(updateTimer, 1000);
-    }
+  updateTimer();
+  timerInterval = setInterval(updateTimer, 1000);
+}
 
-    function completeFocus() {
-      clearInterval(timerInterval);
-      timerInterval = null;
-      seconds = 25 * 60;
-      document.getElementById("timer").innerText = "25:00";
+function completeFocus() {
+  clearInterval(timerInterval);
+  timerInterval = null;
+  seconds = 25 * 60;
+  document.getElementById("timer").innerText = "25:00";
 
-      if (dailyCount >= DAILY_LIMIT) {
-        document.getElementById("message").innerText =
-          "🌷 今天最多累積 2 次幸福值。你已經做得很好了。";
-        return;
-      }
+  points += 25;
+  count += 1;
+  dailyCount += 1;
 
-      points += 25;
-      count += 1;
-      dailyCount += 1;
+  updateStreakOnComplete();
 
-      updateStreakOnComplete();
+  localStorage.setItem("happyPoints", points);
+  localStorage.setItem("happyCount", count);
+  localStorage.setItem("happyDailyCount_" + todayKey, dailyCount);
 
-      localStorage.setItem("happyPoints", points);
-      localStorage.setItem("happyCount", count);
-      localStorage.setItem("happyDailyCount_" + todayKey, dailyCount);
+  if (points >= BIG_GIFT_POINTS && giftMonth !== monthKey) {
+    document.getElementById("message").innerText =
+      "🎉 恭喜你！你已解鎖本月幸福禮物。";
+  } else if (points >= BIG_GIFT_POINTS && giftMonth === monthKey) {
+    document.getElementById("message").innerText =
+      "🌸 本月幸福禮物已解鎖。你仍然可以繼續陪伴自己。";
+  } else {
+    const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+    document.getElementById("message").innerText = randomMessage;
+  }
 
-      if (points >= BIG_GIFT_POINTS && giftMonth !== monthKey) {
-        document.getElementById("message").innerText =
-          "🎉 恭喜你！你已解鎖本月幸福禮物。";
-      } else if (points >= BIG_GIFT_POINTS && giftMonth === monthKey) {
-        document.getElementById("message").innerText =
-          "🌸 本月幸福禮物已解鎖。新的幸福旅程，下個月再開始。";
-      } else {
-        const randomMessage = messages[Math.floor(Math.random() * messages.length)];
-        document.getElementById("message").innerText = randomMessage;
-      }
+  updateStats();
+}
 
-      updateStats();
-    }
+function resetToday() {
+  clearInterval(timerInterval);
+  timerInterval = null;
+  seconds = 25 * 60;
+  document.getElementById("timer").innerText = "25:00";
 
-    function resetToday() {
-      clearInterval(timerInterval);
-      timerInterval = null;
-      seconds = 25 * 60;
-      document.getElementById("timer").innerText = "25:00";
+  document.getElementById("message").innerText =
+    "沒關係，我們重新開始。";
+}
 
-      document.getElementById("message").innerText =
-        "沒關係，我們重新開始。";
-    }
+document.getElementById("claimGift").addEventListener("click", function () {
+  giftMonth = monthKey;
+  localStorage.setItem("happyGiftMonth", monthKey);
+  updateGiftStatus();
+});
 
-    document.getElementById("claimGift").addEventListener("click", function () {
-      giftMonth = monthKey;
-      localStorage.setItem("happyGiftMonth", monthKey);
-      updateGiftStatus();
-    });
-
-    setDailyQuote();
-    updateStats();
+setDailyQuote();
+updateStats(); 
+              
   </script>
 
   <footer class="site-footer">
