@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>開心幸福家園｜Happy Love Home Healing</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: "Noto Sans TC", sans-serif;
+      background: linear-gradient(180deg, #bfffe5, #fff7df);
+      color: #24504a;
+      text-align: center;
+    }
+
+    .page {
+      max-width: 520px;
+      margin: auto;
+      padding: 28px 20px 50px;
+    }
+
+    .back {
+      display: inline-block;
+      margin-bottom: 20px;
+      color: #24504a;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin: 10px 0;
+    }
+
+    .subtitle {
+      font-size: 1rem;
+      line-height: 1.8;
+      opacity: 0.85;
+    }
+
+    .garden {
+      margin: 30px auto;
+      background: rgba(255,255,255,0.55);
+      border-radius: 28px;
+      padding: 28px 15px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+    }
+
+    .tree {
+      font-size: 5.5rem;
+      margin: 20px 0;
+      transition: 0.3s;
+    }
+
+    .level {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .message {
+      min-height: 55px;
+      line-height: 1.7;
+      font-size: 1rem;
+      margin: 15px;
+    }
+
+    .timer {
+      font-size: 2.6rem;
+      font-weight: bold;
+      margin: 20px 0;
+      color: #0c5d5d;
+    }
+
+    .buttons button {
+      width: 90%;
+      max-width: 360px;
+      padding: 15px 20px;
+      margin: 8px;
+      border: none;
+      border-radius: 18px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .start {
+      background: #0c5d5d;
+      color: white;
+    }
+
+    .complete {
+      background: #ffd86b;
+      color: #4a3b00;
+    }
+
+    .reset {
+      background: #ffffff;
+      color: #24504a;
+    }
+
+    .stats {
+      margin-top: 25px;
+      background: rgba(255,255,255,0.45);
+      border-radius: 22px;
+      padding: 18px;
+      line-height: 1.8;
+    }
+
+    .note {
+      margin-top: 25px;
+      font-size: 0.85rem;
+      opacity: 0.75;
+      line-height: 1.7;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <a href="index.html" class="back">← 回到首頁</a>
+
+    <h1>🏡 開心幸福家園</h1>
+    <p class="subtitle">
+      每一次專注，都是在照顧自己。<br>
+      今天，為自己的生活種下一點希望。
+    </p>
+
+    <div class="garden">
+      <div class="level" id="levelText">今天種下一顆希望種子</div>
+      <div class="tree" id="treeIcon">🌱</div>
+      <div class="message" id="message">
+        按下開始，陪自己安靜 25 分鐘。
+      </div>
+
+      <div class="timer" id="timer">25:00</div>
+
+      <div class="buttons">
+        <button class="start" onclick="startTimer()">🌱 開始專注</button>
+        <button class="complete" onclick="completeFocus()">✨ 我完成了</button>
+        <button class="reset" onclick="resetToday()">重新開始今天</button>
+      </div>
+    </div>
+
+    <div class="stats">
+      <strong>我的幸福紀錄</strong><br>
+      幸福值：<span id="points">0</span><br>
+      完成次數：<span id="count">0</span>
+    </div>
+
+    <p class="note">
+      這是一個溫柔陪伴自己的小練習。<br>
+      不是比賽，也不是壓力。<br>
+      今天有做到一點點，就已經很好。
+    </p>
+  </div>
+
+  <script>
+    let seconds = 25 * 60;
+    let timerInterval = null;
+
+    let points = Number(localStorage.getItem("happyPoints")) || 0;
+    let count = Number(localStorage.getItem("happyCount")) || 0;
+
+    const treeStages = [
+      { min: 0, icon: "🌱", text: "今天種下一顆希望種子" },
+      { min: 50, icon: "🌿", text: "希望正在發芽" },
+      { min: 150, icon: "🪴", text: "你的內在開始安定" },
+      { min: 300, icon: "🌳", text: "幸福樹正在長大" },
+      { min: 600, icon: "🌸", text: "家園開始開花" },
+      { min: 1000, icon: "🏡", text: "你的開心幸福家園正在形成" }
+    ];
+
+    const messages = [
+      "今天的專注，是送給未來自己的禮物。",
+      "你不用一次變很好，願意開始就很好。",
+      "慢慢來，幸福也是一天一天種出來的。",
+      "你的心正在回到自己的位置。",
+      "今天，你沒有放棄自己。"
+    ];
+
+    function updateStats() {
+      document.getElementById("points").innerText = points;
+      document.getElementById("count").innerText = count;
+
+      let stage = treeStages[0];
+      treeStages.forEach(s => {
+        if (points >= s.min) stage = s;
+      });
+
+      document.getElementById("treeIcon").innerText = stage.icon;
+      document.getElementById("levelText").innerText = stage.text;
+    }
+
+    function updateTimer() {
+      let min = Math.floor(seconds / 60);
+      let sec = seconds % 60;
+      document.getElementById("timer").innerText =
+        String(min).padStart(2, "0") + ":" + String(sec).padStart(2, "0");
+
+      if (seconds <= 0) {
+        clearInterval(timerInterval);
+        timerInterval = null;
+        completeFocus();
+      }
+
+      seconds--;
+    }
+
+    function startTimer() {
+      if (timerInterval) return;
+
+      document.getElementById("message").innerText =
+        "我會陪你。這 25 分鐘，只要回到當下。";
+
+      timerInterval = setInterval(updateTimer, 1000);
+    }
+
+    function completeFocus() {
+      clearInterval(timerInterval);
+      timerInterval = null;
+      seconds = 25 * 60;
+      document.getElementById("timer").innerText = "25:00";
+
+      points += 25;
+      count += 1;
+
+      localStorage.setItem("happyPoints", points);
+      localStorage.setItem("happyCount", count);
+
+      const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+      document.getElementById("message").innerText = randomMessage;
+
+      updateStats();
+    }
+
+    function resetToday() {
+      clearInterval(timerInterval);
+      timerInterval = null;
+      seconds = 25 * 60;
+      document.getElementById("timer").innerText = "25:00";
+      document.getElementById("message").innerText =
+        "沒關係，我們重新開始。";
+    }
+
+    updateStats();
+  </script>
+</body>
+</html>
