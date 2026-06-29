@@ -740,7 +740,8 @@ p{
 @media(max-width:600px){
 
 .happy-home-box{
-    margin:35px 0;
+    width:90%;
+    margin:35px auto;
     padding:24px 18px;
 }
 
