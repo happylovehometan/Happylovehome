@@ -114,6 +114,56 @@
       opacity: 0.75;
       line-height: 1.7;
     }
+  .site-footer{
+    margin-top:40px;
+    padding:30px 20px;
+    text-align:center;
+}
+
+.footer-inner{
+    max-width:520px;
+    margin:auto;
+}
+
+.footer-brand{
+    margin-top:20px;
+    margin-bottom:10px;
+}
+
+.footer-tagline,
+.footer-copy,
+.footer-disclaimer{
+    line-height:1.8;
+    margin:12px 0;
+}
+
+.footer-links{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:12px;
+    margin:20px 0;
+}
+
+.footer-links a{
+    color:#24504a;
+    text-decoration:none;
+    font-weight:600;
+}
+
+.footer-links a:hover{
+    text-decoration:underline;
+}
+
+@media(max-width:600px){
+
+.footer-links{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:8px;
+}
+
+}  
   </style>
 </head>
 
