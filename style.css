@@ -754,3 +754,34 @@ p{
 }
 
 }
+
+/* ===== Happy Home 呼吸效果 ===== */
+
+.happy-home-box{
+    animation: happyBreath 8s ease-in-out infinite;
+    transition: all .3s ease;
+}
+
+.happy-home-box:hover{
+    animation-play-state: paused;
+    transform: scale(1.02);
+}
+
+@keyframes happyBreath{
+
+0%{
+    transform:scale(1);
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+50%{
+    transform:scale(1.015);
+    box-shadow:0 18px 40px rgba(0,0,0,.12);
+}
+
+100%{
+    transform:scale(1);
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+}
