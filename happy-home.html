@@ -7,107 +7,54 @@
 
 <style>
 *{box-sizing:border-box}
-body{
-  margin:0;
-  font-family:"Noto Sans TC","Microsoft JhengHei",sans-serif;
-  background:linear-gradient(180deg,#bfffe5,#fff7df);
-  color:#24504a;
-  text-align:center;
-}
+body{margin:0;font-family:"Noto Sans TC","Microsoft JhengHei",sans-serif;background:linear-gradient(180deg,#bfffe5,#fff7df);color:#24504a;text-align:center}
 .page{max-width:560px;margin:auto;padding:28px 18px 45px}
 .back{display:inline-block;margin-bottom:18px;color:#24504a;text-decoration:none;font-weight:bold}
 h1{font-size:2rem;margin:12px 0;color:#1f4f49}
 .subtitle{line-height:1.8;opacity:.85;margin-bottom:26px}
-.card,.garden,.stats,.gift-card,.resource-card{
-  background:rgba(255,255,255,.66);
-  border-radius:30px;
-  box-shadow:0 14px 34px rgba(0,0,0,.08);
-}
+.card,.garden,.stats,.gift-card,.resource-card{background:rgba(255,255,255,.68);border-radius:30px;box-shadow:0 14px 34px rgba(0,0,0,.08)}
 .card{padding:22px 20px;margin:24px auto}
 .card h2{margin:0 0 8px;font-size:1.35rem}
 .garden{padding:32px 18px;margin:28px auto}
 .level{font-size:1.35rem;font-weight:800;margin-bottom:14px}
-.tree{
-  font-size:5.7rem;
-  margin:22px 0;
-  display:inline-block;
-  transform-origin:bottom center;
-  animation:leafSwing 3.8s ease-in-out infinite;
-}
-@keyframes leafSwing{
-  0%{transform:rotate(-4deg) scale(1)}
-  50%{transform:rotate(4deg) scale(1.06)}
-  100%{transform:rotate(-4deg) scale(1)}
-}
+.tree{font-size:5.7rem;margin:22px 0;display:inline-block;transform-origin:bottom center;animation:leafSwing 3.8s ease-in-out infinite}
+@keyframes leafSwing{0%{transform:rotate(-4deg) scale(1)}50%{transform:rotate(4deg) scale(1.06)}100%{transform:rotate(-4deg) scale(1)}}
 .message{min-height:58px;line-height:1.8;font-size:1.05rem;margin:18px auto;max-width:390px}
 .timer{font-size:3rem;font-weight:900;margin:24px 0;color:#0c5d5d}
-.buttons button{
-  width:90%;max-width:390px;padding:16px 20px;margin:9px auto;
-  border:none;border-radius:22px;font-size:1.05rem;font-weight:800;display:block;
-}
+.buttons button{width:90%;max-width:390px;padding:16px 20px;margin:9px auto;border:none;border-radius:22px;font-size:1.05rem;font-weight:800;display:block}
 .start{background:#0c5d5d;color:white;box-shadow:0 8px 18px rgba(0,0,0,.12)}
 .complete{background:#ffd86b;color:#4a3b00}
 .reset{background:#fff;color:#24504a}
 .small-btn{background:#e8fff4;color:#24504a}
-.stats{padding:22px;margin:28px auto 0;line-height:2;font-size:1.05rem}
-.stats strong{font-size:1.25rem}
+
+.stats{background:#f8fff9;border-radius:28px;padding:30px 24px;margin-top:28px;box-shadow:0 10px 30px rgba(0,0,0,.08)}
+.stats h2{margin:0 0 25px;color:#1d5651}
+.stat-item{display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid rgba(0,0,0,.08);font-size:1.1rem}
+.stat-item:last-child{border-bottom:none}
+.stat-item span{color:#365b58}
+.stat-item strong{font-size:1.4rem;color:#0d6665}
+
 .note{margin:28px auto;font-size:.95rem;opacity:.8;line-height:1.8;max-width:420px}
 .gift-card{padding:26px 20px;margin:34px auto}
 .gift-card h2{margin:0 0 12px;font-size:1.6rem}
 .milestones{text-align:left;line-height:1.9;background:rgba(255,255,255,.58);border-radius:20px;padding:18px 20px}
-.claim-btn{
-  display:none;width:90%;max-width:390px;margin:20px auto 0;padding:15px 20px;
-  border-radius:999px;background:#a67aa3;color:#fff;text-decoration:none;font-weight:800;
-}
+.claim-btn{display:none;width:90%;max-width:390px;margin:20px auto 0;padding:15px 20px;border-radius:999px;background:#a67aa3;color:#fff;text-decoration:none;font-weight:800}
 .resource-card{margin:42px auto 20px;padding:30px 24px;background:rgba(255,255,255,.78)}
 .resource-card h2{font-size:1.9rem;color:#8d5d89}
-.more-links a{
-  display:block;background:#a67aa3;color:#fff;text-decoration:none;padding:18px 20px;
-  border-radius:40px;font-size:1.15rem;font-weight:800;margin:13px 0;
-  box-shadow:0 8px 22px rgba(0,0,0,.12);
-}
+.more-links a{display:block;background:#a67aa3;color:#fff;text-decoration:none;padding:18px 20px;border-radius:40px;font-size:1.15rem;font-weight:800;margin:13px 0;box-shadow:0 8px 22px rgba(0,0,0,.12)}
+
+.blessing-popup{position:fixed;inset:0;background:rgba(0,0,0,.35);display:none;align-items:center;justify-content:center;z-index:9999;padding:20px}
+.blessing-box{background:#fffdf5;color:#24504a;max-width:360px;width:100%;border-radius:28px;padding:28px 22px;text-align:center;box-shadow:0 18px 45px rgba(0,0,0,.22)}
+.blessing-box h2{margin-top:0}
+.blessing-box p{line-height:1.8;font-size:1.05rem}
+.blessing-box button{margin-top:18px;padding:13px 28px;border:none;border-radius:999px;background:#0c5d5d;color:#fff;font-weight:800;font-size:1rem}
+
 .site-footer{max-width:560px;margin:12px auto 0;padding:20px 20px 45px;color:#24504a}
 .footer-disclaimer,.footer-copy,.footer-tagline{line-height:1.8;margin:12px 0}
 .footer-brand{margin:20px 0 10px;font-size:1.25rem}
 .footer-links{display:grid;grid-template-columns:1fr;gap:8px;margin:20px 0}
 .footer-links a{color:#24504a;text-decoration:none;font-weight:700}
-@media(max-width:480px){
-  h1{font-size:1.85rem}.tree{font-size:5.2rem}.timer{font-size:2.8rem}
-}
-.stats{
-    background:#f8fff9;
-    border-radius:28px;
-    padding:30px 24px;
-    margin-top:24px;
-    box-shadow:0 10px 30px rgba(0,0,0,.08);
-}
-
-.stats h2{
-    margin-bottom:25px;
-    color:#1d5651;
-}
-
-.stat-item{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:14px 0;
-    border-bottom:1px solid rgba(0,0,0,.08);
-    font-size:1.1rem;
-}
-
-.stat-item:last-child{
-    border-bottom:none;
-}
-
-.stat-item span{
-    color:#365b58;
-}
-
-.stat-item strong{
-    font-size:1.4rem;
-    color:#0d6665;
-}
+@media(max-width:480px){h1{font-size:1.85rem}.tree{font-size:5.2rem}.timer{font-size:2.8rem}}
 </style>
 </head>
 
@@ -116,10 +63,7 @@ h1{font-size:2rem;margin:12px 0;color:#1f4f49}
 <a href="index.html" class="back">← 回到首頁</a>
 
 <h1>🏡 開心幸福家園</h1>
-<p class="subtitle">
-每一次專注，都是在照顧自己。<br>
-今天，為自己的生活種下一點幸福。
-</p>
+<p class="subtitle">每一次專注，都是在照顧自己。<br>今天，為自己的生活種下一點幸福。</p>
 
 <section class="card">
 <h2>🌷 今日幸福語</h2>
@@ -141,35 +85,14 @@ h1{font-size:2rem;margin:12px 0;color:#1f4f49}
 </section>
 
 <section class="stats">
-
 <h2>🌿 我的幸福紀錄</h2>
-
-<div class="stat-item">
-    <span>🌱 幸福值</span>
-    <strong id="points">0</strong>
-</div>
-
-<div class="stat-item">
-    <span>🌷 今天陪伴自己</span>
-    <strong><span id="dailyCount">0</span> 次</strong>
-</div>
-
-<div class="stat-item">
-    <span>🌿 累積陪伴</span>
-    <strong><span id="count">0</span> 次</strong>
-</div>
-
-<div class="stat-item">
-    <span>🔥 連續陪伴</span>
-    <strong><span id="streak">0</span> 天</strong>
-</div>
-
+<div class="stat-item"><span>🌱 幸福值</span><strong id="points">0</strong></div>
+<div class="stat-item"><span>🌷 今天陪伴自己</span><strong><span id="dailyCount">0</span> 次</strong></div>
+<div class="stat-item"><span>🌿 累積陪伴</span><strong><span id="count">0</span> 次</strong></div>
+<div class="stat-item"><span>🔥 連續陪伴</span><strong><span id="streak">0</span> 天</strong></div>
 </section>
 
-<p class="note">
-幸福值不是分數，也不是壓力。<br>
-它只是記錄你願意照顧自己的每一步。
-</p>
+<p class="note">幸福值不是分數，也不是壓力。<br>它只是記錄你願意照顧自己的每一步。</p>
 
 <section class="gift-card">
 <h2>🎁 幸福里程碑</h2>
@@ -184,11 +107,7 @@ h1{font-size:2rem;margin:12px 0;color:#1f4f49}
 
 <p id="giftStatus">距離下一個里程碑，還需要一點點幸福值。</p>
 
-<a id="claimGift" class="claim-btn"
-href="https://wa.me/6594574732?text=BoBo%EF%BC%8C%E6%88%91%E5%B7%B2%E7%B6%93%E8%A7%A3%E9%8E%96%E6%9C%AC%E6%9C%88%E5%B9%B8%E7%A6%8F%E7%A6%AE%E7%89%A9%E3%80%82"
-target="_blank" rel="noopener">
-💌 聯絡 BoBo 領取本月幸福禮物
-</a>
+<a id="claimGift" class="claim-btn" href="https://wa.me/6594574732?text=BoBo%EF%BC%8C%E6%88%91%E5%B7%B2%E7%B6%93%E8%A7%A3%E9%8E%96%E6%9C%AC%E6%9C%88%E5%B9%B8%E7%A6%8F%E7%A6%AE%E7%89%A9%E3%80%82" target="_blank" rel="noopener">💌 聯絡 BoBo 領取本月幸福禮物</a>
 </section>
 
 <section class="resource-card">
@@ -204,13 +123,15 @@ target="_blank" rel="noopener">
 </div>
 </section>
 </main>
+
 <div class="blessing-popup" id="blessingPopup">
-  <div class="blessing-box">
-    <h2>🌸 BoBo 今天想對你說</h2>
-    <p id="blessingText">謝謝你，願意陪伴自己。</p>
-    <button onclick="closeBlessing()">我收到了 💚</button>
-  </div>
+<div class="blessing-box">
+<h2>🌸 BoBo 今天想對你說</h2>
+<p id="blessingText">今天也謝謝你，願意陪伴自己。</p>
+<button onclick="closeBlessing()">我收到了 💚</button>
 </div>
+</div>
+
 <script>
 let seconds = 25 * 60;
 let timerInterval = null;
@@ -256,9 +177,23 @@ const dailyQuotes = [
 "幸福不一定很大，但可以很真實。"
 ];
 
+const milestoneBlessings = {
+25:"🌱 今天，謝謝你願意停下來照顧自己。",
+50:"🍀 不需要很厲害，願意開始，就很勇敢。",
+100:"🌷 願你的今天，比昨天多一點溫柔。",
+150:"🌿 慢慢來，你正在長成更喜歡的自己。",
+200:"🌳 你不是沒有改變，只是每天都只改變一點點。",
+250:"🦋 今天的你，值得一句：辛苦了。",
+300:"🌸 幸福不是目的地，而是一路陪伴自己的方式。",
+350:"🌼 世界很忙，但今天請別忘了看看自己。",
+400:"☀️ 今天對你好的人，可以是你自己。",
+450:"🌈 每一次願意回來陪伴自己，都是新的開始。",
+500:"🎁 恭喜，你的幸福種子已經開花了。",
+1000:"🏡 你不是完成了一個挑戰，你只是一直沒有放棄自己。"
+};
+
 function setDailyQuote(){
-document.getElementById("dailyQuote").innerText =
-dailyQuotes[new Date().getDate() % dailyQuotes.length];
+document.getElementById("dailyQuote").innerText = dailyQuotes[new Date().getDate() % dailyQuotes.length];
 }
 
 function playGentleBell(){
@@ -267,15 +202,12 @@ try{
 const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 const osc = audioCtx.createOscillator();
 const gain = audioCtx.createGain();
-
 osc.type = "sine";
-osc.frequency.setValueAtTime(880, audioCtx.currentTime);
-osc.frequency.exponentialRampToValueAtTime(440, audioCtx.currentTime + 1.2);
-
-gain.gain.setValueAtTime(0.001, audioCtx.currentTime);
-gain.gain.exponentialRampToValueAtTime(0.18, audioCtx.currentTime + 0.05);
-gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 1.4);
-
+osc.frequency.setValueAtTime(880,audioCtx.currentTime);
+osc.frequency.exponentialRampToValueAtTime(440,audioCtx.currentTime + 1.2);
+gain.gain.setValueAtTime(0.001,audioCtx.currentTime);
+gain.gain.exponentialRampToValueAtTime(0.18,audioCtx.currentTime + 0.05);
+gain.gain.exponentialRampToValueAtTime(0.001,audioCtx.currentTime + 1.4);
 osc.connect(gain);
 gain.connect(audioCtx.destination);
 osc.start();
@@ -285,9 +217,9 @@ osc.stop(audioCtx.currentTime + 1.5);
 
 function toggleSound(){
 soundOn = !soundOn;
-localStorage.setItem("happySoundOn", soundOn);
-document.getElementById("soundBtn").innerText =
-soundOn ? "🔔 提醒聲：開啟" : "🔕 提醒聲：關閉";
+localStorage.setItem("happySoundOn",soundOn);
+document.getElementById("soundBtn").innerText = soundOn ? "🔔 提醒聲：開啟" : "🔕 提醒聲：關閉";
+if(soundOn) playGentleBell();
 }
 
 function getYesterdayKey(){
@@ -300,8 +232,8 @@ function updateStreakOnComplete(){
 if(lastActiveDate === todayKey) return;
 streak = (lastActiveDate === getYesterdayKey()) ? streak + 1 : 1;
 lastActiveDate = todayKey;
-localStorage.setItem("happyStreak", streak);
-localStorage.setItem("happyLastActiveDate", lastActiveDate);
+localStorage.setItem("happyStreak",streak);
+localStorage.setItem("happyLastActiveDate",lastActiveDate);
 }
 
 function updateStats(){
@@ -342,17 +274,36 @@ return;
 }
 
 const next = getNextMilestone();
-giftStatus.innerText = next ?
-"🌷 距離下一個里程碑，還需要 " + (next - points) + " 幸福值。" :
-"🏡 你已完成第一階段幸福家園。謝謝你一路陪伴自己。";
+giftStatus.innerText = next ? "🌷 距離下一個里程碑，還需要 " + (next - points) + " 幸福值。" : "🏡 你已完成第一階段幸福家園。謝謝你一路陪伴自己。";
 claimGift.style.display = "none";
+}
+
+function checkMilestoneBlessing(){
+const milestones = Object.keys(milestoneBlessings).map(Number).sort((a,b)=>a-b);
+for(let i=0;i<milestones.length;i++){
+const m = milestones[i];
+const key = "happyMilestone_" + m;
+if(points >= m && !localStorage.getItem(key)){
+localStorage.setItem(key,"shown");
+showBlessing(milestoneBlessings[m]);
+break;
+}
+}
+}
+
+function showBlessing(text){
+document.getElementById("blessingText").innerText = text;
+document.getElementById("blessingPopup").style.display = "flex";
+}
+
+function closeBlessing(){
+document.getElementById("blessingPopup").style.display = "none";
 }
 
 function updateTimer(){
 const min = Math.floor(seconds / 60);
 const sec = seconds % 60;
-document.getElementById("timer").innerText =
-String(min).padStart(2,"0") + ":" + String(sec).padStart(2,"0");
+document.getElementById("timer").innerText = String(min).padStart(2,"0") + ":" + String(sec).padStart(2,"0");
 
 if(seconds <= 0){
 clearInterval(timerInterval);
@@ -365,8 +316,7 @@ seconds--;
 
 function startTimer(){
 if(timerInterval) return;
-document.getElementById("message").innerText =
-"我會陪你。這 25 分鐘，只要回到當下。";
+document.getElementById("message").innerText = "我會陪你。這 25 分鐘，只要回到當下。";
 updateTimer();
 timerInterval = setInterval(updateTimer,1000);
 }
@@ -390,13 +340,12 @@ localStorage.setItem("happyDailyCount_" + todayKey,dailyCount);
 playGentleBell();
 
 if(points >= BIG_GIFT_POINTS && giftMonth !== monthKey){
-document.getElementById("message").innerText =
-"🎉 恭喜你！你已解鎖本月幸福禮物。";
+document.getElementById("message").innerText = "🎉 恭喜你！你已解鎖本月幸福禮物。";
 }else{
-document.getElementById("message").innerText =
-messages[Math.floor(Math.random()*messages.length)];
+document.getElementById("message").innerText = messages[Math.floor(Math.random()*messages.length)];
 }
 
+checkMilestoneBlessing();
 updateStats();
 }
 
@@ -416,28 +365,16 @@ updateGiftStatus();
 
 setDailyQuote();
 updateStats();
-document.getElementById("soundBtn").innerText =
-soundOn ? "🔔 提醒聲：開啟" : "🔕 提醒聲：關閉";
+document.getElementById("soundBtn").innerText = soundOn ? "🔔 提醒聲：開啟" : "🔕 提醒聲：關閉";
 </script>
 
 <footer class="site-footer">
 <div class="footer-inner">
-<p class="footer-disclaimer">
-本內容屬於個人成長與情緒陪伴分享，<br>
-不涉及醫療、臨床診斷或宗教預言。
-</p>
-
+<p class="footer-disclaimer">本內容屬於個人成長與情緒陪伴分享，<br>不涉及醫療、臨床診斷或宗教預言。</p>
 <p class="footer-copy">© 2026 BoBo Tan</p>
-
 <h3 class="footer-brand">🌿 開心愛家園療癒</h3>
-
 <p class="footer-tagline">Happy Love Home Healing</p>
-
-<p class="footer-tagline">
-❤️ BoBo 我在<br>
-黑暗中的光．生活的燈塔
-</p>
-
+<p class="footer-tagline">❤️ BoBo 我在<br>黑暗中的光．生活的燈塔</p>
 <div class="footer-links">
 <a href="index.html">首頁</a>
 <a href="free.html">免費資源</a>
@@ -445,7 +382,6 @@ soundOn ? "🔔 提醒聲：開啟" : "🔕 提醒聲：關閉";
 <a href="blog.html">部落格</a>
 <a href="policy.html">退款政策 / 服務條款 / 隱私聲明</a>
 </div>
-
 <p class="footer-copy">All Rights Reserved.</p>
 </div>
 </footer>
