@@ -7,36 +7,98 @@
 <style>
 *{box-sizing:border-box}
 body{margin:0;font-family:"Noto Sans TC","Microsoft JhengHei",sans-serif;background:linear-gradient(180deg,#dfffe9,#fff8d8);color:#25534d;text-align:center}
-.page{max-width:760px;margin:auto;padding:28px 18px 45px}
+.page{max-width:820px;margin:auto;padding:28px 18px 45px}
 a{color:inherit}.back{display:inline-block;margin-bottom:18px;color:#25534d;text-decoration:none;font-weight:800}
-.hero,.card,.more-box{background:rgba(255,255,255,.84);border-radius:30px;padding:26px 20px;margin:22px 0;box-shadow:0 10px 25px rgba(92,136,110,.14)}
-h1{font-size:32px;margin:0 0 14px;color:#7b4b83}h2{font-size:24px;margin:0 0 18px;color:#7b4b83}.subtitle{font-size:16px;line-height:1.85;color:#496b64;margin:0}
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.btn,button{border:none;border-radius:999px;padding:16px 14px;background:#a77aa3;color:#fff;font-size:16px;font-weight:800;box-shadow:0 8px 18px rgba(130,88,130,.22);cursor:pointer;text-decoration:none;display:block;width:100%;font-family:inherit}.btn:hover,button:hover{background:#956892}
-select{width:100%;max-width:420px;padding:15px;border-radius:18px;border:1px solid #cfe7dc;font-size:16px;margin:8px auto 16px;display:block;font-family:inherit;color:#25534d}.result{display:none;background:#fffdf5;border-radius:28px;padding:24px 20px;margin:22px 0;line-height:1.9;color:#365c54;box-shadow:0 10px 24px rgba(92,136,110,.14);text-align:left}.result h3{text-align:center;color:#7b4b83;margin-top:0}.small-note,.notice{font-size:14px;color:#6b7d76;line-height:1.75}.cta{background:linear-gradient(135deg,#fffdf5,#e8fff3)}.more-buttons{display:flex;flex-direction:column;gap:16px;max-width:560px;margin:auto}
+.hero,.card,.more-box{background:rgba(255,255,255,.86);border-radius:30px;padding:26px 20px;margin:22px 0;box-shadow:0 10px 25px rgba(92,136,110,.14)}
+h1{font-size:32px;margin:0 0 14px;color:#7b4b83}
+h2{font-size:24px;margin:0 0 18px;color:#7b4b83}
+h3{color:#7b4b83;margin-top:0}
+.subtitle{font-size:16px;line-height:1.85;color:#496b64;margin:0}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.btn,button{border:none;border-radius:999px;padding:16px 14px;background:#a77aa3;color:#fff;font-size:16px;font-weight:800;box-shadow:0 8px 18px rgba(130,88,130,.22);cursor:pointer;text-decoration:none;display:block;width:100%;font-family:inherit}
+.btn:hover,button:hover{background:#956892}
+.quick-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+select,textarea,input{width:100%;max-width:520px;padding:15px;border-radius:18px;border:1px solid #cfe7dc;font-size:16px;margin:8px auto 16px;display:block;font-family:inherit;color:#25534d;background:#fff}
+textarea{min-height:110px;line-height:1.7}
+.result{display:none;background:#fffdf5;border-radius:28px;padding:24px 20px;margin:22px 0;line-height:1.9;color:#365c54;box-shadow:0 10px 24px rgba(92,136,110,.14);text-align:left}
+.result h3{text-align:center;color:#7b4b83;margin-top:0}.result p{margin:12px 0}
+.small-note,.notice{font-size:14px;color:#6b7d76;line-height:1.75}.cta{background:linear-gradient(135deg,#fffdf5,#e8fff3)}
+.more-buttons{display:flex;flex-direction:column;gap:16px;max-width:560px;margin:auto}
+.badge{display:inline-block;background:#fff2fb;color:#7b4b83;border-radius:999px;padding:8px 14px;font-weight:800;margin:5px;font-size:14px}
+.memory-box{background:#f8fff9;border-radius:20px;padding:16px;margin-top:15px;text-align:left;line-height:1.8}
 footer{padding:45px 18px 25px;font-size:18px;line-height:1.8;color:#25534d}footer a{text-decoration:none;font-weight:800;display:block;margin:8px 0}.footer-brand{font-size:24px;font-weight:900;margin-top:22px}.footer-links{margin:22px 0}
-@media(max-width:520px){.grid{grid-template-columns:1fr}h1{font-size:28px}h2{font-size:22px}footer{font-size:17px}}
+@media(max-width:620px){.grid,.quick-grid{grid-template-columns:1fr}h1{font-size:28px}h2{font-size:22px}footer{font-size:17px}.page{padding:22px 14px 38px}}
 </style>
 </head>
 <body>
 <div class="page">
 <a href="index.html" class="back">🏡 返回首頁</a>
+
 <section class="hero">
 <h1>🌿 BoBo 自我探索館</h1>
-<p class="subtitle">探索自己，從一個小小的問題開始。<br>每一次覺察，都是送給自己的溫柔禮物。<br>不需要上傳照片，只需要誠實感受此刻的自己。</p>
-</section>
-<section class="card">
-<h2>🌸 今天想探索什麼？</h2>
-<div class="grid">
-<button onclick="showResult('birthday')">🎂 生日性格</button>
-<button onclick="showResult('zodiac')">🌙 星座特質</button>
-<button onclick="showResult('selflove')">❤️ 愛自己指數</button>
-<button onclick="showResult('innerchild')">🧸 內在小孩</button>
-<button onclick="showResult('money')">💰 金錢關係</button>
-<button onclick="showResult('emotion')">🌈 今日情緒</button>
-<button onclick="showResult('stress')">💪 壓力狀態</button>
-<button onclick="showResult('relationship')">🤝 人際互動</button>
+<p class="subtitle">探索自己，從一個小小的問題開始。<br>每一次覺察，都是送給自己的溫柔禮物。<br>不需要上傳照片，不會收集私人圖片，只需要誠實感受此刻的自己。</p>
+<div style="margin-top:16px">
+<span class="badge" id="visitBadge">🌱 歡迎回來</span>
+<span class="badge" id="clickBadge">🌸 今日探索 0 次</span>
 </div>
 </section>
+
+<section class="card">
+<h2>🌸 今日陪伴</h2>
+<div class="quick-grid">
+<button onclick="draw('daily')">🌿 今日療癒卡</button>
+<button onclick="draw('bobo')">💚 BoBo 今天想說</button>
+<button onclick="draw('color')">🌈 今日顏色能量</button>
+<button onclick="draw('flower')">🌸 今日花語</button>
+<button onclick="draw('drink')">🍵 今天適合喝什麼</button>
+<button onclick="draw('task')">🌤 小幸福任務</button>
+<button onclick="draw('affirm')">✨ 今日肯定語</button>
+<button onclick="magic()">🎲 BoBo 神奇按鈕</button>
+</div>
+</section>
+
+<section class="card">
+<h2>🌼 今天想探索什麼？</h2>
+<div class="grid">
+<button onclick="draw('birthday')">🎂 生日性格</button>
+<button onclick="draw('zodiac')">🌙 星座特質</button>
+<button onclick="draw('selflove')">❤️ 愛自己指數</button>
+<button onclick="draw('innerchild')">🧸 內在小孩</button>
+<button onclick="draw('money')">💰 金錢關係</button>
+<button onclick="draw('emotion')">🌈 今日情緒</button>
+<button onclick="draw('stress')">💪 壓力狀態</button>
+<button onclick="draw('relationship')">🤝 人際互動</button>
+<button onclick="draw('worth')">🌱 自我價值</button>
+<button onclick="draw('safety')">🕊 安全感</button>
+<button onclick="draw('action')">✨ 行動力</button>
+<button onclick="draw('direction')">🌍 人生方向</button>
+</div>
+</section>
+
+<section class="card">
+<h2>☕ BoBo 陪伴系列</h2>
+<div class="grid">
+<button onclick="draw('coffee')">☕ 咖啡療癒一句</button>
+<button onclick="draw('bus')">🚌 巴士療癒日記</button>
+<button onclick="draw('morning')">🌅 早安一句力量</button>
+<button onclick="draw('night')">🌙 睡前一句安撫</button>
+<button onclick="draw('rain')">🌧 下雨天陪伴</button>
+<button onclick="draw('weekend')">🎉 週末放鬆提醒</button>
+</div>
+</section>
+
+<section class="card">
+<h2>🐉 靈感角落</h2>
+<div class="grid">
+<button onclick="draw('angel')">👼 今日大天使</button>
+<button onclick="draw('dragon')">🐉 今日龍族</button>
+<button onclick="draw('seven')">🌈 七頻一句話</button>
+<button onclick="draw('seed')">🌱 希望種子</button>
+<button onclick="draw('pet')">🐾 寵物今天想說</button>
+<button onclick="draw('universe')">✨ 宇宙一句話</button>
+</div>
+</section>
+
 <section class="card">
 <h2>🌼 快速今日探索</h2>
 <label for="mood">今天最接近你的心情：</label>
@@ -50,12 +112,36 @@ footer{padding:45px 18px 25px;font-size:18px;line-height:1.8;color:#25534d}foote
 <button onclick="moodResult()">🌸 看看 BoBo 給你的提醒</button>
 <p class="small-note">這是一個溫柔的小提醒，不是診斷，也不是標籤。</p>
 </section>
+
+<section class="card">
+<h2>🌳 情緒樹洞</h2>
+<p class="subtitle">把想說的話放在這裡。內容只在你的手機/電腦畫面裡，不會送到 BoBo，也不會上傳。</p>
+<textarea id="treeText" placeholder="今天，我想放下……"></textarea>
+<button onclick="burnTree()">🔥 放進樹洞，化成光</button>
+</section>
+
+<section class="card">
+<h2>💌 給未來的自己</h2>
+<textarea id="futureText" placeholder="親愛的未來的我……"></textarea>
+<button onclick="saveFuture()">💌 生成一封給自己的信</button>
+</section>
+
+<section class="card">
+<h2>🙏 感恩三件事</h2>
+<input id="g1" placeholder="今天感恩 1">
+<input id="g2" placeholder="今天感恩 2">
+<input id="g3" placeholder="今天感恩 3">
+<button onclick="gratitude()">🌸 收下今天的小幸福</button>
+</section>
+
 <div id="result" class="result"></div>
+
 <section class="card cta">
 <h2>💚 想更深入探索自己？</h2>
 <p>如果你想更深入理解自己的情緒、關係、金錢狀態，<br>可以預約 BoBo 一對一陪伴與能量探索。</p>
 <a class="btn" href="https://wa.me/6594574732" target="_blank" rel="noopener">🌿 WhatsApp 預約 BoBo</a>
 </section>
+
 <section class="more-box">
 <h2>🌸 更多陪伴</h2>
 <div class="more-buttons">
@@ -67,13 +153,16 @@ footer{padding:45px 18px 25px;font-size:18px;line-height:1.8;color:#25534d}foote
 <a class="btn" href="index.html">🏡 回首頁</a>
 </div>
 </section>
+
 <p class="notice">🌱 本頁內容僅供娛樂、自我探索與個人成長參考，<br>不作為醫療、心理、法律、命理或其他專業建議。<br>本頁不需要上傳照片，也不會收集你的私人圖片。</p>
 </div>
+
 <footer>
 <p>© 2026 BoBo Tan</p>
 <p class="footer-brand">開心愛家園療癒<br>Happy Love Home Healing</p>
 <div class="footer-links">
 <a href="index.html">首頁</a>
+<a href="explore.html">BoBo 自我探索館</a>
 <a href="free.html">免費資源</a>
 <a href="about.html">BoBo 的故事</a>
 <a href="blog.html">部落格</a>
@@ -81,37 +170,336 @@ footer{padding:45px 18px 25px;font-size:18px;line-height:1.8;color:#25534d}foote
 </div>
 <p>All Rights Reserved.</p>
 </footer>
+
 <script>
-function showResult(type){
- const texts={
- birthday:['🎂 生日性格探索','你的生日像是一顆種子，藏著你與生俱來的生命節奏。今天可以問自己：我是不是太久沒有照顧真正的自己了？'],
- zodiac:['🌙 星座特質探索','星座不是限制你，而是一面鏡子。它提醒你：有些特質不是缺點，只是需要被理解與善用。'],
- selflove:['❤️ 愛自己指數','真正的愛自己，不是每天都很開心。而是當自己不夠好、不夠穩、不夠亮的時候，還願意陪著自己。'],
- innerchild:['🧸 內在小孩探索','你心裡那個小小的自己，也許不是脆弱。只是她等了很久，想被你抱一抱。'],
- money:['💰 金錢關係探索','金錢有時候不是數字問題，而是安心感、值得感與接收能力的練習。今天可以對自己說：我願意慢慢建立新的生活支持感。'],
- emotion:['🌈 今日情緒探索','情緒不是來攻擊你的。它只是提醒你：有些感受，已經等你看見很久了。'],
- stress:['💪 壓力狀態探索','如果你最近覺得很累，不代表你不夠努力。也許是你撐太久了，身體在提醒你：可以慢一點。'],
- relationship:['🤝 人際互動探索','不是所有關係都需要修復。有些時候，把自己還給自己，把他人還給他人，就是最溫柔的自由。']
- };
+const data={
+daily:[
+["🌿 今日療癒卡","今天不用急著變好，先允許自己安穩下來。","找一個安靜角落，喝三口水。","我允許自己慢慢回來。"],
+["🌿 今日療癒卡","你不需要一次解決所有問題，只要先照顧今天的自己。","把今天最重要的一件事寫下來。","我一步一步，也在前進。"],
+["🌿 今日療癒卡","有些答案會在你放鬆後出現，不必逼自己立刻明白。","閉上眼睛，聽自己的呼吸一分鐘。","我信任生命正在帶路。"],
+["🌿 今日療癒卡","今天的你已經很努力，請不要再用責備推自己。","對自己說一句謝謝。","我值得被溫柔對待。"],
+["🌿 今日療癒卡","慢下來不是退後，是給靈魂一個回家的空間。","走路時放慢十步。","我可以用自己的節奏生活。"],
+["🌿 今日療癒卡","你不必一直強大，柔軟也是一種力量。","把手放在心口，深呼吸三次。","我允許自己真實。"],
+["🌿 今日療癒卡","今天適合整理心，不適合逼自己完美。","丟掉一個不需要的小東西。","我正在為自己騰出空間。"],
+["🌿 今日療癒卡","你的光不需要大聲，它一直都在。","給自己一個微笑。","我看見自己的光。"],
+["🌿 今日療癒卡","有時候，停下來就是最好的前進。","暫停滑手機五分鐘。","我可以休息，也可以重新開始。"],
+["🌿 今日療癒卡","今天不要把別人的情緒，全部背在自己身上。","想像把不屬於你的重量放下。","我把自己還給自己。"]
+],
+bobo:[
+["💚 BoBo 今天想說","你不用急著證明你值得，因為你本來就值得。","今天少解釋一點，多照顧自己一點。","我本來就值得。"],
+["💚 BoBo 今天想說","有些路慢慢走，反而會走得更穩。","今天只完成一件小事就好。","我願意穩穩地走。"],
+["💚 BoBo 今天想說","不是每個人都會懂你，但你可以先懂自己。","寫下此刻最真實的感受。","我願意理解自己。"],
+["💚 BoBo 今天想說","今天先不要跟人生吵架，先抱抱自己。","抱抱自己的肩膀。","我與自己站在一起。"],
+["💚 BoBo 今天想說","你已經不是以前那個只能忍耐的人了。","說一句：我可以選擇。","我有新的選擇。"]
+],
+birthday:[
+["🎂 生日性格","你的生日像一顆種子，提醒你活出自己的節奏。","今天做一件讓自己開心的小事。","我按照自己的季節開花。"],
+["🎂 生日性格","你不是來複製別人的人生，而是走出自己的路。","問自己：我真正想要什麼？","我允許自己不一樣。"],
+["🎂 生日性格","你有生命力，也需要溫柔照顧自己的火。","把今天的步伐放慢一點。","我的力量可以很溫柔。"],
+["🎂 生日性格","你的天賦常藏在你最自然的地方。","留意今天做起來最順的事。","我看見自己的天賦。"],
+["🎂 生日性格","生日不是標籤，而是提醒你：你有自己的光。","對鏡子裡的自己微笑。","我願意活出自己的光。"]
+],
+zodiac:[
+["🌙 星座特質","星座不是限制，而是一面溫柔的鏡子。","今天觀察自己的自然反應。","我理解我的特質。"],
+["🌙 星座特質","有些性格不是缺點，只是需要找到合適的位置。","寫下自己的一個優點。","我的特質值得被善用。"],
+["🌙 星座特質","你不需要變成別人喜歡的樣子。","今天少迎合一點。","我做自己也很好。"],
+["🌙 星座特質","你的敏感可能是禮物，不一定是負擔。","安靜聽一首歌。","我尊重自己的感受。"],
+["🌙 星座特質","今天用星星提醒自己：光很遠，也仍然會抵達。","看天空三秒。","我的光正在抵達。"]
+],
+selflove:[
+["❤️ 愛自己指數","愛自己不是每天開心，而是不離開自己。","今天對自己少一句批評。","我願意陪著自己。"],
+["❤️ 愛自己指數","真正的愛自己，是允許自己有狀態不好的時候。","把今天的累承認出來。","我不必完美才值得愛。"],
+["❤️ 愛自己指數","請把溫柔也留一份給自己。","做一件照顧身體的小事。","我值得被照顧。"],
+["❤️ 愛自己指數","愛自己不是自私，是回到自己的中心。","今天拒絕一件勉強的事。","我可以選擇自己。"],
+["❤️ 愛自己指數","你不需要等到變好，才開始愛自己。","現在就對自己說：辛苦了。","此刻的我，也值得愛。"]
+],
+innerchild:[
+["🧸 內在小孩","你心裡的小小自己，也許只是想被聽見。","問她：你今天想說什麼？","我聽見你了。"],
+["🧸 內在小孩","有些委屈不是矯情，是等待被抱抱的記憶。","抱著枕頭休息一下。","我願意抱回自己。"],
+["🧸 內在小孩","小時候的你很努力了，現在可以不用再一直撐。","對小時候的自己說謝謝。","我把愛帶回來。"],
+["🧸 內在小孩","那個想被看見的你，從來沒有錯。","寫下：我想被怎樣對待？","我的需要值得被尊重。"],
+["🧸 內在小孩","你可以慢慢長大，也可以保留柔軟。","做一件童心的小事。","我的柔軟很珍貴。"]
+],
+money:[
+["💰 金錢關係","金錢不只是數字，也與安心感有關。","整理一個錢包或帳單。","我願意建立財務安心感。"],
+["💰 金錢關係","今天先不要責怪自己，從一個小行動開始。","記下今天一筆支出。","我可以溫柔整理金錢關係。"],
+["💰 金錢關係","接收也是一種練習，不必把一切推開。","接受一句稱讚，不解釋。","我允許生活支持我。"],
+["💰 金錢關係","你的價值不只由收入決定。","寫下自己三個能力。","我的價值穩穩存在。"],
+["💰 金錢關係","財務安心感可以慢慢建立，不需要一次到位。","做一個小小儲蓄或整理。","我一步一步建立支持感。"]
+],
+emotion:[
+["🌈 今日情緒","情緒不是敵人，是來敲門的訊息。","替情緒命名：我現在感到……","我允許情緒被看見。"],
+["🌈 今日情緒","你可以不立刻好起來，只要不再攻擊自己。","深呼吸三次。","我溫柔地陪著自己。"],
+["🌈 今日情緒","有些難過需要時間，不需要被催促。","讓自己安靜五分鐘。","我給自己時間。"],
+["🌈 今日情緒","今天的心情像天氣，會變化，也會過去。","看看窗外的天空。","我允許天氣流動。"],
+["🌈 今日情緒","你不是情緒本身，你是正在感受的人。","把手放在心口。","我比情緒更大。"]
+],
+stress:[
+["💪 壓力狀態","你不是不夠努力，是已經撐太久。","今天少做一件不急的事。","我允許自己休息。"],
+["💪 壓力狀態","壓力提醒你需要界線，不是要你更用力。","關掉一個通知。","我可以保護自己的能量。"],
+["💪 壓力狀態","完成比完美重要。","把一件事做到 70% 就停。","我允許自己不完美。"],
+["💪 壓力狀態","身體也在陪你努力，請聽聽它。","伸展肩膀一分鐘。","我照顧我的身體。"],
+["💪 壓力狀態","今天不要把所有責任都扛在心上。","想像卸下一個背包。","我放下不屬於我的重量。"]
+],
+relationship:[
+["🤝 人際互動","不是所有關係都需要修復，有些需要歸位。","問自己：這是我的責任嗎？","我把自己還給自己。"],
+["🤝 人際互動","愛不是委屈自己去換和平。","今天練習說真話。","我的感受也重要。"],
+["🤝 人際互動","有些距離，是為了讓彼此都能呼吸。","給一段關係一點空間。","距離也可以是溫柔。"],
+["🤝 人際互動","不被理解，不代表你不存在。","把注意力帶回自己。","我看見自己。"],
+["🤝 人際互動","把他人還給他人，把自己還給自己。","默念這句三次。","我回到自己的位置。"]
+],
+worth:[
+["🌱 自我價值","你的價值不是靠表現換來的。","停止自我比較一天。","我本來就有價值。"],
+["🌱 自我價值","慢一點，也不代表你比較差。","肯定今天的一個小進步。","我的步伐值得尊重。"],
+["🌱 自我價值","被看見很好，沒被看見時也不代表你不重要。","寫下：我知道我努力了。","我承認自己的努力。"],
+["🌱 自我價值","你不需要用過度付出證明自己。","今天少承擔一點。","我不必討好才有價值。"],
+["🌱 自我價值","真正的穩，是知道自己不必一直被外界定義。","安靜坐一分鐘。","我回到內在穩定。"]
+],
+safety:[
+["🕊 安全感","安全感可以從一口呼吸開始。","慢慢吸氣，慢慢吐氣。","我正在回到安全。"],
+["🕊 安全感","今天先照顧身體，心會慢慢跟上。","喝溫水。","我的身體是我的家。"],
+["🕊 安全感","你不需要立刻相信世界，先相信此刻的自己。","摸摸自己的手。","我在這裡陪我。"],
+["🕊 安全感","界線會讓你更安心，不是更冷漠。","想一句你的界線。","我允許自己有界線。"],
+["🕊 安全感","安穩不是什麼都不發生，而是知道自己會陪自己。","看著自己的手心。","我不再丟下自己。"]
+],
+action:[
+["✨ 行動力","今天只需要一小步，不需要一大步。","做一件 5 分鐘能完成的事。","我開始了，就很好。"],
+["✨ 行動力","等待完美狀態，常常會等很久。","先完成第一步。","我允許自己邊走邊調整。"],
+["✨ 行動力","行動不是逼自己，是把能量帶回生活。","站起來走十步。","我把力量帶回來。"],
+["✨ 行動力","慢慢做，也是在做。","設定一個小目標。","我的小步伐有力量。"],
+["✨ 行動力","你不需要一次準備好，開始會讓路變清楚。","打開一個待辦事項。","我願意開始。"]
+],
+direction:[
+["🌍 人生方向","方向有時不是想出來的，是走著走著清楚的。","今天留意讓你安心的選擇。","我信任自己的路。"],
+["🌍 人生方向","你不用和別人的時間表一樣。","寫下你自己的節奏。","我尊重我的生命節奏。"],
+["🌍 人生方向","迷惘不是失敗，是靈魂在重新校準。","問自己：我想靠近什麼？","我正在校準方向。"],
+["🌍 人生方向","真正適合你的路，不一定最吵，卻會讓心安。","選擇一件讓心安的小事。","我跟隨內在的安穩。"],
+["🌍 人生方向","人生不是只能有一個答案。","允許自己有新選擇。","我可以重新選擇。"]
+],
+coffee:[
+["☕ 咖啡療癒","今天喝一口咖啡，也喝回一點自己的時間。","慢慢喝，不滑手機。","我把時間還給自己。"],
+["☕ 咖啡療癒","咖啡香提醒你：生活還有小小的美好。","聞一聞杯子的香氣。","我接收生活的小美好。"],
+["☕ 咖啡療癒","不需要很浪漫，安靜喝完一杯也很療癒。","給自己五分鐘。","我值得擁有空白。"],
+["☕ 咖啡療癒","今天不急著解決人生，先陪自己坐一下。","坐下來，好好呼吸。","我願意陪自己。"],
+["☕ 咖啡療癒","一杯飲料，也可以是一個溫柔儀式。","對杯子說：謝謝。","我讓生活變得溫柔。"]
+],
+bus:[
+["🚌 巴士療癒日記","路上的風景提醒你，人生也在移動。","看看窗外一個細節。","我正在路上。"],
+["🚌 巴士療癒日記","有些等待不是停滯，是下一站還沒到。","深呼吸，等待一下。","我信任下一站。"],
+["🚌 巴士療癒日記","回家的路，也是在回到自己。","想一件今天想帶回家的溫柔。","我正在回家。"],
+["🚌 巴士療癒日記","慢行的時候，心比較聽得見。","放慢腳步。","我聽見自己的心。"],
+["🚌 巴士療癒日記","每一站都有它的意義，不必急著抵達。","默念：我在這裡。","我接受此刻的站點。"]
+],
+morning:[
+["🌅 早安一句力量","今天先把心放穩，再出發。","喝一杯水。","我穩穩開始今天。"],
+["🌅 早安一句力量","早安，今天不用一醒來就很厲害。","伸展身體。","我可以慢慢醒來。"],
+["🌅 早安一句力量","新的早晨，不必背著昨天的重量。","想像把昨天放下。","我允許新的開始。"],
+["🌅 早安一句力量","今天留一點力氣給自己。","安排一個小休息。","我照顧自己的能量。"],
+["🌅 早安一句力量","願你今天遇見一點光，也成為自己的光。","對自己微笑。","我帶著光出門。"]
+],
+night:[
+["🌙 睡前一句安撫","晚安，今天辛苦了，可以放下了。","把手機放遠一點。","我允許自己休息。"],
+["🌙 睡前一句安撫","沒有完成的，明天再說；現在先睡覺。","吐一口長氣。","我把今天交還給夜晚。"],
+["🌙 睡前一句安撫","今晚不需要想通人生，只需要好好睡。","閉眼感受枕頭。","我安全地休息。"],
+["🌙 睡前一句安撫","你已經撐過今天了，謝謝你。","對自己說謝謝。","我感謝今天的自己。"],
+["🌙 睡前一句安撫","願夢裡有光，願醒來有力量。","慢慢放鬆肩膀。","我被溫柔包圍。"]
+],
+rain:[
+["🌧 下雨天陪伴","雨不是壞天氣，有時是天空在釋放。","聽一分鐘雨聲。","我也可以釋放。"],
+["🌧 下雨天陪伴","今天適合慢一點，讓心被洗一洗。","喝一杯溫熱的飲品。","我允許自己柔軟。"],
+["🌧 下雨天陪伴","雨天提醒你，不必每天都晴朗。","接受今天的情緒天氣。","我接納自己的天氣。"],
+["🌧 下雨天陪伴","有些沉悶會過去，就像雨會停。","看一看雲。","我等待光回來。"],
+["🌧 下雨天陪伴","今天讓雨聲陪你，不用一個人硬撐。","把手放在心口。","我被陪伴著。"]
+],
+weekend:[
+["🎉 週末提醒","週末不是用來補償自己不夠努力，是用來回到生活。","做一件沒有目的的事。","我允許自己放鬆。"],
+["🎉 週末提醒","今天可以慢一點，讓身體追上靈魂。","睡晚一點或散步。","我享受自己的時間。"],
+["🎉 週末提醒","休息不是浪費，是把能量帶回來。","安排一個安靜時段。","我值得休息。"],
+["🎉 週末提醒","別把週末也變成任務表。","刪掉一個不必要安排。","我選擇輕鬆。"],
+["🎉 週末提醒","願你吃一點喜歡的，做一點開心的。","給自己一個小獎勵。","我接收生活的甜。"]
+],
+angel:[
+["👼 今日大天使","米迦勒提醒你：保護界線，也是在愛自己。","今天少答應一件勉強的事。","我有力量保護自己。"],
+["👼 今日大天使","拉斐爾陪伴你照顧身心，慢慢修復。","把手放在需要安撫的地方。","我允許自己被修復。"],
+["👼 今日大天使","加百列提醒你：你的聲音值得被聽見。","寫下一句真心話。","我可以溫柔表達。"],
+["👼 今日大天使","烏列爾帶來清明，答案會一步一步來。","整理桌面一角。","我接收清楚的指引。"],
+["👼 今日大天使","夏米爾提醒你：先回到愛，再做決定。","問自己：怎樣更溫柔？","我回到愛的頻率。"]
+],
+dragon:[
+["🐉 今日龍族","土龍提醒你接地，把心放回身體。","腳掌踩穩地面。","我穩穩在地球上。"],
+["🐉 今日龍族","水龍提醒你流動，不必卡在同一個感受。","喝水並吐一口氣。","我允許能量流動。"],
+["🐉 今日龍族","火龍提醒你找回行動力，但不要燒傷自己。","做一個小開始。","我的力量有智慧。"],
+["🐉 今日龍族","光龍提醒你：即使很暗，光也還在。","看向一個亮處。","我看見希望。"],
+["🐉 今日龍族","彩虹龍帶來祝福：不同顏色的你，都值得被愛。","穿或看一個喜歡的顏色。","我的全部都值得被接納。"]
+],
+seven:[
+["🌈 七頻一句話","安全頻率：我先讓自己安穩。","感受腳掌。","我回到安全。"],
+["🌈 七頻一句話","愛的頻率：我不再丟下自己。","抱抱自己。","我與自己同在。"],
+["🌈 七頻一句話","金錢頻率：我慢慢建立生活支持感。","整理一筆收支。","我接收支持。"],
+["🌈 七頻一句話","關係頻率：我把自己還給自己。","檢查一個界線。","我回到自己。"],
+["🌈 七頻一句話","靈魂頻率：真正的我一直都在。","安靜三十秒。","我聽見靈魂。"]
+],
+seed:[
+["🌱 希望種子","願望不一定立刻實現，但種下希望時，改變已經開始。","寫下一個小願望。","我願意種下希望。"],
+["🌱 希望種子","今天的你，可以先相信一點點就好。","把願望寫短一點。","我允許希望靠近。"],
+["🌱 希望種子","希望不是假裝沒事，是知道自己還能往前。","看見今天一個小進步。","我還在路上。"],
+["🌱 希望種子","每一顆種子都需要時間，你也是。","給自己一點耐心。","我允許自己慢慢長大。"],
+["🌱 希望種子","今天把希望放在心裡，不必大聲告訴全世界。","默念願望一次。","我的希望被守護。"]
+],
+pet:[
+["🐾 寵物今天想說","我感受到你的心情，請你也摸摸自己的心。","摸摸寵物或想像柔軟的毛。","我和愛同在。"],
+["🐾 寵物今天想說","不要一直擔心我，也請照顧你自己。","喝水休息一下。","我也值得被照顧。"],
+["🐾 寵物今天想說","陪伴不一定要說話，安靜在一起也很好。","安靜坐一分鐘。","愛可以很簡單。"],
+["🐾 寵物今天想說","你笑的時候，家裡的能量也亮起來。","給自己一個笑容。","我把溫暖帶回家。"],
+["🐾 寵物今天想說","今天我們一起慢慢來。","放慢一個動作。","我允許生活慢下來。"]
+],
+universe:[
+["✨ 宇宙一句話","你以為的延遲，也許是另一種保護。","今天先不急著下結論。","我信任時間。"],
+["✨ 宇宙一句話","當你回到自己，路會慢慢打開。","把注意力收回心口。","我回到自己。"],
+["✨ 宇宙一句話","答案不是被追到的，是被安靜聽見的。","靜坐一分鐘。","我聽見答案。"],
+["✨ 宇宙一句話","今天的巧合，可能是一個溫柔提醒。","留意一個小巧合。","我看見生活的訊息。"],
+["✨ 宇宙一句話","你沒有被遺忘，生命正在用它的方式陪你。","對天空說謝謝。","我被生命支持。"]
+],
+color:[
+["🌈 今日顏色能量","綠色：回到心，慢慢安穩。","看一個綠色物品。","我的心正在放鬆。"],
+["🌈 今日顏色能量","粉色：溫柔對待自己。","給自己一句好話。","我值得溫柔。"],
+["🌈 今日顏色能量","金色：看見自己的價值。","挺直背部。","我的價值發光。"],
+["🌈 今日顏色能量","藍色：讓心安靜下來。","喝水，慢慢呼吸。","我回到平靜。"],
+["🌈 今日顏色能量","紫色：相信直覺與內在智慧。","閉眼三十秒。","我信任內在智慧。"]
+],
+flower:[
+["🌸 今日花語","雛菊：簡單的快樂，也很珍貴。","找一個小幸福。","我接收簡單的快樂。"],
+["🌸 今日花語","玫瑰：愛自己，也是一種盛開。","對自己溫柔說話。","我值得盛開。"],
+["🌸 今日花語","向日葵：轉向有光的地方。","看一個讓你開心的畫面。","我轉向光。"],
+["🌸 今日花語","薰衣草：放鬆，讓心慢慢平靜。","放鬆肩膀。","我允許自己安心。"],
+["🌸 今日花語","蓮花：即使經過泥濘，也能長出清澈。","承認自己的走過。","我從經歷中盛開。"]
+],
+drink:[
+["🍵 今天適合喝什麼","溫水：讓身體知道你回來了。","慢慢喝三口。","我照顧身體。"],
+["🍵 今天適合喝什麼","花茶：給心一點香氣和空白。","安靜喝一杯。","我接收溫柔。"],
+["🍵 今天適合喝什麼","咖啡：把精神帶回生活，但不要催促自己。","慢慢喝。","我有力量，也有節奏。"],
+["🍵 今天適合喝什麼","熱可可：今天需要被抱抱。","給自己一點甜。","我值得被安撫。"],
+["🍵 今天適合喝什麼","檸檬水：清新整理，重新開始。","清理桌面一角。","我願意更新。"]
+],
+task:[
+["🌤 小幸福任務","今天拍下一個讓你覺得舒服的畫面。","拍照或用心記住。","我看見生活的美。"],
+["🌤 小幸福任務","今天對自己說一句好聽的話。","現在就說。","我值得被好好說話。"],
+["🌤 小幸福任務","今天整理一個小角落。","只整理五分鐘。","我創造清爽空間。"],
+["🌤 小幸福任務","今天讓自己笑一下。","看一個可愛畫面。","我允許快樂靠近。"],
+["🌤 小幸福任務","今天早一點休息。","設定睡前提醒。","我把休息放進生活。"]
+],
+affirm:[
+["✨ 今日肯定語","我允許自己慢慢來。","唸三次。","我允許自己慢慢來。"],
+["✨ 今日肯定語","我值得被愛，也值得被尊重。","把手放在心口。","我值得被愛與尊重。"],
+["✨ 今日肯定語","我可以重新選擇。","想一個新選擇。","我可以重新選擇。"],
+["✨ 今日肯定語","我把自己還給自己。","吐氣放鬆。","我把自己還給自己。"],
+["✨ 今日肯定語","我願意接收生活的支持。","張開手掌。","我接收生活的支持。"]
+]
+};
+
+const moodData={
+peace:[
+["🌸 今日心情提醒","平靜是很珍貴的禮物，今天好好守護它。","少讓自己進入太多雜訊。","我守護我的平靜。"],
+["🌸 今日心情提醒","今天適合安靜整理，不需要做很多。","整理一個小地方。","我在平靜中整理自己。"],
+["🌸 今日心情提醒","你的心正在慢慢安定，請相信這份穩。","深呼吸三次。","我安穩地在這裡。"],
+["🌸 今日心情提醒","平靜不是沒有事，而是你回到了自己。","感受腳掌。","我回到自己。"],
+["🌸 今日心情提醒","今天讓簡單的日常滋養你。","慢慢吃一口東西。","我接收生活滋養。"]
+],
+tired:[
+["🌸 今日心情提醒","累了就休息，不必責怪自己。","喝水，坐下來。","我允許自己休息。"],
+["🌸 今日心情提醒","你不是不夠好，是需要充電。","閉眼一分鐘。","我正在補回能量。"],
+["🌸 今日心情提醒","今天不要把自己推到極限。","少做一件事。","我溫柔對待身體。"],
+["🌸 今日心情提醒","疲憊也是身體在說真話。","聽聽身體想要什麼。","我聽見身體。"],
+["🌸 今日心情提醒","先休息，答案會比較清楚。","放下手機五分鐘。","我在休息中恢復。"]
+],
+anxious:[
+["🌸 今日心情提醒","焦慮不是你的錯，是心想被安撫。","慢慢呼氣。","我正在安撫自己。"],
+["🌸 今日心情提醒","先不要想全部，只看下一步。","寫下一件能做的小事。","我只需要下一步。"],
+["🌸 今日心情提醒","你的心正在拉警報，請用溫柔回應它。","把手放在心口。","我安全地在這裡。"],
+["🌸 今日心情提醒","不確定感很難，但你不用因此攻擊自己。","說：我已經夠努力。","我承認我的努力。"],
+["🌸 今日心情提醒","焦慮來時，先回到身體。","感受腳底。","我回到身體。"]
+],
+lost:[
+["🌸 今日心情提醒","迷惘時不一定要馬上找到答案。","先問：我現在需要什麼？","我允許答案慢慢來。"],
+["🌸 今日心情提醒","看不清路，不代表沒有路。","只看今天的一小步。","我信任下一步。"],
+["🌸 今日心情提醒","迷惘是重新整理方向的開始。","寫下想靠近的感覺。","我正在重新校準。"],
+["🌸 今日心情提醒","你不需要一次看見整條路。","做一個小決定。","我走一步就好。"],
+["🌸 今日心情提醒","今天先照顧心，方向會慢慢清楚。","讓自己安靜三分鐘。","我在安靜中聽見自己。"]
+],
+hope:[
+["🌸 今日心情提醒","你心裡還有期待，這很珍貴。","保護這一點光。","我的希望還在。"],
+["🌸 今日心情提醒","期待不必很大，小小的也能發芽。","寫下一個小願望。","我允許希望發芽。"],
+["🌸 今日心情提醒","願你今天看見一點點好事。","留意一個小祝福。","我看見生活支持我。"],
+["🌸 今日心情提醒","希望不是保證，而是一份願意繼續的心。","對自己點點頭。","我願意繼續。"],
+["🌸 今日心情提醒","你還在，光也還在。","看向一個亮處。","我與希望同在。"]
+]
+};
+
+function pick(arr){return arr[Math.floor(Math.random()*arr.length)]}
+function countClick(){
+ let c=parseInt(localStorage.getItem('boboExploreClicks')||'0')+1;
+ localStorage.setItem('boboExploreClicks',c);
+ document.getElementById('clickBadge').innerText='🌸 今日探索 '+c+' 次';
+ if(c===10){setTimeout(()=>showCustom('🌸 成長徽章','恭喜你獲得「願意探索自己」徽章。','今天的你，已經很勇敢。','我願意認識自己。'),300);}
+ if(c===30){setTimeout(()=>showCustom('🌳 成長徽章','恭喜你獲得「溫柔陪伴自己」徽章。','請記得，慢慢來也很好。','我溫柔陪伴自己。'),300);}
+}
+function showCustom(title,msg,practice,affirm){
  const r=document.getElementById('result');
  r.style.display='block';
- r.innerHTML='<h3>'+texts[type][0]+'</h3><p>'+texts[type][1]+'</p><p>🌿 今日小練習：深呼吸三次，對自己說：「我願意溫柔地理解自己。」</p>';
+ r.innerHTML='<h3>'+title+'</h3><p>'+msg+'</p><p><strong>🌿 今日小練習：</strong>'+practice+'</p><p><strong>✨ 一句陪伴自己的話：</strong>'+affirm+'</p>';
  r.scrollIntoView({behavior:'smooth',block:'center'});
+}
+function draw(type){
+ countClick();
+ const item=pick(data[type]);
+ showCustom(item[0],item[1],item[2],item[3]);
+}
+function magic(){
+ countClick();
+ const keys=Object.keys(data);
+ const key=pick(keys);
+ const item=pick(data[key]);
+ showCustom('🎲 BoBo 神奇按鈕｜'+item[0],item[1],item[2],item[3]);
 }
 function moodResult(){
+ countClick();
  const mood=document.getElementById('mood').value;
- const messages={
- peace:'今天的你很適合安靜地整理自己。不需要急著做很多事，保持這份平靜，就是一種力量。',
- tired:'今天的你需要休息，不需要再責怪自己。先喝一杯水，深呼吸三次，讓身體知道：我回來陪你了。',
- anxious:'焦慮不是你的錯。它只是提醒你，心裡有些地方需要被安撫。今天先不要逼自己完美。',
- lost:'迷惘的時候，不一定要馬上找到答案。先回到自己，下一步會慢慢清楚。',
- hope:'你心裡還有一點期待，這已經很珍貴了。願你今天看見：希望還在，你也還在。'
- };
+ const item=pick(moodData[mood]);
+ showCustom(item[0],item[1],item[2],item[3]);
+}
+function burnTree(){
+ countClick();
+ const txt=document.getElementById('treeText').value.trim();
+ if(!txt){showCustom('🌳 情緒樹洞','你可以先寫下一句想放下的話。','不用寫很多，一句也可以。','我允許自己慢慢釋放。');return;}
+ document.getElementById('treeText').value='';
+ showCustom('🔥 樹洞已收到','你剛才寫下的話，已經在這個畫面裡化成光。內容沒有被上傳，也不會被保存。','深呼吸三次，想像那份重量慢慢離開身體。','我願意放下不再屬於我的重量。');
+}
+function saveFuture(){
+ countClick();
+ const txt=document.getElementById('futureText').value.trim();
+ if(!txt){showCustom('💌 給未來的自己','你可以先寫下一句想對未來自己說的話。','從「親愛的我」開始。','我願意與未來的自己連結。');return;}
+ const letter='親愛的未來的我：\n\n'+txt+'\n\n—— 來自今天的自己\nBoBo 自我探索館';
+ const blob=new Blob([letter],{type:'text/plain;charset=utf-8'});
+ const url=URL.createObjectURL(blob);
  const r=document.getElementById('result');
  r.style.display='block';
- r.innerHTML='<h3>🌸 BoBo 給你的今日提醒</h3><p>'+messages[mood]+'</p><p>🌿 今日小練習：把手放在心口，慢慢吸氣，慢慢吐氣，對自己說：「我可以慢慢來。」</p>';
+ r.innerHTML='<h3>💌 給未來的自己</h3><p>你的信已經準備好了，可以下載保存。</p><p><a class="btn" href="'+url+'" download="給未來的自己.txt">下載這封信</a></p><p><strong>✨ 一句陪伴自己的話：</strong>我願意把今天的真心，好好保存。</p>';
  r.scrollIntoView({behavior:'smooth',block:'center'});
 }
+function gratitude(){
+ countClick();
+ const vals=[document.getElementById('g1').value,document.getElementById('g2').value,document.getElementById('g3').value].filter(v=>v.trim());
+ if(vals.length===0){showCustom('🙏 感恩三件事','先寫下一件小小感恩也可以。','不用很大，今天還能呼吸也是一件事。','我看見生活的小幸福。');return;}
+ showCustom('🙏 今天的小幸福','你今天感恩：<br>🌸 '+vals.join('<br>🌸 '),'把這份感恩放在心裡三秒。','我接收今天的小幸福。');
+}
+(function init(){
+ let c=parseInt(localStorage.getItem('boboExploreClicks')||'0');
+ document.getElementById('clickBadge').innerText='🌸 今日探索 '+c+' 次';
+ let visits=parseInt(localStorage.getItem('boboExploreVisits')||'0')+1;
+ localStorage.setItem('boboExploreVisits',visits);
+ if(visits===1) document.getElementById('visitBadge').innerText='🌱 第一次來到探索館';
+ else document.getElementById('visitBadge').innerText='🌱 第 '+visits+' 次回到探索館';
+})();
 </script>
 </body>
 </html>
