@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BoBo 自我探索館｜Happy Love Home Healing</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:"Noto Sans TC","Microsoft JhengHei",sans-serif;background:linear-gradient(180deg,#dfffe9,#fff8d8);color:#25534d;text-align:center}
+.page{max-width:760px;margin:auto;padding:28px 18px 45px}
+a{color:inherit}.back{display:inline-block;margin-bottom:18px;color:#25534d;text-decoration:none;font-weight:800}
+.hero,.card,.more-box{background:rgba(255,255,255,.84);border-radius:30px;padding:26px 20px;margin:22px 0;box-shadow:0 10px 25px rgba(92,136,110,.14)}
+h1{font-size:32px;margin:0 0 14px;color:#7b4b83}h2{font-size:24px;margin:0 0 18px;color:#7b4b83}.subtitle{font-size:16px;line-height:1.85;color:#496b64;margin:0}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.btn,button{border:none;border-radius:999px;padding:16px 14px;background:#a77aa3;color:#fff;font-size:16px;font-weight:800;box-shadow:0 8px 18px rgba(130,88,130,.22);cursor:pointer;text-decoration:none;display:block;width:100%;font-family:inherit}.btn:hover,button:hover{background:#956892}
+select{width:100%;max-width:420px;padding:15px;border-radius:18px;border:1px solid #cfe7dc;font-size:16px;margin:8px auto 16px;display:block;font-family:inherit;color:#25534d}.result{display:none;background:#fffdf5;border-radius:28px;padding:24px 20px;margin:22px 0;line-height:1.9;color:#365c54;box-shadow:0 10px 24px rgba(92,136,110,.14);text-align:left}.result h3{text-align:center;color:#7b4b83;margin-top:0}.small-note,.notice{font-size:14px;color:#6b7d76;line-height:1.75}.cta{background:linear-gradient(135deg,#fffdf5,#e8fff3)}.more-buttons{display:flex;flex-direction:column;gap:16px;max-width:560px;margin:auto}
+footer{padding:45px 18px 25px;font-size:18px;line-height:1.8;color:#25534d}footer a{text-decoration:none;font-weight:800;display:block;margin:8px 0}.footer-brand{font-size:24px;font-weight:900;margin-top:22px}.footer-links{margin:22px 0}
+@media(max-width:520px){.grid{grid-template-columns:1fr}h1{font-size:28px}h2{font-size:22px}footer{font-size:17px}}
+</style>
+</head>
+<body>
+<div class="page">
+<a href="index.html" class="back">🏡 返回首頁</a>
+<section class="hero">
+<h1>🌿 BoBo 自我探索館</h1>
+<p class="subtitle">探索自己，從一個小小的問題開始。<br>每一次覺察，都是送給自己的溫柔禮物。<br>不需要上傳照片，只需要誠實感受此刻的自己。</p>
+</section>
+<section class="card">
+<h2>🌸 今天想探索什麼？</h2>
+<div class="grid">
+<button onclick="showResult('birthday')">🎂 生日性格</button>
+<button onclick="showResult('zodiac')">🌙 星座特質</button>
+<button onclick="showResult('selflove')">❤️ 愛自己指數</button>
+<button onclick="showResult('innerchild')">🧸 內在小孩</button>
+<button onclick="showResult('money')">💰 金錢關係</button>
+<button onclick="showResult('emotion')">🌈 今日情緒</button>
+<button onclick="showResult('stress')">💪 壓力狀態</button>
+<button onclick="showResult('relationship')">🤝 人際互動</button>
+</div>
+</section>
+<section class="card">
+<h2>🌼 快速今日探索</h2>
+<label for="mood">今天最接近你的心情：</label>
+<select id="mood">
+<option value="peace">很平靜</option>
+<option value="tired">很累</option>
+<option value="anxious">有點焦慮</option>
+<option value="lost">有點迷惘</option>
+<option value="hope">還有一點期待</option>
+</select>
+<button onclick="moodResult()">🌸 看看 BoBo 給你的提醒</button>
+<p class="small-note">這是一個溫柔的小提醒，不是診斷，也不是標籤。</p>
+</section>
+<div id="result" class="result"></div>
+<section class="card cta">
+<h2>💚 想更深入探索自己？</h2>
+<p>如果你想更深入理解自己的情緒、關係、金錢狀態，<br>可以預約 BoBo 一對一陪伴與能量探索。</p>
+<a class="btn" href="https://wa.me/6594574732" target="_blank" rel="noopener">🌿 WhatsApp 預約 BoBo</a>
+</section>
+<section class="more-box">
+<h2>🌸 更多陪伴</h2>
+<div class="more-buttons">
+<a class="btn" href="services.html">🌸 療癒服務</a>
+<a class="btn" href="free.html">🎁 免費資源</a>
+<a class="btn" href="testimonial.html">💝 學員回饋</a>
+<a class="btn" href="blog.html">🌿 部落格</a>
+<a class="btn" href="contact.html">💬 聯絡 BoBo</a>
+<a class="btn" href="index.html">🏡 回首頁</a>
+</div>
+</section>
+<p class="notice">🌱 本頁內容僅供娛樂、自我探索與個人成長參考，<br>不作為醫療、心理、法律、命理或其他專業建議。<br>本頁不需要上傳照片，也不會收集你的私人圖片。</p>
+</div>
+<footer>
+<p>© 2026 BoBo Tan</p>
+<p class="footer-brand">開心愛家園療癒<br>Happy Love Home Healing</p>
+<div class="footer-links">
+<a href="index.html">首頁</a>
+<a href="free.html">免費資源</a>
+<a href="about.html">BoBo 的故事</a>
+<a href="blog.html">部落格</a>
+<a href="policy.html">退款政策 / 服務條款 / 隱私聲明</a>
+</div>
+<p>All Rights Reserved.</p>
+</footer>
+<script>
+function showResult(type){
+ const texts={
+ birthday:['🎂 生日性格探索','你的生日像是一顆種子，藏著你與生俱來的生命節奏。今天可以問自己：我是不是太久沒有照顧真正的自己了？'],
+ zodiac:['🌙 星座特質探索','星座不是限制你，而是一面鏡子。它提醒你：有些特質不是缺點，只是需要被理解與善用。'],
+ selflove:['❤️ 愛自己指數','真正的愛自己，不是每天都很開心。而是當自己不夠好、不夠穩、不夠亮的時候，還願意陪著自己。'],
+ innerchild:['🧸 內在小孩探索','你心裡那個小小的自己，也許不是脆弱。只是她等了很久，想被你抱一抱。'],
+ money:['💰 金錢關係探索','金錢有時候不是數字問題，而是安心感、值得感與接收能力的練習。今天可以對自己說：我願意慢慢建立新的生活支持感。'],
+ emotion:['🌈 今日情緒探索','情緒不是來攻擊你的。它只是提醒你：有些感受，已經等你看見很久了。'],
+ stress:['💪 壓力狀態探索','如果你最近覺得很累，不代表你不夠努力。也許是你撐太久了，身體在提醒你：可以慢一點。'],
+ relationship:['🤝 人際互動探索','不是所有關係都需要修復。有些時候，把自己還給自己，把他人還給他人，就是最溫柔的自由。']
+ };
+ const r=document.getElementById('result');
+ r.style.display='block';
+ r.innerHTML='<h3>'+texts[type][0]+'</h3><p>'+texts[type][1]+'</p><p>🌿 今日小練習：深呼吸三次，對自己說：「我願意溫柔地理解自己。」</p>';
+ r.scrollIntoView({behavior:'smooth',block:'center'});
+}
+function moodResult(){
+ const mood=document.getElementById('mood').value;
+ const messages={
+ peace:'今天的你很適合安靜地整理自己。不需要急著做很多事，保持這份平靜，就是一種力量。',
+ tired:'今天的你需要休息，不需要再責怪自己。先喝一杯水，深呼吸三次，讓身體知道：我回來陪你了。',
+ anxious:'焦慮不是你的錯。它只是提醒你，心裡有些地方需要被安撫。今天先不要逼自己完美。',
+ lost:'迷惘的時候，不一定要馬上找到答案。先回到自己，下一步會慢慢清楚。',
+ hope:'你心裡還有一點期待，這已經很珍貴了。願你今天看見：希望還在，你也還在。'
+ };
+ const r=document.getElementById('result');
+ r.style.display='block';
+ r.innerHTML='<h3>🌸 BoBo 給你的今日提醒</h3><p>'+messages[mood]+'</p><p>🌿 今日小練習：把手放在心口，慢慢吸氣，慢慢吐氣，對自己說：「我可以慢慢來。」</p>';
+ r.scrollIntoView({behavior:'smooth',block:'center'});
+}
+</script>
+</body>
+</html>
