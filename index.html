@@ -826,7 +826,7 @@ style="background:#9b6a91;color:white;border:none;padding:15px 35px;border-radiu
 <form
 action="https://script.google.com/macros/s/AKfycbyaD3qUf3lDufUmnz3HFuaVJWs6xSz8XpaZ6tV1Gu2GfL-fc2JE6scagLpad6wj2q_f/exec"
 method="POST"target="hidden_iframe"
-onsubmit="showSubscribeSuccess()">
+onsubmit="return checkFormSpam(this,'subscribe')">
 
 <div id="subscribeSuccess"
 style="display:none;
@@ -838,7 +838,8 @@ border-radius:12px;">
 </div>
   
 <input type="hidden" name="type" value="subscribe">
-
+<input type="text" name="website" class="bobo-honey" autocomplete="off">
+<input type="hidden" name="start_time" class="start_time">
 <input name="email" type="email" placeholder="輸入你的 Email" required
 style="width:100%;padding:15px;margin:10px 0;border-radius:15px;border:1px solid #ddd;font-size:16px;">
 
@@ -856,6 +857,44 @@ style="display:none;">
 </iframe>
 
 <script>
+document.addEventListener("DOMContentLoaded", function(){
+  document.querySelectorAll(".start_time").forEach(function(input){
+    input.value = Date.now();
+  });
+});
+
+function checkFormSpam(form, type){
+  const honey = form.querySelector('[name="website"]');
+  const start = form.querySelector('[name="start_time"]');
+
+  if(honey && honey.value.trim() !== ""){
+    return false;
+  }
+
+  if(start && Date.now() - Number(start.value) < 5000){
+    alert("請稍等幾秒再送出，謝謝你。");
+    return false;
+  }
+
+  const text = form.innerText + " " + Array.from(form.elements).map(e => e.value).join(" ");
+  const badWords = ["payment","bitcoin","crypto","casino","loan","viagra","http://","https://","$3,222"];
+
+  if(badWords.some(word => text.toLowerCase().includes(word))){
+    alert("訊息內容看起來像垃圾訊息，請重新檢查。");
+    return false;
+  }
+
+  if(type === "contact"){
+    showThankYou();
+  }
+
+  if(type === "subscribe"){
+    showSubscribeSuccess();
+  }
+
+  return true;
+}
+
 function showThankYou(){
   setTimeout(function(){
     document.getElementById("contactSuccess").style.display="block";
