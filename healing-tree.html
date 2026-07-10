@@ -2,14 +2,101 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="UTF-8">
-<title>Healing Tree</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🌳 Healing Tree</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:#eef8ee;
+    text-align:center;
+}
+
+.container{
+    padding:40px 20px;
+}
+
+h1{
+    color:#2d6a4f;
+}
+
+#tree{
+    font-size:120px;
+    margin:40px 0;
+    transition:.3s;
+}
+
+button{
+    background:#2d6a4f;
+    color:white;
+    border:none;
+    padding:15px 35px;
+    font-size:18px;
+    border-radius:12px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#40916c;
+}
+
+#message{
+    margin-top:30px;
+    font-size:22px;
+    color:#2d6a4f;
+    font-weight:bold;
+}
+</style>
+
 </head>
 
 <body>
 
-<h1>🌳 Healing Tree Test</h1>
+<div class="container">
 
-<p>如果你看到這一頁，代表 GitHub 上傳成功。</p>
+<h1>🌳 Healing Tree</h1>
+
+<div id="tree">🌰</div>
+
+<button onclick="waterTree()">💧 澆水</button>
+
+<div id="message">
+種下一顆希望的種子
+</div>
+
+</div>
+
+<script>
+
+let stage = 0;
+
+function waterTree(){
+
+    stage++;
+
+    if(stage==1){
+        document.getElementById("tree").innerHTML="🌱";
+        document.getElementById("message").innerHTML="開始發芽了 🌱";
+    }
+
+    else if(stage==2){
+        document.getElementById("tree").innerHTML="🌿";
+        document.getElementById("message").innerHTML="你正在慢慢成長";
+    }
+
+    else if(stage==3){
+        document.getElementById("tree").innerHTML="🌳";
+        document.getElementById("message").innerHTML="恭喜！你的療癒樹長大了 ❤️";
+    }
+
+    else{
+        alert("🌳 已經是一棵大樹了！");
+    }
+
+}
+
+</script>
 
 </body>
 </html>
