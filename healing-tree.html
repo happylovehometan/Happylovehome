@@ -3,98 +3,379 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🌳 Healing Tree</title>
+
+<title>種下安心｜Healing Tree</title>
 
 <style>
+*{
+  box-sizing:border-box;
+}
+
 body{
-    margin:0;
-    font-family:Arial, sans-serif;
-    background:#eef8ee;
-    text-align:center;
+  margin:0;
+  min-height:100vh;
+  font-family:"Microsoft JhengHei", Arial, sans-serif;
+  background:linear-gradient(180deg,#eef9f1,#dff2e6);
+  color:#285f49;
+  text-align:center;
 }
 
 .container{
-    padding:40px 20px;
+  width:min(92%,600px);
+  margin:auto;
+  padding:35px 18px 55px;
 }
 
 h1{
-    color:#2d6a4f;
+  margin:20px 0 8px;
+  font-size:38px;
+}
+
+.subtitle{
+  color:#648174;
+  line-height:1.7;
+  margin-bottom:24px;
+}
+
+.card{
+  background:rgba(255,255,255,.86);
+  border-radius:26px;
+  padding:25px 18px;
+  box-shadow:0 12px 35px rgba(55,105,75,.15);
+}
+
+.stats{
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  margin-bottom:20px;
+}
+
+.stat{
+  flex:1;
+  background:#edf7f0;
+  border-radius:16px;
+  padding:12px 8px;
+}
+
+.stat strong{
+  display:block;
+  font-size:24px;
+}
+
+.stat span{
+  font-size:13px;
+  color:#72877c;
 }
 
 #tree{
-    font-size:120px;
-    margin:40px 0;
-    transition:.3s;
+  font-size:145px;
+  min-height:190px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:.35s;
 }
 
-button{
-    background:#2d6a4f;
-    color:white;
-    border:none;
-    padding:15px 35px;
-    font-size:18px;
-    border-radius:12px;
-    cursor:pointer;
-}
-
-button:hover{
-    background:#40916c;
+#stageName{
+  font-size:25px;
+  font-weight:bold;
+  margin:5px 0 8px;
 }
 
 #message{
-    margin-top:30px;
-    font-size:22px;
-    color:#2d6a4f;
-    font-weight:bold;
+  color:#6b8175;
+  line-height:1.7;
+  min-height:52px;
+}
+
+.progress{
+  width:100%;
+  height:13px;
+  background:#dcebe1;
+  border-radius:99px;
+  overflow:hidden;
+  margin:20px 0 8px;
+}
+
+#progressBar{
+  width:0;
+  height:100%;
+  background:linear-gradient(90deg,#58a779,#2d7454);
+  transition:.5s;
+}
+
+.progressText{
+  font-size:13px;
+  color:#708379;
+}
+
+button{
+  border:none;
+  border-radius:15px;
+  padding:15px 25px;
+  font-size:18px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+#waterButton{
+  margin-top:22px;
+  width:100%;
+  background:#449d75;
+  color:white;
+  box-shadow:0 8px 18px rgba(50,120,85,.2);
+}
+
+#waterButton:disabled{
+  background:#a9bdb1;
+  cursor:not-allowed;
+}
+
+#resetButton{
+  margin-top:14px;
+  background:#edf4ef;
+  color:#3f6f58;
+  font-size:14px;
+  padding:11px 18px;
+}
+
+.notice{
+  display:none;
+  margin-top:18px;
+  padding:14px;
+  border-radius:15px;
+  background:#fff6dc;
+  color:#78612e;
+  line-height:1.6;
+}
+
+.footer{
+  margin-top:25px;
+  font-size:12px;
+  color:#7b9084;
+  line-height:1.7;
 }
 </style>
-
 </head>
 
 <body>
 
 <div class="container">
 
-<h1>🌳 Healing Tree</h1>
+  <h1>🌳 Healing Tree</h1>
 
-<div id="tree">🌰</div>
+  <div class="subtitle">
+    每天澆水一次，陪伴自己的情緒與金錢關係。<br>
+    讓這棵樹陪你慢慢長大。
+  </div>
 
-<button onclick="waterTree()">💧 澆水</button>
+  <div class="card">
 
-<div id="message">
-種下一顆希望的種子
-</div>
+    <div class="stats">
+      <div class="stat">
+        <strong id="dayNumber">0</strong>
+        <span>完成天數</span>
+      </div>
+
+      <div class="stat">
+        <strong id="energyNumber">0</strong>
+        <span>安心能量</span>
+      </div>
+    </div>
+
+    <div id="tree">🌰</div>
+
+    <div id="stageName">希望種子</div>
+
+    <div id="message">
+      每一次澆水，都是一次溫柔陪伴。
+    </div>
+
+    <div class="progress">
+      <div id="progressBar"></div>
+    </div>
+
+    <div class="progressText">
+      21天成長進度
+    </div>
+
+    <button id="waterButton" onclick="waterTree()">
+      💧 今天澆水
+    </button>
+
+    <div class="notice" id="notice"></div>
+
+    <button id="resetButton" onclick="resetTree()">
+      重新開始
+    </button>
+
+  </div>
+
+  <div class="footer">
+    本頁內容用於自我覺察與情緒陪伴。<br>
+    © Happy Love Home Healing
+  </div>
 
 </div>
 
 <script>
 
-let stage = 0;
+const STORAGE_KEY = "boboHealingTree";
+
+let data = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {
+  days: 0,
+  energy: 0,
+  lastWaterDate: ""
+};
+
+const stages = [
+  {
+    day:0,
+    tree:"🌰",
+    name:"希望種子",
+    message:"每一次澆水，都是一次溫柔陪伴。"
+  },
+  {
+    day:1,
+    tree:"🌱",
+    name:"安心小芽",
+    message:"你願意開始，就已經不是原地踏步。"
+  },
+  {
+    day:4,
+    tree:"🌿",
+    name:"溫柔樹苗",
+    message:"你的覺察，正在長出新的可能。"
+  },
+  {
+    day:8,
+    tree:"🌵",
+    name:"穩定成長",
+    message:"你正在學習，不再只靠硬撐。"
+  },
+  {
+    day:12,
+    tree:"🌳",
+    name:"安心之樹",
+    message:"你的內在，慢慢長出了更穩定的根。"
+  },
+  {
+    day:16,
+    tree:"🌸",
+    name:"盛開之樹",
+    message:"你願意看見自己的價值，也願意接收支持。"
+  },
+  {
+    day:21,
+    tree:"🌳✨",
+    name:"希望之樹",
+    message:"你完成了21天，也種下了一個新的自己。"
+  }
+];
+
+function getToday(){
+  const now = new Date();
+
+  return now.getFullYear() + "-" +
+    String(now.getMonth()+1).padStart(2,"0") + "-" +
+    String(now.getDate()).padStart(2,"0");
+}
+
+function getStage(){
+  let current = stages[0];
+
+  for(let i=0;i<stages.length;i++){
+    if(data.days >= stages[i].day){
+      current = stages[i];
+    }
+  }
+
+  return current;
+}
+
+function render(){
+  const stage = getStage();
+  const today = getToday();
+
+  document.getElementById("dayNumber").innerText = data.days;
+  document.getElementById("energyNumber").innerText = data.energy;
+
+  document.getElementById("tree").innerText = stage.tree;
+  document.getElementById("stageName").innerText = stage.name;
+  document.getElementById("message").innerText = stage.message;
+
+  let progress = Math.min(data.days / 21 * 100,100);
+  document.getElementById("progressBar").style.width = progress + "%";
+
+  const button = document.getElementById("waterButton");
+
+  if(data.days >= 21){
+    button.disabled = true;
+    button.innerText = "🌳 21天旅程已完成";
+  }
+  else if(data.lastWaterDate === today){
+    button.disabled = true;
+    button.innerText = "✅ 今天已經澆水";
+  }
+  else{
+    button.disabled = false;
+    button.innerText = "💧 今天澆水";
+  }
+}
 
 function waterTree(){
+  const today = getToday();
 
-    stage++;
+  if(data.lastWaterDate === today){
+    showNotice("今天已經澆過水了，明天再回來陪伴你的樹。");
+    return;
+  }
 
-    if(stage==1){
-        document.getElementById("tree").innerHTML="🌱";
-        document.getElementById("message").innerHTML="開始發芽了 🌱";
-    }
+  if(data.days >= 21){
+    showNotice("你的希望之樹已經完成21天成長。");
+    return;
+  }
 
-    else if(stage==2){
-        document.getElementById("tree").innerHTML="🌿";
-        document.getElementById("message").innerHTML="你正在慢慢成長";
-    }
+  data.days++;
+  data.energy += 10;
+  data.lastWaterDate = today;
 
-    else if(stage==3){
-        document.getElementById("tree").innerHTML="🌳";
-        document.getElementById("message").innerHTML="恭喜！你的療癒樹長大了 ❤️";
-    }
+  localStorage.setItem(STORAGE_KEY,JSON.stringify(data));
 
-    else{
-        alert("🌳 已經是一棵大樹了！");
-    }
+  showNotice("🌿 今天的澆水完成了。你也為自己增加了10點安心能量。");
 
+  render();
 }
+
+function showNotice(text){
+  const notice = document.getElementById("notice");
+
+  notice.innerText = text;
+  notice.style.display = "block";
+}
+
+function resetTree(){
+  const confirmReset = confirm("確定要清除進度，重新開始嗎？");
+
+  if(!confirmReset){
+    return;
+  }
+
+  data = {
+    days:0,
+    energy:0,
+    lastWaterDate:""
+  };
+
+  localStorage.setItem(STORAGE_KEY,JSON.stringify(data));
+
+  document.getElementById("notice").style.display = "none";
+
+  render();
+}
+
+render();
 
 </script>
 
