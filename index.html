@@ -860,7 +860,98 @@ style="background:#9b6a91;color:white;border:none;padding:15px 35px;border-radiu
 
 </div>
 
+<div class="card" id="encourage">
 
+<h2>💌 寄一封鼓勵給 BoBo</h2>
+
+<p style="line-height:1.9;">
+有時候，BoBo 也需要一句溫柔的話。💛<br><br>
+如果你曾經在這裡得到一點陪伴、力量或微笑，<br>
+歡迎留一句話給我。🌻
+</p>
+
+<form
+action="https://script.google.com/macros/s/AKfycbyaD3qUf3lDufUmnz3HFuaVJWs6xSz8XpaZ6tV1Gu2GfL-fc2JE6scagLpad6wj2q_f/exec"
+method="POST"
+target="hidden_iframe"
+onsubmit="showEncourageSuccess()">
+
+<div id="encourageSuccess"
+style="
+display:none;
+margin-top:15px;
+padding:15px;
+background:#f5f9f5;
+border-radius:12px;
+line-height:1.8;
+">
+❤️ 謝謝你的鼓勵。<br>
+BoBo 收到了。<br>
+這份溫柔，我會好好收藏。🌻
+</div>
+
+<input type="hidden" name="type" value="encourage">
+
+<input type="hidden" name="website">
+
+<input
+name="name"
+placeholder="你的名字（可以匿名）"
+maxlength="60"
+style="
+width:100%;
+padding:15px;
+margin:10px 0;
+border-radius:15px;
+border:1px solid #ddd;
+font-size:16px;
+">
+
+<input
+name="email"
+type="email"
+placeholder="你的 Email（選填）"
+maxlength="120"
+style="
+width:100%;
+padding:15px;
+margin:10px 0;
+border-radius:15px;
+border:1px solid #ddd;
+font-size:16px;
+">
+
+<textarea
+name="message"
+placeholder="想鼓勵 BoBo 的話 💛"
+required
+maxlength="1500"
+style="
+width:100%;
+height:160px;
+padding:15px;
+margin:10px 0;
+border-radius:15px;
+border:1px solid #ddd;
+font-size:16px;
+"></textarea>
+
+<button type="submit"
+style="
+background:#9b6a91;
+color:white;
+border:none;
+padding:15px 35px;
+border-radius:30px;
+font-size:18px;
+">
+💌 把鼓勵寄給 BoBo
+</button>
+
+</form>
+
+</div>
+  
 <div class="card" id="subscribe">
 
 <h2>🔔 訂閱最新消息</h2>
@@ -952,6 +1043,11 @@ function showSubscribeSuccess(){
     document.getElementById("subscribeSuccess").style.display="block";
   },1000);
 }
+ function showEncourageSuccess(){
+  setTimeout(function(){
+    document.getElementById("encourageSuccess").style.display="block";
+  },1000);
+} 
 </script>
 
 
