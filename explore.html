@@ -96,6 +96,7 @@ footer{padding:45px 18px 25px;font-size:18px;line-height:1.8;color:#25534d}foote
 <button onclick="draw('seed')">🌱 希望種子</button>
 <button onclick="draw('pet')">🐾 寵物今天想說</button>
 <button onclick="draw('universe')">✨ 宇宙一句話</button>
+<button onclick="startInnerChildNumber()">🧸 內在小孩想對你說</button>
 </div>
 </section>
 
@@ -434,6 +435,26 @@ hope:[
 ["🌸 今日心情提醒","你還在，光也還在。","看向一個亮處。","我與希望同在。"]
 ]
 };
+
+
+const innerChildMessages=[
+"你已經很努力了，現在可以不用一直撐。","我知道你曾經很想被看見。","不是你的錯，你只是那時候不知道怎麼保護自己。","你可以哭，我會陪著你。","你不需要討好所有人，才值得被愛。","謝謝你一直努力長大。","現在的我，會回來抱抱你。","你可以慢慢來，不需要急著證明自己。","你的感受很重要。","我沒有忘記你。","你可以安心做自己。","你不需要再一個人承受。","我願意聽你說。","你值得被溫柔對待。","今天，我把愛帶回來給你。","你可以休息了。","你的眼淚不是麻煩。","我會站在你這邊。","你不必完美，才值得被抱抱。","我們一起慢慢長大。","我看見你的委屈。","你可以說不。","你可以有自己的選擇。","你不是被遺忘的小孩。","從今天開始，我陪你回家。"
+];
+let innerChildTimer=null,innerChildNumber=1;
+function startInnerChildNumber(){
+ countClick();
+ const r=document.getElementById('result');
+ r.style.display='block';
+ r.innerHTML='<h3>🧸 內在小孩｜此刻最想對你說的一段話</h3><p style="text-align:center">數字正在流動……<br>憑感覺按一下，讓它停下來。</p><div id="innerChildNumber" style="font-size:64px;font-weight:900;color:#7b4b83;text-align:center;margin:18px 0">1</div><button onclick="stopInnerChildNumber()">🧸 按一下停下來</button><p class="small-note" style="text-align:center">只供娛樂、自我探索與溫柔陪伴。</p>';
+ r.scrollIntoView({behavior:'smooth',block:'center'});
+ clearInterval(innerChildTimer);
+ innerChildTimer=setInterval(()=>{innerChildNumber=Math.floor(Math.random()*25)+1;const el=document.getElementById('innerChildNumber');if(el)el.innerText=innerChildNumber;},70);
+}
+function stopInnerChildNumber(){
+ clearInterval(innerChildTimer);innerChildTimer=null;
+ const n=innerChildNumber,msg=innerChildMessages[n-1],r=document.getElementById('result');
+ r.innerHTML='<h3>🧸 內在小孩想對你說</h3><div style="font-size:54px;font-weight:900;color:#7b4b83;text-align:center;margin:12px 0">'+n+'</div><p style="font-size:20px;text-align:center"><strong>'+msg+'</strong></p><p><strong>🌿 今日小練習：</strong>把手放在心口，對小時候的自己輕輕說：「我聽見你了。」</p><p><strong>✨ 一句陪伴自己的話：</strong>我願意把自己抱回來。</p><button onclick="startInnerChildNumber()">🌸 再感受一次</button>';
+}
 
 function pick(arr){return arr[Math.floor(Math.random()*arr.length)]}
 function countClick(){
