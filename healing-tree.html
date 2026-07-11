@@ -1,366 +1,770 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>種下安心｜Healing Tree</title>
+<title>Healing Tree｜開心愛家園療癒</title>
 
 <style>
+
 *{
   box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
 }
 
 body{
   margin:0;
   min-height:100vh;
-  font-family:"Microsoft JhengHei", Arial, sans-serif;
-  background:linear-gradient(180deg,#eef9f1,#dff2e6);
-  color:#285f49;
-  text-align:center;
+  font-family:"Microsoft JhengHei","Noto Sans TC",Arial,sans-serif;
+  background:
+    radial-gradient(circle at top,#b7ffdf 0%,transparent 34%),
+    linear-gradient(180deg,#d9fff0 0%,#effff5 55%,#fffbe8 100%);
+  color:#245f50;
+}
+
+.topbar{
+  width:100%;
+  padding:22px 20px 4px;
+}
+
+.topbar-inner{
+  width:min(92%,650px);
+  margin:auto;
+}
+
+.topbar a{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  color:#245f50;
+  text-decoration:none;
+  font-size:20px;
+  font-weight:700;
+  padding:10px 14px;
+  border-radius:14px;
+  transition:.25s;
+}
+
+.topbar a:hover{
+  background:rgba(255,255,255,.55);
+  transform:translateX(-2px);
 }
 
 .container{
-  width:min(92%,600px);
+  width:min(92%,650px);
   margin:auto;
-  padding:35px 18px 55px;
+  padding:15px 0 50px;
 }
 
-h1{
-  margin:20px 0 8px;
-  font-size:38px;
+.hero{
+  text-align:center;
+  padding:18px 10px 26px;
 }
 
-.subtitle{
-  color:#648174;
-  line-height:1.7;
-  margin-bottom:24px;
+.hero h1{
+  margin:0 0 18px;
+  font-size:clamp(38px,8vw,58px);
+  line-height:1.2;
+  color:#185c4d;
+}
+
+.hero p{
+  margin:8px 0;
+  color:#5d8378;
+  font-size:18px;
+  line-height:1.8;
 }
 
 .card{
-  background:rgba(255,255,255,.86);
-  border-radius:26px;
-  padding:25px 18px;
-  box-shadow:0 12px 35px rgba(55,105,75,.15);
+  background:rgba(255,255,255,.88);
+  border:1px solid rgba(255,255,255,.9);
+  border-radius:32px;
+  padding:30px 24px;
+  box-shadow:
+    0 18px 45px rgba(42,112,83,.14),
+    inset 0 1px 0 rgba(255,255,255,.9);
+  backdrop-filter:blur(8px);
 }
 
 .stats{
-  display:flex;
-  justify-content:center;
-  gap:12px;
-  margin-bottom:20px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+  margin-bottom:24px;
 }
 
 .stat{
-  flex:1;
-  background:#edf7f0;
-  border-radius:16px;
-  padding:12px 8px;
+  background:#edf8f1;
+  border-radius:22px;
+  padding:20px 10px;
+  text-align:center;
 }
 
 .stat strong{
   display:block;
-  font-size:24px;
+  font-size:34px;
+  color:#206b55;
 }
 
 .stat span{
-  font-size:13px;
-  color:#72877c;
+  display:block;
+  margin-top:5px;
+  color:#728b82;
+  font-size:15px;
+}
+
+.tree-area{
+  text-align:center;
+  padding:10px 0 4px;
 }
 
 #tree{
-  font-size:145px;
-  min-height:190px;
+  min-height:250px;
   display:flex;
   align-items:center;
   justify-content:center;
-  transition:.35s;
+  font-size:180px;
+  line-height:1;
+  transition:.4s;
+  animation:treeFloat 4s ease-in-out infinite;
 }
 
 #stageName{
-  font-size:25px;
-  font-weight:bold;
-  margin:5px 0 8px;
+  margin:8px 0 12px;
+  font-size:34px;
+  font-weight:800;
+  color:#205f50;
 }
 
 #message{
-  color:#6b8175;
-  line-height:1.7;
-  min-height:52px;
+  min-height:58px;
+  color:#69867d;
+  font-size:18px;
+  line-height:1.75;
+  padding:0 5px;
 }
 
 .progress{
   width:100%;
-  height:13px;
+  height:14px;
+  margin:28px 0 10px;
   background:#dcebe1;
   border-radius:99px;
   overflow:hidden;
-  margin:20px 0 8px;
 }
 
 #progressBar{
-  width:0;
+  width:0%;
   height:100%;
-  background:linear-gradient(90deg,#58a779,#2d7454);
-  transition:.5s;
+  background:linear-gradient(90deg,#56ad7d,#24885f);
+  border-radius:99px;
+  transition:.55s;
 }
 
 .progressText{
-  font-size:13px;
-  color:#708379;
+  text-align:center;
+  color:#758a82;
+  font-size:14px;
+  margin-bottom:18px;
 }
 
 button{
-  border:none;
-  border-radius:15px;
-  padding:15px 25px;
-  font-size:18px;
-  font-weight:bold;
+  width:100%;
+  border:0;
+  border-radius:19px;
+  font-family:inherit;
   cursor:pointer;
+  transition:.25s;
 }
 
 #waterButton{
-  margin-top:22px;
-  width:100%;
-  background:#449d75;
-  color:white;
-  box-shadow:0 8px 18px rgba(50,120,85,.2);
+  margin-top:12px;
+  padding:18px 20px;
+  background:linear-gradient(135deg,#52b184,#2e9870);
+  color:#fff;
+  font-size:22px;
+  font-weight:800;
+  box-shadow:0 12px 24px rgba(46,152,112,.23);
+}
+
+#waterButton:hover{
+  transform:translateY(-2px);
+  box-shadow:0 16px 28px rgba(46,152,112,.28);
 }
 
 #waterButton:disabled{
-  background:#a9bdb1;
+  background:#acc5b9;
+  color:#f6fffa;
   cursor:not-allowed;
-}
-
-#resetButton{
-  margin-top:14px;
-  background:#edf4ef;
-  color:#3f6f58;
-  font-size:14px;
-  padding:11px 18px;
+  transform:none;
+  box-shadow:none;
 }
 
 .notice{
   display:none;
   margin-top:18px;
-  padding:14px;
-  border-radius:15px;
-  background:#fff6dc;
-  color:#78612e;
-  line-height:1.6;
+  padding:17px 16px;
+  border-radius:18px;
+  background:#fff6d8;
+  border:1px solid #f4e5aa;
+  color:#755f2d;
+  font-size:17px;
+  line-height:1.7;
+  text-align:center;
 }
 
-.footer{
-  margin-top:25px;
-  font-size:12px;
-  color:#7b9084;
-  line-height:1.7;
+#resetButton{
+  width:auto;
+  display:block;
+  margin:18px auto 0;
+  padding:13px 25px;
+  background:#eef6f0;
+  color:#47715f;
+  font-size:16px;
+  font-weight:700;
 }
+
+#resetButton:hover{
+  background:#e2f0e7;
+}
+
+.bobo-message{
+  margin:30px 0 0;
+  padding:24px 22px;
+  background:rgba(255,255,255,.72);
+  border-radius:26px;
+  text-align:center;
+  box-shadow:0 12px 32px rgba(53,105,76,.09);
+}
+
+.bobo-message h2{
+  margin:0 0 12px;
+  color:#875681;
+  font-size:25px;
+}
+
+.bobo-message p{
+  margin:0;
+  color:#617e74;
+  font-size:17px;
+  line-height:1.8;
+}
+
+footer{
+  margin-top:40px;
+  padding:35px 18px 70px;
+  text-align:center;
+  color:#477165;
+  line-height:1.85;
+}
+
+footer h3{
+  margin:22px 0 4px;
+  font-size:23px;
+}
+
+footer p{
+  margin:9px 0;
+}
+
+footer a{
+  color:#2f6b5a;
+  text-decoration:none;
+  font-weight:700;
+}
+
+footer a:hover{
+  text-decoration:underline;
+}
+
+@keyframes treeFloat{
+  0%,100%{
+    transform:translateY(0);
+  }
+
+  50%{
+    transform:translateY(-7px);
+  }
+}
+
+@media(max-width:560px){
+
+  .topbar{
+    padding-top:18px;
+  }
+
+  .topbar a{
+    font-size:18px;
+  }
+
+  .container{
+    width:90%;
+  }
+
+  .hero{
+    padding-top:8px;
+  }
+
+  .hero h1{
+    font-size:42px;
+  }
+
+  .hero p{
+    font-size:17px;
+  }
+
+  .card{
+    padding:24px 18px;
+    border-radius:28px;
+  }
+
+  #tree{
+    min-height:220px;
+    font-size:155px;
+  }
+
+  #stageName{
+    font-size:29px;
+  }
+
+  #message{
+    font-size:17px;
+  }
+
+}
+
 </style>
+
 </head>
 
 <body>
 
-<div class="container">
+<header class="topbar">
 
-  <h1>🌳 Healing Tree</h1>
+  <div class="topbar-inner">
 
-  <div class="subtitle">
-    每天澆水一次，陪伴自己的情緒與金錢關係。<br>
-    讓這棵樹陪你慢慢長大。
+    <a href="index.html">
+      ← 回到首頁
+    </a>
+
   </div>
 
-  <div class="card">
+</header>
+
+
+<main class="container">
+
+  <section class="hero">
+
+    <h1>🌳 Healing Tree</h1>
+
+    <p>
+      每天澆水一次，陪伴自己的情緒與金錢關係。
+    </p>
+
+    <p>
+      讓這棵樹陪你慢慢長大。
+    </p>
+
+  </section>
+
+
+  <section class="card">
 
     <div class="stats">
+
       <div class="stat">
+
         <strong id="dayNumber">0</strong>
+
         <span>完成天數</span>
+
       </div>
 
       <div class="stat">
+
         <strong id="energyNumber">0</strong>
+
         <span>安心能量</span>
+
       </div>
+
     </div>
 
-    <div id="tree">🌰</div>
 
-    <div id="stageName">希望種子</div>
+    <div class="tree-area">
 
-    <div id="message">
-      每一次澆水，都是一次溫柔陪伴。
+      <div id="tree">🌰</div>
+
+      <div id="stageName">
+        希望種子
+      </div>
+
+      <div id="message">
+        每一次澆水，都是一次溫柔陪伴。
+      </div>
+
     </div>
+
 
     <div class="progress">
+
       <div id="progressBar"></div>
+
     </div>
 
     <div class="progressText">
       21天成長進度
     </div>
 
+
     <button id="waterButton" onclick="waterTree()">
+
       💧 今天澆水
+
     </button>
+
 
     <div class="notice" id="notice"></div>
 
+
     <button id="resetButton" onclick="resetTree()">
+
       重新開始
+
     </button>
 
-  </div>
+  </section>
 
-  <div class="footer">
-    本頁內容用於自我覺察與情緒陪伴。<br>
-    © Happy Love Home Healing
-  </div>
 
-</div>
+  <section class="bobo-message">
+
+    <h2>🌷 BoBo 今日陪伴語</h2>
+
+    <p id="boboText">
+      小小一步，也是在照顧自己的生活。
+    </p>
+
+  </section>
+
+</main>
+
+
+<footer>
+
+  <p>
+    本內容屬於個人成長與情緒陪伴分享，<br>
+    不涉及醫療、臨床診斷或宗教預言。
+  </p>
+
+  <p>
+    © 2026 BoBo Tan
+  </p>
+
+  <h3>
+    🌿 開心愛家園療癒
+  </h3>
+
+  <p>
+    Happy Love Home Healing
+  </p>
+
+  <p>
+    ❤️ BoBo 我在<br>
+    黑暗中的光・生活的燈塔
+  </p>
+
+  <p>
+    <a href="index.html">
+      返回首頁
+    </a>
+  </p>
+
+  <p>
+    All Rights Reserved.
+  </p>
+
+</footer>
+
 
 <script>
 
-const STORAGE_KEY = "boboHealingTree";
+const STORAGE_KEY = "boboHealingTreeFinal";
 
 let data = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {
-  days: 0,
-  energy: 0,
-  lastWaterDate: ""
+  days:0,
+  energy:0,
+  lastWaterDate:""
 };
 
+
 const stages = [
+
   {
     day:0,
     tree:"🌰",
     name:"希望種子",
     message:"每一次澆水，都是一次溫柔陪伴。"
   },
+
   {
     day:1,
     tree:"🌱",
     name:"安心小芽",
     message:"你願意開始，就已經不是原地踏步。"
   },
+
   {
     day:4,
     tree:"🌿",
     name:"溫柔樹苗",
     message:"你的覺察，正在長出新的可能。"
   },
+
   {
     day:8,
-    tree:"🌵",
+    tree:"🪴",
     name:"穩定成長",
     message:"你正在學習，不再只靠硬撐。"
   },
+
   {
     day:12,
     tree:"🌳",
     name:"安心之樹",
     message:"你的內在，慢慢長出了更穩定的根。"
   },
+
   {
     day:16,
     tree:"🌸",
     name:"盛開之樹",
     message:"你願意看見自己的價值，也願意接收支持。"
   },
+
   {
     day:21,
     tree:"🌳✨",
     name:"希望之樹",
     message:"你完成了21天，也種下了一個新的自己。"
   }
+
 ];
 
+
+const boboMessages = [
+
+  "小小一步，也是在照顧自己的生活。",
+
+  "你不需要一次改變全部，今天先陪自己一下。",
+
+  "慢慢走，也是在前進。",
+
+  "你的價值，不由收入或他人的眼光決定。",
+
+  "今天不用急著成長，先好好呼吸。",
+
+  "每一次照顧自己，都是在替未來的自己澆水。",
+
+  "我允許生活，用溫柔而穩定的方式支持我。",
+
+  "金錢不是用來證明價值，而是支持生活的工具。",
+
+  "我願意看見不安，也願意選擇新的可能。",
+
+  "今天的你，已經做得很好了。"
+
+];
+
+
 function getToday(){
+
   const now = new Date();
 
   return now.getFullYear() + "-" +
     String(now.getMonth()+1).padStart(2,"0") + "-" +
     String(now.getDate()).padStart(2,"0");
+
 }
 
+
 function getStage(){
+
   let current = stages[0];
 
   for(let i=0;i<stages.length;i++){
+
     if(data.days >= stages[i].day){
+
       current = stages[i];
+
     }
+
   }
 
   return current;
+
 }
+
+
+function getDailyMessage(){
+
+  const today = new Date();
+
+  const number =
+    today.getFullYear() +
+    today.getMonth() +
+    today.getDate();
+
+  return boboMessages[number % boboMessages.length];
+
+}
+
 
 function render(){
+
   const stage = getStage();
+
   const today = getToday();
 
-  document.getElementById("dayNumber").innerText = data.days;
-  document.getElementById("energyNumber").innerText = data.energy;
+  document.getElementById("dayNumber").innerText =
+    data.days;
 
-  document.getElementById("tree").innerText = stage.tree;
-  document.getElementById("stageName").innerText = stage.name;
-  document.getElementById("message").innerText = stage.message;
+  document.getElementById("energyNumber").innerText =
+    data.energy;
 
-  let progress = Math.min(data.days / 21 * 100,100);
-  document.getElementById("progressBar").style.width = progress + "%";
+  document.getElementById("tree").innerText =
+    stage.tree;
 
-  const button = document.getElementById("waterButton");
+  document.getElementById("stageName").innerText =
+    stage.name;
+
+  document.getElementById("message").innerText =
+    stage.message;
+
+  document.getElementById("boboText").innerText =
+    getDailyMessage();
+
+  const progress =
+    Math.min((data.days / 21) * 100,100);
+
+  document.getElementById("progressBar").style.width =
+    progress + "%";
+
+  const button =
+    document.getElementById("waterButton");
+
 
   if(data.days >= 21){
+
     button.disabled = true;
-    button.innerText = "🌳 21天旅程已完成";
+
+    button.innerText =
+      "🌳 21天旅程已完成";
+
   }
+
   else if(data.lastWaterDate === today){
+
     button.disabled = true;
-    button.innerText = "✅ 今天已經澆水";
+
+    button.innerText =
+      "✅ 今天已經澆水";
+
   }
+
   else{
+
     button.disabled = false;
-    button.innerText = "💧 今天澆水";
+
+    button.innerText =
+      "💧 今天澆水";
+
   }
+
 }
+
 
 function waterTree(){
+
   const today = getToday();
 
+
   if(data.lastWaterDate === today){
-    showNotice("今天已經澆過水了，明天再回來陪伴你的樹。");
+
+    showNotice(
+      "今天已經澆過水了，明天再回來陪伴你的樹。"
+    );
+
     return;
+
   }
+
 
   if(data.days >= 21){
-    showNotice("你的希望之樹已經完成21天成長。");
+
+    showNotice(
+      "你的希望之樹已經完成21天成長。"
+    );
+
     return;
+
   }
+
 
   data.days++;
+
   data.energy += 10;
+
   data.lastWaterDate = today;
 
-  localStorage.setItem(STORAGE_KEY,JSON.stringify(data));
 
-  showNotice("🌿 今天的澆水完成了。你也為自己增加了10點安心能量。");
+  localStorage.setItem(
+    STORAGE_KEY,
+    JSON.stringify(data)
+  );
+
+
+  showNotice(
+    "🌿 今天的澆水完成了。你也為自己增加了10點安心能量。"
+  );
+
 
   render();
+
 }
+
 
 function showNotice(text){
-  const notice = document.getElementById("notice");
+
+  const notice =
+    document.getElementById("notice");
 
   notice.innerText = text;
+
   notice.style.display = "block";
+
 }
 
+
 function resetTree(){
-  const confirmReset = confirm("確定要清除進度，重新開始嗎？");
+
+  const confirmReset = confirm(
+    "確定要清除全部進度，重新開始嗎？"
+  );
+
 
   if(!confirmReset){
+
     return;
+
   }
+
 
   data = {
     days:0,
@@ -368,12 +772,21 @@ function resetTree(){
     lastWaterDate:""
   };
 
-  localStorage.setItem(STORAGE_KEY,JSON.stringify(data));
 
-  document.getElementById("notice").style.display = "none";
+  localStorage.setItem(
+    STORAGE_KEY,
+    JSON.stringify(data)
+  );
+
+
+  document.getElementById("notice").style.display =
+    "none";
+
 
   render();
+
 }
+
 
 render();
 
