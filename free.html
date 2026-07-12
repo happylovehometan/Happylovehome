@@ -80,6 +80,87 @@
 }
 </style>
 
+
+<style>
+/* ===== 新增：情緒泡泡 / 蝴蝶擁抱 / 今晚放下 ===== */
+.bubble-zone{
+  min-height:300px;
+  position:relative;
+  overflow:hidden;
+  margin:22px 0;
+  border-radius:28px;
+  background:linear-gradient(180deg,#fff8fc,#f3fbff);
+}
+.emotion-bubble{
+  position:absolute;
+  width:92px;height:92px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  padding:10px;text-align:center;font-weight:700;
+  color:#765b72;cursor:pointer;user-select:none;
+  background:rgba(255,255,255,.72);
+  box-shadow:0 8px 22px rgba(155,106,145,.18);
+  animation:bubbleFloat 3s ease-in-out infinite alternate;
+  transition:.55s;
+}
+.emotion-bubble.pop{
+  transform:scale(1.7);
+  opacity:0;
+}
+@keyframes bubbleFloat{
+  from{transform:translateY(8px)}
+  to{transform:translateY(-10px)}
+}
+.bubble-message{
+  min-height:34px;
+  margin-top:15px;
+  line-height:1.8;
+  color:#95638f;
+  font-weight:700;
+}
+.butterfly-wrap{
+  display:flex;
+  justify-content:center;
+  gap:35px;
+  margin:35px auto;
+}
+.butterfly-heart{
+  width:110px;height:110px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:48px;
+  background:#fff7fb;
+  opacity:.35;
+  transform:scale(.88);
+  transition:.45s;
+}
+.butterfly-heart.active{
+  opacity:1;
+  transform:scale(1.12);
+  box-shadow:0 0 30px rgba(231,164,245,.55);
+}
+.butterfly-status{
+  min-height:60px;
+  line-height:1.8;
+  color:#765b72;
+  font-weight:700;
+}
+.release-orb{
+  width:190px;height:190px;border-radius:50%;
+  margin:28px auto;
+  display:flex;align-items:center;justify-content:center;
+  padding:25px;text-align:center;
+  background:linear-gradient(145deg,#fff3fa,#eee9ff);
+  box-shadow:0 10px 30px rgba(155,105,155,.20);
+  color:#95638f;font-size:21px;font-weight:800;line-height:1.6;
+  transition:.5s;
+}
+.release-orb.reveal{animation:releaseGlow 1s ease}
+@keyframes releaseGlow{
+  0%{transform:scale(.85);opacity:.35}
+  60%{transform:scale(1.08)}
+  100%{transform:scale(1);opacity:1}
+}
+</style>
+
 </head>
 <body>
 
@@ -154,6 +235,44 @@
       <p class="interactive-note">
         本互動僅供娛樂、自我探索與個人成長參考。
       </p>
+    </section>
+
+
+    <!-- 情緒泡泡 -->
+    <section class="resource-card bobo-interactive-card">
+      <h2>🫧 情緒泡泡</h2>
+      <p>看見現在的感受。<br><br>輕輕點一下泡泡，讓它慢慢離開。</p>
+      <div class="bubble-zone" id="bubbleZone">
+        <div class="emotion-bubble" style="left:6%;top:28px;animation-delay:.2s" onclick="popBubble(this)">委屈</div>
+        <div class="emotion-bubble" style="right:7%;top:20px;animation-delay:.8s" onclick="popBubble(this)">疲累</div>
+        <div class="emotion-bubble" style="left:36%;top:112px;animation-delay:.4s" onclick="popBubble(this)">害怕</div>
+        <div class="emotion-bubble" style="left:8%;bottom:18px;animation-delay:1s" onclick="popBubble(this)">想念</div>
+        <div class="emotion-bubble" style="right:8%;bottom:22px;animation-delay:.6s" onclick="popBubble(this)">生氣</div>
+      </div>
+      <div class="bubble-message" id="bubbleMessage">你不需要一次放下全部。</div>
+      <button type="button" class="btn" onclick="resetBubbles()">🫧 再陪自己一次</button>
+    </section>
+
+    <!-- 蝴蝶擁抱 -->
+    <section class="resource-card bobo-interactive-card">
+      <h2>💗 蝴蝶擁抱</h2>
+      <p>雙手交叉放在胸前或肩膀。<br><br>跟著左右節奏，輕輕拍一拍自己。</p>
+      <div class="butterfly-wrap">
+        <div class="butterfly-heart" id="leftHeart">💗</div>
+        <div class="butterfly-heart" id="rightHeart">💗</div>
+      </div>
+      <div class="butterfly-status" id="butterflyStatus">準備好時，按下開始。</div>
+      <button type="button" class="btn" id="butterflyBtn" onclick="toggleButterfly()">💗 開始 60 秒</button>
+      <p class="interactive-note">請以自己感到舒服的力度與速度進行；如感到不適，請停止並回到自然呼吸。</p>
+    </section>
+
+    <!-- 今晚放下什麼 -->
+    <section class="resource-card bobo-interactive-card">
+      <h2>🌙 今晚放下什麼</h2>
+      <p>今天已經結束了。<br><br>有些東西，不需要一起帶進夢裡。</p>
+      <div class="release-orb" id="releaseOrb">🌙<br>今晚，我可以放下……</div>
+      <button type="button" class="btn" onclick="drawRelease()">🌙 看看今晚放下什麼</button>
+      <div class="inner-result" id="releaseResult"></div>
     </section>
 
     <!-- 訂閱 -->
@@ -339,6 +458,92 @@ function toggleAgeNumber(){
     "<br><br>今天，請對那個小小的自己說：<br>「我回來陪你了。」";
 
   result.style.display = "block";
+}
+</script>
+
+
+<script>
+function popBubble(el){
+  if(el.classList.contains("pop")) return;
+  el.classList.add("pop");
+  const left = document.querySelectorAll(".emotion-bubble:not(.pop)").length;
+  document.getElementById("bubbleMessage").textContent =
+    left === 0 ? "今天先到這裡。你已經陪自己走了一小段。💛" :
+    "很好。你不需要一次放下全部，慢慢來。";
+}
+function resetBubbles(){
+  document.querySelectorAll(".emotion-bubble").forEach(function(b){
+    b.classList.remove("pop");
+  });
+  document.getElementById("bubbleMessage").textContent="你不需要一次放下全部。";
+}
+
+let butterflyRunning=false;
+let butterflyTimer=null;
+let butterflyEndTimer=null;
+let butterflySide=0;
+
+function toggleButterfly(){
+  const left=document.getElementById("leftHeart");
+  const right=document.getElementById("rightHeart");
+  const status=document.getElementById("butterflyStatus");
+  const btn=document.getElementById("butterflyBtn");
+
+  if(butterflyRunning){
+    stopButterfly("慢慢停下來。感受一下現在的自己。💛");
+    return;
+  }
+
+  butterflyRunning=true;
+  butterflySide=0;
+  btn.textContent="⏸ 停止";
+  status.textContent="左、右、左、右……輕輕陪著自己。";
+
+  function beat(){
+    left.classList.toggle("active",butterflySide===0);
+    right.classList.toggle("active",butterflySide===1);
+    status.textContent=butterflySide===0 ? "💗 左邊，輕輕拍" : "💗 右邊，輕輕拍";
+    butterflySide=1-butterflySide;
+  }
+
+  beat();
+  butterflyTimer=setInterval(beat,900);
+  butterflyEndTimer=setTimeout(function(){
+    stopButterfly("60 秒完成。謝謝你，剛剛有好好陪自己。💗");
+  },60000);
+}
+
+function stopButterfly(message){
+  butterflyRunning=false;
+  clearInterval(butterflyTimer);
+  clearTimeout(butterflyEndTimer);
+  document.getElementById("leftHeart").classList.remove("active");
+  document.getElementById("rightHeart").classList.remove("active");
+  document.getElementById("butterflyStatus").textContent=message;
+  document.getElementById("butterflyBtn").textContent="💗 再陪自己 60 秒";
+}
+
+const releaseMessages=[
+  ["別人的眼光","今晚，不需要再猜別人怎麼看你。先把自己帶回來。"],
+  ["今天的自責","你已經走完今天了。沒有做好的地方，明天再慢慢整理。"],
+  ["沒有答案的事","不是每一件事，都需要今晚想明白。"],
+  ["一段期待","允許事情有自己的時間，也允許自己先休息。"],
+  ["過度努力","今晚不用證明自己。休息，也值得。"],
+  ["一個人的情緒","那是對方的感受，不需要全部由你背著。"],
+  ["對過去的反覆想像","事情已經發生。今晚，先回到此刻的床、呼吸和自己。"],
+  ["明天的擔心","明天還沒有來。今晚，只需要好好睡覺。"]
+];
+
+function drawRelease(){
+  const item=releaseMessages[Math.floor(Math.random()*releaseMessages.length)];
+  const orb=document.getElementById("releaseOrb");
+  const result=document.getElementById("releaseResult");
+  orb.classList.remove("reveal");
+  void orb.offsetWidth;
+  orb.classList.add("reveal");
+  orb.innerHTML="🌙<br>"+item[0];
+  result.innerHTML="<strong>BoBo 給你的今晚提醒</strong><br><br>"+item[1]+"<br><br>對自己說：<br>「今晚，我允許自己先放下。」";
+  result.style.display="block";
 }
 </script>
 
