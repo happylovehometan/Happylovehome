@@ -7,44 +7,46 @@
   <link rel="stylesheet" href="style.css?v=recommend-v2" />
 
 <style>
-.more-buttons{
-  display:flex !important;
-  flex-direction:column !important;
-  align-items:center !important;
-  gap:22px !important;
+<style>
+.more-buttons-fixed{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:22px;
 }
 
-.more-buttons > .btn{
-  display:block !important;
+.more-buttons-fixed .btn{
   width:86% !important;
   max-width:460px !important;
-  margin:0 auto !important;
+  margin:0 !important;
   padding:14px 18px !important;
   min-height:0 !important;
-  font-size:1.12rem !important;
+  font-size:1.08rem !important;
   line-height:1.35 !important;
   border-radius:999px !important;
-  box-sizing:border-box !important;
 }
 
-.more-buttons > .btn div:first-child{
-  font-size:1.12rem !important;
+.international-btn span,
+.international-btn small{
+  display:block;
 }
 
-.more-buttons > .btn div:last-child{
-  font-size:.9rem !important;
-  margin-top:4px !important;
+.international-btn small{
+  margin-top:4px;
+  font-size:.88rem;
+  font-weight:400;
 }
 
 @media(max-width:600px){
-  .more-buttons{
-    gap:20px !important;
+  .more-buttons-fixed{
+    gap:20px;
   }
 
-  .more-buttons > .btn{
+  .more-buttons-fixed .btn{
     width:88% !important;
+    max-width:420px !important;
     padding:13px 16px !important;
-    font-size:1.05rem !important;
+    font-size:1.02rem !important;
   }
 }
 </style>
@@ -247,40 +249,46 @@
     </section>
 
     <!-- 更多陪伴 -->
-    <section class="resource-card">
-      <h2>🌷 更多陪伴</h2>
+<section class="resource-card">
+  <h2>🌷 更多陪伴</h2>
 
-      <div class="more-buttons-fixed">
+  <div class="more-buttons-fixed">
 
-        <a class="btn" href="story.html" style="display:block;width:100%;max-width:540px;margin:0 auto 24px !important;">🌈 BoBo 的故事</a>
+    <a class="btn" href="story.html">🌈 BoBo 的故事</a>
 
-        <a class="btn" href="healing.html" style="display:block;width:100%;max-width:540px;margin:0 auto 24px !important;">💜 療癒服務</a>
+    <a class="btn" href="healing.html">💜 療癒服務</a>
 
-        <a class="btn" href="free.html" style="display:block;width:100%;max-width:540px;margin:0 auto 24px !important;">🎁 免費療癒資源館</a>
+    <a class="btn" href="free.html">🎁 免費療癒資源館</a>
 
-        <a class="btn" href="seed.html" style="display:block;width:100%;max-width:540px;margin:0 auto 24px !important;">🌻 幸福種子計畫</a>
+    <a class="btn" href="seed.html">🌻 幸福種子計畫</a>
 
-        <a class="btn" href="testimonial.html" style="display:block;width:100%;max-width:540px;margin:0 auto 24px !important;">🌟 學員回饋</a>
+    <a class="btn" href="testimonial.html">🌟 學員回饋</a>
 
-        <a class="btn" href="blog.html" style="display:block;width:100%;max-width:540px;margin:0 auto 24px !important;">🌿 BoBo 部落格</a>
+    <a class="btn" href="blog.html">🌿 BoBo 部落格</a>
 
-        <a class="btn" href="recommend.html" style="display:block;width:100%;max-width:540px;margin:0 auto 24px !important;">🌍 BoBo 慢活推薦館</a>
+    <a class="btn" href="recommend.html">🌍 BoBo 慢活推薦館</a>
 
-        <a class="btn" href="explore.html" style="display:block;width:100%;max-width:540px;margin:0 auto 24px !important;">🌿 BoBo 自我探索館</a>
+    <a class="btn" href="explore.html">🌿 BoBo 自我探索館</a>
 
-        <a class="btn" href="healing-tree.html" style="display:block;width:100%;max-width:540px;margin:0 auto 24px !important;">🌳 種下安心 Healing Tree</a>
+    <a class="btn" href="healing-tree.html">
+      🌳 種下安心 Healing Tree
+    </a>
 
-        <a class="btn" href="international.html" style="display:block;width:100%;max-width:540px;margin:0 auto 24px !important;">
-          <div style="font-size:1.25rem;font-weight:700;">🌍 International Visitors</div>
-          <div style="font-size:0.95rem;font-weight:400;margin-top:6px;">English Services</div>
-        </a>
+    <a class="btn international-btn" href="international.html">
+      <span>🌍 International Visitors</span>
+      <small>English Services</small>
+    </a>
 
-        <a class="btn" href="https://wa.me/6594574732" style="display:block;width:100%;max-width:540px;margin:0 auto 24px !important;">📱 免費諮詢</a>
+    <a class="btn" href="https://wa.me/6594574732">
+      📱 免費諮詢
+    </a>
 
-        <a class="btn" href="index.html" style="display:block;width:100%;max-width:540px;margin:0 auto !important;">🏠 返回首頁</a>
+    <a class="btn" href="index.html">
+      🏡 返回首頁
+    </a>
 
-      </div>
-    </section>
+  </div>
+</section>
 
 
   </main>
