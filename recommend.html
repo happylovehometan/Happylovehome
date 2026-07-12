@@ -7,18 +7,48 @@
   <link rel="stylesheet" href="style.css?v=recommend-v2" />
 
 <style>
-.btn-stack{
+.more-buttons{
   display:flex !important;
   flex-direction:column !important;
-  gap:18px !important;
+  align-items:center !important;
+  gap:22px !important;
 }
 
-.btn-stack .btn{
+.more-buttons > .btn{
   display:block !important;
-  width:100% !important;
-  margin:0 !important;
+  width:86% !important;
+  max-width:460px !important;
+  margin:0 auto !important;
+  padding:14px 18px !important;
+  min-height:0 !important;
+  font-size:1.12rem !important;
+  line-height:1.35 !important;
+  border-radius:999px !important;
+  box-sizing:border-box !important;
+}
+
+.more-buttons > .btn div:first-child{
+  font-size:1.12rem !important;
+}
+
+.more-buttons > .btn div:last-child{
+  font-size:.9rem !important;
+  margin-top:4px !important;
+}
+
+@media(max-width:600px){
+  .more-buttons{
+    gap:20px !important;
+  }
+
+  .more-buttons > .btn{
+    width:88% !important;
+    padding:13px 16px !important;
+    font-size:1.05rem !important;
+  }
 }
 </style>
+  
 </head>
 <body class="soft-page">
 
