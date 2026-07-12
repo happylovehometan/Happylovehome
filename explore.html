@@ -26,7 +26,44 @@ textarea{min-height:110px;line-height:1.7}
 .more-buttons{
 display:flex;
 flex-direction:column;
+align-items:center;
+gap:20px;
+}
+
+.more-buttons .btn{
+width:86%;
+max-width:460px;
+margin:0;
+padding:13px 18px;
+font-size:1.05rem;
+line-height:1.3;
+min-height:0;
+height:auto;
+}
+
+.more-buttons .international-btn span,
+.more-buttons .international-btn small{
+display:block;
+line-height:1.25;
+}
+
+.more-buttons .international-btn small{
+margin-top:4px;
+font-size:.86rem;
+font-weight:400;
+}
+
+@media(max-width:620px){
+.more-buttons{
 gap:18px;
+}
+
+.more-buttons .btn{
+width:88%;
+max-width:400px;
+padding:12px 16px;
+font-size:1rem;
+}
 }
 .badge{display:inline-block;background:#fff2fb;color:#7b4b83;border-radius:999px;padding:8px 14px;font-weight:800;margin:5px;font-size:14px}
 .memory-box{background:#f8fff9;border-radius:20px;padding:16px;margin-top:15px;text-align:left;line-height:1.8}
@@ -148,40 +185,28 @@ footer{padding:45px 18px 25px;font-size:18px;line-height:1.8;color:#25534d}foote
 </section>
 
 <!-- 更多陪伴 -->
-    <section class="resource-card">
-      <h2>🌷 更多陪伴</h2>
-      <div class="btn-stack">
-        
-<a class="btn" href="story.html">🌈 BoBo 的故事</a>
+<section class="more-box">
+  <h2>🌷 更多陪伴</h2>
 
-<a class="btn" href="healing.html">💜 療癒服務</a>
+  <div class="more-buttons">
+    <a class="btn" href="story.html">🌈 BoBo 的故事</a>
+    <a class="btn" href="healing.html">💜 療癒服務</a>
+    <a class="btn" href="free.html">🎁 免費療癒資源館</a>
+    <a class="btn" href="seed.html">🌻 幸福種子計畫</a>
+    <a class="btn" href="testimonial.html">🌟 學員回饋</a>
+    <a class="btn" href="blog.html">🌿 BoBo 部落格</a>
+    <a class="btn" href="recommend.html">🌍 BoBo 慢活推薦館</a>
+    <a class="btn" href="explore.html">🌿 BoBo 自我探索館</a>
+    <a class="btn" href="healing-tree.html">🌳 種下安心 Healing Tree</a>
 
-<a class="btn" href="free.html">🎁 免費療癒資源館</a>
+    <a class="btn international-btn" href="international.html">
+      <span>🌍 International Visitors</span>
+      <small>English Services</small>
+    </a>
 
-<a class="btn" href="seed.html">🌻 幸福種子計畫</a>
-
-<a class="btn" href="testimonial.html">🌟 學員回饋</a>
-
-<a class="btn" href="blog.html">🌿 BoBo 部落格</a>
-
-<a class="btn" href="recommend.html">🌍 BoBo 慢活推薦館</a>
-
-<a href="explore.html" class="btn">🌿 BoBo 自我探索館</a> 
-<a class="btn" href="healing-tree.html">🌳 種下安心 Healing Tree</a>
- <a class="btn" href="international.html">
-    <div style="font-size:1.25rem;font-weight:700;">
-        🌍 International Visitors
-    </div>
-
-    <div style="font-size:0.95rem;font-weight:400;margin-top:6px;">
-        English Services
-    </div>
-</a>
-<a class="btn" href="https://wa.me/6594574732">📱 免費諮詢</a>
-  
-  
-<a class="btn" href="index.html">🏡 回首頁</a>
-</div>
+    <a class="btn" href="https://wa.me/6594574732" target="_blank" rel="noopener">📱 免費諮詢</a>
+    <a class="btn" href="index.html">🏡 回首頁</a>
+  </div>
 </section>
 
 <p class="notice">🌱 本頁內容僅供娛樂、自我探索與個人成長參考，<br>不作為醫療、心理、法律、命理或其他專業建議。<br>本頁不需要上傳照片，也不會收集你的私人圖片。</p>
