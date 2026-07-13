@@ -201,11 +201,15 @@
       <article class="journey-card">
 
         <div class="journey-image">
-          <img src="thetahealing-learning1.png">
-          <img src="thetahealing-learning2.png"
-               alt="希塔療癒學習旅程"
-               loading="lazy">
-        </div>
+  <img src="thetahealing-learning1.png"
+       alt="希塔療癒基礎學習旅程"
+       loading="lazy">
+
+  <img src="thetahealing-learning2.png"
+       alt="希塔療癒進階學習旅程"
+       loading="lazy">
+</div>
+      
 
         <div class="journey-content">
           <span class="journey-number">02</span>
@@ -469,21 +473,29 @@
 }
 
 .journey-image {
-  aspect-ratio:4/3;
-  overflow:hidden;
-  background:#f2edf4;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  padding: 15px;
+  background: #fff;
 }
 
 .journey-image img {
-  width:100%;
-  height:100%;
-  display:block;
-  object-fit:cover;
+  width: 100%;
+  height: auto;
+  max-height: 280px;
+  object-fit: contain;
+  border-radius: 16px;
+  display: block;
+}
+
+.journey-card {
+  overflow: hidden;
 }
 
 .journey-content {
-  position:relative;
-  padding:30px;
+  padding: 30px 28px 40px;
 }
 
 .journey-number {
