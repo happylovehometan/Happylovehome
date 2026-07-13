@@ -472,11 +472,9 @@
   box-shadow:0 22px 46px rgba(84,55,93,.16);
 }
 
+/* 一般課程：單張圖片完整顯示 */
 .journey-image {
   width: 100%;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
   padding: 15px;
   background: #fff;
 }
@@ -484,18 +482,31 @@
 .journey-image img {
   width: 100%;
   height: auto;
-  max-height: 280px;
+  max-height: 420px;
   object-fit: contain;
   border-radius: 16px;
   display: block;
+  margin: 0 auto;
 }
 
-.journey-card {
-  overflow: hidden;
+/* 只有希塔療癒使用兩張圖片並排 */
+.journey-image.theta-images {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
 }
 
-.journey-content {
-  padding: 30px 28px 40px;
+.journey-image.theta-images img {
+  width: 100%;
+  max-height: 330px;
+  object-fit: contain;
+}
+
+@media (max-width: 480px) {
+  .journey-image.theta-images {
+    gap: 8px;
+    padding: 12px;
+  }
 }
 
 .journey-number {
