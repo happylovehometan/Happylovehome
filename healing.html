@@ -587,7 +587,58 @@ href="https://wa.me/6594574732">
 
   </div>
 </section>
+<!-- BoBo 找回自己日記｜7天情緒書寫 -->
+<section class="healing-card find-me-back-card">
+  <div class="healing-card-image">
+    <img
+      src="find-me-back.png"
+      alt="BoBo 找回自己日記｜7天情緒書寫與壓力釋放練習"
+      loading="lazy"
+    >
+  </div>
 
+  <div class="healing-card-content">
+    <span class="healing-tag">7天自我陪伴練習</span>
+
+    <h2>《BoBo 找回自己日記》</h2>
+
+    <h3>情緒書寫 × 壓力釋放 × 潛意識信念轉換</h3>
+
+    <p class="healing-quote">
+      你不需要一下子變好。<br>
+      這7天，每天安靜一點、寫一點，<br>
+      把藏在心裡的自己，慢慢找回來。
+    </p>
+
+    <ul class="healing-list">
+      <li>7天每日練習指南 PDF</li>
+      <li>冥想療癒指南 PDF</li>
+      <li>7種情緒與壓力釋放方法</li>
+      <li>每日情緒覺察與書寫題目</li>
+      <li>潛意識信念轉換練習</li>
+      <li>每日 Affirmations 肯定語</li>
+      <li>7天打卡紀錄表</li>
+      <li>每日交功課給 BoBo</li>
+      <li>Day 7 Affirmations 改變計畫書</li>
+      <li>BoBo 最後閱讀與溫暖 Review</li>
+    </ul>
+
+    <div class="healing-price">USD 39</div>
+
+    <a
+      class="healing-buy-button"
+      href="https://payhip.com/b/ip3Sb"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      開始7天找回自己
+    </a>
+
+    <p class="healing-note">
+      每天約20–30分鐘｜個人成長與情緒陪伴練習
+    </p>
+  </div>
+</section>
 
 <style>
 /* ===============================
@@ -936,6 +987,125 @@ href="https://wa.me/6594574732">
   .bobo-ai-includes {
     padding: 23px 28px;
     font-size: 16px;
+  }
+}
+/* BoBo 找回自己日記 */
+.find-me-back-card {
+  max-width: 1050px;
+  margin: 45px auto;
+  padding: 28px;
+  display: grid;
+  grid-template-columns: minmax(260px, 430px) 1fr;
+  gap: 35px;
+  align-items: center;
+  background: linear-gradient(145deg, #fffaf6, #fff1f4);
+  border: 1px solid #f2d7dd;
+  border-radius: 28px;
+  box-shadow: 0 16px 38px rgba(121, 75, 85, 0.12);
+}
+
+.find-me-back-card .healing-card-image img {
+  width: 100%;
+  display: block;
+  border-radius: 20px;
+  box-shadow: 0 10px 28px rgba(94, 62, 69, 0.15);
+}
+
+.find-me-back-card .healing-card-content {
+  color: #554348;
+}
+
+.find-me-back-card .healing-tag {
+  display: inline-block;
+  padding: 7px 15px;
+  margin-bottom: 12px;
+  background: #f8dce3;
+  color: #b75b73;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.find-me-back-card h2 {
+  margin: 4px 0 8px;
+  color: #513e44;
+  font-size: clamp(26px, 4vw, 38px);
+}
+
+.find-me-back-card h3 {
+  margin: 0 0 18px;
+  color: #d8758e;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.find-me-back-card .healing-quote {
+  padding: 16px 18px;
+  background: rgba(255,255,255,0.72);
+  border-left: 4px solid #e999ac;
+  border-radius: 12px;
+  line-height: 1.9;
+}
+
+.find-me-back-card .healing-list {
+  margin: 20px 0;
+  padding: 0;
+  list-style: none;
+  line-height: 1.85;
+}
+
+.find-me-back-card .healing-list li::before {
+  content: "✓";
+  margin-right: 9px;
+  color: #d96886;
+  font-weight: bold;
+}
+
+.find-me-back-card .healing-price {
+  margin: 16px 0;
+  color: #c84f70;
+  font-size: 34px;
+  font-weight: 800;
+}
+
+.find-me-back-card .healing-buy-button {
+  display: inline-block;
+  padding: 14px 28px;
+  background: linear-gradient(135deg, #df7892, #c95172);
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 999px;
+  font-weight: 700;
+  box-shadow: 0 9px 20px rgba(201, 81, 114, 0.25);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.find-me-back-card .healing-buy-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px rgba(201, 81, 114, 0.32);
+}
+
+.find-me-back-card .healing-note {
+  margin-top: 14px;
+  color: #8a7479;
+  font-size: 13px;
+}
+
+@media (max-width: 760px) {
+  .find-me-back-card {
+    grid-template-columns: 1fr;
+    margin: 28px 14px;
+    padding: 20px;
+    gap: 24px;
+  }
+
+  .find-me-back-card .healing-price {
+    font-size: 30px;
+  }
+
+  .find-me-back-card .healing-buy-button {
+    display: block;
+    text-align: center;
   }
 }
 </style> 
