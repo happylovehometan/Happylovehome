@@ -80,7 +80,143 @@ box-shadow:0 4px 12px rgba(0,0,0,.15);
   color:#9b8790;
   text-align:center;
 }
+/* =========================
+   Healing Service Card
+========================= */
 
+.healing-card {
+  width: min(88%, 760px);
+  margin: 38px auto;
+  padding: 50px 48px;
+  background: #ffffff;
+  border-radius: 42px;
+  box-shadow: 0 14px 35px rgba(105, 76, 95, 0.10);
+  text-align: left;
+  color: #655c63;
+}
+
+.healing-card-title {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 34px;
+  text-align: center;
+}
+
+.healing-icon {
+  display: inline-block;
+  font-size: 42px;
+  line-height: 1;
+  margin-top: 5px;
+}
+
+.healing-card-title h2 {
+  margin: 0;
+  color: #9c6f96;
+  font-size: clamp(30px, 5vw, 46px);
+  line-height: 1.25;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.healing-card-title h3 {
+  margin: 6px 0 0;
+  color: #9c6f96;
+  font-size: clamp(26px, 4.5vw, 42px);
+  line-height: 1.2;
+  font-weight: 800;
+}
+
+.healing-description {
+  margin: 0 auto 36px;
+  max-width: 610px;
+  font-size: 22px;
+  line-height: 1.9;
+  color: #665d64;
+}
+
+.healing-features {
+  max-width: 610px;
+  margin: 0 auto 42px;
+}
+
+.healing-features p {
+  margin: 12px 0;
+  font-size: 21px;
+  line-height: 1.65;
+  color: #665d64;
+}
+
+.healing-booking-button {
+  display: block;
+  width: min(100%, 560px);
+  margin: 20px auto 0;
+  padding: 24px 28px;
+  border-radius: 60px;
+  background: #a2739c;
+  color: #ffffff;
+  text-align: center;
+  text-decoration: none;
+  font-size: 25px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  box-shadow: 0 12px 24px rgba(116, 77, 110, 0.22);
+  transition: transform 0.2s ease, box-shadow 0.2s ease,
+              background 0.2s ease;
+}
+
+.healing-booking-button:hover {
+  background: #8f6389;
+  transform: translateY(-2px);
+  box-shadow: 0 16px 28px rgba(116, 77, 110, 0.28);
+}
+
+.healing-booking-button:active {
+  transform: translateY(0);
+}
+
+/* 鬱金香靈氣卡片淡粉背景點綴 */
+.tulip-reiki-card {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.98),
+      rgba(255, 251, 252, 0.98)
+    );
+  border: 1px solid rgba(211, 174, 196, 0.25);
+}
+
+/* 手機版 */
+@media (max-width: 600px) {
+  .healing-card {
+    width: calc(100% - 32px);
+    padding: 38px 25px;
+    border-radius: 34px;
+  }
+
+  .healing-card-title {
+    gap: 8px;
+  }
+
+  .healing-icon {
+    font-size: 32px;
+  }
+
+  .healing-description {
+    font-size: 18px;
+    line-height: 1.85;
+  }
+
+  .healing-features p {
+    font-size: 18px;
+  }
+
+  .healing-booking-button {
+    padding: 19px 20px;
+    font-size: 21px;
+  }
+}
 </style>
 </head>
 
@@ -302,8 +438,7 @@ href="https://wa.me/6594574732">
 持續學習．陪伴成長．溫柔同行
 </p>
 
-<img src="Trauma-Informed.png"
-style="width:100%;max-width:680px;border-radius:20px;margin:20px auto;display:block;box-shadow:0 8px 25px rgba(0,0,0,0.12);">
+
 
 <p style="text-align:center;font-size:18px;line-height:1.9;color:#666;">
 
