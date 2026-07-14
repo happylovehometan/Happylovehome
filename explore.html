@@ -554,7 +554,7 @@ function saveFuture(){
  const txt=document.getElementById('futureText').value.trim();
  if(!txt){showCustom('💌 給未來的自己','你可以先寫下一句想對未來自己說的話。','從「親愛的我」開始。','我願意與未來的自己連結。');return;}
  const letter='親愛的未來的我：\n\n'+txt+'\n\n—— 來自今天的自己\nBoBo 自我探索館';
- const blob=new Blob([letter],{type:'text/plain;charset=utf-8'});
+ const blob=new Blob(["\uFEFF"+letter],{type:"text/plain;charset=utf-8;"});
  const url=URL.createObjectURL(blob);
  const r=document.getElementById('result');
  r.style.display='block';
