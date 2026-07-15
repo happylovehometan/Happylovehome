@@ -1344,7 +1344,339 @@ href="https://wa.me/6594574732">
 </style> 
 
 
-      
+ <!-- =====================================================
+  《金錢能量關係調頻療癒指南》Payhip 商品區塊
+  建議位置：healing.html 主要療癒內容之後、開心幸福家園／footer 之前
+  圖片檔：money-guide-payhip.webp（與 healing.html 放在同一層）
+====================================================== -->
+
+<style>
+  /* 只作用於本商品區塊，不影響 healing.html 原有內容 */
+  #money-guide-payhip,
+  #money-guide-payhip * {
+    box-sizing: border-box;
+  }
+
+  #money-guide-payhip {
+    --mg-navy: #0c1728;
+    --mg-navy-soft: #14243a;
+    --mg-gold: #d8ad5d;
+    --mg-gold-light: #f0d9a8;
+    --mg-cream: #fffaf0;
+    --mg-ink: #263246;
+    --mg-muted: #6f7580;
+    width: min(1120px, calc(100% - 32px));
+    margin: 70px auto;
+    font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+  }
+
+  #money-guide-payhip .mg-shell {
+    position: relative;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: minmax(280px, 0.9fr) minmax(320px, 1.1fr);
+    gap: clamp(28px, 5vw, 64px);
+    align-items: center;
+    padding: clamp(28px, 5vw, 64px);
+    border: 1px solid rgba(216, 173, 93, 0.38);
+    border-radius: 32px;
+    color: var(--mg-cream);
+    background:
+      radial-gradient(circle at 84% 18%, rgba(216, 173, 93, 0.18), transparent 30%),
+      linear-gradient(145deg, var(--mg-navy-soft), var(--mg-navy));
+    box-shadow: 0 24px 70px rgba(12, 23, 40, 0.2);
+  }
+
+  #money-guide-payhip .mg-shell::before,
+  #money-guide-payhip .mg-shell::after {
+    content: "";
+    position: absolute;
+    border: 1px solid rgba(216, 173, 93, 0.17);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  #money-guide-payhip .mg-shell::before {
+    width: 360px;
+    height: 360px;
+    right: -190px;
+    top: -190px;
+  }
+
+  #money-guide-payhip .mg-shell::after {
+    width: 250px;
+    height: 250px;
+    left: -150px;
+    bottom: -170px;
+  }
+
+  #money-guide-payhip .mg-visual,
+  #money-guide-payhip .mg-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  #money-guide-payhip .mg-visual {
+    margin: 0;
+  }
+
+  #money-guide-payhip .mg-visual img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 22px;
+    border: 1px solid rgba(240, 217, 168, 0.36);
+    box-shadow: 0 22px 50px rgba(0, 0, 0, 0.34);
+  }
+
+  #money-guide-payhip .mg-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 0 14px;
+    color: var(--mg-gold-light);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+  }
+
+  #money-guide-payhip .mg-eyebrow::before {
+    content: "";
+    width: 28px;
+    height: 1px;
+    background: var(--mg-gold);
+  }
+
+  #money-guide-payhip h2 {
+    margin: 0;
+    color: #ffffff;
+    font-size: clamp(1.75rem, 3.5vw, 2.65rem);
+    line-height: 1.3;
+    letter-spacing: 0.02em;
+  }
+
+  #money-guide-payhip .mg-lead {
+    margin: 18px 0 0;
+    color: rgba(255, 250, 240, 0.88);
+    font-size: 1rem;
+    line-height: 1.9;
+  }
+
+  #money-guide-payhip .mg-gentle-note {
+    margin: 18px 0 0;
+    padding: 14px 16px;
+    border-left: 2px solid var(--mg-gold);
+    color: var(--mg-gold-light);
+    background: rgba(255, 255, 255, 0.045);
+    font-size: 0.94rem;
+    line-height: 1.75;
+  }
+
+  #money-guide-payhip .mg-points {
+    display: grid;
+    gap: 10px;
+    margin: 22px 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  #money-guide-payhip .mg-points li {
+    position: relative;
+    margin: 0;
+    padding-left: 24px;
+    color: rgba(255, 250, 240, 0.9);
+    font-size: 0.94rem;
+    line-height: 1.65;
+  }
+
+  #money-guide-payhip .mg-points li::before {
+    content: "✦";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--mg-gold);
+  }
+
+  #money-guide-payhip .mg-buy-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    align-items: center;
+    margin-top: 24px;
+  }
+
+  #money-guide-payhip .mg-price {
+    display: flex;
+    flex-direction: column;
+    min-width: 112px;
+  }
+
+  #money-guide-payhip .mg-price small {
+    color: rgba(255, 250, 240, 0.62);
+    font-size: 0.73rem;
+    letter-spacing: 0.08em;
+  }
+
+  #money-guide-payhip .mg-price strong {
+    color: var(--mg-gold-light);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  #money-guide-payhip .mg-button {
+    display: inline-flex;
+    min-height: 52px;
+    flex: 1 1 220px;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 24px;
+    border: 1px solid var(--mg-gold);
+    border-radius: 999px;
+    color: var(--mg-navy) !important;
+    background: linear-gradient(135deg, #f0d9a8, #d8ad5d);
+    box-shadow: 0 12px 28px rgba(216, 173, 93, 0.2);
+    font-size: 1rem;
+    font-weight: 800;
+    line-height: 1.3;
+    text-align: center;
+    text-decoration: none !important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+  }
+
+  #money-guide-payhip .mg-button:hover,
+  #money-guide-payhip .mg-button:focus-visible {
+    transform: translateY(-2px);
+    filter: brightness(1.04);
+    box-shadow: 0 16px 34px rgba(216, 173, 93, 0.28);
+  }
+
+  #money-guide-payhip .mg-button:focus-visible {
+    outline: 3px solid rgba(240, 217, 168, 0.38);
+    outline-offset: 3px;
+  }
+
+  #money-guide-payhip .mg-meta {
+    margin: 16px 0 0;
+    color: rgba(255, 250, 240, 0.62);
+    font-size: 0.78rem;
+    line-height: 1.7;
+  }
+
+  @media (max-width: 760px) {
+    #money-guide-payhip {
+      width: min(100% - 24px, 620px);
+      margin: 46px auto;
+    }
+
+    #money-guide-payhip .mg-shell {
+      grid-template-columns: 1fr;
+      gap: 30px;
+      padding: 24px;
+      border-radius: 24px;
+    }
+
+    #money-guide-payhip .mg-visual {
+      width: min(100%, 460px);
+      margin: 0 auto;
+    }
+
+    #money-guide-payhip .mg-content {
+      text-align: left;
+    }
+
+    #money-guide-payhip .mg-price {
+      min-width: 100%;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #money-guide-payhip .mg-button {
+      transition: none;
+    }
+  }
+</style>
+
+<section id="money-guide-payhip" aria-labelledby="money-guide-title">
+  <div class="mg-shell">
+    <figure class="mg-visual">
+      <img
+        src="money-guide-payhip.webp"
+        alt="《金錢能量關係調頻療癒指南》24頁繁體中文PDF，售價USD 18"
+        width="1100"
+        height="1100"
+        loading="lazy"
+        decoding="async"
+      />
+    </figure>
+
+    <div class="mg-content">
+      <p class="mg-eyebrow">PAYHIP 數位療癒指南</p>
+
+      <h2 id="money-guide-title">金錢能量關係<br />調頻療癒指南</h2>
+
+      <p class="mg-lead">
+        從匱乏、恐懼與不值得感，慢慢回到珍惜、選擇與接收。
+        這不是一本教你立刻變有錢的書，而是一段重新看見自己如何對待金錢，也如何對待自己的旅程。
+      </p>
+
+      <p class="mg-gentle-note">
+        免費本身沒有錯。真正值得被看見的是：我的選擇，來自清楚與珍惜，還是來自害怕失去？
+      </p>
+
+      <ul class="mg-points" aria-label="指南內容重點">
+        <li>五種常見金錢潛意識模式與信念轉換</li>
+        <li>五步金錢關係調頻法與24小時清醒選擇</li>
+        <li>八分鐘安撫冥想、七天練習與30天承諾</li>
+        <li>24頁繁體中文PDF，購買後立即下載</li>
+      </ul>
+
+      <div class="mg-buy-row">
+        <div class="mg-price" aria-label="售價美金十八元">
+          <small>一次購買・本人使用</small>
+          <strong>USD 18</strong>
+        </div>
+
+        <a
+          class="mg-button"
+          href="https://payhip.com/b/SVR8v"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="前往Payhip購買金錢能量關係調頻療癒指南"
+        >
+          前往 Payhip 立即購買
+        </a>
+      </div>
+
+      <p class="mg-meta">
+        本指南屬於個人成長與身心靈反思內容，不取代醫療、心理治療、投資或財務建議，也不保證特定財務結果。<br />
+        © BoBo Tan・開心愛家園療癒
+      </p>
+    </div>
+  </div>
+</section>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "金錢能量關係調頻療癒指南",
+  "description": "24頁繁體中文PDF，陪伴讀者覺察金錢信念、匱乏與恐懼，練習健康付出、接收與清醒選擇。",
+  "image": "money-guide-payhip.webp",
+  "brand": {
+    "@type": "Brand",
+    "name": "開心愛家園療癒"
+  },
+  "offers": {
+    "@type": "Offer",
+    "url": "https://payhip.com/b/SVR8v",
+    "priceCurrency": "USD",
+    "price": "18.00",
+    "availability": "https://schema.org/InStock"
+  }
+}
+</script>     
 
 
 <div class="card">
