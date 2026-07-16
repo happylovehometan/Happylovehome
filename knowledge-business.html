@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="光耀豐盛人生｜知識變現自由事業系統。把你的知識、經驗與故事，整理成可以在線上分享、服務與創造收入的事業。" />
+  <title>光耀豐盛人生｜知識變現自由事業系統</title>
+
+  <style>
+    :root{
+      --navy:#081a2f;
+      --navy-2:#102a47;
+      --gold:#d7ae5b;
+      --gold-light:#f2d99b;
+      --cream:#fffaf0;
+      --sand:#f7efdf;
+      --text:#2d2a27;
+      --muted:#6f675e;
+      --white:#ffffff;
+      --shadow:0 18px 50px rgba(8,26,47,.14);
+      --radius:24px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:"Noto Sans TC","Microsoft JhengHei",Arial,sans-serif;
+      color:var(--text);
+      background:var(--cream);
+      line-height:1.8;
+    }
+
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;display:block}
+
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background:rgba(8,26,47,.94);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+
+    .topbar-inner{
+      max-width:1180px;
+      margin:auto;
+      padding:14px 22px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+    }
+
+    .brand{
+      color:var(--white);
+      font-weight:800;
+      letter-spacing:.5px;
+      font-size:18px;
+    }
+
+    .brand span{color:var(--gold-light)}
+
+    .nav{
+      display:flex;
+      gap:20px;
+      color:#f8f0df;
+      font-size:14px;
+      align-items:center;
+    }
+
+    .nav a:hover{color:var(--gold-light)}
+
+    .hero{
+      min-height:88vh;
+      background:
+        radial-gradient(circle at 78% 20%, rgba(215,174,91,.20), transparent 26%),
+        radial-gradient(circle at 20% 70%, rgba(242,217,155,.10), transparent 28%),
+        linear-gradient(135deg,var(--navy) 0%,var(--navy-2) 62%,#17375e 100%);
+      color:var(--white);
+      display:flex;
+      align-items:center;
+      overflow:hidden;
+      position:relative;
+    }
+
+    .hero:before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+      background-size:42px 42px;
+      mask-image:linear-gradient(to bottom,rgba(0,0,0,.8),transparent);
+    }
+
+    .hero-inner{
+      width:100%;
+      max-width:1180px;
+      margin:auto;
+      padding:90px 22px 100px;
+      display:grid;
+      grid-template-columns:1.15fr .85fr;
+      gap:70px;
+      align-items:center;
+      position:relative;
+      z-index:2;
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      color:var(--gold-light);
+      font-weight:700;
+      letter-spacing:1px;
+      font-size:14px;
+      margin-bottom:18px;
+    }
+
+    .eyebrow:before{
+      content:"";
+      width:42px;
+      height:1px;
+      background:var(--gold);
+    }
+
+    h1{
+      margin:0;
+      font-size:clamp(46px,7vw,88px);
+      line-height:1.06;
+      letter-spacing:-2px;
+    }
+
+    .hero h1 span{
+      display:block;
+      color:var(--gold-light);
+    }
+
+    .hero-subtitle{
+      margin:28px 0 0;
+      max-width:720px;
+      color:#f4ecdd;
+      font-size:clamp(18px,2.2vw,25px);
+      line-height:1.65;
+      font-weight:600;
+    }
+
+    .hero-copy{
+      margin:22px 0 0;
+      max-width:690px;
+      color:#d9e0e9;
+      font-size:17px;
+    }
+
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
+      margin-top:34px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:54px;
+      padding:0 26px;
+      border-radius:999px;
+      font-weight:800;
+      transition:.25s ease;
+      border:1px solid transparent;
+      cursor:pointer;
+    }
+
+    .btn-primary{
+      background:linear-gradient(135deg,var(--gold),var(--gold-light));
+      color:#1b2533;
+      box-shadow:0 12px 30px rgba(215,174,91,.24);
+    }
+
+    .btn-primary:hover{transform:translateY(-2px)}
+
+    .btn-outline{
+      color:var(--white);
+      border-color:rgba(255,255,255,.28);
+      background:rgba(255,255,255,.05);
+    }
+
+    .btn-outline:hover{
+      border-color:var(--gold-light);
+      color:var(--gold-light);
+    }
+
+    .hero-card{
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.16);
+      backdrop-filter:blur(14px);
+      border-radius:32px;
+      padding:34px;
+      box-shadow:0 25px 60px rgba(0,0,0,.20);
+    }
+
+    .hero-card .light{
+      width:76px;
+      height:76px;
+      border-radius:50%;
+      margin-bottom:24px;
+      background:
+        radial-gradient(circle at center,#fff7c8 0 18%,#f2d99b 19% 38%,rgba(215,174,91,.20) 39% 58%,transparent 59%);
+      box-shadow:0 0 55px rgba(242,217,155,.48);
+    }
+
+    .hero-card h2{
+      margin:0 0 14px;
+      font-size:28px;
+      color:var(--gold-light);
+    }
+
+    .hero-card p{
+      color:#e5eaf0;
+      margin:0;
+    }
+
+    .hero-card ul{
+      padding:0;
+      margin:22px 0 0;
+      list-style:none;
+    }
+
+    .hero-card li{
+      margin:12px 0;
+      padding-left:30px;
+      position:relative;
+      color:#f5f1e8;
+    }
+
+    .hero-card li:before{
+      content:"✦";
+      position:absolute;
+      left:0;
+      color:var(--gold-light);
+    }
+
+    section{padding:92px 22px}
+
+    .container{
+      max-width:1120px;
+      margin:auto;
+    }
+
+    .section-kicker{
+      color:#9a6e22;
+      font-weight:800;
+      letter-spacing:1px;
+      text-transform:uppercase;
+      font-size:13px;
+      margin-bottom:8px;
+    }
+
+    .section-title{
+      margin:0;
+      font-size:clamp(34px,5vw,56px);
+      line-height:1.2;
+      color:var(--navy);
+    }
+
+    .section-intro{
+      max-width:760px;
+      color:var(--muted);
+      margin-top:18px;
+      font-size:18px;
+    }
+
+    .pillars{
+      margin-top:46px;
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:18px;
+    }
+
+    .pillar{
+      background:var(--white);
+      padding:28px 22px;
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      border:1px solid #eee2cf;
+      min-height:220px;
+    }
+
+    .pillar-number{
+      font-size:13px;
+      color:#a77a2f;
+      font-weight:900;
+      letter-spacing:1px;
+    }
+
+    .pillar h3{
+      color:var(--navy);
+      font-size:24px;
+      margin:12px 0 8px;
+    }
+
+    .pillar p{
+      color:var(--muted);
+      margin:0;
+      font-size:15px;
+    }
+
+    .promise{
+      background:var(--sand);
+    }
+
+    .promise-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:28px;
+      margin-top:46px;
+    }
+
+    .promise-card{
+      border-radius:28px;
+      padding:34px;
+    }
+
+    .promise-card.dark{
+      background:var(--navy);
+      color:var(--white);
+    }
+
+    .promise-card.light{
+      background:var(--white);
+      border:1px solid #eadbc0;
+      box-shadow:var(--shadow);
+    }
+
+    .promise-card h3{
+      margin:0 0 14px;
+      font-size:28px;
+    }
+
+    .promise-card.dark h3{color:var(--gold-light)}
+    .promise-card p{margin:0}
+
+    .journey{
+      background:var(--white);
+    }
+
+    .steps{
+      margin-top:44px;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:20px;
+    }
+
+    .step{
+      background:linear-gradient(180deg,#fff,#fff9ed);
+      border:1px solid #ecdfc8;
+      border-radius:24px;
+      padding:28px;
+    }
+
+    .step strong{
+      color:#a77a2f;
+      font-size:13px;
+      letter-spacing:1px;
+    }
+
+    .step h3{
+      color:var(--navy);
+      margin:10px 0 8px;
+      font-size:23px;
+    }
+
+    .step p{
+      color:var(--muted);
+      margin:0;
+      font-size:15px;
+    }
+
+    .manifesto{
+      background:
+        linear-gradient(rgba(8,26,47,.94),rgba(8,26,47,.94)),
+        radial-gradient(circle at center,#17375e,#081a2f);
+      color:var(--white);
+      text-align:center;
+    }
+
+    .manifesto .quote{
+      max-width:900px;
+      margin:0 auto;
+      font-size:clamp(26px,4vw,46px);
+      line-height:1.5;
+      font-weight:800;
+    }
+
+    .manifesto .quote span{color:var(--gold-light)}
+
+    .manifesto p{
+      max-width:760px;
+      margin:26px auto 0;
+      color:#d9e0e9;
+      font-size:17px;
+    }
+
+    .coming{
+      background:var(--cream);
+      text-align:center;
+    }
+
+    .coming-box{
+      max-width:900px;
+      margin:auto;
+      padding:52px 30px;
+      background:var(--white);
+      border-radius:32px;
+      box-shadow:var(--shadow);
+      border:1px solid #eadbc0;
+    }
+
+    .coming-box h2{
+      margin:0;
+      color:var(--navy);
+      font-size:clamp(34px,5vw,52px);
+    }
+
+    .coming-box p{
+      color:var(--muted);
+      max-width:680px;
+      margin:18px auto 0;
+    }
+
+    .coming-note{
+      display:inline-block;
+      margin-top:28px;
+      padding:10px 18px;
+      border-radius:999px;
+      background:#f6ead2;
+      color:#8a611f;
+      font-weight:800;
+      font-size:14px;
+    }
+
+    footer{
+      background:#061322;
+      color:#dfe5ec;
+      text-align:center;
+      padding:34px 20px;
+      font-size:13px;
+    }
+
+    footer .brand-line{
+      font-weight:800;
+      color:var(--gold-light);
+      margin-bottom:8px;
+    }
+
+    @media(max-width:900px){
+      .nav{display:none}
+      .hero-inner{
+        grid-template-columns:1fr;
+        gap:42px;
+      }
+      .pillars{grid-template-columns:1fr 1fr}
+      .steps{grid-template-columns:1fr 1fr}
+      .promise-grid{grid-template-columns:1fr}
+    }
+
+    @media(max-width:620px){
+      .hero-inner{padding-top:70px}
+      h1{letter-spacing:-1px}
+      .pillars,.steps{grid-template-columns:1fr}
+      .hero-card{padding:26px}
+      section{padding:72px 18px}
+      .topbar-inner{padding:12px 16px}
+      .brand{font-size:15px}
+      .btn{width:100%}
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">開心愛家園療癒 <span>Happy Love Home Healing</span></div>
+      <nav class="nav">
+        <a href="#vision">核心方向</a>
+        <a href="#journey">學習旅程</a>
+        <a href="#values">我們的價值</a>
+        <a href="#coming">即將開放</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-inner">
+        <div>
+          <div class="eyebrow">黑暗中的光．生活的燈塔</div>
+
+          <h1>
+            光耀豐盛人生
+            <span>知識變現自由事業系統</span>
+          </h1>
+
+          <div class="hero-subtitle">
+            把你的知識、經驗與故事，變成一份能夠服務他人，也能支持自己生活的線上事業。
+          </div>
+
+          <p class="hero-copy">
+            建立自己的網站、線上產品、直播分享與真誠銷售系統。
+            不需要假裝成功，不需要欺騙，也不需要成為另一個人。
+            讓你逐步走向更有金錢選擇、時間彈性、生活自由與身心平衡的人生。
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#coming">加入優先通知</a>
+            <a class="btn btn-outline" href="#vision">了解計畫方向</a>
+          </div>
+        </div>
+
+        <aside class="hero-card">
+          <div class="light"></div>
+          <h2>你不是只在賣一個產品</h2>
+          <p>
+            你正在建立一個屬於自己的平台，
+            讓知識不再停留在腦海裡，
+            讓經驗可以被整理、被看見、被需要。
+          </p>
+          <ul>
+            <li>用線上方式減少時間與場地限制</li>
+            <li>建立可以重複使用的內容與系統</li>
+            <li>為自己工作，成為自己事業的主人</li>
+            <li>收入增加後，也有能力回饋社會</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section id="vision">
+      <div class="container">
+        <div class="section-kicker">A life with choice</div>
+        <h2 class="section-title">豐盛，不只是金錢。</h2>
+        <p class="section-intro">
+          真正的豐盛，是你有能力照顧生活，也有時間呼吸；
+          有選擇工作的方式，也有餘裕照顧身心；
+          當自己穩定之後，還能把一部分力量帶回家庭、社會與需要幫助的人。
+        </p>
+
+        <div class="pillars">
+          <article class="pillar">
+            <div class="pillar-number">01 · MONEY</div>
+            <h3>金錢選擇</h3>
+            <p>建立可以清楚介紹、收費與交付的產品或服務，讓收入不再只依靠單一工作。</p>
+          </article>
+
+          <article class="pillar">
+            <div class="pillar-number">02 · TIME</div>
+            <h3>時間彈性</h3>
+            <p>利用直播、數位產品與網站，減少重複說明，也不必每一次都從零開始。</p>
+          </article>
+
+          <article class="pillar">
+            <div class="pillar-number">03 · FREEDOM</div>
+            <h3>生活自由</h3>
+            <p>逐步建立自己的工作方式、服務界線與節奏，不再把人生完全交給別人安排。</p>
+          </article>
+
+          <article class="pillar">
+            <div class="pillar-number">04 · WELLBEING</div>
+            <h3>身心平衡</h3>
+            <p>事業不是把自己消耗完，而是讓收入、時間、健康與生活慢慢走向平衡。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="promise" id="values">
+      <div class="container">
+        <div class="section-kicker">Our values</div>
+        <h2 class="section-title">不背叛自己，也能建立有價值的事業。</h2>
+
+        <div class="promise-grid">
+          <article class="promise-card dark">
+            <h3>我們不做的事</h3>
+            <p>
+              不虛構收入、不製造假的倒數、不利用恐懼逼人購買，
+              不保證每一個人一定賺到某個金額，
+              也不要求你把自己包裝成一個並不存在的人。
+            </p>
+          </article>
+
+          <article class="promise-card light">
+            <h3>我們認真做的事</h3>
+            <p>
+              陪你整理真正擁有的能力，
+              建立可以被理解、被購買、被交付的產品，
+              同時處理不敢收費、害怕曝光與不相信自己的內在阻力。
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="journey" id="journey">
+      <div class="container">
+        <div class="section-kicker">The journey</div>
+        <h2 class="section-title">從一個想法，走到可以正式發布。</h2>
+        <p class="section-intro">
+          這不只是一堂聽完就放着的課，而是一段把知識真正落地的實戰旅程。
+        </p>
+
+        <div class="steps">
+          <article class="step">
+            <strong>STEP 01</strong>
+            <h3>找到方向</h3>
+            <p>整理你的經驗、能力、故事與可以幫助的人，建立清楚的定位。</p>
+          </article>
+
+          <article class="step">
+            <strong>STEP 02</strong>
+            <h3>設計產品</h3>
+            <p>把知識整理成電子書、線上課程、陪伴服務、諮詢或其他數位產品。</p>
+          </article>
+
+          <article class="step">
+            <strong>STEP 03</strong>
+            <h3>建立網站</h3>
+            <p>學習 Domain、Hosting、Landing Page 與基本網站發布流程。</p>
+          </article>
+
+          <article class="step">
+            <strong>STEP 04</strong>
+            <h3>建立收款</h3>
+            <p>設置 Payhip、付款連結、產品交付與購買後的顧客流程。</p>
+          </article>
+
+          <article class="step">
+            <strong>STEP 05</strong>
+            <h3>直播分享</h3>
+            <p>把流量帶到一場有內容、有溫度、有價值的直播，而不是強迫成交。</p>
+          </article>
+
+          <article class="step">
+            <strong>STEP 06</strong>
+            <h3>持續陪跑</h3>
+            <p>修改內容、整理信念、跟進執行，直到產品真正被發布與看見。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="manifesto">
+      <div class="container">
+        <div class="quote">
+          讓你走過的黑暗，成為別人的一束光；<br>
+          讓你累積的知識，成為<span>豐盛人生的燈塔。</span>
+        </div>
+        <p>
+          為自己工作，不等於孤單地工作。
+          你可以建立自己的事業，也可以保留溫柔、謙虛與良心。
+          當收入開始流動，我們也有更多能力照顧自己、支持家庭，並在能力範圍內回饋社會。
+        </p>
+      </div>
+    </section>
+
+    <section class="coming" id="coming">
+      <div class="container">
+        <div class="coming-box">
+          <div class="section-kicker">Coming soon</div>
+          <h2>第一期內容正在建立中</h2>
+          <p>
+            接下來會一步一步完成課程內容、學習流程、陪跑方式、價格方案及 Payhip 購買頁。
+            現階段先保留這一頁，作為《光耀豐盛人生》的正式入口。
+          </p>
+
+          <div class="coming-note">Payhip 購買按鈕將於產品建立完成後加入</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="brand-line">BoBo ❤️ 黑暗中的光．生活的燈塔</div>
+    <div>© BoBo Tan · 開心愛家園療癒 · 版權所有 · 未經許可不得複製、分享、轉發或重製。</div>
+  </footer>
+
+</body>
+</html>
