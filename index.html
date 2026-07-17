@@ -1048,6 +1048,15 @@ function showSubscribeSuccess(){
     <p class="footer-copy">All Rights Reserved.</p>
   </div>
 </footer>
+ <script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  document.querySelectorAll(".start_time").forEach(function(input){
+      input.value = Date.now();
+  });
+
+});
+</script> 
 </body>
 </html> 
 
