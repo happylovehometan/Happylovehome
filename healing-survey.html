@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="開心愛家園療癒｜療癒需求探索與預約表">
+  <title>你的心，現在需要什麼？｜開心愛家園療癒</title>
+
+  <style>
+    :root{
+      --ink:#463b38;
+      --muted:#756965;
+      --cream:#fffaf6;
+      --paper:#ffffff;
+      --peach:#f4ded3;
+      --rose:#b97878;
+      --rose-dark:#8f5757;
+      --sage:#819b87;
+      --line:#eadfd9;
+      --shadow:0 18px 45px rgba(93,66,60,.12);
+      --radius:24px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:"Noto Sans TC","Microsoft JhengHei",Arial,sans-serif;
+      color:var(--ink);
+      background:
+        radial-gradient(circle at 10% 10%, rgba(244,222,211,.75), transparent 34%),
+        radial-gradient(circle at 90% 18%, rgba(219,232,220,.75), transparent 30%),
+        linear-gradient(180deg,#fffaf6 0%,#fbf5f1 100%);
+      line-height:1.75;
+    }
+
+    a{color:inherit}
+    button,input,select,textarea{font:inherit}
+    .wrap{width:min(920px,calc(100% - 32px));margin:auto}
+
+    .hero{
+      padding:62px 0 30px;
+      text-align:center;
+    }
+
+    .brand{
+      display:inline-flex;
+      align-items:center;
+      gap:9px;
+      padding:8px 14px;
+      border-radius:999px;
+      background:rgba(255,255,255,.76);
+      border:1px solid rgba(185,120,120,.18);
+      box-shadow:0 8px 25px rgba(93,66,60,.08);
+      font-size:.92rem;
+    }
+
+    .hero h1{
+      margin:22px 0 10px;
+      font-size:clamp(2rem,6vw,3.5rem);
+      line-height:1.22;
+      letter-spacing:.02em;
+    }
+
+    .hero .sub{
+      margin:0 auto;
+      max-width:700px;
+      color:var(--muted);
+      font-size:1.05rem;
+    }
+
+    .notice{
+      margin:28px auto 0;
+      max-width:760px;
+      padding:18px 20px;
+      border-radius:18px;
+      background:rgba(255,255,255,.72);
+      border:1px solid var(--line);
+      text-align:left;
+    }
+
+    .card{
+      background:rgba(255,255,255,.94);
+      border:1px solid rgba(234,223,217,.95);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:clamp(22px,4vw,42px);
+      margin:24px 0;
+      backdrop-filter:blur(10px);
+    }
+
+    .section-title{
+      display:flex;
+      align-items:flex-start;
+      gap:12px;
+      margin-bottom:24px;
+    }
+
+    .num{
+      flex:0 0 34px;
+      height:34px;
+      display:grid;
+      place-items:center;
+      border-radius:50%;
+      color:white;
+      background:linear-gradient(135deg,var(--rose),var(--rose-dark));
+      font-weight:700;
+    }
+
+    .section-title h2{
+      margin:0;
+      font-size:1.35rem;
+      line-height:1.35;
+    }
+
+    .section-title p{
+      margin:6px 0 0;
+      color:var(--muted);
+      font-size:.95rem;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:18px;
+    }
+
+    .field{margin-bottom:20px}
+    .grid .field{margin-bottom:0}
+
+    label.legend{
+      display:block;
+      margin-bottom:8px;
+      font-weight:700;
+    }
+
+    .required::after{content:" *";color:#b24e4e}
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    select,
+    textarea{
+      width:100%;
+      border:1px solid #dcccc5;
+      border-radius:14px;
+      padding:13px 14px;
+      color:var(--ink);
+      background:#fffdfb;
+      outline:none;
+      transition:.2s ease;
+    }
+
+    textarea{min-height:120px;resize:vertical}
+
+    input:focus,select:focus,textarea:focus{
+      border-color:var(--rose);
+      box-shadow:0 0 0 4px rgba(185,120,120,.12);
+      background:#fff;
+    }
+
+    .choices{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:10px 14px;
+    }
+
+    .choice{
+      display:flex;
+      align-items:flex-start;
+      gap:10px;
+      padding:11px 12px;
+      border:1px solid var(--line);
+      border-radius:14px;
+      background:#fffdfb;
+      cursor:pointer;
+    }
+
+    .choice:hover{border-color:#d7b7aa;background:#fffaf7}
+    .choice input{margin-top:5px;accent-color:var(--rose)}
+    .help{margin-top:7px;color:var(--muted);font-size:.88rem}
+
+    .scale{
+      display:grid;
+      grid-template-columns:repeat(10,1fr);
+      gap:7px;
+    }
+
+    .scale label{
+      text-align:center;
+      border:1px solid var(--line);
+      border-radius:12px;
+      padding:8px 4px;
+      background:#fffdfb;
+      cursor:pointer;
+    }
+
+    .scale input{display:block;margin:0 auto 4px;accent-color:var(--rose)}
+
+    .consent{
+      padding:16px;
+      border-radius:16px;
+      background:#fbf5f1;
+      border:1px solid var(--line);
+    }
+
+    .submit-box{
+      text-align:center;
+      padding:8px 0 22px;
+    }
+
+    .submit-btn{
+      border:0;
+      border-radius:999px;
+      padding:15px 30px;
+      min-width:240px;
+      color:white;
+      background:linear-gradient(135deg,var(--rose),var(--rose-dark));
+      box-shadow:0 12px 25px rgba(143,87,87,.24);
+      cursor:pointer;
+      font-weight:700;
+      transition:.2s ease;
+    }
+
+    .submit-btn:hover{transform:translateY(-2px)}
+    .submit-btn:disabled{opacity:.6;cursor:wait;transform:none}
+
+    .tiny{font-size:.84rem;color:var(--muted);margin-top:12px}
+
+    .success{
+      display:none;
+      text-align:center;
+      padding:38px 26px;
+    }
+
+    .success.show{display:block}
+    .success h2{font-size:1.8rem;margin:10px 0}
+    .success p{color:var(--muted)}
+
+    .actions{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:12px;
+      margin-top:22px;
+    }
+
+    .btn-link{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:12px 18px;
+      border-radius:999px;
+      text-decoration:none;
+      border:1px solid var(--line);
+      background:white;
+      font-weight:700;
+    }
+
+    .btn-link.primary{
+      background:var(--sage);
+      color:white;
+      border-color:var(--sage);
+    }
+
+    footer{
+      padding:24px 0 44px;
+      text-align:center;
+      color:var(--muted);
+      font-size:.86rem;
+    }
+
+    .hp{position:absolute;left:-10000px;opacity:0;height:1px;width:1px}
+
+    @media (max-width:720px){
+      .grid,.choices{grid-template-columns:1fr}
+      .scale{grid-template-columns:repeat(5,1fr)}
+      .hero{padding-top:38px}
+      .card{border-radius:20px}
+    }
+  </style>
+</head>
+
+<body>
+  <header class="hero">
+    <div class="wrap">
+      <div class="brand">🌿 開心愛家園療癒 · Happy Love Home Healing</div>
+      <h1>你的心，現在需要什麼？</h1>
+      <p class="sub">療癒需求探索與預約表</p>
+      <div class="notice">
+        有時候，我們開始尋找療癒方法，不是因為自己不夠好，而是有一些情緒、壓力或人生問題，已經累積了一段時間。這份表格能幫助你整理目前的需要，也讓 BoBo 更了解你正在經歷的狀況。
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <form id="surveyForm"
+          action="PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE"
+          method="POST"
+          target="submitFrame">
+
+      <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off">
+
+      <section class="card">
+        <div class="section-title">
+          <span class="num">1</span>
+          <div>
+            <h2>基本資料</h2>
+            <p>方便 BoBo 回覆、提供課程資訊或安排預約。</p>
+          </div>
+        </div>
+
+        <div class="grid">
+          <div class="field">
+            <label class="legend required" for="name">姓名</label>
+            <input id="name" name="name" type="text" required>
+          </div>
+
+          <div class="field">
+            <label class="legend" for="preferred_name">希望 BoBo 如何稱呼你</label>
+            <input id="preferred_name" name="preferred_name" type="text">
+          </div>
+
+          <div class="field">
+            <label class="legend required" for="email">Email</label>
+            <input id="email" name="email" type="email" required>
+          </div>
+
+          <div class="field">
+            <label class="legend required" for="phone">電話／WhatsApp／LINE</label>
+            <input id="phone" name="phone" type="tel" required placeholder="請包括國家或地區號碼">
+          </div>
+
+          <div class="field">
+            <label class="legend required" for="country">國家或地區</label>
+            <input id="country" name="country" type="text" required>
+          </div>
+
+          <div class="field">
+            <label class="legend required" for="contact_method">方便聯絡方式</label>
+            <select id="contact_method" name="contact_method" required>
+              <option value="">請選擇</option>
+              <option>Email</option>
+              <option>WhatsApp</option>
+              <option>LINE</option>
+              <option>電話</option>
+              <option>其他</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="section-title">
+          <span class="num">2</span>
+          <div>
+            <h2>你為什麼開始尋找療癒方法？</h2>
+            <p>可按照目前最真實的感受選擇。</p>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="legend required">你目前尋找療癒方法的主要原因</label>
+          <div class="choices">
+            <label class="choice"><input type="checkbox" name="reasons" value="想安撫自己的情緒"><span>想安撫自己的情緒</span></label>
+            <label class="choice"><input type="checkbox" name="reasons" value="想更了解自己"><span>想更了解自己</span></label>
+            <label class="choice"><input type="checkbox" name="reasons" value="想處理過去的傷痛或陰影"><span>想處理過去的傷痛或陰影</span></label>
+            <label class="choice"><input type="checkbox" name="reasons" value="想改善目前的生活狀態"><span>想改善目前的生活狀態</span></label>
+            <label class="choice"><input type="checkbox" name="reasons" value="想找回內在力量與安全感"><span>想找回內在力量與安全感</span></label>
+            <label class="choice"><input type="checkbox" name="reasons" value="想學習長期陪伴自己的方法"><span>想學習長期陪伴自己的方法</span></label>
+            <label class="choice"><input type="checkbox" name="reasons" value="想學習後陪伴或幫助他人"><span>想學習後陪伴或幫助他人</span></label>
+            <label class="choice"><input type="checkbox" name="reasons" value="對身心靈療癒感到好奇"><span>對身心靈療癒感到好奇</span></label>
+            <label class="choice"><input type="checkbox" name="reasons" value="最近遇到事情不知道如何面對"><span>最近遇到事情，不知道如何面對</span></label>
+            <label class="choice"><input type="checkbox" name="reasons" value="其他"><span>其他</span></label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="legend required">你現在最希望獲得的是什麼？</label>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="goal" value="先照顧及療癒自己" required><span>先照顧及療癒自己</span></label>
+            <label class="choice"><input type="radio" name="goal" value="學習自我療癒方法"><span>學習自我療癒方法</span></label>
+            <label class="choice"><input type="radio" name="goal" value="解決目前正在面對的問題"><span>解決目前正在面對的問題</span></label>
+            <label class="choice"><input type="radio" name="goal" value="學習後也想陪伴或療癒他人"><span>學習後也想陪伴或療癒他人</span></label>
+            <label class="choice"><input type="radio" name="goal" value="想成為療癒工作者"><span>想成為療癒工作者</span></label>
+            <label class="choice"><input type="radio" name="goal" value="還不確定想先了解"><span>還不確定，想先了解</span></label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="legend" for="desired_change">你希望療癒或學習後，生活會有什麼改變？</label>
+          <textarea id="desired_change" name="desired_change" placeholder="例如：情緒比較穩定、放下過去、改善金錢焦慮、找回自信、知道下一步該怎麼走。"></textarea>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="section-title">
+          <span class="num">3</span>
+          <div>
+            <h2>你目前最想整理的問題</h2>
+            <p>可複選，不需要一次把所有事情說清楚。</p>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="legend required">你現在最想處理或改善的方面</label>
+          <div class="choices">
+            <label class="choice"><input type="checkbox" name="issues" value="情感或感情受傷"><span>情感或感情受傷</span></label>
+            <label class="choice"><input type="checkbox" name="issues" value="失戀分手或關係結束"><span>失戀、分手或關係結束</span></label>
+            <label class="choice"><input type="checkbox" name="issues" value="婚姻或伴侶關係"><span>婚姻或伴侶關係</span></label>
+            <label class="choice"><input type="checkbox" name="issues" value="家庭或親子關係"><span>家庭或親子關係</span></label>
+            <label class="choice"><input type="checkbox" name="issues" value="人際關係"><span>人際關係</span></label>
+            <label class="choice"><input type="checkbox" name="issues" value="被拒絕忽略或遺棄感"><span>被拒絕、被忽略或被遺棄的感受</span></label>
+            <label class="choice"><input type="checkbox" name="issues" value="金錢壓力"><span>金錢壓力</span></label>
+            <label class="choice"><input type="checkbox" name="issues" value="金錢信念與財務安心感"><span>金錢信念與財務安心感</span></label>
+            <label class="choice"><input type="checkbox" name="issues" value="工作壓力"><span>工作壓力</span></label>
+            <label class="choice"><input type="checkbox" name="issues" value="事業方向"><span>事業方向</span></label>
+            <label class="choice"><input type="checkbox" name="issues" value="自我價值或不配得感"><span>自我價值或不配得感</span></label>
+            <label class="choice"><input type="checkbox" name="issues" value="缺乏自信"><span>缺乏自信</span></label>
+            <label class="choice"><input type="checkbox" name="issues" value="焦慮恐懼或容易緊張"><span>焦慮、恐懼或容易緊張</span></label>
+            <label class="choice"><input type="checkbox" name="issues" value="容易內耗想太多"><span>容易內耗、想太多</span></label>
+            <label class="choice"><input type="checkbox" name="issues" value="身心疲累缺乏動力"><span>身心疲累、缺乏動力</span></label>
+            <label class="choice"><input type="checkbox" name="issues" value="找不到人生方向"><span>找不到人生方向</span></label>
+            <label class="choice"><input type="checkbox" name="issues" value="愛自己與照顧自己"><span>愛自己與照顧自己</span></label>
+            <label class="choice"><input type="checkbox" name="issues" value="內在小孩的傷"><span>內在小孩的傷</span></label>
+            <label class="choice"><input type="checkbox" name="issues" value="其他"><span>其他</span></label>
+          </div>
+        </div>
+
+        <div class="grid">
+          <div class="field">
+            <label class="legend required" for="priority_issue">如果只能選一個，最想先處理的是什麼？</label>
+            <input id="priority_issue" name="priority_issue" type="text" required>
+          </div>
+
+          <div class="field">
+            <label class="legend required" for="duration">大約影響你多久了？</label>
+            <select id="duration" name="duration" required>
+              <option value="">請選擇</option>
+              <option>最近一個月內</option>
+              <option>1至6個月</option>
+              <option>6個月至1年</option>
+              <option>1至3年</option>
+              <option>超過3年</option>
+              <option>很久了，我也說不清楚</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field" style="margin-top:20px">
+          <label class="legend required">目前影響程度（1＝影響不大，10＝嚴重影響生活）</label>
+          <div class="scale">
+            <label><input type="radio" name="impact" value="1" required>1</label>
+            <label><input type="radio" name="impact" value="2">2</label>
+            <label><input type="radio" name="impact" value="3">3</label>
+            <label><input type="radio" name="impact" value="4">4</label>
+            <label><input type="radio" name="impact" value="5">5</label>
+            <label><input type="radio" name="impact" value="6">6</label>
+            <label><input type="radio" name="impact" value="7">7</label>
+            <label><input type="radio" name="impact" value="8">8</label>
+            <label><input type="radio" name="impact" value="9">9</label>
+            <label><input type="radio" name="impact" value="10">10</label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="legend" for="story">願意簡單分享最近發生了什麼，以及目前的感受嗎？</label>
+          <textarea id="story" name="story" placeholder="只需寫下你願意讓 BoBo 知道的部分。"></textarea>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="section-title">
+          <span class="num">4</span>
+          <div>
+            <h2>過去接觸療癒的經驗</h2>
+            <p>沒有經驗也完全沒關係。</p>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="legend required">以前是否接觸過身心靈療癒、心理成長或自我探索？</label>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="experience_level" value="完全沒有接觸過" required><span>完全沒有接觸過</span></label>
+            <label class="choice"><input type="radio" name="experience_level" value="看過相關書籍或影片"><span>看過相關書籍或影片</span></label>
+            <label class="choice"><input type="radio" name="experience_level" value="參加過講座或工作坊"><span>參加過講座或工作坊</span></label>
+            <label class="choice"><input type="radio" name="experience_level" value="接受過一對一療癒或諮詢"><span>接受過一對一療癒或諮詢</span></label>
+            <label class="choice"><input type="radio" name="experience_level" value="正式學習過相關方法"><span>正式學習過相關方法</span></label>
+            <label class="choice"><input type="radio" name="experience_level" value="目前有學習或提供相關服務"><span>目前有學習或提供相關服務</span></label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="legend">曾接觸或學習過哪些方法？</label>
+          <div class="choices">
+            <label class="choice"><input type="checkbox" name="methods" value="冥想"><span>冥想</span></label>
+            <label class="choice"><input type="checkbox" name="methods" value="正念練習"><span>正念練習</span></label>
+            <label class="choice"><input type="checkbox" name="methods" value="情緒書寫"><span>情緒書寫</span></label>
+            <label class="choice"><input type="checkbox" name="methods" value="潛意識信念轉化"><span>潛意識信念轉化</span></label>
+            <label class="choice"><input type="checkbox" name="methods" value="催眠"><span>催眠</span></label>
+            <label class="choice"><input type="checkbox" name="methods" value="希塔療癒"><span>希塔療癒</span></label>
+            <label class="choice"><input type="checkbox" name="methods" value="靈氣或金錢靈氣"><span>靈氣／金錢靈氣</span></label>
+            <label class="choice"><input type="checkbox" name="methods" value="脈輪或能量療癒"><span>脈輪／能量療癒</span></label>
+            <label class="choice"><input type="checkbox" name="methods" value="內在小孩療癒"><span>內在小孩療癒</span></label>
+            <label class="choice"><input type="checkbox" name="methods" value="牌卡或塔羅"><span>天使牌卡／塔羅／神諭卡</span></label>
+            <label class="choice"><input type="checkbox" name="methods" value="心理諮詢或心理治療"><span>心理諮詢／心理治療</span></label>
+            <label class="choice"><input type="checkbox" name="methods" value="瑜伽呼吸或聲音療癒"><span>瑜伽、呼吸或聲音療癒</span></label>
+            <label class="choice"><input type="checkbox" name="methods" value="沒有接觸過"><span>沒有接觸過</span></label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="legend" for="past_help">過去接觸的方法，對你有什麼幫助或感受？</label>
+          <textarea id="past_help" name="past_help"></textarea>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="section-title">
+          <span class="num">5</span>
+          <div>
+            <h2>你想獲得哪一種協助？</h2>
+            <p>BoBo 會按照你的答案，提供合適的下一步資訊。</p>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="legend required">目前有興趣了解哪些服務？</label>
+          <div class="choices">
+            <label class="choice"><input type="checkbox" name="services" value="一對一線上療癒"><span>一對一線上療癒</span></label>
+            <label class="choice"><input type="checkbox" name="services" value="情緒安撫與內在小孩療癒"><span>情緒安撫與內在小孩療癒</span></label>
+            <label class="choice"><input type="checkbox" name="services" value="金錢關係與信念整理"><span>金錢關係與信念整理</span></label>
+            <label class="choice"><input type="checkbox" name="services" value="潛意識信念轉化"><span>潛意識信念轉化</span></label>
+            <label class="choice"><input type="checkbox" name="services" value="冥想療癒"><span>冥想療癒</span></label>
+            <label class="choice"><input type="checkbox" name="services" value="個人療癒陪伴計畫"><span>個人療癒陪伴計畫</span></label>
+            <label class="choice"><input type="checkbox" name="services" value="線上或實體療癒課程"><span>線上／實體療癒課程</span></label>
+            <label class="choice"><input type="checkbox" name="services" value="學習自我療癒方法"><span>學習自我療癒方法</span></label>
+            <label class="choice"><input type="checkbox" name="services" value="學習療癒方法未來陪伴他人"><span>學習療癒方法，未來陪伴他人</span></label>
+            <label class="choice"><input type="checkbox" name="services" value="免費療癒資源及活動通知"><span>免費療癒資源及活動通知</span></label>
+            <label class="choice"><input type="checkbox" name="services" value="暫時只是想了解"><span>暫時只是想了解</span></label>
+          </div>
+        </div>
+
+        <div class="grid">
+          <div class="field">
+            <label class="legend required" for="preferred_format">希望用什麼方式進行？</label>
+            <select id="preferred_format" name="preferred_format" required>
+              <option value="">請選擇</option>
+              <option>一對一線上療癒</option>
+              <option>線上直播課程</option>
+              <option>預錄課程</option>
+              <option>PDF指南及自我練習</option>
+              <option>小組療癒或工作坊</option>
+              <option>實體課程</option>
+              <option>還不確定，希望 BoBo 提供建議</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label class="legend required" for="start_time">希望什麼時候開始？</label>
+            <select id="start_time" name="start_time" required>
+              <option value="">請選擇</option>
+              <option>希望盡快安排</option>
+              <option>未來一至兩星期</option>
+              <option>未來一個月</option>
+              <option>先了解課程及費用</option>
+              <option>暫時沒有確定時間</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field" style="margin-top:20px">
+          <label class="legend">方便參與療癒或上課的時間</label>
+          <div class="choices">
+            <label class="choice"><input type="checkbox" name="availability" value="平日上午"><span>平日上午</span></label>
+            <label class="choice"><input type="checkbox" name="availability" value="平日下午"><span>平日下午</span></label>
+            <label class="choice"><input type="checkbox" name="availability" value="平日晚上"><span>平日晚上</span></label>
+            <label class="choice"><input type="checkbox" name="availability" value="星期六"><span>星期六</span></label>
+            <label class="choice"><input type="checkbox" name="availability" value="星期日"><span>星期日</span></label>
+            <label class="choice"><input type="checkbox" name="availability" value="時間可以再安排"><span>時間可以再安排</span></label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="legend required">你想安排哪一項下一步？</label>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="next_step" value="預約一對一線上療癒" required><span>預約一對一線上療癒</span></label>
+            <label class="choice"><input type="radio" name="next_step" value="了解適合自己的療癒服務"><span>了解適合自己的療癒服務</span></label>
+            <label class="choice"><input type="radio" name="next_step" value="了解自我療癒課程"><span>了解自我療癒課程</span></label>
+            <label class="choice"><input type="radio" name="next_step" value="了解學習療癒他人的課程"><span>了解學習療癒他人的課程</span></label>
+            <label class="choice"><input type="radio" name="next_step" value="接收免費活動或資訊"><span>接收免費活動或資訊</span></label>
+            <label class="choice"><input type="radio" name="next_step" value="暫時不需要預約"><span>暫時不需要預約</span></label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="legend" for="special_notes">有沒有任何需要 BoBo 特別留意的事情？</label>
+          <textarea id="special_notes" name="special_notes" placeholder="例如：近期情緒狀態、身體狀況、上課時間限制、語言需要。"></textarea>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="section-title">
+          <span class="num">6</span>
+          <div>
+            <h2>訂閱、聯絡與資料同意</h2>
+            <p>訂閱是獨立選擇，不影響本次表格回覆。</p>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="legend required">你願意接收開心愛家園療癒的 Email 嗎？</label>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="subscribe" value="願意接收療癒文章免費資源活動及課程消息" required><span>願意，我想接收療癒文章、免費資源、活動及課程消息</span></label>
+            <label class="choice"><input type="radio" name="subscribe" value="只希望收到本次表格相關回覆"><span>暫時不用，只希望收到這次表格的相關回覆</span></label>
+          </div>
+          <p class="help">願意訂閱者仍需按照確認電郵完成訂閱；可隨時取消。</p>
+        </div>
+
+        <div class="field consent">
+          <label class="choice">
+            <input type="checkbox" name="contact_consent" value="同意" required>
+            <span>我同意開心愛家園療癒根據本表格內容，透過我提供的 Email、電話、WhatsApp 或 LINE 與我聯絡，回覆療癒、預約或課程相關資訊。</span>
+          </label>
+        </div>
+
+        <div class="field consent">
+          <label class="choice">
+            <input type="checkbox" name="disclaimer_consent" value="同意" required>
+            <span>我明白身心靈療癒、冥想及課程屬於自我探索與生活支持，不代替醫療、心理治療、精神健康診斷或緊急支援。如有身體或心理健康問題，我會尋求合資格的醫療或心理健康人員協助。</span>
+          </label>
+        </div>
+      </section>
+
+      <div class="submit-box" id="submitBox">
+        <button class="submit-btn" id="submitBtn" type="submit">提交療癒需求探索表</button>
+        <p class="tiny">填寫表格不代表必須購買任何服務。你的資料只用於本次聯絡、療癒服務、課程與訂閱安排。</p>
+      </div>
+    </form>
+
+    <iframe name="submitFrame" id="submitFrame" title="表格提交" style="display:none"></iframe>
+
+    <section class="card success" id="successBox" aria-live="polite">
+      <div style="font-size:3rem">🌿</div>
+      <h2>謝謝你願意讓 BoBo 更了解你</h2>
+      <p>你的資料已經送出。BoBo 會閱讀你填寫的內容，並按照你選擇的聯絡方式回覆療癒、預約或課程資訊。</p>
+      <p>填寫表格不代表必須購買任何服務，你仍然可以按照自己的感受和步伐作出決定。</p>
+
+      <div class="actions">
+        <a class="btn-link primary" href="https://happylovehomehealing.org/">返回開心愛家園療癒</a>
+        <a class="btn-link" href="https://happylovehomehealing.org/healing.html">看看療癒服務與課程</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    BoBo ❤️ 黑暗中的光．生活的燈塔<br>
+    © BoBo Tan · 開心愛家園療癒 · 版權所有
+  </footer>
+
+  <script>
+    const form = document.getElementById('surveyForm');
+    const frame = document.getElementById('submitFrame');
+    const btn = document.getElementById('submitBtn');
+    const submitBox = document.getElementById('submitBox');
+    const successBox = document.getElementById('successBox');
+    let submitted = false;
+
+    function hasChecked(name){
+      return document.querySelectorAll(`input[name="${name}"]:checked`).length > 0;
+    }
+
+    form.addEventListener('submit', function(event){
+      const action = form.getAttribute('action');
+
+      if (!action || action.includes('PASTE_YOUR_GOOGLE_APPS_SCRIPT')) {
+        event.preventDefault();
+        alert('請先把 Google Apps Script Web App URL 貼到 HTML 的 form action。');
+        return;
+      }
+
+      if (!hasChecked('reasons')) {
+        event.preventDefault();
+        alert('請至少選擇一個尋找療癒方法的原因。');
+        return;
+      }
+
+      if (!hasChecked('issues')) {
+        event.preventDefault();
+        alert('請至少選擇一個目前想整理的問題。');
+        return;
+      }
+
+      if (!hasChecked('services')) {
+        event.preventDefault();
+        alert('請至少選擇一項有興趣了解的服務。');
+        return;
+      }
+
+      submitted = true;
+      btn.disabled = true;
+      btn.textContent = '正在提交…';
+    });
+
+    frame.addEventListener('load', function(){
+      if (!submitted) return;
+
+      form.style.display = 'none';
+      submitBox.style.display = 'none';
+      successBox.classList.add('show');
+      successBox.scrollIntoView({behavior:'smooth', block:'start'});
+    });
+  </script>
+</body>
+</html>
