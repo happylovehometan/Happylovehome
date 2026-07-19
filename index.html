@@ -62,6 +62,86 @@ font-size:26px;
 margin:8px 0 14px;
 color:#6d4d68;
 }
+.platforms-card{
+  max-width:620px;
+  margin:28px auto;
+  padding:28px 22px;
+  background:linear-gradient(180deg,#fffdf9 0%,#f5eee7 100%);
+  border:1px solid #e8d9ca;
+  border-radius:26px;
+  box-shadow:0 14px 32px rgba(110,78,92,.11);
+  color:#5f4a5d;
+}
+.platforms-card h2{
+  margin:6px 0 10px;
+  font-size:clamp(1.55rem,5vw,2rem);
+  line-height:1.4;
+  color:#6d4d68;
+}
+.platforms-eyebrow{
+  color:#9b6a91;
+  font-size:.92rem;
+  font-weight:700;
+  letter-spacing:.08em;
+}
+.platforms-intro{
+  max-width:500px;
+  margin:0 auto 20px;
+  color:#776b70;
+  font-size:1rem;
+  line-height:1.8;
+}
+.platforms-poster{
+  display:block;
+  width:100%;
+  max-width:520px;
+  height:auto;
+  margin:0 auto 20px;
+  border:1px solid #e7d8d0;
+  border-radius:20px;
+  box-shadow:0 10px 24px rgba(110,78,92,.10);
+}
+.platforms-list{
+  display:grid;
+  gap:12px;
+  max-width:520px;
+  margin:0 auto;
+}
+.platform-link{
+  display:block;
+  padding:15px 16px;
+  background:rgba(255,255,255,.88);
+  border:1px solid #e7d8d0;
+  border-radius:18px;
+  color:#604f59 !important;
+  text-decoration:none !important;
+  box-shadow:0 7px 18px rgba(110,78,92,.07);
+  transition:transform .18s ease,box-shadow .18s ease;
+}
+.platform-link:hover,
+.platform-link:focus-visible{
+  transform:translateY(-2px);
+  box-shadow:0 10px 22px rgba(110,78,92,.14);
+}
+.platform-name{
+  display:block;
+  margin-bottom:4px;
+  color:#76536f;
+  font-size:1.08rem;
+  font-weight:700;
+}
+.platform-detail{
+  display:block;
+  color:#82747a;
+  font-size:.91rem;
+  line-height:1.55;
+}
+.platform-note{
+  margin:16px 0 0;
+  color:#988a90;
+  font-size:.78rem;
+  line-height:1.6;
+}
 button,.linkbtn{
 display:inline-block;
 background:#9b6a91;
@@ -723,6 +803,53 @@ document.addEventListener('click', async function(e){
 
 });
 </script>
+<!-- 第三方教學平台 -->
+<section class="platforms-card" aria-labelledby="platforms-title">
+  <div class="platforms-eyebrow">🌍 第三方教學與內容平台</div>
+  <h2 id="platforms-title">BoBo 的療癒分享平台</h2>
+  <p class="platforms-intro">
+    持續學習、持續實踐，也把療癒、冥想與自我覺察內容分享至不同平台。
+  </p>
+
+  <img class="platforms-poster"
+       src="third-party-platforms.png"
+       alt="BoBo 的第三方教學與內容平台：AmazingTalker、Insight Timer、Udemy、療癒草原"
+       loading="lazy">
+
+  <div class="platforms-list">
+    <a class="platform-link"
+       href="https://tw.amazingtalker.com/teachers-and-tutors/bobo-tan"
+       target="_blank" rel="noopener noreferrer">
+      <span class="platform-name">AmazingTalker</span>
+      <span class="platform-detail">心靈療癒教師｜已通過教師資格申請</span>
+    </a>
+
+    <a class="platform-link"
+       href="https://insig.ht/Uad68SzWT4b"
+       target="_blank" rel="noopener noreferrer">
+      <span class="platform-name">Insight Timer</span>
+      <span class="platform-detail">Accredited｜Certified Meditation Teacher</span>
+    </a>
+
+    <a class="platform-link"
+       href="https://www.udemy.com/user/tan-gaik-chee/"
+       target="_blank" rel="noopener noreferrer">
+      <span class="platform-name">Udemy</span>
+      <span class="platform-detail">Instructor｜線上課程準備上架中</span>
+    </a>
+
+    <a class="platform-link"
+       href="https://healingrassland.com/author/h253115/"
+       target="_blank" rel="noopener noreferrer">
+      <span class="platform-name">療癒草原 Healing Grassland</span>
+      <span class="platform-detail">療癒師與內容作者｜個人介紹及療癒文章</span>
+    </a>
+  </div>
+
+  <p class="platform-note">第三方平台身份與內容，以各平台頁面顯示為準。</p>
+</section>
+<!-- 第三方教學平台結束 -->
+
  <!-- 療癒需求探索表 -->
 <section style="
   max-width: 620px;
@@ -1136,4 +1263,3 @@ document.addEventListener("DOMContentLoaded", function () {
 </script> 
 </body>
 </html> 
-
