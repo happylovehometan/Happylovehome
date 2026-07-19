@@ -123,6 +123,13 @@ color:#6d4d68;
   transform:translateY(-2px);
   box-shadow:0 10px 22px rgba(110,78,92,.14);
 }
+.platform-link-disabled{
+  cursor:default;
+}
+.platform-link-disabled:hover{
+  transform:none;
+  box-shadow:0 7px 18px rgba(110,78,92,.07);
+}
 .platform-name{
   display:block;
   margin-bottom:4px;
@@ -821,12 +828,11 @@ document.addEventListener('click', async function(e){
       <span class="platform-detail">Accredited｜Certified Meditation Teacher</span>
     </a>
 
-    <a class="platform-link"
-       href="https://www.udemy.com/user/tan-gaik-chee/"
-       target="_blank" rel="noopener noreferrer">
+    <div class="platform-link platform-link-disabled"
+         aria-label="Udemy 教師身份，線上課程準備上架中">
       <span class="platform-name">Udemy</span>
       <span class="platform-detail">Instructor｜線上課程準備上架中</span>
-    </a>
+    </div>
 
     <a class="platform-link"
        href="https://healingrassland.com/author/h253115/"
