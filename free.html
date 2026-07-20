@@ -161,6 +161,43 @@
 }
 </style>
 
+
+<style>
+/* ===== 免費 PDF 資源卡：圖片、間距、手機版 ===== */
+.pdf-resource-card{
+  margin-bottom:34px;
+  padding-bottom:30px;
+}
+.pdf-resource-card + .pdf-resource-card{
+  margin-top:8px;
+}
+.pdf-resource-image{
+  display:block;
+  width:100%;
+  max-width:560px;
+  height:auto;
+  margin:0 auto 24px;
+  border-radius:24px;
+  box-shadow:0 12px 28px rgba(104,76,102,.16);
+}
+.pdf-resource-card h2{
+  margin-top:0;
+}
+.pdf-resource-card .btn{
+  margin-top:18px;
+}
+@media (max-width:640px){
+  .pdf-resource-card{
+    margin-bottom:24px;
+    padding-bottom:24px;
+  }
+  .pdf-resource-image{
+    border-radius:20px;
+    margin-bottom:20px;
+  }
+}
+</style>
+
 </head>
 <body>
 
@@ -177,33 +214,67 @@
     </section>
 
     <!-- 睡前安撫 -->
-    <section class="resource-card">
+    <section class="resource-card pdf-resource-card">
+      <img
+        src="sleep-comfort-30.png"
+        alt="睡前安撫自己 30 句"
+        class="pdf-resource-image"
+        loading="lazy"
+      >
       <h2>❤️ 睡前安撫自己 30 句</h2>
       <p>
         給睡不著、想太多、心很累的你。<br><br>
         一份能在夜晚陪伴自己的溫柔安撫句子。
       </p>
       <a href="https://payhip.com/b/eWrnU"
-   class="btn"
-   target="_blank"
-   rel="noopener">
-  🎁 免費領取
-</a>
+         class="btn"
+         target="_blank"
+         rel="noopener">
+        🎁 免費領取
+      </a>
+    </section>
 
     <!-- 如果今天很難熬 -->
-    <section class="resource-card">
+    <section class="resource-card pdf-resource-card">
+      <img
+        src="hard-day-guide.png"
+        alt="如果今天很難熬"
+        class="pdf-resource-image"
+        loading="lazy"
+      >
       <h2>🌙 如果今天很難熬</h2>
       <p>
         送給低潮、疲累、想哭卻不知道怎麼辦的你。<br><br>
         BoBo 溫柔陪伴小手冊。
       </p>
       <a href="https://payhip.com/b/6zrXc"
-   class="btn"
-   target="_blank"
-   rel="noopener">
-  🎁 免費領取
-</a>
+         class="btn"
+         target="_blank"
+         rel="noopener">
+        🎁 免費領取
+      </a>
+    </section>
 
+    <!-- 金錢能量關係 -->
+    <section class="resource-card pdf-resource-card">
+      <img
+        src="money-energy-guide.png"
+        alt="重新認識你與金錢的能量關係"
+        class="pdf-resource-image"
+        loading="lazy"
+      >
+      <h2>💰 重新認識你與金錢的能量關係</h2>
+      <p>
+        陪你看見金錢、安全感、值得感與接收能力之間的關係。<br><br>
+        透過書寫、靜心與 Workbook 練習，重新理解自己與金錢的故事。
+      </p>
+      <a href="https://payhip.com/b/8pRiA"
+         class="btn"
+         target="_blank"
+         rel="noopener">
+        🎁 免費領取
+      </a>
+    </section>
 
     <!-- 彩虹呼吸 -->
     <section class="resource-card bobo-interactive-card">
@@ -338,9 +409,6 @@
     </section>
 
   </main>
-</section>
-
-</main>
 
 <!-- 幸福家園 -->
 <section class="happy-home-box">
