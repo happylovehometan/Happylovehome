@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BoBo 的故事｜開心愛家園療癒</title>
-  <link rel="stylesheet" href="style.css?v=story20260721-johor">
+  <title>BoBo 的故事｜學習旅程・療癒陪伴｜開心愛家園療癒</title>
+  <meta name="description" content="走進 BoBo 的生命故事與持續學習旅程，包含希塔療癒、金錢靈氣、龍族能量、寵物心靈溝通、創傷知情與情緒陪伴等學習紀錄。">
+  <link rel="stylesheet" href="style.css?v=story20260724-dragon-pet">
 </head>
 <body class="soft-page">
 
@@ -335,6 +336,96 @@
             陪伴自己整理內在狀態，
             並將所學運用於個人成長與陪伴實踐。
           </p>
+        </div>
+
+      </article>
+
+
+
+      <!-- Dragon Energy Learning Journey -->
+      <article class="journey-card">
+
+        <div class="journey-image certificate-pair">
+          <img src="dragon-course.jpg"
+               alt="BoBo 於 2025 年 3 月 2 日完成光之龍族課程證書"
+               loading="lazy">
+
+          <img src="dragon-master.jpg"
+               alt="BoBo 於 2025 年 3 月 9 日在台灣完成御龍大師課程證書"
+               loading="lazy">
+        </div>
+
+        <div class="journey-content">
+
+          <h3>🐉 龍族能量學習旅程</h3>
+
+          <p class="journey-english">
+            Dragon Course &amp; Dragon Master Course
+          </p>
+
+          <p>
+            2025 年 3 月，我完成了兩段對我很有意義的龍族能量學習旅程。
+          </p>
+
+          <p>
+            <strong>3 月 2 日｜光之龍族課程</strong><br>
+            我在新加坡透過線上連線，與台灣的課程現場同步學習，
+            開始認識不同龍族能量的特質，以及勇氣、守護、信任與內在力量。
+          </p>
+
+          <p>
+            <strong>3 月 9 日｜御龍大師課程</strong><br>
+            為了更深入學習，我特地從新加坡飛往台灣上課。
+            這不只是一趟旅程，也記錄了我願意為自己的學習跨出去、
+            親自到現場感受與實踐的那份心。
+          </p>
+
+          <p>
+            對我而言，龍族能量不是用來證明神秘或特別，
+            而是一種象徵與提醒：在需要的時候，找回自己的勇氣、智慧、界線與守護力量。
+          </p>
+
+        </div>
+
+      </article>
+
+
+      <!-- Pet Heart Communication -->
+      <article class="journey-card">
+
+        <div class="journey-image">
+          <img src="pet-heart-communication.jpg"
+               alt="BoBo 寵物心靈溝通課程證書"
+               loading="lazy">
+        </div>
+
+        <div class="journey-content">
+
+          <h3>🐾 寵物心靈溝通學習</h3>
+
+          <p class="journey-english">
+            Pet Heart Communication
+          </p>
+
+          <p>
+            我相信，毛孩也有自己的情緒、感受與想表達的心聲。
+          </p>
+
+          <p>
+            透過寵物心靈溝通的學習，我練習用更安靜、更尊重的方式，
+            理解動物與照顧者之間的連結，也提醒自己不急著替毛孩下結論，
+            而是先觀察、傾聽與陪伴。
+          </p>
+
+          <p>
+            這段學習也成為我日後發展寵物情緒理解、關係陪伴與日常安撫內容的一部分。
+          </p>
+
+          <a class="journey-action-btn"
+             href="pet-healing.html">
+            🐾 進入開心寵物
+          </a>
+
         </div>
 
       </article>
@@ -709,6 +800,42 @@
   color:#87678c;
 }
 
+
+/* 龍族證書：桌面並排，手機自動改為上下排列 */
+.journey-image.certificate-pair {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;
+}
+
+.journey-image.certificate-pair img {
+  width:100%;
+  max-height:360px;
+  object-fit:contain;
+}
+
+.journey-action-btn {
+  display:inline-block;
+  margin-top:14px;
+  padding:13px 22px;
+  border-radius:999px;
+  background:linear-gradient(135deg,#8d5d89,#a67aa3);
+  color:#fff;
+  text-decoration:none;
+  font-weight:800;
+  box-shadow:0 8px 20px rgba(84,55,93,.16);
+}
+
+.journey-action-btn:hover {
+  transform:translateY(-2px);
+}
+
+@media(max-width:620px) {
+  .journey-image.certificate-pair {
+    grid-template-columns:1fr;
+  }
+}
+
 @media(max-width:820px) {
 
   .bobo-learning-journey {
@@ -801,6 +928,8 @@
 
 <a class="btn" href="healing.html">💜 療癒服務</a>
 
+<a class="btn" href="pet-healing.html">🐾 開心寵物</a>
+
 <a class="btn" href="free.html">🎁 免費療癒資源館</a>
 
 <a class="btn" href="seed.html">🌻 幸福種子計畫</a>
@@ -828,9 +957,6 @@
     </section>
 
   </main>
-</section>
-
-</main>
 
 <!-- 幸福家園 -->
 <section class="happy-home-box">
