@@ -286,6 +286,92 @@ text-align:left;
     transform:translateY(-3px);
     box-shadow:0 12px 24px rgba(0,0,0,.25);
 } 
+
+/* 光耀豐盛人生｜首頁獨立入口 */
+.knowledge-business-card{
+  max-width:620px;
+  margin:28px auto;
+  padding:32px 24px;
+  background:
+    radial-gradient(circle at 88% 12%, rgba(242,219,165,.18), transparent 24%),
+    linear-gradient(145deg,#0a1f36 0%,#153b63 100%);
+  border:1px solid rgba(216,181,107,.65);
+  border-radius:28px;
+  box-shadow:0 16px 36px rgba(10,31,54,.20);
+  text-align:center;
+  color:#fff;
+  overflow:hidden;
+}
+.knowledge-business-eyebrow{
+  margin-bottom:8px;
+  color:#f2dba5;
+  font-size:.9rem;
+  font-weight:700;
+  letter-spacing:.08em;
+}
+.knowledge-business-card h2{
+  margin:4px 0 6px;
+  color:#fff;
+  font-size:clamp(1.75rem,6vw,2.35rem);
+  line-height:1.35;
+}
+.knowledge-business-subtitle{
+  margin:0 0 18px;
+  color:#f2dba5;
+  font-size:1.08rem;
+  font-weight:700;
+}
+.knowledge-business-card p{
+  max-width:520px;
+  margin:0 auto 14px;
+  color:#edf2f7;
+  font-size:1rem;
+  line-height:1.9;
+}
+.knowledge-business-points{
+  max-width:500px;
+  margin:20px auto 24px;
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px;
+  text-align:left;
+}
+.knowledge-business-point{
+  padding:11px 13px;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:15px;
+  color:#fff;
+  font-size:.93rem;
+  line-height:1.5;
+}
+.knowledge-business-btn{
+  display:inline-block;
+  padding:15px 28px;
+  background:linear-gradient(135deg,#d8b56b,#f2dba5);
+  color:#0a1f36 !important;
+  text-decoration:none !important;
+  border-radius:999px;
+  font-size:1.05rem;
+  font-weight:800;
+  box-shadow:0 10px 24px rgba(216,181,107,.24);
+  transition:transform .18s ease,box-shadow .18s ease;
+}
+.knowledge-business-btn:hover,
+.knowledge-business-btn:focus-visible{
+  transform:translateY(-2px);
+  box-shadow:0 14px 28px rgba(216,181,107,.32);
+}
+@media(max-width:520px){
+  .knowledge-business-card{
+    margin:24px 16px;
+    padding:28px 18px;
+  }
+  .knowledge-business-points{
+    grid-template-columns:1fr;
+  }
+}
+
 </style>
 </head>
 
