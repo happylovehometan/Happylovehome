@@ -88,6 +88,22 @@ border:2px solid rgba(167,122,163,.22);
 
 footer{padding:45px 18px 25px;font-size:18px;line-height:1.8;color:#25534d}footer a{text-decoration:none;font-weight:800;display:block;margin:8px 0}.footer-brand{font-size:24px;font-weight:900;margin-top:22px}.footer-links{margin:22px 0}
 @media(max-width:620px){.grid,.quick-grid{grid-template-columns:1fr}h1{font-size:28px}h2{font-size:22px}footer{font-size:17px}.page{padding:22px 14px 38px}}
+
+
+/* 放空一下｜療癒打磚塊 */
+.relax-game-card{background:linear-gradient(135deg,#fff9fc,#effff5);border:2px solid rgba(167,122,163,.2)}
+.relax-game-wrap{max-width:680px;margin:0 auto}
+.relax-game-canvas-wrap{position:relative;width:100%;aspect-ratio:4/3;max-height:510px;border-radius:24px;overflow:hidden;background:linear-gradient(180deg,#f4ecff 0%,#e9fff2 58%,#fff8d8 100%);box-shadow:inset 0 0 0 2px rgba(123,75,131,.12),0 10px 24px rgba(92,136,110,.12);touch-action:none}
+#relaxBrickCanvas{display:block;width:100%;height:100%;touch-action:none}
+.relax-game-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:24px;background:rgba(255,255,255,.58);backdrop-filter:blur(3px);z-index:2}
+.relax-game-overlay[hidden]{display:none}
+.relax-game-message{max-width:430px;background:rgba(255,255,255,.94);border-radius:24px;padding:22px 18px;box-shadow:0 10px 25px rgba(92,136,110,.14);color:#496b64;line-height:1.75}
+.relax-game-message strong{display:block;color:#7b4b83;font-size:22px;margin-bottom:7px}
+.relax-game-controls{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px auto 0;max-width:620px}
+.relax-game-controls button{padding:13px 10px;font-size:15px}
+.relax-game-hint{font-size:14px;color:#6b7d76;line-height:1.75;margin:12px 0 0}
+@media(max-width:620px){.relax-game-controls{grid-template-columns:1fr}.relax-game-canvas-wrap{aspect-ratio:1/1.08}.relax-game-message strong{font-size:20px}}
+
 </style>
 </head>
 <body>
@@ -157,6 +173,26 @@ footer{padding:45px 18px 25px;font-size:18px;line-height:1.8;color:#25534d}foote
 <button onclick="draw('pet')">🐾 寵物今天想說</button>
 <button onclick="draw('universe')">✨ 宇宙一句話</button>
 <button onclick="startInnerChildNumber()">🧸 內在小孩想對你說</button>
+</div>
+</section>
+
+
+<section class="card relax-game-card">
+<h2>🎮 放空一下｜療癒打磚塊</h2>
+<p class="subtitle">不用得分，也不用過關。左右移動小板，讓球輕輕碰走今天的壓力。停止後，隨時重新開始。</p>
+<div class="relax-game-wrap">
+<div class="relax-game-canvas-wrap" id="relaxGameArea">
+<canvas id="relaxBrickCanvas" aria-label="療癒打磚塊小遊戲"></canvas>
+<div class="relax-game-overlay" id="relaxGameOverlay">
+<div class="relax-game-message" id="relaxGameMessage"><strong>先深呼吸一下</strong>按「開始遊戲」，讓腦袋休息一會兒。</div>
+</div>
+</div>
+<div class="relax-game-controls">
+<button type="button" onclick="startRelaxGame()">▶️ 開始遊戲</button>
+<button type="button" onclick="pauseRelaxGame()">⏸️ 暫停</button>
+<button type="button" onclick="resetRelaxGame()">🔄 重新開始</button>
+</div>
+<p class="relax-game-hint">手機：手指在遊戲區左右滑動。電腦：使用滑鼠或左右方向鍵。沒有分數、沒有排行榜，也不會保存遊戲紀錄。</p>
 </div>
 </section>
 
@@ -606,6 +642,96 @@ function gratitude(){
  if(vals.length===0){showCustom('🙏 感恩三件事','先寫下一件小小感恩也可以。','不用很大，今天還能呼吸也是一件事。','我看見生活的小幸福。');return;}
  showCustom('🙏 今天的小幸福','你今天感恩：<br>🌸 '+vals.join('<br>🌸 '),'把這份感恩放在心裡三秒。','我接收今天的小幸福。');
 }
+
+/* 放空一下｜療癒打磚塊 */
+let relaxGame=null;
+function initRelaxGame(){
+ const canvas=document.getElementById('relaxBrickCanvas');
+ if(!canvas||relaxGame)return;
+ const area=document.getElementById('relaxGameArea');
+ const ctx=canvas.getContext('2d');
+ const labels=['壓力','擔心','疲累','比較','內耗','急躁','委屈','緊繃','不安','煩躁','逞強','自責'];
+ relaxGame={canvas,area,ctx,labels,running:false,paused:false,raf:0,last:0,keys:{},pointerX:null};
+ const resize=()=>{
+   const rect=area.getBoundingClientRect(),dpr=Math.min(window.devicePixelRatio||1,2);
+   canvas.width=Math.round(rect.width*dpr);canvas.height=Math.round(rect.height*dpr);
+   ctx.setTransform(dpr,0,0,dpr,0,0);
+   relaxGame.w=rect.width;relaxGame.h=rect.height;
+   setupRelaxRound(false);drawRelaxGame();
+ };
+ relaxGame.resize=resize;
+ window.addEventListener('resize',resize,{passive:true});
+ window.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'||e.key==='ArrowRight'){relaxGame.keys[e.key]=true;e.preventDefault();}});
+ window.addEventListener('keyup',e=>{relaxGame.keys[e.key]=false;});
+ const movePointer=e=>{const r=canvas.getBoundingClientRect();const p=e.touches?e.touches[0]:e;relaxGame.pointerX=Math.max(0,Math.min(r.width,p.clientX-r.left));};
+ canvas.addEventListener('pointerdown',e=>{canvas.setPointerCapture?.(e.pointerId);movePointer(e);});
+ canvas.addEventListener('pointermove',e=>{if(e.buttons||e.pointerType==='touch')movePointer(e);});
+ canvas.addEventListener('touchstart',movePointer,{passive:true});
+ canvas.addEventListener('touchmove',movePointer,{passive:true});
+ resize();
+}
+function setupRelaxRound(showOverlay=true){
+ if(!relaxGame)return;
+ const g=relaxGame,w=g.w||640,h=g.h||480;
+ g.paddle={w:Math.max(78,w*.18),h:14,x:w/2-Math.max(78,w*.18)/2,y:h-34,speed:430};
+ g.ball={x:w/2,y:h*.66,r:Math.max(6,Math.min(9,w*.014)),vx:w*.28,vy:-h*.42};
+ const cols=w<480?3:4,rows=3,gap=9,margin=16,top=38;
+ const bw=(w-margin*2-gap*(cols-1))/cols,bh=Math.max(34,Math.min(46,h*.1));
+ g.bricks=[];
+ for(let r=0;r<rows;r++)for(let c=0;c<cols;c++)g.bricks.push({x:margin+c*(bw+gap),y:top+r*(bh+gap),w:bw,h:bh,label:g.labels[r*cols+c],alive:true});
+ g.running=false;g.paused=false;g.last=0;
+ if(showOverlay)showRelaxOverlay('先深呼吸一下','按「開始遊戲」，讓腦袋休息一會兒。');
+}
+function showRelaxOverlay(title,text){
+ const ov=document.getElementById('relaxGameOverlay'),msg=document.getElementById('relaxGameMessage');
+ if(msg)msg.innerHTML='<strong>'+title+'</strong>'+text;
+ if(ov)ov.hidden=false;
+}
+function hideRelaxOverlay(){const ov=document.getElementById('relaxGameOverlay');if(ov)ov.hidden=true;}
+function startRelaxGame(){
+ initRelaxGame();const g=relaxGame;if(!g)return;
+ if(g.bricks.every(b=>!b.alive)||g.ball.y>g.h+30)setupRelaxRound(false);
+ g.running=true;g.paused=false;g.last=performance.now();hideRelaxOverlay();cancelAnimationFrame(g.raf);g.raf=requestAnimationFrame(relaxGameLoop);
+}
+function pauseRelaxGame(){
+ if(!relaxGame)return;
+ relaxGame.running=false;relaxGame.paused=true;cancelAnimationFrame(relaxGame.raf);
+ showRelaxOverlay('先停一下也很好','準備好時，再按「開始遊戲」繼續。');drawRelaxGame();
+}
+function resetRelaxGame(){
+ initRelaxGame();cancelAnimationFrame(relaxGame.raf);setupRelaxRound(true);drawRelaxGame();
+}
+function relaxGameLoop(t){
+ const g=relaxGame;if(!g||!g.running)return;
+ const dt=Math.min((t-g.last)/1000,.025);g.last=t;updateRelaxGame(dt);drawRelaxGame();
+ if(g.running)g.raf=requestAnimationFrame(relaxGameLoop);
+}
+function updateRelaxGame(dt){
+ const g=relaxGame,p=g.paddle,b=g.ball;
+ if(g.keys.ArrowLeft)p.x-=p.speed*dt;if(g.keys.ArrowRight)p.x+=p.speed*dt;
+ if(g.pointerX!=null)p.x+=(g.pointerX-p.w/2-p.x)*Math.min(1,dt*18);
+ p.x=Math.max(0,Math.min(g.w-p.w,p.x));
+ b.x+=b.vx*dt;b.y+=b.vy*dt;
+ if(b.x-b.r<0){b.x=b.r;b.vx=Math.abs(b.vx)}if(b.x+b.r>g.w){b.x=g.w-b.r;b.vx=-Math.abs(b.vx)}if(b.y-b.r<0){b.y=b.r;b.vy=Math.abs(b.vy)}
+ if(b.vy>0&&b.y+b.r>=p.y&&b.y-b.r<=p.y+p.h&&b.x>=p.x&&b.x<=p.x+p.w){
+   b.y=p.y-b.r;const hit=(b.x-(p.x+p.w/2))/(p.w/2);const speed=Math.hypot(b.vx,b.vy);b.vx=hit*speed*.9;b.vy=-Math.abs(speed*Math.sqrt(Math.max(.28,1-hit*hit*.7)));
+ }
+ for(const br of g.bricks){if(!br.alive)continue;if(b.x+b.r>br.x&&b.x-b.r<br.x+br.w&&b.y+b.r>br.y&&b.y-b.r<br.y+br.h){br.alive=false;const ox=Math.min(b.x+b.r-br.x,br.x+br.w-(b.x-b.r));const oy=Math.min(b.y+b.r-br.y,br.y+br.h-(b.y-b.r));if(ox<oy)b.vx*=-1;else b.vy*=-1;break;}}
+ if(g.bricks.every(br=>!br.alive)){g.running=false;showRelaxOverlay('今天先放下一點點，就很好。','沒有下一關。想再玩時，按「重新開始」就可以。');}
+ if(b.y-b.r>g.h){g.running=false;showRelaxOverlay('沒接到也沒關係','遊戲停在這裡。按「重新開始」，一切重新來過。');}
+}
+function roundRectRelax(ctx,x,y,w,h,r){ctx.beginPath();ctx.roundRect?ctx.roundRect(x,y,w,h,r):(ctx.rect(x,y,w,h));}
+function drawRelaxGame(){
+ const g=relaxGame;if(!g)return;const c=g.ctx,w=g.w,h=g.h;c.clearRect(0,0,w,h);
+ for(let i=0;i<18;i++){const x=(i*73)%w,y=(i*41)%h;c.globalAlpha=.2;c.font=(12+(i%3)*4)+'px sans-serif';c.fillText(i%2?'✦':'•',x,y)}c.globalAlpha=1;
+ const palette=['#d7b8e8','#f8c9da','#bfe7d2','#ffe1a8','#c9d8ff','#f4c5b6'];
+ g.bricks.forEach((br,i)=>{if(!br.alive)return;c.fillStyle=palette[i%palette.length];roundRectRelax(c,br.x,br.y,br.w,br.h,12);c.fill();c.fillStyle='#5b5367';c.font='700 '+Math.max(12,Math.min(16,br.w/6))+'px "Microsoft JhengHei",sans-serif';c.textAlign='center';c.textBaseline='middle';c.fillText(br.label,br.x+br.w/2,br.y+br.h/2)});
+ c.fillStyle='#a77aa3';roundRectRelax(c,g.paddle.x,g.paddle.y,g.paddle.w,g.paddle.h,9);c.fill();
+ const grad=c.createRadialGradient(g.ball.x-3,g.ball.y-3,2,g.ball.x,g.ball.y,g.ball.r*1.7);grad.addColorStop(0,'#fff');grad.addColorStop(.35,'#fff5a8');grad.addColorStop(1,'#e9a8c8');c.fillStyle=grad;c.beginPath();c.arc(g.ball.x,g.ball.y,g.ball.r,0,Math.PI*2);c.fill();
+ c.textAlign='start';c.textBaseline='alphabetic';
+}
+document.addEventListener('DOMContentLoaded',initRelaxGame);
+
 (function init(){
  let c=parseInt(localStorage.getItem('boboExploreClicks')||'0');
  document.getElementById('clickBadge').innerText='🌸 今日探索 '+c+' 次';
