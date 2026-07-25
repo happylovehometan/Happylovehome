@@ -104,6 +104,31 @@ footer{padding:45px 18px 25px;font-size:18px;line-height:1.8;color:#25534d}foote
 .relax-game-hint{font-size:14px;color:#6b7d76;line-height:1.75;margin:12px 0 0}
 @media(max-width:620px){.relax-game-controls{grid-template-columns:1fr}.relax-game-canvas-wrap{aspect-ratio:1/1.08}.relax-game-message strong{font-size:20px}}
 
+
+/* 此刻最需要的內在支持｜互動測驗 */
+.support-quiz-card{background:linear-gradient(145deg,#fffaff,#f3efff 52%,#effff6);border:2px solid rgba(151,104,196,.18);overflow:hidden}
+.support-quiz-intro{max-width:620px;margin:0 auto}
+.support-quiz-tags{display:flex;justify-content:center;flex-wrap:wrap;gap:9px;margin:18px 0}
+.support-quiz-tags span{background:#fff;color:#7b4b83;border:1px solid rgba(151,104,196,.18);padding:8px 12px;border-radius:999px;font-size:14px;font-weight:800}
+.support-primary{max-width:480px;margin:18px auto 0;background:linear-gradient(135deg,#37307f,#8d42c3)}
+.support-quiz-panel{display:none;max-width:650px;margin:6px auto 0;text-align:left}
+.support-quiz-panel.active,.support-result-box.active{display:block}
+.support-progress-row{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:10px;color:#7b4b83;font-weight:800}
+.support-progress{height:9px;background:#e8e3ed;border-radius:999px;overflow:hidden;margin-bottom:24px}
+.support-progress span{display:block;height:100%;width:0;background:linear-gradient(90deg,#a477dc,#7fd3ad);border-radius:999px;transition:width .3s}
+.support-question{font-size:22px;line-height:1.55;color:#3f3650;margin:0 0 18px;text-align:left}
+.support-options{display:grid;gap:12px}
+.support-option{width:100%;text-align:left;border-radius:20px;padding:16px 18px;background:#fff;color:#3e4f4a;border:1px solid rgba(123,75,131,.14);box-shadow:0 7px 16px rgba(92,80,115,.09);font-weight:700;line-height:1.55}
+.support-option:hover{background:#f8f3ff;color:#69457a}
+.support-result-box{display:none;max-width:650px;margin:6px auto 0;padding:24px 20px;border-radius:26px;background:#fff;box-shadow:0 12px 26px rgba(92,80,115,.13);text-align:left}
+.support-result-icon{text-align:center;font-size:48px;margin-bottom:6px}
+.support-result-box h3{text-align:center;font-size:25px;margin:0 0 12px}
+.support-result-box p{line-height:1.9;color:#4c625b;margin:10px 0}
+.support-practice{margin:18px 0;padding:16px;border-radius:18px;background:linear-gradient(135deg,#fff8e8,#f3fff8);color:#496b64;line-height:1.85}
+.support-actions{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
+.support-disclaimer{font-size:13px;color:#76817d;text-align:center;line-height:1.7;margin-top:15px}
+@media(max-width:620px){.support-question{font-size:20px}.support-actions{grid-template-columns:1fr}.support-option{padding:15px}}
+
 </style>
 </head>
 <body>
@@ -176,6 +201,31 @@ footer{padding:45px 18px 25px;font-size:18px;line-height:1.8;color:#25534d}foote
 </div>
 </section>
 
+
+
+<section class="card support-quiz-card" id="innerSupportQuiz">
+  <div id="supportQuizIntro" class="support-quiz-intro">
+    <h2>💜 此刻，你最需要哪一種內在支持？</h2>
+    <p class="subtitle">用 10 個小問題，陪你看看最近的自己。<br>沒有對錯，也不會判定你的能量、靈性或能力高低。</p>
+    <div class="support-quiz-tags"><span>⏱ 約 1–2 分鐘</span><span>🌿 不需登入</span><span>🔒 不收集答案</span></div>
+    <button type="button" class="support-primary" onclick="startSupportQuiz()">開始探索</button>
+    <p class="support-disclaimer">結果只保留在目前畫面，不會上傳，也不是心理或醫療診斷。</p>
+  </div>
+  <div id="supportQuizPanel" class="support-quiz-panel">
+    <div class="support-progress-row"><span>溫柔看見自己</span><span id="supportQuestionCount">1 / 10</span></div>
+    <div class="support-progress"><span id="supportProgressBar"></span></div>
+    <h3 id="supportQuestion" class="support-question"></h3>
+    <div id="supportOptions" class="support-options"></div>
+  </div>
+  <div id="supportResultBox" class="support-result-box">
+    <div id="supportResultIcon" class="support-result-icon"></div>
+    <h3 id="supportResultTitle"></h3>
+    <p id="supportResultText"></p>
+    <div id="supportPractice" class="support-practice"></div>
+    <p class="support-disclaimer">這不是診斷，也不是為你貼上標籤；它只是陪你看見，此刻內心可能最需要的支持。</p>
+    <div class="support-actions"><button type="button" onclick="restartSupportQuiz()">🔄 再測一次</button><button type="button" onclick="document.getElementById('innerSupportQuiz').scrollIntoView({behavior:'smooth'})">🌿 留在這裡感受</button></div>
+  </div>
+</section>
 
 <section class="card relax-game-card">
 <h2>🎮 放空一下｜療癒打磚塊</h2>
@@ -740,6 +790,35 @@ document.addEventListener('DOMContentLoaded',initRelaxGame);
  if(visits===1) document.getElementById('visitBadge').innerText='🌱 第一次來到探索館';
  else document.getElementById('visitBadge').innerText='🌱 第 '+visits+' 次回到探索館';
 })();
+
+
+const supportQuizData=[
+['最近醒來時，你最常出現的感覺是？',[['身體和心都很累','safety'],['腦中很快出現很多擔心','emotion'],['先想到別人的需要','selflove'],['不太想面對某段關係','boundary'],['知道有事要做卻開始不了','action'],['不知道努力是為了什麼','direction']]],
+['當事情突然改變，你通常最需要什麼？',[['一個安穩可掌握的空間','safety'],['讓情緒慢慢流動','emotion'],['提醒自己也值得被照顧','selflove'],['容許自己說不','boundary'],['把事情拆成小步驟','action'],['重新確認真正想要的','direction']]],
+['最近最容易讓你耗盡的是？',[['生活節奏太快','safety'],['感受卡在心裡','emotion'],['總把自己排最後','selflove'],['人際期待和拉扯','boundary'],['想很多卻難行動','action'],['失去了方向感','direction']]],
+['遇到不舒服的事情時，你比較常？',[['先撐住再說','safety'],['反覆想很久','emotion'],['怪自己不夠好','selflove'],['不願意仍答應','boundary'],['一直拖延處理','action'],['懷疑選擇是否適合','direction']]],
+['最想送自己哪一句話？',[['你可以慢下來','safety'],['你的感受值得看見','emotion'],['你不必用付出證明價值','selflove'],['說不也是保護自己','boundary'],['做一點點也是前進','action'],['你可以重新選擇','direction']]],
+['最近最想從生活拿回什麼？',[['安穩與休息','safety'],['表達感受的空間','emotion'],['對自己的溫柔','selflove'],['清楚的界線','boundary'],['向前走的力量','action'],['對未來的清晰','direction']]],
+['面對別人的要求，你較容易？',[['緊張怕失控','safety'],['把委屈放心裡','emotion'],['先照顧對方','selflove'],['不敢拒絕','boundary'],['答應後又拖延','action'],['不知是否符合方向','direction']]],
+['今天只能為自己做一件事，你會？',[['好好吃飯睡覺','safety'],['寫下心裡話','emotion'],['停止責怪自己','selflove'],['暫時不回訊息','boundary'],['完成一件小事','action'],['想想真正想去哪裡','direction']]],
+['哪種狀態最像最近的你？',[['很難真正放鬆','safety'],['情緒多說不清','emotion'],['對自己要求很高','selflove'],['在人際裡很消耗','boundary'],['有想法但沒動力','action'],['正在轉換期','direction']]],
+['完成後你最希望得到什麼？',[['允許自己休息','safety'],['一個情緒出口','emotion'],['一句站在自己這邊的話','selflove'],['保護自己的提醒','boundary'],['今天可做的小行動','action'],['重新選擇的勇氣','direction']]]
+];
+const supportResults={
+safety:['🕊️','安心安定型','最近的你可能已經撐了一段時間。此刻不一定需要更努力，而是先讓身體知道：可以慢下來、可以休息。','今天的小練習：雙腳踩穩地面，慢慢呼吸 5 次，對自己說：「我現在在這裡，我可以先照顧好自己。」'],
+emotion:['🌧️','情緒釋放型','心裡可能累積了不少沒有說完的感受。它們不是脆弱，只是在提醒你：有些事情需要被承認。','寫下三句話：「我其實感到……」「我最想說的是……」「此刻我需要……」。'],
+selflove:['💗','自我擁抱型','你可能習慣照顧別人，卻較少問自己累不累。你的價值不需要靠付出或完美來證明。','把手放在心口，對自己說：「今天的我已經很努力，我也值得被溫柔對待。」'],
+boundary:['🌿','界線修復型','最近的人際互動可能讓你疲累。清楚表達時間、能力與意願，是讓關係更真實的方法。','找出一件不想勉強自己的事，練習說：「謝謝你想到我，但這次我無法答應。」'],
+action:['✨','行動重啟型','你不是沒有能力，可能只是目標太大、壓力太多。只要重新建立「我做得到一點點」的經驗，行動力就會回來。','選一件事情，只做 5 分鐘。不要要求完成，只需要開始。'],
+direction:['🧭','內在方向型','你可能正在轉換期。迷惘不代表走錯路，有時只是提醒你重新聽見自己的聲音。','寫下：「哪些生活我不想再重複？」以及「我真正想靠近的是什麼？」']
+};
+let supportIndex=0,supportScores={};
+function startSupportQuiz(){supportIndex=0;supportScores={};document.getElementById('supportQuizIntro').style.display='none';document.getElementById('supportResultBox').classList.remove('active');document.getElementById('supportQuizPanel').classList.add('active');renderSupportQuestion()}
+function renderSupportQuestion(){const item=supportQuizData[supportIndex];document.getElementById('supportQuestion').textContent=item[0];document.getElementById('supportQuestionCount').textContent=(supportIndex+1)+' / '+supportQuizData.length;document.getElementById('supportProgressBar').style.width=((supportIndex+1)/supportQuizData.length*100)+'%';const box=document.getElementById('supportOptions');box.innerHTML='';item[1].forEach(x=>{const b=document.createElement('button');b.type='button';b.className='support-option';b.textContent=x[0];b.onclick=()=>chooseSupport(x[1]);box.appendChild(b)})}
+function chooseSupport(key){supportScores[key]=(supportScores[key]||0)+1;supportIndex++;if(supportIndex<supportQuizData.length)renderSupportQuestion();else showSupportResult()}
+function showSupportResult(){const order=['safety','emotion','selflove','boundary','action','direction'];let key=order.sort((a,b)=>(supportScores[b]||0)-(supportScores[a]||0))[0];const r=supportResults[key];document.getElementById('supportQuizPanel').classList.remove('active');document.getElementById('supportResultIcon').textContent=r[0];document.getElementById('supportResultTitle').textContent=r[1];document.getElementById('supportResultText').textContent=r[2];document.getElementById('supportPractice').textContent=r[3];document.getElementById('supportResultBox').classList.add('active');document.getElementById('innerSupportQuiz').scrollIntoView({behavior:'smooth',block:'start'})}
+function restartSupportQuiz(){document.getElementById('supportResultBox').classList.remove('active');document.getElementById('supportQuizIntro').style.display='block';document.getElementById('innerSupportQuiz').scrollIntoView({behavior:'smooth'})}
+
 </script>
 </body>
 </html>
