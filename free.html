@@ -676,27 +676,26 @@
     <!-- 訂閱 -->
     <section class="resource-card" id="subscribe">
       <h2>🔔 訂閱最新消息</h2>
-      <p class="note">如果你正在參加「找出 8 個不同」活動，可先在這裡完成訂閱，再把圈好的答案截圖 email 給我。</p>
       <p>
-        留下 Email，收到最新文章、活動、療癒資源與免費下載通知。
+        如果你正在參加「找出 8 個不同」活動，
+        可先在這裡完成訂閱，再把圈好的答案截圖傳給 BoBo。
       </p>
 
-      <a class="btn"
-         href="mailto:bobo.tan.healing@gmail.com?subject=%E8%A8%82%E9%96%B1%E9%96%8B%E5%BF%83%E6%84%9B%E5%AE%B6%E5%9C%92%E7%99%82%E7%99%92&body=%E4%BD%A0%E5%A5%BD%20BoBo%EF%BC%8C%0A%0A%E6%88%91%E6%83%B3%E8%A8%82%E9%96%B1%E9%96%8B%E5%BF%83%E6%84%9B%E5%AE%B6%E5%9C%92%E7%99%82%E7%99%92%E7%9A%84%E6%9C%80%E6%96%B0%E6%B6%88%E6%81%AF%E3%80%82%0A%0A%E6%88%91%E7%9A%84%20Email%EF%BC%9A"
-         rel="noopener">
+      <button type="button" class="btn" onclick="openBoboEmail('subscribe')">
         💌 我要訂閱
-      </a>
+      </button>
 
-      <a class="btn"
-         href="mailto:bobo.tan.healing@gmail.com?subject=%E6%89%BE%E5%87%BA8%E5%80%8B%E4%B8%8D%E5%90%8C%EF%BD%9C%E7%AD%94%E6%A1%88%E6%88%AA%E5%9C%96&body=%E4%BD%A0%E5%A5%BD%20BoBo%EF%BC%8C%0A%0A%E9%80%99%E6%98%AF%E6%88%91%E7%9A%84%E3%80%8C%E6%89%BE%E5%87%BA8%E5%80%8B%E4%B8%8D%E5%90%8C%E3%80%8D%E7%AD%94%E6%A1%88%E6%88%AA%E5%9C%96%EF%BC%8C%E8%AB%8B%E6%9F%A5%E6%94%B6%E9%99%84%E4%BB%B6%E3%80%82"
-         rel="noopener">
+      <button type="button" class="btn" onclick="openBoboEmail('answer')">
         📩 Email 答案截圖給 BoBo
-      </a>
+      </button>
 
       <p class="note">
-        點擊按鈕後會開啟你的 Email App，收件人會自動填入：<br>
-        <strong>bobo.tan.healing@gmail.com</strong><br><br>
-        請記得附上已圈出答案的截圖。<br>
+        點擊按鈕後會開啟你的 Email App，收件人會自動帶入，
+        網頁不公開顯示 BoBo 的 Email 地址。<br><br>
+        請記得附上已圈出答案的截圖。
+      </p>
+
+      <p class="note">
         不定期收到 BoBo 的溫柔提醒、免費資源與活動消息。
       </p>
     </section>
@@ -975,6 +974,29 @@ function drawRelease(){
   orb.innerHTML="🌙<br>"+item[0];
   result.innerHTML="<strong>BoBo 給你的今晚提醒</strong><br><br>"+item[1]+"<br><br>對自己說：<br>「今晚，我允許自己先放下。」";
   result.style.display="block";
+}
+</script>
+
+<script>
+function openBoboEmail(type){
+  const user = ['happylovehome','tan'].join('');
+  const domain = ['gmail','com'].join('.');
+  const recipient = user + '@' + domain;
+
+  let subject = '';
+  let body = '';
+
+  if(type === 'answer'){
+    subject = '找出 8 個不同｜答案截圖';
+    body = '你好 BoBo，\n\n這是我的「找出 8 個不同」答案截圖，請查收附件。';
+  }else{
+    subject = '訂閱開心愛家園療癒';
+    body = '你好 BoBo，\n\n我想訂閱開心愛家園療癒的最新消息。\n\n我的 Email：';
+  }
+
+  window.location.href = 'mailto:' + recipient +
+    '?subject=' + encodeURIComponent(subject) +
+    '&body=' + encodeURIComponent(body);
 }
 </script>
 
