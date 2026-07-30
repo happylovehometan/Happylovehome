@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>把自己抱回來｜互動療癒指令館｜BoBo</title>
+<meta name="description" content="BoBo 的互動療癒指令館，提供情緒安撫、內在小孩、關係覺察、自我價值、金錢關係與生活支持提問，可搜尋、分類及一鍵複製。">
+<style>
+*{box-sizing:border-box}
+:root{--bg:#f6f1ff;--bg2:#eafff7;--card:rgba(255,255,255,.88);--text:#37415b;--muted:#70788c;--accent:#8f62d6;--accent2:#5ebcac;--line:rgba(114,88,150,.15);--shadow:0 15px 38px rgba(92,75,135,.14)}
+body{margin:0;font-family:"Noto Sans TC","Microsoft JhengHei",sans-serif;color:var(--text);background:radial-gradient(circle at 10% 0%,rgba(147,231,215,.48),transparent 32%),radial-gradient(circle at 95% 8%,rgba(210,174,255,.48),transparent 32%),linear-gradient(160deg,var(--bg2),var(--bg));min-height:100vh}
+body.dark{--bg:#171820;--bg2:#132827;--card:rgba(29,30,39,.9);--text:#f0ecff;--muted:#aaa8bd;--line:rgba(255,255,255,.12);--shadow:0 15px 38px rgba(0,0,0,.3)}
+.wrap{max-width:1080px;margin:auto;padding:24px 16px 54px}
+.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.back{text-decoration:none;color:var(--text);font-weight:800;background:var(--card);padding:11px 15px;border-radius:999px;box-shadow:var(--shadow)}
+.hero{background:var(--card);border:1px solid rgba(255,255,255,.75);border-radius:30px;padding:28px;box-shadow:var(--shadow);backdrop-filter:blur(14px)}
+.brand{display:flex;gap:16px;align-items:flex-start}
+.logo{flex:0 0 68px;width:68px;height:68px;border-radius:22px;display:grid;place-items:center;font-size:32px;color:#fff;background:linear-gradient(145deg,#8f62d6,#c26ed7);box-shadow:0 12px 26px rgba(143,98,214,.3)}
+h1{margin:0 0 10px;font-size:clamp(30px,6vw,50px);line-height:1.18} .lead{margin:0;color:var(--muted);line-height:1.8}
+.notice{margin-top:18px;padding:13px 15px;border-radius:18px;background:rgba(255,255,255,.56);border:1px solid var(--line);font-size:14px;line-height:1.75;color:var(--muted)}
+.tools{display:grid;grid-template-columns:1fr 54px 54px;gap:10px;margin-top:22px}
+input,button{font-family:inherit} input{min-width:0;padding:15px 17px;border-radius:18px;border:1px solid var(--line);background:var(--card);color:var(--text);font-size:16px;outline:none}
+.iconbtn{border:0;border-radius:18px;background:var(--card);color:var(--text);font-size:20px;cursor:pointer;box-shadow:0 8px 18px rgba(80,70,120,.08)}
+.categories{display:flex;gap:9px;flex-wrap:wrap;margin-top:18px} .chip{border:1px solid var(--line);background:var(--card);color:var(--text);padding:10px 14px;border-radius:999px;font-weight:800;cursor:pointer} .chip.active{background:linear-gradient(135deg,#8f62d6,#aa6bdd);color:#fff}
+.meta{display:flex;justify-content:space-between;gap:12px;align-items:center;margin:20px 2px 12px;color:var(--muted);font-size:14px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.card{background:var(--card);border:1px solid rgba(255,255,255,.76);border-radius:24px;padding:21px;box-shadow:var(--shadow);backdrop-filter:blur(12px);display:flex;flex-direction:column;gap:13px}
+.card-head{display:flex;justify-content:space-between;gap:10px;align-items:center} .tag{font-size:13px;font-weight:900;padding:7px 10px;border-radius:999px;background:#f0e8ff;color:#7447bd} body.dark .tag{background:#332948;color:#d8c2ff}
+.card h2{margin:0;font-size:21px;line-height:1.4} .desc{margin:0;color:var(--muted);line-height:1.7}
+.prompt{white-space:pre-wrap;background:rgba(255,255,255,.54);border:1px solid var(--line);border-radius:17px;padding:15px;line-height:1.75;max-height:180px;overflow:auto;font-size:15px} body.dark .prompt{background:rgba(0,0,0,.16)}
+.copy{border:0;border-radius:16px;padding:14px 16px;background:linear-gradient(135deg,#8f62d6,#ad6de0);color:#fff;font-weight:900;cursor:pointer} .copy.done{background:linear-gradient(135deg,#4fae9f,#66c8b7)}
+.empty{display:none;text-align:center;padding:45px;color:var(--muted)} footer{text-align:center;color:var(--muted);font-size:13px;line-height:1.8;margin-top:32px}
+@media(max-width:700px){.hero{padding:22px}.brand{align-items:flex-start}.logo{width:58px;height:58px;flex-basis:58px}.grid{grid-template-columns:1fr}.meta{align-items:flex-start;flex-direction:column}}
+</style>
+</head>
+<body>
+<main class="wrap">
+<div class="topbar"><a class="back" href="explore.html">← 返回自我探索館</a></div>
+<section class="hero">
+<div class="brand"><div class="logo">✨</div><div><h1>把自己抱回來<br>互動療癒指令館</h1><p class="lead">情緒安撫・內在小孩・關係覺察・自我價值・金錢關係・生活支持</p></div></div>
+<div class="notice">這些提問是自我整理工具，不是心理或醫療診斷，也不取代專業協助。請避免輸入身分證、住址、金融資料、密碼或他人的私人資料。你可以把 Prompt 複製到自己使用的 AI 對話工具，再依當下需要修改。</div>
+<div class="tools"><input id="search" type="search" placeholder="搜尋：傷心、不被理解、關係、金錢、休息……"><button class="iconbtn" id="theme" aria-label="切換深淺色">🌙</button><button class="iconbtn" id="random" aria-label="隨機一則">🎲</button></div>
+<div class="categories" id="categories">
+<button class="chip active" data-cat="全部">全部</button><button class="chip" data-cat="情緒安撫">情緒安撫</button><button class="chip" data-cat="內在小孩">內在小孩</button><button class="chip" data-cat="關係覺察">關係覺察</button><button class="chip" data-cat="自我價值">自我價值</button><button class="chip" data-cat="金錢關係">金錢關係</button><button class="chip" data-cat="生活支持">生活支持</button>
+</div>
+</section>
+<div class="meta"><span id="count"></span><span>共 36 則原創療癒提問</span></div>
+<section class="grid" id="grid"></section><div class="empty" id="empty">暫時找不到相符的內容，換一個關鍵字看看。</div>
+<footer>© BoBo Tan · 開心愛家園療癒 · 版權所有<br>未經許可不得複製、分享、轉發或重製整體內容。</footer>
+</main>
+<script>
+const items=[{"title": "先陪我，不急著分析", "cat": "情緒安撫", "desc": "當情緒很滿，只想先被接住。", "prompt": "今天請先不要急著分析、說服或給建議。請成為一位溫柔、不批判的陪伴者，一次只問我一個問題。先陪我辨認現在最明顯的情緒，再問這個情緒可能在提醒我什麼，最後幫我整理三個覺察。我的感受是：［在這裡寫下］"}, {"title": "當我覺得不被理解", "cat": "情緒安撫", "desc": "把混亂感受整理成可以被理解的語言。", "prompt": "我現在有一種不被理解的感覺。請不要替任何人下定論，也不要叫我立刻放下。請幫我分開整理：發生的事、我的感受、我最害怕的解讀、我真正希望被理解的是什麼。"}, {"title": "情緒太多，不知道先說哪個", "cat": "情緒安撫", "desc": "適合腦中很亂、感覺混在一起時。", "prompt": "我的情緒很多，現在不知道從哪裡開始。請一次只問我一個簡單問題，先陪我從身體感受、最明顯的情緒、觸發事件和真正需要中，找到最需要先被照顧的一件事。"}, {"title": "把今天放下來", "cat": "情緒安撫", "desc": "睡前整理今天，不把情緒帶進夜裡。", "prompt": "請陪我做一個簡短的睡前整理。依序問我：今天最累的是什麼、哪個瞬間值得保留、哪件事可以留到明天。最後送我一句自然、不說教的睡前提醒。"}, {"title": "先讓身體知道安全", "cat": "情緒安撫", "desc": "焦慮或緊繃時使用。", "prompt": "我現在有點緊繃。請不要做醫療判斷。請用簡短、緩慢的文字帶我做一個兩分鐘的安定練習，包括感受雙腳、觀察周圍、慢慢呼吸，以及選擇一個此刻可以完成的小動作。"}, {"title": "我需要哭，還是需要說話", "cat": "情緒安撫", "desc": "辨認當下最適合的情緒出口。", "prompt": "請陪我分辨，此刻的我比較需要哭一哭、把話說出來、安靜休息，還是做一件實際的小事。一次只問我一個問題，不要催我振作。"}, {"title": "抱回那個努力討好的自己", "cat": "內在小孩", "desc": "看見討好背後的保護與需要。", "prompt": "請陪我看見內在那個很怕被討厭、總想讓別人滿意的自己。一次只問我一個問題，幫我找出：她在害怕什麼、她以前怎樣保護我、今天的我可以怎樣溫柔接手。最後寫一小段我可以對她說的話。"}, {"title": "給童年的自己一封短信", "cat": "內在小孩", "desc": "用安全、不煽情的方式靠近過去。", "prompt": "請根據我接下來描述的一段童年經歷，幫我寫一封簡短、自然、不說教的信給當時的自己。不要誇張療癒效果，不否定當時的痛，也不要替任何人辯護。經歷是：［在這裡寫下］"}, {"title": "我為什麼那麼怕犯錯", "cat": "內在小孩", "desc": "理解完美要求背後的害怕。", "prompt": "請陪我探索，我為什麼那麼怕犯錯。不要直接替我下結論。一次只問我一個問題，從以前犯錯後發生過什麼、我害怕別人怎樣看我、我對自己的要求，以及現在可以如何重新看待錯誤來整理。"}, {"title": "那個一直等人來愛的自己", "cat": "內在小孩", "desc": "看見長期等待被選擇的心。", "prompt": "請溫柔陪我看見，那個一直等待別人選擇、肯定或疼愛的自己。請幫我分辨：她真正等待的是什麼、她把自己的價值交給了誰、今天我可以先給自己哪一小部分。"}, {"title": "我小時候學會了怎樣保護自己", "cat": "內在小孩", "desc": "理解舊有反應，而不是責怪自己。", "prompt": "請一次只問我一個問題，陪我探索：小時候遇到壓力時，我習慣討好、沉默、逃開、反抗，還是裝作沒事？這個方式曾經怎樣保護我？現在有哪些部分仍有用，哪些部分可以慢慢更新？"}, {"title": "把責怪自己的聲音放輕", "cat": "內在小孩", "desc": "面對自我批評時使用。", "prompt": "我腦中有一個很會責怪自己的聲音。請幫我把它說的話整理出來，再溫柔分辨：哪些是事實、哪些是恐懼、哪些是過去留下的要求。最後幫我改寫成一句真實但不傷害自己的話。"}, {"title": "這段關係讓我失去了什麼", "cat": "關係覺察", "desc": "看見關係中被忽略的自己。", "prompt": "請陪我整理這段關係，不急著判斷誰對誰錯。幫我分成五部分：我曾經付出了什麼、我壓下了什麼、我一直期待什麼、我失去了什麼、現在最需要拿回來的是什麼。關係背景：［在這裡寫下］"}, {"title": "我需要的是答案，還是被在乎", "cat": "關係覺察", "desc": "辨認追問背後真正的情感需要。", "prompt": "當我一直想追問一個人的態度時，請幫我分辨：我是在尋找答案、確認安全、期待被選擇，還是害怕失去。不要替對方猜心，只根據我提供的行為與感受整理。我的情況是：［在這裡寫下］"}, {"title": "把事實和猜測分開", "cat": "關係覺察", "desc": "避免因沉默或訊息而過度推測。", "prompt": "請根據我提供的情況，幫我分成三欄：我確實知道的事、我正在猜測的事、我可以直接確認或觀察的事。不要替對方診斷，也不要把猜測說成事實。"}, {"title": "我為什麼不敢說不", "cat": "關係覺察", "desc": "探索界線與拒絕焦慮。", "prompt": "請一次只問我一個問題，陪我探索我為什麼不敢拒絕。幫我看見：我怕失去什麼、我擔心別人怎樣反應、答應後我付出什麼代價，以及一句符合我語氣的溫和拒絕方式。"}, {"title": "這段關係還適合我嗎", "cat": "關係覺察", "desc": "用具體行為整理關係，而非猜心。", "prompt": "請不要替我決定離開或留下。請根據我描述的實際互動，陪我檢視：尊重、溝通、安全感、界線、互相投入和修復意願。最後整理我需要繼續觀察的三個具體行為。"}, {"title": "把自己還給自己", "cat": "關係覺察", "desc": "從過度牽掛中收回注意力。", "prompt": "我把很多注意力放在一個人身上。請陪我整理：哪些是對方的選擇、哪些是我的責任、哪些感受需要被承認、今天我可以把哪一小部分時間和力量還給自己。"}, {"title": "我不用證明才值得", "cat": "自我價值", "desc": "從表現與他人回應中拿回價值感。", "prompt": "請陪我看見，我是否習慣用工作、付出、懂事或被需要來證明自己。一次只問我一個問題，最後幫我整理三項不需要靠表現才能成立的個人價值。"}, {"title": "我已經做得夠好了嗎", "cat": "自我價值", "desc": "當內心一直覺得不夠時使用。", "prompt": "我總覺得自己做得不夠。請幫我客觀整理：我已完成的、我正在學習的、真正需要改善的、其實只是過度要求自己的。語氣請真實，不要空泛讚美。"}, {"title": "停止和別人比較", "cat": "自我價值", "desc": "看見比較背後真正渴望的生活。", "prompt": "當我又開始和別人比較時，請陪我看見我羨慕的是什麼，不要批評我。幫我把羨慕轉成三部分：我重視的價值、我真正想靠近的生活、我今天能做的一小步。"}, {"title": "看見自己的學習旅程", "cat": "自我價值", "desc": "整理一路走來的累積與改變。", "prompt": "請根據我提供的經歷，幫我整理一份不誇張、不自我抬高的學習旅程，包括：我曾經困難的地方、我持續學習的內容、我已經產生的改變、我仍願意繼續練習的方向。"}, {"title": "今天站在自己這邊", "cat": "自我價值", "desc": "需要停止自責與討好時使用。", "prompt": "請問我三個問題，幫我找到今天可以站在自己這邊的一個選擇。問題要分別關於：我的感受、我的界線、我的實際需要。最後把答案整理成一個可完成的行動。"}, {"title": "接受不完美的今天", "cat": "自我價值", "desc": "低能量或狀態不佳時使用。", "prompt": "今天的我狀態不太好。請不要要求我變得積極。請幫我分辨：最低限度需要完成的、可以延期的、可以求助的，以及今天仍值得肯定的一件小事。"}, {"title": "金錢來了又走時，我在害怕什麼", "cat": "金錢關係", "desc": "從責怪自己轉為看見壓力與選擇。", "prompt": "請陪我整理「錢來了又很快花掉」這件事。不要使用致富或誇張承諾，也不要羞辱我的消費。請幫我看見：觸發情境、當下情緒、我想用金錢換來什麼、有哪些實際壓力、下一個最小而可行的調整。"}, {"title": "建立我的財務安心感", "cat": "金錢關係", "desc": "把擔心分成可以處理的小部分。", "prompt": "請用溫柔但實際的方式，陪我建立財務安心感。先問我目前最困擾的一個金錢問題，再根據我的回答，整理成：可控制、暫時不可控制、需要補充資訊、今天能完成的一小步。一次只問一個問題。"}, {"title": "我花錢時真正想得到什麼", "cat": "金錢關係", "desc": "理解情緒性消費而不羞辱自己。", "prompt": "請陪我回看最近一次衝動花錢。不要責怪我。幫我整理：當時發生什麼、我有什麼感受、我希望買到的是方便、安慰、認同、自由還是補償、下次可以多給自己哪一個停頓。"}, {"title": "我不敢收下支持", "cat": "金錢關係", "desc": "探索接受、收費與值得感。", "prompt": "請陪我探索，當別人願意付費、幫助或給我資源時，我為什麼會不自在。不要用顯化語言。請幫我分辨：害怕欠人情、怕被評價、覺得自己不夠好、還是不習慣接收，最後設計一個安全的小練習。"}, {"title": "定價時我在擔心什麼", "cat": "金錢關係", "desc": "適合服務者整理定價焦慮。", "prompt": "我在為自己的服務定價。請不要直接替我決定價格。請幫我整理：投入時間、準備成本、後續支持、服務界線、可承受程度，以及我最怕客人怎樣看我。最後列出我需要確認的資料。"}, {"title": "金錢不是我的成績單", "cat": "金錢關係", "desc": "將財務狀況與自我價值分開。", "prompt": "我容易把目前的收入或存款當成自己的成績。請陪我把財務事實和自我價值分開，整理成：目前數字代表的實際情況、它不能證明的事情、我接下來可以採取的一個務實行動。"}, {"title": "今天只做最小的一步", "cat": "生活支持", "desc": "當事情太多、完全不想開始時。", "prompt": "我現在有很多事情，但完全不想開始。請先問我最有壓力的一件事，再幫我把它拆成一個五分鐘內能開始的步驟。不要列太多待辦，只給我第一步。"}, {"title": "把腦中的事情倒出來", "cat": "生活支持", "desc": "快速整理混亂的待辦與擔心。", "prompt": "我會把腦中所有事情寫下來。請幫我分成：今天必須、這週處理、等待別人、可以放下、只是擔心但目前無法處理。最後只選出今天最重要的三項。"}, {"title": "我需要休息，還是需要行動", "cat": "生活支持", "desc": "分辨疲累與逃避，不責怪自己。", "prompt": "請一次只問我一個問題，陪我分辨現在是身體真的需要休息，還是因為害怕而不敢開始。請考慮睡眠、身體感受、持續時間、任務大小和開始後的感覺，不做醫療判斷。"}, {"title": "為明天留一個溫柔安排", "cat": "生活支持", "desc": "睡前做簡單而可行的明日規劃。", "prompt": "請根據我明天要處理的事情，幫我安排一個不過度擁擠的日程。保留休息、緩衝和吃飯時間，最多列三個主要任務，並給每個任務一個最小完成標準。"}, {"title": "當計畫被打亂", "cat": "生活支持", "desc": "面對臨時改變時重新找回掌握感。", "prompt": "我的計畫被打亂了。請先陪我承認現在的失望或焦慮，再幫我分成：仍可保留、需要調整、可以取消、需要通知別人的。最後給我一個新的最小版本。"}, {"title": "今天值得留下的一件事", "cat": "生活支持", "desc": "從普通日子裡保存一點支持感。", "prompt": "請問我三個簡單問題，陪我找出今天值得留下的一件小事。不要強迫正向，也不要否定辛苦。最後幫我寫成一段兩三句的生活記錄。"}];
+let currentCat="全部";
+const grid=document.getElementById("grid"),search=document.getElementById("search"),count=document.getElementById("count"),empty=document.getElementById("empty");
+function esc(s){return s.replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]))}
+function render(){
+ const q=search.value.trim().toLowerCase();
+ const filtered=items.filter(x=>(currentCat==="全部"||x.cat===currentCat)&&(x.title+" "+x.desc+" "+x.prompt+" "+x.cat).toLowerCase().includes(q));
+ grid.innerHTML=filtered.map((x,i)=>`<article class="card"><div class="card-head"><span class="tag">${esc(x.cat)}</span><span style="color:var(--muted);font-size:12px">#${String(i+1).padStart(2,"0")}</span></div><h2>${esc(x.title)}</h2><p class="desc">${esc(x.desc)}</p><div class="prompt">${esc(x.prompt)}</div><button class="copy" data-index="${items.indexOf(x)}">一鍵複製 Prompt</button></article>`).join("");
+ count.textContent=`目前顯示 ${filtered.length} 則`;
+ empty.style.display=filtered.length?"none":"block";
+ document.querySelectorAll(".copy").forEach(btn=>btn.onclick=async()=>{const t=items[Number(btn.dataset.index)].prompt;try{await navigator.clipboard.writeText(t);btn.textContent="已複製，可以貼到 AI 對話工具";btn.classList.add("done");setTimeout(()=>{btn.textContent="一鍵複製 Prompt";btn.classList.remove("done")},1800)}catch(e){alert("瀏覽器未允許自動複製，請長按文字手動複製。")}});
+}
+document.querySelectorAll(".chip").forEach(chip=>chip.onclick=()=>{document.querySelectorAll(".chip").forEach(x=>x.classList.remove("active"));chip.classList.add("active");currentCat=chip.dataset.cat;render()});
+search.oninput=render;
+document.getElementById("random").onclick=()=>{const cards=[...document.querySelectorAll(".card")];if(!cards.length)return;const card=cards[Math.floor(Math.random()*cards.length)];card.scrollIntoView({behavior:"smooth",block:"center"});card.animate([{transform:"scale(1)"},{transform:"scale(1.025)"},{transform:"scale(1)"}],{duration:650})};
+document.getElementById("theme").onclick=e=>{document.body.classList.toggle("dark");e.currentTarget.textContent=document.body.classList.contains("dark")?"☀️":"🌙"};
+render();
+</script>
+</body>
+</html>
