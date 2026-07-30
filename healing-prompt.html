@@ -31,6 +31,35 @@ input,button{font-family:inherit} input{min-width:0;padding:15px 17px;border-rad
 .copy{border:0;border-radius:16px;padding:14px 16px;background:linear-gradient(135deg,#8f62d6,#ad6de0);color:#fff;font-weight:900;cursor:pointer} .copy.done{background:linear-gradient(135deg,#4fae9f,#66c8b7)}
 .empty{display:none;text-align:center;padding:45px;color:var(--muted)} footer{text-align:center;color:var(--muted);font-size:13px;line-height:1.8;margin-top:32px}
 @media(max-width:700px){.hero{padding:22px}.brand{align-items:flex-start}.logo{width:58px;height:58px;flex-basis:58px}.grid{grid-template-columns:1fr}.meta{align-items:flex-start;flex-direction:column}}
+
+.real-bobo-cta{
+  margin:28px 0 8px;
+  padding:24px 20px;
+  border-radius:24px;
+  text-align:center;
+  background:linear-gradient(135deg,rgba(255,255,255,.92),rgba(243,234,255,.92));
+  border:1px solid var(--line);
+  box-shadow:var(--shadow);
+}
+.real-bobo-cta h2{
+  margin:0 0 10px;
+  font-size:22px;
+}
+.real-bobo-cta p{
+  margin:0 0 16px;
+  color:var(--muted);
+  line-height:1.8;
+}
+.real-bobo-cta a{
+  display:inline-block;
+  text-decoration:none;
+  color:#fff;
+  font-weight:900;
+  padding:13px 20px;
+  border-radius:999px;
+  background:linear-gradient(135deg,#8f62d6,#ad6de0);
+}
+
 </style>
 </head>
 <body>
@@ -46,6 +75,13 @@ input,button{font-family:inherit} input{min-width:0;padding:15px 17px;border-rad
 </section>
 <div class="meta"><span id="count"></span><span>共 36 則原創療癒提問</span></div>
 <section class="grid" id="grid"></section><div class="empty" id="empty">暫時找不到相符的內容，換一個關鍵字看看。</div>
+
+<section class="real-bobo-cta">
+  <h2>聊過 AI 之後，也歡迎回來找真人 BoBo 聊聊 🤍</h2>
+  <p>AI 可以陪你整理想法；需要更貼近你當下狀態的陪伴時，也可以回來和 BoBo 說說。</p>
+  <a href="healing.html">🌿 了解 BoBo 的療癒陪伴</a>
+</section>
+
 <footer>© BoBo Tan · 開心愛家園療癒 · 版權所有<br>本頁 Prompt 僅供個人自我整理使用，可複製至個人使用的 AI 對話工具。未經許可，不得整批轉載、分享、販售、重新發布或製作衍生資料庫。</footer>
 </main>
 <script>
