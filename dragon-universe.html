@@ -618,6 +618,142 @@
       .result-top{align-items:flex-start}
     }
 
+
+    /* 龍族故事館 */
+    .story-library{
+      display:grid;
+      gap:18px;
+    }
+
+    .story-dragon{
+      overflow:hidden;
+      border:1px solid var(--line);
+      border-radius:28px;
+      background:rgba(255,255,255,.84);
+      box-shadow:0 14px 34px rgba(74,58,92,.09);
+    }
+
+    .story-dragon summary{
+      list-style:none;
+      display:flex;
+      align-items:center;
+      gap:16px;
+      min-height:104px;
+      padding:22px 26px;
+      cursor:pointer;
+      color:#574866;
+      font-weight:900;
+    }
+
+    .story-dragon summary::-webkit-details-marker{display:none}
+
+    .story-dragon summary::after{
+      content:"＋";
+      margin-left:auto;
+      font-size:28px;
+      color:#8b72a0;
+      transition:transform .25s ease;
+    }
+
+    .story-dragon[open] summary::after{
+      transform:rotate(45deg);
+    }
+
+    .story-story-icon{
+      width:62px;
+      height:62px;
+      flex:0 0 62px;
+      display:grid;
+      place-items:center;
+      border-radius:20px;
+      font-size:34px;
+      background:#f1eaf6;
+    }
+
+    .story-title-wrap{
+      text-align:left;
+    }
+
+    .story-title-wrap strong{
+      display:block;
+      font-size:1.35rem;
+      line-height:1.35;
+    }
+
+    .story-title-wrap span{
+      display:block;
+      margin-top:4px;
+      color:#87798d;
+      font-size:.92rem;
+      font-weight:700;
+    }
+
+    .story-body{
+      padding:0 28px 30px;
+      text-align:left;
+    }
+
+    .story-body h3{
+      margin:24px 0 8px;
+      color:#655274;
+      font-size:1.15rem;
+    }
+
+    .story-body p{
+      margin:0 0 14px;
+      color:#6f6574;
+      line-height:1.95;
+    }
+
+    .story-quote{
+      margin:22px 0;
+      padding:18px 20px;
+      border-left:4px solid #b99bc5;
+      border-radius:14px;
+      background:#f8f3fa;
+      color:#604d6e !important;
+      font-weight:800;
+    }
+
+    .story-profile{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:12px;
+      margin:22px 0;
+    }
+
+    .story-profile div{
+      padding:15px 17px;
+      border-radius:16px;
+      background:#faf7fb;
+      color:#736879;
+      line-height:1.75;
+    }
+
+    .story-practice{
+      margin-top:22px;
+      padding:20px;
+      border-radius:20px;
+      background:linear-gradient(135deg,#f4edf7,#fff8f3);
+    }
+
+    .story-practice strong{
+      display:block;
+      margin-bottom:8px;
+      color:#675274;
+      font-size:1.08rem;
+    }
+
+    .story-practice p{margin:0}
+
+    @media(max-width:600px){
+      .story-dragon summary{padding:18px 17px;gap:11px}
+      .story-story-icon{width:52px;height:52px;flex-basis:52px;font-size:29px}
+      .story-title-wrap strong{font-size:1.1rem}
+      .story-body{padding:0 20px 24px}
+      .story-profile{grid-template-columns:1fr}
+    }
+
     @media (prefers-reduced-motion:reduce){
       *{scroll-behavior:auto!important;animation:none!important;transition:none!important}
     }
@@ -650,6 +786,7 @@
   <div class="hero-actions">
     <a class="primary-btn" href="#daily-dragon">🐉 抽取今日守護龍</a>
     <a class="secondary-btn" href="#four-dragons">認識四大元素龍</a>
+    <a class="secondary-btn" href="#dragon-stories">閱讀龍族故事</a>
   </div>
 </section>
 
@@ -732,6 +869,260 @@
     </div>
   </section>
 
+
+  <section class="section" id="dragon-stories">
+    <div class="section-head">
+      <div class="section-kicker">DRAGON STORY LIBRARY</div>
+      <h2>龍族故事館</h2>
+      <p>點開一隻龍，閱讀牠的出生、成長、守護與和你的相遇。</p>
+    </div>
+
+    <div class="story-library">
+
+      <details class="story-dragon">
+        <summary>
+          <span class="story-story-icon">🌿</span>
+          <span class="story-title-wrap">
+            <strong>安岳・大地守護龍</strong>
+            <span>土龍｜穩定、扎根與安全感</span>
+          </span>
+        </summary>
+
+        <div class="story-body">
+          <h3>牠出生的地方</h3>
+          <p>
+            在群山最深處，有一座從不出現在地圖上的安岳谷。谷底長滿柔軟的青苔，
+            地下流動著溫暖的金色礦脈。當世界上第一個疲憊的人，終於願意停下來休息時，
+            大地吸收了那一聲長長的嘆息，安岳龍便從岩石與泥土之中醒來。
+          </p>
+
+          <h3>牠曾經相信</h3>
+          <p>
+            年輕的安岳龍以為，守護就是替所有人承受重量。
+            牠把迷路者的焦慮、家庭的擔心與生活的壓力全部背在身上，
+            久而久之，牠的翅膀沉重得無法張開。
+          </p>
+          <p>
+            一棵老樹告訴牠：「大地支持萬物，卻不替任何一棵樹生長。」
+            安岳龍才明白，真正的守護不是代替別人走路，而是讓對方知道：
+            當他願意站回自己的位置，土地一直都在。
+          </p>
+
+          <h3>牠守護的人</h3>
+          <p>
+            安岳龍常靠近那些習慣照顧所有人、凡事自己承擔，
+            或因生活變動而失去重心的人。牠不會催促你振作，
+            只會用寬大的尾巴圈出一個安全範圍，陪你先吃飯、睡覺、呼吸，
+            把生活一點一點整理回來。
+          </p>
+
+          <p class="story-quote">
+            「你不用今天就走很遠。先站穩、先照顧自己，土地會接住你。」
+          </p>
+
+          <div class="story-profile">
+            <div><strong>個性：</strong>沉穩、可靠、耐心，不喜歡催促。</div>
+            <div><strong>專屬場景：</strong>古老山谷、青苔石徑、金色礦脈。</div>
+            <div><strong>容易靠近：</strong>疲憊、焦慮、生活失序的人。</div>
+            <div><strong>提醒：</strong>安全感可以從一件小而可完成的事開始。</div>
+          </div>
+
+          <div class="story-practice">
+            <strong>今日小練習｜回到腳下</strong>
+            <p>
+              把雙腳平放地面，慢慢呼吸三次。然後問自己：
+              「今天，我能為自己完成哪一件最小、最實際的事？」
+            </p>
+          </div>
+        </div>
+      </details>
+
+      <details class="story-dragon">
+        <summary>
+          <span class="story-story-icon">🔥</span>
+          <span class="story-title-wrap">
+            <strong>赤曜・勇氣之龍</strong>
+            <span>火龍｜勇氣、行動與轉化</span>
+          </span>
+        </summary>
+
+        <div class="story-body">
+          <h3>牠出生的地方</h3>
+          <p>
+            赤曜龍誕生於日出前最黑的一刻。傳說在遙遠的赤星山頂，
+            有一簇永遠不熄滅的微小火焰。它不是用來燃燒森林，
+            而是專門照亮那些只差一步、卻因害怕而停下來的人。
+            當第一個人帶著顫抖跨出那一步時，火焰化成赤曜龍。
+          </p>
+
+          <h3>牠曾經相信</h3>
+          <p>
+            赤曜龍年輕時，以為勇敢就是永遠不能害怕。
+            每當牠心裡不安，便吐出更大的火焰掩飾，
+            直到有一天，過度猛烈的火讓牠看不清真正的方向。
+          </p>
+          <p>
+            在灰燼中，牠發現一顆仍然溫熱的種子。
+            那顆種子沒有逞強，只安靜等待適合的時機發芽。
+            赤曜龍終於懂得：勇氣不是沒有恐懼，
+            而是承認恐懼仍在，卻願意為自己選擇下一步。
+          </p>
+
+          <h3>牠守護的人</h3>
+          <p>
+            赤曜龍常出現在想改變、想說出真心、想設立界線，
+            卻一直等待「完全準備好」的人身邊。牠不會逼你做巨大決定，
+            只會把一點暖光放在你面前，讓你看見下一個可以完成的動作。
+          </p>
+
+          <p class="story-quote">
+            「你可以一邊害怕，一邊前進。真正的火光，不需要傷害自己。」
+          </p>
+
+          <div class="story-profile">
+            <div><strong>個性：</strong>直接、熱情、有正義感，也懂得保護界線。</div>
+            <div><strong>專屬場景：</strong>赤星山、黎明天空、溫暖火種。</div>
+            <div><strong>容易靠近：</strong>害怕行動、失去熱情、需要重新開始的人。</div>
+            <div><strong>提醒：</strong>行動不必巨大，第一步已經能改變方向。</div>
+          </div>
+
+          <div class="story-practice">
+            <strong>今日小練習｜照亮下一步</strong>
+            <p>
+              寫下一件你延後很久的事，不要求完成全部，
+              只選擇一個十分鐘內可以開始的步驟。
+            </p>
+          </div>
+        </div>
+      </details>
+
+      <details class="story-dragon">
+        <summary>
+          <span class="story-story-icon">💧</span>
+          <span class="story-title-wrap">
+            <strong>澄心・月湖水龍</strong>
+            <span>水龍｜情緒流動與內在安撫</span>
+          </span>
+        </summary>
+
+        <div class="story-body">
+          <h3>牠出生的地方</h3>
+          <p>
+            澄心龍住在月光長年照耀的湖泊深處。
+            每當有人把眼淚忍回去，湖面便會出現一圈銀色微光。
+            那些沒有被說出的委屈、悲傷與疲憊，會化成透明水珠落入湖底，
+            成為澄心龍鱗片上的珍珠。
+          </p>
+
+          <h3>牠曾經相信</h3>
+          <p>
+            澄心龍曾以為，只要湖面永遠平靜，所有人便不會難過。
+            於是牠努力壓住每一道波紋，把風、雨和眼淚都藏進湖底。
+            可是被壓住的水越來越重，湖泊也逐漸失去流動。
+          </p>
+          <p>
+            一個夜晚，一位很久沒有哭的人坐在湖邊。
+            澄心龍沒有說話，只把尾巴輕輕放在她身旁。
+            當第一滴眼淚落下，湖水重新開始流動，
+            月光也第一次照進最深的地方。
+            澄心龍這才明白：真正的平靜，不是沒有情緒，
+            而是每一種感受都能被安全地經過。
+          </p>
+
+          <h3>牠守護的人</h3>
+          <p>
+            澄心龍特別容易靠近那些總是說「我沒事」、
+            習慣先照顧別人，或害怕自己的情緒會造成負擔的人。
+            牠不要求你立刻振作，也不分析你的眼淚，
+            只提醒你：感受被承認後，心才有空間重新呼吸。
+          </p>
+
+          <p class="story-quote">
+            「你不需要藏起感受。眼淚不是倒退，而是心正在慢慢鬆開。」
+          </p>
+
+          <div class="story-profile">
+            <div><strong>個性：</strong>安靜、溫柔、不批判，擅長陪伴悲傷。</div>
+            <div><strong>專屬場景：</strong>月光湖、銀藍色水波、珍珠水滴。</div>
+            <div><strong>容易靠近：</strong>壓抑情緒、委屈、長期照顧別人的人。</div>
+            <div><strong>提醒：</strong>情緒不必被消滅，只需要被安全地看見。</div>
+          </div>
+
+          <div class="story-practice">
+            <strong>今日小練習｜讓情緒有名字</strong>
+            <p>
+              把手放在心口，慢慢完成這句話：
+              「我現在真正感受到的是＿＿＿＿，而我願意先陪自己一下。」
+            </p>
+          </div>
+        </div>
+      </details>
+
+      <details class="story-dragon">
+        <summary>
+          <span class="story-story-icon">🌬️</span>
+          <span class="story-title-wrap">
+            <strong>清羽・自由之龍</strong>
+            <span>風龍｜清晰、自由與新方向</span>
+          </span>
+        </summary>
+
+        <div class="story-body">
+          <h3>牠出生的地方</h3>
+          <p>
+            清羽龍誕生在雲層與天空交界的地方。
+            那裡沒有固定道路，只有不斷改變形狀的風。
+            當第一個人願意承認「也許還有另一種可能」時，
+            一片透明羽毛穿過雲海，化成了清羽龍。
+          </p>
+
+          <h3>牠曾經相信</h3>
+          <p>
+            清羽龍最初相信，自由就是永遠不能停留。
+            牠飛過一座又一座山，不讓任何人靠近，
+            因為牠害怕一旦停下，就會被困住。
+          </p>
+          <p>
+            直到一次風暴讓牠失去方向，牠不得不落在一座安靜的燈塔旁。
+            守塔人告訴牠：「方向不是一直飛才會出現，
+            有時候，停下來才能知道風從哪裡吹來。」
+            清羽龍才懂得，自由不是逃離所有關係與責任，
+            而是有空間聆聽自己，再做出清楚的選擇。
+          </p>
+
+          <h3>牠守護的人</h3>
+          <p>
+            清羽龍常靠近思緒很多、反覆分析、害怕選錯，
+            或覺得自己只能走一條路的人。
+            牠會帶你飛高一點，讓你從較遠的位置重新看見問題，
+            並提醒你：眼前的解釋，不一定是唯一的解釋。
+          </p>
+
+          <p class="story-quote">
+            「先放鬆抓緊答案的手。當心裡有空間，新的方向才進得來。」
+          </p>
+
+          <div class="story-profile">
+            <div><strong>個性：</strong>輕盈、好奇、聰明，喜歡帶人看見不同角度。</div>
+            <div><strong>專屬場景：</strong>雲海、透明羽毛、高空與燈塔。</div>
+            <div><strong>容易靠近：</strong>思緒混亂、害怕選擇、感到受困的人。</div>
+            <div><strong>提醒：</strong>暫時沒有答案，也可以先為自己留出空間。</div>
+          </div>
+
+          <div class="story-practice">
+            <strong>今日小練習｜打開另一個可能</strong>
+            <p>
+              把目前最困擾你的事情寫下來，再補上一句：
+              「除了我現在相信的解釋，還可能有什麼較溫柔的理解？」
+            </p>
+          </div>
+        </div>
+      </details>
+
+    </div>
+  </section>
+
+
   <section class="section" id="daily-dragon">
     <div class="draw-zone">
       <div class="section-kicker" style="color:#eadcf0">TODAY'S DRAGON MESSAGE</div>
@@ -765,7 +1156,7 @@
       <article class="journey-card">
         <div class="num">01</div>
         <h3>每隻龍的故事</h3>
-        <p>完整背景、個性、象徵、所守護的生命階段與專屬場景。</p>
+        <p>四大元素龍完整背景、個性、成長、守護對象與今日小練習已加入故事館。</p>
       </article>
 
       <article class="journey-card">
