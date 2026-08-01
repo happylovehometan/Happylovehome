@@ -308,6 +308,41 @@
       box-shadow:0 10px 22px rgba(60,44,73,.09);
     }
 
+
+    .dragon-icon img,
+    .story-story-icon img,
+    .roulette-dragon img,
+    .result-symbol img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      border-radius:inherit;
+    }
+
+    .dragon-icon{
+      overflow:hidden;
+      padding:0;
+    }
+
+    .story-story-icon{
+      overflow:hidden;
+      padding:0;
+      background:#f1eaf6;
+    }
+
+    .result-symbol{
+      overflow:hidden;
+      background:#f2ebf7;
+      border-radius:20px;
+    }
+
+    .roulette-dragon{
+      overflow:hidden;
+      padding:0;
+      background:rgba(255,255,255,.16);
+    }
+
     .dragon-card h3{
       margin:18px 0 2px;
       font-size:1.65rem;
@@ -832,7 +867,7 @@
 
     <div class="dragon-grid">
       <article class="dragon-card earth">
-        <div class="dragon-icon" aria-hidden="true">🌿</div>
+        <div class="dragon-icon"><img src="dragon-earth.png" alt="安岳・大地守護龍"></div>
         <h3>土龍</h3>
         <div class="dragon-name">安岳・大地守護龍</div>
         <div class="dragon-tags">
@@ -846,7 +881,7 @@
       </article>
 
       <article class="dragon-card fire">
-        <div class="dragon-icon" aria-hidden="true">🔥</div>
+        <div class="dragon-icon"><img src="dragon-fire.png" alt="赤曜・勇氣之龍"></div>
         <h3>火龍</h3>
         <div class="dragon-name">赤曜・勇氣之龍</div>
         <div class="dragon-tags">
@@ -860,7 +895,7 @@
       </article>
 
       <article class="dragon-card water">
-        <div class="dragon-icon" aria-hidden="true">💧</div>
+        <div class="dragon-icon"><img src="dragon-water.png" alt="澄心・月湖水龍"></div>
         <h3>水龍</h3>
         <div class="dragon-name">澄心・月湖水龍</div>
         <div class="dragon-tags">
@@ -874,7 +909,7 @@
       </article>
 
       <article class="dragon-card air">
-        <div class="dragon-icon" aria-hidden="true">🌬️</div>
+        <div class="dragon-icon"><img src="dragon-air.png" alt="清羽・自由之龍"></div>
         <h3>風龍</h3>
         <div class="dragon-name">清羽・自由之龍</div>
         <div class="dragon-tags">
@@ -901,7 +936,7 @@
 
       <details class="story-dragon">
         <summary>
-          <span class="story-story-icon">🌿</span>
+          <span class="story-story-icon"><img src="dragon-earth.png" alt="安岳・大地守護龍"></span>
           <span class="story-title-wrap">
             <strong>安岳・大地守護龍</strong>
             <span>土龍｜穩定、扎根與安全感</span>
@@ -959,7 +994,7 @@
 
       <details class="story-dragon">
         <summary>
-          <span class="story-story-icon">🔥</span>
+          <span class="story-story-icon"><img src="dragon-fire.png" alt="赤曜・勇氣之龍"></span>
           <span class="story-title-wrap">
             <strong>赤曜・勇氣之龍</strong>
             <span>火龍｜勇氣、行動與轉化</span>
@@ -1018,7 +1053,7 @@
 
       <details class="story-dragon">
         <summary>
-          <span class="story-story-icon">💧</span>
+          <span class="story-story-icon"><img src="dragon-water.png" alt="澄心・月湖水龍"></span>
           <span class="story-title-wrap">
             <strong>澄心・月湖水龍</strong>
             <span>水龍｜情緒流動與內在安撫</span>
@@ -1080,7 +1115,7 @@
 
       <details class="story-dragon">
         <summary>
-          <span class="story-story-icon">🌬️</span>
+          <span class="story-story-icon"><img src="dragon-air.png" alt="清羽・自由之龍"></span>
           <span class="story-title-wrap">
             <strong>清羽・自由之龍</strong>
             <span>風龍｜清晰、自由與新方向</span>
@@ -1154,7 +1189,7 @@
         <h3 id="roulette-title" style="margin:0 0 10px;color:#fff;font-size:1.45rem;">🐉 互動抽龍</h3>
         <p style="margin:0 0 20px;color:#f1e8f4;">按下開始，幾隻龍會快速輪流出現；再按「停！」，停下來的就是今天抽中的守護龍。</p>
         <div class="roulette-stage" aria-live="polite">
-          <div class="roulette-dragon" id="rouletteDragon">🌿</div>
+          <div class="roulette-dragon" id="rouletteDragon"><img id="rouletteDragonImg" src="dragon-earth.png" alt="安岳・大地守護龍"></div>
           <div class="roulette-name" id="rouletteName">安岳・大地守護龍</div>
           <div class="roulette-keywords" id="rouletteKeywords">穩定・扎根・安全感</div>
         </div>
@@ -1174,7 +1209,7 @@
 
       <div class="result-card" id="resultCard" aria-live="polite">
         <div class="result-top">
-          <div class="result-symbol" id="resultSymbol">🐉</div>
+          <div class="result-symbol" id="resultSymbol"><img id="resultImg" src="dragon-earth.png" alt="今日守護龍"></div>
           <div>
             <h3 id="resultTitle">今日守護龍</h3>
             <div id="resultKeywords"></div>
@@ -1302,139 +1337,237 @@
   <p>All Rights Reserved.</p>
 </footer>
 
+
 <script>
+  const dragons = {
+    earth: {
+      image: "dragon-earth.png",
+      name: "安岳・大地守護龍",
+      keywords: "穩定・扎根・安全感",
+      blessing: "守護語｜「不用急著抵達，先讓自己安穩地站在這裡。」"
+    },
+    fire: {
+      image: "dragon-fire.png",
+      name: "赤曜・勇氣之龍",
+      keywords: "勇氣・行動・轉化",
+      blessing: "守護語｜「你不需要一次改變全部，只要照亮下一步。」"
+    },
+    water: {
+      image: "dragon-water.png",
+      name: "澄心・月湖水龍",
+      keywords: "情緒・流動・安撫",
+      blessing: "守護語｜「你不必藏起感受，我陪你慢慢流過。」"
+    },
+    air: {
+      image: "dragon-air.png",
+      name: "清羽・自由之龍",
+      keywords: "清晰・自由・新方向",
+      blessing: "守護語｜「先放鬆抓緊答案的手，風會帶來新的視野。」"
+    }
+  };
 
-  const rouletteDragons=[
-    {symbol:"🌿",name:"安岳・大地守護龍",keywords:"穩定・扎根・安全感",message:"今天，先不要急著處理所有事情。讓自己回到腳下，一步一步來。",blessing:"守護語｜「不用急著抵達，先讓自己安穩地站在這裡。」"},
-    {symbol:"🔥",name:"赤曜・勇氣之龍",keywords:"勇氣・行動・轉化",message:"今天，你不必等到完全不害怕。先照亮下一步，勇氣會在行動中出現。",blessing:"守護語｜「你不需要一次改變全部，只要照亮下一步。」"},
-    {symbol:"💧",name:"澄心・月湖水龍",keywords:"情緒・流動・安撫",message:"今天，允許自己承認真實感受。情緒被看見後，心才有空間重新流動。",blessing:"守護語｜「你不必藏起感受，我陪你慢慢流過。」"},
-    {symbol:"🌬️",name:"清羽・自由之龍",keywords:"清晰・自由・新方向",message:"今天，先把自己從混亂中拉開一點距離。新的方向可能就在另一個角度裡。",blessing:"守護語｜「先放鬆抓緊答案的手，風會帶來新的視野。」"}
+  const rouletteDragons = [
+    {
+      image: dragons.earth.image,
+      name: dragons.earth.name,
+      keywords: dragons.earth.keywords,
+      message: "今天，先不要急著處理所有事情。讓自己回到腳下，一步一步來。",
+      blessing: dragons.earth.blessing
+    },
+    {
+      image: dragons.fire.image,
+      name: dragons.fire.name,
+      keywords: dragons.fire.keywords,
+      message: "今天，你不必等到完全不害怕。先照亮下一步，勇氣會在行動中出現。",
+      blessing: dragons.fire.blessing
+    },
+    {
+      image: dragons.water.image,
+      name: dragons.water.name,
+      keywords: dragons.water.keywords,
+      message: "今天，允許自己承認真實感受。情緒被看見後，心才有空間重新流動。",
+      blessing: dragons.water.blessing
+    },
+    {
+      image: dragons.air.image,
+      name: dragons.air.name,
+      keywords: dragons.air.keywords,
+      message: "今天，先把自己從混亂中拉開一點距離。新的方向可能就在另一個角度裡。",
+      blessing: dragons.air.blessing
+    }
   ];
-  const rouletteDragon=document.getElementById("rouletteDragon"),rouletteName=document.getElementById("rouletteName"),rouletteKeywords=document.getElementById("rouletteKeywords"),rouletteStart=document.getElementById("rouletteStart"),rouletteStop=document.getElementById("rouletteStop"),rouletteResult=document.getElementById("rouletteResult"),rouletteResultTitle=document.getElementById("rouletteResultTitle"),rouletteResultMessage=document.getElementById("rouletteResultMessage"),rouletteResultBlessing=document.getElementById("rouletteResultBlessing");
-  let rouletteTimer=null,rouletteIndex=0;
-  function showRouletteDragon(i){const d=rouletteDragons[i];rouletteDragon.textContent=d.symbol;rouletteName.textContent=d.name;rouletteKeywords.textContent=d.keywords}
-  rouletteStart.addEventListener("click",()=>{if(rouletteTimer)return;rouletteResult.classList.remove("show");rouletteDragon.classList.add("spinning");rouletteStart.disabled=true;rouletteStart.textContent="輪轉中…";rouletteStop.disabled=false;rouletteTimer=setInterval(()=>{rouletteIndex=(rouletteIndex+1)%rouletteDragons.length;showRouletteDragon(rouletteIndex)},180)});
-  rouletteStop.addEventListener("click",()=>{if(!rouletteTimer)return;clearInterval(rouletteTimer);rouletteTimer=null;rouletteDragon.classList.remove("spinning");rouletteStart.disabled=false;rouletteStart.textContent="再玩一次";rouletteStop.disabled=true;const d=rouletteDragons[rouletteIndex];rouletteResultTitle.textContent="今天抽中的是｜"+d.name;rouletteResultMessage.textContent=d.message;rouletteResultBlessing.textContent=d.blessing;rouletteResult.classList.add("show")});
 
+  const rouletteDragonImg = document.getElementById("rouletteDragonImg");
+  const rouletteName = document.getElementById("rouletteName");
+  const rouletteKeywords = document.getElementById("rouletteKeywords");
+  const rouletteStart = document.getElementById("rouletteStart");
+  const rouletteStop = document.getElementById("rouletteStop");
+  const rouletteResult = document.getElementById("rouletteResult");
+  const rouletteResultTitle = document.getElementById("rouletteResultTitle");
+  const rouletteResultMessage = document.getElementById("rouletteResultMessage");
+  const rouletteResultBlessing = document.getElementById("rouletteResultBlessing");
+
+  let rouletteTimer = null;
+  let rouletteIndex = 0;
+
+  function showRouletteDragon(index) {
+    const dragon = rouletteDragons[index];
+    rouletteDragonImg.src = dragon.image;
+    rouletteDragonImg.alt = dragon.name;
+    rouletteName.textContent = dragon.name;
+    rouletteKeywords.textContent = dragon.keywords;
+  }
+
+  rouletteStart.addEventListener("click", () => {
+    if (rouletteTimer) return;
+
+    rouletteResult.classList.remove("show");
+    document.getElementById("rouletteDragon").classList.add("spinning");
+    rouletteStart.disabled = true;
+    rouletteStart.textContent = "輪轉中…";
+    rouletteStop.disabled = false;
+
+    rouletteTimer = setInterval(() => {
+      rouletteIndex = (rouletteIndex + 1) % rouletteDragons.length;
+      showRouletteDragon(rouletteIndex);
+    }, 180);
+  });
+
+  rouletteStop.addEventListener("click", () => {
+    if (!rouletteTimer) return;
+
+    clearInterval(rouletteTimer);
+    rouletteTimer = null;
+    document.getElementById("rouletteDragon").classList.remove("spinning");
+    rouletteStart.disabled = false;
+    rouletteStart.textContent = "再玩一次";
+    rouletteStop.disabled = true;
+
+    const dragon = rouletteDragons[rouletteIndex];
+    rouletteResultTitle.textContent = "今天抽中的是｜" + dragon.name;
+    rouletteResultMessage.textContent = dragon.message;
+    rouletteResultBlessing.textContent = dragon.blessing;
+    rouletteResult.classList.add("show");
+  });
 
   const dragonMessages = [
     {
-      symbol:"🌿",
-      title:"安岳・大地守護龍",
-      keywords:"穩定・扎根・安全感",
-      message:"你不需要現在就解決所有事情。先回到腳下，讓自己站穩。",
-      action:"今日小行動：整理一個小角落，或把雙腳踏在地面，慢慢呼吸三次。"
+      image: dragons.earth.image,
+      title: dragons.earth.name,
+      keywords: "穩定・扎根・安全感",
+      message: "你不需要現在就解決所有事情。先回到腳下，讓自己站穩。",
+      action: "今日小行動：整理一個小角落，或把雙腳踏在地面，慢慢呼吸三次。"
     },
     {
-      symbol:"🌿",
-      title:"安岳・大地守護龍",
-      keywords:"日常・秩序・支持",
-      message:"真正的安全感，也可以從一件微小而可完成的事情開始。",
-      action:"今日小行動：完成一件十分鐘內能做好的小事。"
+      image: dragons.earth.image,
+      title: dragons.earth.name,
+      keywords: "日常・秩序・支持",
+      message: "真正的安全感，也可以從一件微小而可完成的事情開始。",
+      action: "今日小行動：完成一件十分鐘內能做好的小事。"
     },
     {
-      symbol:"🌿",
-      title:"安岳・大地守護龍",
-      keywords:"身體・休息・回來",
-      message:"你的身體不是阻礙，它一直在提醒你需要休息、補充與照顧。",
-      action:"今日小行動：喝一杯水，放鬆肩膀，感受身體現在最需要什麼。"
+      image: dragons.earth.image,
+      title: dragons.earth.name,
+      keywords: "身體・休息・回來",
+      message: "你的身體不是阻礙，它一直在提醒你需要休息、補充與照顧。",
+      action: "今日小行動：喝一杯水，放鬆肩膀，感受身體現在最需要什麼。"
     },
     {
-      symbol:"🌿",
-      title:"安岳・大地守護龍",
-      keywords:"耐心・累積・成長",
-      message:"看似緩慢的日子，也正在為你累積新的根。",
-      action:"今日小行動：寫下最近已經做到的三件小事。"
+      image: dragons.earth.image,
+      title: dragons.earth.name,
+      keywords: "耐心・累積・成長",
+      message: "看似緩慢的日子，也正在為你累積新的根。",
+      action: "今日小行動：寫下最近已經做到的三件小事。"
     },
     {
-      symbol:"🔥",
-      title:"赤曜・勇氣之龍",
-      keywords:"勇氣・行動・轉化",
-      message:"你不必等到完全不害怕，才開始走出下一步。",
-      action:"今日小行動：選出一件一直延後的事情，只完成第一個步驟。"
+      image: dragons.fire.image,
+      title: dragons.fire.name,
+      keywords: "勇氣・行動・轉化",
+      message: "你不必等到完全不害怕，才開始走出下一步。",
+      action: "今日小行動：選出一件一直延後的事情，只完成第一個步驟。"
     },
     {
-      symbol:"🔥",
-      title:"赤曜・勇氣之龍",
-      keywords:"界線・力量・選擇",
-      message:"你的力量不必用來證明自己，也可以用來守護自己的界線。",
-      action:"今日小行動：對一件讓你不舒服的事，先在心裡說一次『我可以選擇』。"
+      image: dragons.fire.image,
+      title: dragons.fire.name,
+      keywords: "界線・力量・選擇",
+      message: "你的力量不必用來證明自己，也可以用來守護自己的界線。",
+      action: "今日小行動：對一件讓你不舒服的事，先在心裡說一次『我可以選擇』。"
     },
     {
-      symbol:"🔥",
-      title:"赤曜・勇氣之龍",
-      keywords:"熱情・生命力・重新開始",
-      message:"那一點仍然讓你心動的火光，值得被你好好保護。",
-      action:"今日小行動：給一件你真正喜歡的事情十五分鐘。"
+      image: dragons.fire.image,
+      title: dragons.fire.name,
+      keywords: "熱情・生命力・重新開始",
+      message: "那一點仍然讓你心動的火光，值得被你好好保護。",
+      action: "今日小行動：給一件你真正喜歡的事情十五分鐘。"
     },
     {
-      symbol:"🔥",
-      title:"赤曜・勇氣之龍",
-      keywords:"釋放・更新・前進",
-      message:"有些舊選擇已經完成使命，不必再帶著它走向下一段路。",
-      action:"今日小行動：丟掉、刪除或放下一件已經不再需要的東西。"
+      image: dragons.fire.image,
+      title: dragons.fire.name,
+      keywords: "釋放・更新・前進",
+      message: "有些舊選擇已經完成使命，不必再帶著它走向下一段路。",
+      action: "今日小行動：丟掉、刪除或放下一件已經不再需要的東西。"
     },
     {
-      symbol:"💧",
-      title:"澄心・月湖水龍",
-      keywords:"情緒・流動・安撫",
-      message:"你不必立刻振作。先承認此刻真正的感受，心才有空間流動。",
-      action:"今日小行動：用一句話寫下『我現在其實感到……』。"
+      image: dragons.water.image,
+      title: dragons.water.name,
+      keywords: "情緒・流動・安撫",
+      message: "你不必立刻振作。先承認此刻真正的感受，心才有空間流動。",
+      action: "今日小行動：用一句話寫下『我現在其實感到……』。"
     },
     {
-      symbol:"💧",
-      title:"澄心・月湖水龍",
-      keywords:"悲傷・允許・陪伴",
-      message:"眼淚不是倒退，而是累積太久的重量正在離開。",
-      action:"今日小行動：找一個安全的地方，允許自己安靜五分鐘。"
+      image: dragons.water.image,
+      title: dragons.water.name,
+      keywords: "悲傷・允許・陪伴",
+      message: "眼淚不是倒退，而是累積太久的重量正在離開。",
+      action: "今日小行動：找一個安全的地方，允許自己安靜五分鐘。"
     },
     {
-      symbol:"💧",
-      title:"澄心・月湖水龍",
-      keywords:"柔軟・接納・自我照顧",
-      message:"今天不用對自己嚴格。溫柔也能讓事情慢慢改變。",
-      action:"今日小行動：把你會對好朋友說的一句話，送給自己。"
+      image: dragons.water.image,
+      title: dragons.water.name,
+      keywords: "柔軟・接納・自我照顧",
+      message: "今天不用對自己嚴格。溫柔也能讓事情慢慢改變。",
+      action: "今日小行動：把你會對好朋友說的一句話，送給自己。"
     },
     {
-      symbol:"💧",
-      title:"澄心・月湖水龍",
-      keywords:"淨化・放鬆・回流",
-      message:"不是每一種感受都需要分析，有些只需要被呼吸與陪伴。",
-      action:"今日小行動：洗手或洗澡時，想像水帶走今天不需要再承擔的重量。"
+      image: dragons.water.image,
+      title: dragons.water.name,
+      keywords: "淨化・放鬆・回流",
+      message: "不是每一種感受都需要分析，有些只需要被呼吸與陪伴。",
+      action: "今日小行動：洗手或洗澡時，想像水帶走今天不需要再承擔的重量。"
     },
     {
-      symbol:"🌬️",
-      title:"清羽・自由之龍",
-      keywords:"清晰・自由・新方向",
-      message:"當你暫時離開混亂，答案有時會在更寬廣的視野裡出現。",
-      action:"今日小行動：離開螢幕五分鐘，看看天空或窗外。"
+      image: dragons.air.image,
+      title: dragons.air.name,
+      keywords: "清晰・自由・新方向",
+      message: "當你暫時離開混亂，答案有時會在更寬廣的視野裡出現。",
+      action: "今日小行動：離開螢幕五分鐘，看看天空或窗外。"
     },
     {
-      symbol:"🌬️",
-      title:"清羽・自由之龍",
-      keywords:"轉念・鬆開・可能性",
-      message:"現在看見的，不一定是唯一的解釋，也不一定是最後的結果。",
-      action:"今日小行動：為目前的困擾寫出另一個較溫柔的可能解釋。"
+      image: dragons.air.image,
+      title: dragons.air.name,
+      keywords: "轉念・鬆開・可能性",
+      message: "現在看見的，不一定是唯一的解釋，也不一定是最後的結果。",
+      action: "今日小行動：為目前的困擾寫出另一個較溫柔的可能解釋。"
     },
     {
-      symbol:"🌬️",
-      title:"清羽・自由之龍",
-      keywords:"呼吸・空間・整理",
-      message:"你需要的可能不是更多答案，而是一點能夠呼吸的空間。",
-      action:"今日小行動：暫停一項非必要安排，為自己留下一小段空白。"
+      image: dragons.air.image,
+      title: dragons.air.name,
+      keywords: "呼吸・空間・整理",
+      message: "你需要的可能不是更多答案，而是一點能夠呼吸的空間。",
+      action: "今日小行動：暫停一項非必要安排，為自己留下一小段空白。"
     },
     {
-      symbol:"🌬️",
-      title:"清羽・自由之龍",
-      keywords:"選擇・方向・輕盈",
-      message:"你可以重新選擇，不必永遠忠於一個已經讓你疲憊的方向。",
-      action:"今日小行動：問自己：『現在最適合我的下一步是什麼？』"
+      image: dragons.air.image,
+      title: dragons.air.name,
+      keywords: "選擇・方向・輕盈",
+      message: "你可以重新選擇，不必永遠忠於一個已經讓你疲憊的方向。",
+      action: "今日小行動：問自己：『現在最適合我的下一步是什麼？』"
     }
   ];
 
   const drawButton = document.getElementById("drawButton");
   const resultCard = document.getElementById("resultCard");
-  const resultSymbol = document.getElementById("resultSymbol");
+  const resultImg = document.getElementById("resultImg");
   const resultTitle = document.getElementById("resultTitle");
   const resultKeywords = document.getElementById("resultKeywords");
   const resultMessage = document.getElementById("resultMessage");
@@ -1446,7 +1579,8 @@
     resultCard.classList.remove("show");
     void resultCard.offsetWidth;
 
-    resultSymbol.textContent = choice.symbol;
+    resultImg.src = choice.image;
+    resultImg.alt = choice.title;
     resultTitle.textContent = choice.title;
     resultKeywords.textContent = choice.keywords;
     resultMessage.textContent = "「" + choice.message + "」";
@@ -1460,5 +1594,6 @@
     }, 80);
   });
 </script>
+
 </body>
 </html>
