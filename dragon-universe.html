@@ -619,6 +619,26 @@
     }
 
 
+
+    /* 互動抽龍輪播 */
+    .dragon-roulette{margin-top:28px;padding:28px 22px;border-radius:28px;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.18)}
+    .roulette-stage{width:min(100%,520px);min-height:260px;margin:0 auto;padding:26px 20px;display:flex;flex-direction:column;align-items:center;justify-content:center;border-radius:26px;background:radial-gradient(circle at 50% 20%,rgba(255,255,255,.18),transparent 36%),linear-gradient(145deg,rgba(255,255,255,.14),rgba(255,255,255,.06));box-shadow:inset 0 0 0 1px rgba(255,255,255,.12),0 14px 34px rgba(28,18,34,.16);overflow:hidden}
+    .roulette-dragon{width:138px;height:138px;display:grid;place-items:center;border-radius:50%;font-size:78px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);box-shadow:0 14px 28px rgba(31,20,38,.18);transform-origin:center}
+    .roulette-dragon.spinning{animation:dragonBounceSpin .42s linear infinite}
+    @keyframes dragonBounceSpin{0%{transform:translateY(0) rotate(0deg) scale(1)}25%{transform:translateY(-10px) rotate(7deg) scale(1.05)}50%{transform:translateY(0) rotate(0deg) scale(.98)}75%{transform:translateY(-7px) rotate(-7deg) scale(1.04)}100%{transform:translateY(0) rotate(0deg) scale(1)}}
+    .roulette-name{margin-top:16px;color:#fff;font-size:1.35rem;font-weight:900;text-align:center}
+    .roulette-keywords{margin-top:4px;color:#eadff0;font-size:.95rem;font-weight:700;text-align:center}
+    .roulette-controls{margin-top:18px;display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+    .roulette-start,.roulette-stop{min-width:150px;min-height:52px;padding:12px 22px;border:0;border-radius:999px;font-size:1rem;font-weight:900;cursor:pointer}
+    .roulette-start{color:#4c3d53;background:linear-gradient(135deg,#f4dda3,#d8b25d);box-shadow:0 12px 28px rgba(29,19,35,.22)}
+    .roulette-stop{color:#fff;background:linear-gradient(135deg,#b45f79,#8a5aa0);box-shadow:0 12px 28px rgba(29,19,35,.18)}
+    .roulette-stop:disabled{opacity:.45;cursor:not-allowed;box-shadow:none}
+    .roulette-result{display:none;max-width:700px;margin:22px auto 0;padding:22px;border-radius:22px;background:rgba(255,255,255,.95);color:var(--ink);text-align:left;box-shadow:0 14px 34px rgba(35,23,43,.16)}
+    .roulette-result.show{display:block;animation:rise .4s ease both}
+    .roulette-result h3{margin:0 0 8px;color:#5b4968;font-size:1.45rem}
+    .roulette-result p{margin:8px 0 0;line-height:1.85}
+    @media(max-width:560px){.roulette-stage{min-height:230px}.roulette-dragon{width:116px;height:116px;font-size:66px}.roulette-start,.roulette-stop{width:100%}}
+
     /* 龍族故事館 */
     .story-library{
       display:grid;
@@ -1129,7 +1149,28 @@
       <h2>今天，哪一隻龍想陪伴你？</h2>
       <p class="lead">先慢慢呼吸一次，再按下按鈕。把出現的訊息當作今天的溫柔提醒。</p>
 
-      <button class="draw-btn" type="button" id="drawButton">✨ 抽取今日守護龍</button>
+
+      <div class="dragon-roulette" aria-labelledby="roulette-title">
+        <h3 id="roulette-title" style="margin:0 0 10px;color:#fff;font-size:1.45rem;">🐉 互動抽龍</h3>
+        <p style="margin:0 0 20px;color:#f1e8f4;">按下開始，幾隻龍會快速輪流出現；再按「停！」，停下來的就是今天抽中的守護龍。</p>
+        <div class="roulette-stage" aria-live="polite">
+          <div class="roulette-dragon" id="rouletteDragon">🌿</div>
+          <div class="roulette-name" id="rouletteName">安岳・大地守護龍</div>
+          <div class="roulette-keywords" id="rouletteKeywords">穩定・扎根・安全感</div>
+        </div>
+        <div class="roulette-controls">
+          <button class="roulette-start" type="button" id="rouletteStart">開始輪轉</button>
+          <button class="roulette-stop" type="button" id="rouletteStop" disabled>停！</button>
+        </div>
+        <div class="roulette-result" id="rouletteResult">
+          <h3 id="rouletteResultTitle">今天抽中的是……</h3>
+          <p id="rouletteResultMessage"></p>
+          <p id="rouletteResultBlessing"></p>
+        </div>
+      </div>
+
+      <div style="margin-top:34px;color:#eadff0;font-weight:800;">或直接抽取一張龍族訊息</div>
+      <button class="draw-btn" type="button" id="drawButton">✨ 抽取今日守護龍訊息</button>
 
       <div class="result-card" id="resultCard" aria-live="polite">
         <div class="result-top">
@@ -1262,6 +1303,20 @@
 </footer>
 
 <script>
+
+  const rouletteDragons=[
+    {symbol:"🌿",name:"安岳・大地守護龍",keywords:"穩定・扎根・安全感",message:"今天，先不要急著處理所有事情。讓自己回到腳下，一步一步來。",blessing:"守護語｜「不用急著抵達，先讓自己安穩地站在這裡。」"},
+    {symbol:"🔥",name:"赤曜・勇氣之龍",keywords:"勇氣・行動・轉化",message:"今天，你不必等到完全不害怕。先照亮下一步，勇氣會在行動中出現。",blessing:"守護語｜「你不需要一次改變全部，只要照亮下一步。」"},
+    {symbol:"💧",name:"澄心・月湖水龍",keywords:"情緒・流動・安撫",message:"今天，允許自己承認真實感受。情緒被看見後，心才有空間重新流動。",blessing:"守護語｜「你不必藏起感受，我陪你慢慢流過。」"},
+    {symbol:"🌬️",name:"清羽・自由之龍",keywords:"清晰・自由・新方向",message:"今天，先把自己從混亂中拉開一點距離。新的方向可能就在另一個角度裡。",blessing:"守護語｜「先放鬆抓緊答案的手，風會帶來新的視野。」"}
+  ];
+  const rouletteDragon=document.getElementById("rouletteDragon"),rouletteName=document.getElementById("rouletteName"),rouletteKeywords=document.getElementById("rouletteKeywords"),rouletteStart=document.getElementById("rouletteStart"),rouletteStop=document.getElementById("rouletteStop"),rouletteResult=document.getElementById("rouletteResult"),rouletteResultTitle=document.getElementById("rouletteResultTitle"),rouletteResultMessage=document.getElementById("rouletteResultMessage"),rouletteResultBlessing=document.getElementById("rouletteResultBlessing");
+  let rouletteTimer=null,rouletteIndex=0;
+  function showRouletteDragon(i){const d=rouletteDragons[i];rouletteDragon.textContent=d.symbol;rouletteName.textContent=d.name;rouletteKeywords.textContent=d.keywords}
+  rouletteStart.addEventListener("click",()=>{if(rouletteTimer)return;rouletteResult.classList.remove("show");rouletteDragon.classList.add("spinning");rouletteStart.disabled=true;rouletteStart.textContent="輪轉中…";rouletteStop.disabled=false;rouletteTimer=setInterval(()=>{rouletteIndex=(rouletteIndex+1)%rouletteDragons.length;showRouletteDragon(rouletteIndex)},180)});
+  rouletteStop.addEventListener("click",()=>{if(!rouletteTimer)return;clearInterval(rouletteTimer);rouletteTimer=null;rouletteDragon.classList.remove("spinning");rouletteStart.disabled=false;rouletteStart.textContent="再玩一次";rouletteStop.disabled=true;const d=rouletteDragons[rouletteIndex];rouletteResultTitle.textContent="今天抽中的是｜"+d.name;rouletteResultMessage.textContent=d.message;rouletteResultBlessing.textContent=d.blessing;rouletteResult.classList.add("show")});
+
+
   const dragonMessages = [
     {
       symbol:"🌿",
