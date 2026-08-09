@@ -47,6 +47,37 @@ button.ghost{background:#fff;color:var(--purple);border:1px solid rgba(123,75,13
 .mode-btn.active{background:var(--lav);color:#fff;border-color:transparent}
 @media(max-width:520px){.mode-select{grid-template-columns:1fr 1fr}.mode-btn:last-child{grid-column:1/-1}}
 
+
+footer{
+  margin-top:70px;
+  padding:46px 18px 60px;
+  color:#28584f;
+  text-align:center;
+  line-height:1.85;
+}
+.footer-note{font-size:16px;margin-bottom:20px}
+.footer-copy{font-size:18px;margin:10px 0 18px}
+.footer-brand{font-size:24px;font-weight:900}
+.footer-en{font-size:18px;margin-top:4px}
+.footer-love{font-size:20px;margin-top:18px}
+.footer-tagline{font-size:18px;margin-top:4px}
+.footer-links{margin:24px 0 18px}
+.footer-links a{
+  display:block;
+  color:#28584f;
+  text-decoration:none;
+  font-weight:800;
+  font-size:17px;
+  margin:7px 0;
+}
+.footer-rights{font-size:17px;margin-top:22px}
+@media(max-width:520px){
+  footer{margin-top:58px;padding:40px 14px 52px}
+  .footer-note{font-size:15px}
+  .footer-brand{font-size:22px}
+  .footer-links a{font-size:16px}
+}
+
 </style>
 </head>
 <body>
@@ -191,5 +222,25 @@ document.getElementById('pauseBtn').onclick=pause;
 document.getElementById('resetBtn').onclick=reset;
 build();
 </script>
+
+<footer>
+  <div class="footer-note">本內容屬於個人成長與情緒陪伴分享，<br>不涉及醫療、臨床診斷或宗教預言。</div>
+  <div class="footer-copy">© 2026 BoBo Tan</div>
+  <div class="footer-brand">🌿 開心愛家園療癒</div>
+  <div class="footer-en">Happy Love Home Healing</div>
+  <div class="footer-love">❤️ BoBo 我在</div>
+  <div class="footer-tagline">黑暗中的光・生活的燈塔</div>
+
+  <nav class="footer-links" aria-label="網站連結">
+    <a href="index.html">首頁</a>
+    <a href="free.html">免費資源</a>
+    <a href="story.html">BoBo 的故事</a>
+    <a href="blog.html">部落格</a>
+    <a href="policy.html">退款政策 / 服務條款 / 隱私聲明</a>
+  </nav>
+
+  <div class="footer-rights">All Rights Reserved.</div>
+</footer>
+
 </body>
 </html>
