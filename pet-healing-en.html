@@ -24,6 +24,23 @@ section{padding:70px 6%}.head{text-align:center;max-width:760px;margin:0 auto 35
 .steps{max-width:920px;margin:auto;display:grid;gap:14px}.step{display:grid;grid-template-columns:52px 1fr;gap:15px;padding:20px;background:#fff;border-radius:20px;border:1px solid #eedbd4}.num{width:45px;height:45px;border-radius:50%;background:#f5ddd9;display:flex;align-items:center;justify-content:center;color:#a34f59;font-weight:900}.step h3{margin:0;color:var(--brown)}.step p{margin:3px 0 0}
 .notice{max-width:1000px;margin:auto;background:#fff7e8;border:1px solid #edd2a0;border-radius:22px;padding:25px;color:#72552d}.footer{text-align:center;padding:30px 6% 34px;color:#826e67;font-size:.86rem;border-top:1px solid #ead8d1;background:rgba(255,250,245,.65)}
 @media(max-width:900px){.paid-wrap{grid-template-columns:1fr}.grid{grid-template-columns:1fr 1fr}.resource-wrap{grid-template-columns:1fr}.survey-points{grid-template-columns:1fr}.poster{max-width:500px;margin:auto}}@media(max-width:620px){.topbar{padding:11px 4%;align-items:center;flex-wrap:wrap}.brand{font-size:.86rem;flex:1 1 100%}.top-links{width:100%;justify-content:center}.home{font-size:.75rem;padding:6px 9px}.hero,section{padding-left:5%;padding-right:5%}.hero{padding-top:42px}.grid{grid-template-columns:1fr}.buttons{display:grid}.btn{width:100%}}
+
+.pet-knowledge{background:linear-gradient(180deg,#fffaf6,#f7eee8)}
+.knowledge-intro{max-width:900px;margin:0 auto 28px;text-align:center;color:#796760}
+.knowledge-columns{max-width:1120px;margin:auto;display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.knowledge-group{background:#fff;border:1px solid #ead8d1;border-radius:28px;padding:25px;box-shadow:var(--shadow)}
+.knowledge-group h3{margin:0 0 8px;color:var(--brown);font-size:1.55rem}
+.knowledge-group>p{margin:0 0 18px;color:#78675f}
+.fact-list{display:grid;gap:12px}
+.fact{border:1px solid #eedbd4;border-radius:17px;background:#fffaf7;overflow:hidden}
+.fact summary{cursor:pointer;list-style:none;padding:15px 17px;font-weight:900;color:var(--brown);display:flex;align-items:center;gap:10px}
+.fact summary::-webkit-details-marker{display:none}
+.fact summary::after{content:"＋";margin-left:auto;color:#b46d76;font-size:1.15rem}
+.fact[open] summary::after{content:"–"}
+.fact .fact-body{padding:0 17px 16px;color:#6e5e58}
+.knowledge-note{max-width:1000px;margin:25px auto 0;padding:17px 19px;background:#fff7e8;border:1px solid #ead2a8;border-radius:18px;color:#72552d}
+@media(max-width:900px){.knowledge-columns{grid-template-columns:1fr}}
+
 </style>
 </head>
 <body>
@@ -125,6 +142,46 @@ section{padding:70px 6%}.head{text-align:center;max-width:760px;margin:0 auto 35
       </a>
     </article>
   </div>
+</section>
+
+
+<section class="pet-knowledge" id="pet-knowledge">
+  <div class="head">
+    <span class="tag">🐾 PET LITTLE FACTS</span>
+    <h2>Small signals that help you understand your pet</h2>
+    <p>Not every behaviour has one fixed meaning. Context and changes over time matter.</p>
+  </div>
+  <div class="knowledge-intro">
+    Cats and dogs communicate through sleep positions, tails, sounds, distance, eye contact and everyday habits.
+    The most useful comparison is often your pet’s usual behaviour versus what has changed recently.
+  </div>
+  <div class="knowledge-columns">
+    <div class="knowledge-group">
+      <h3>🐱 Cat Little Facts</h3>
+      <p>Sleep, blinking, purring and hiding can all offer clues about how a cat is feeling.</p>
+      <div class="fact-list">
+        <details class="fact"><summary>😴 Does where a cat sleeps mean something?</summary><div class="fact-body">Sleeping near your head or chest may be linked to familiar scent, warmth and security. Sleeping near your feet may allow more personal space and an easy way to move away. Sleeping alone does not automatically mean a cat feels distant.</div></details>
+        <details class="fact"><summary>📦 Why do cats love boxes?</summary><div class="fact-body">Boxes provide shelter, warmth and a predictable enclosed space. During environmental changes, a safe hiding place that a cat can enter and leave freely may help them settle.</div></details>
+        <details class="fact"><summary>👀 Is slow blinking a sign of affection?</summary><div class="fact-body">Slow blinking often happens during calm, non-threatening interactions and can be one sign of comfort or trust. It is still best interpreted together with ear position, body posture and the overall situation.</div></details>
+        <details class="fact"><summary>🐾 Why do cats knead with their paws?</summary><div class="fact-body">Kneading begins during kittenhood. Adult cats may continue doing it when they feel comfortable, relaxed or connected to something familiar. Some cats knead often and others rarely do.</div></details>
+        <details class="fact"><summary>💨 Why does my cat suddenly run around at night?</summary><div class="fact-body">Cats may naturally become more active in the evening. Short bursts of running and jumping can simply release energy. If the change comes with distress, vocalising, collisions or a major sleep change, observe more closely.</div></details>
+        <details class="fact"><summary>🎵 Does purring always mean happiness?</summary><div class="fact-body">No. Purring is common during comfort, but some cats may also purr when stressed, uncomfortable or self-soothing. Appetite, breathing, hiding and willingness to be touched provide important additional clues.</div></details>
+      </div>
+    </div>
+    <div class="knowledge-group">
+      <h3>🐶 Dog Little Facts</h3>
+      <p>Yawning, tail movement, following and sleep positions can also reflect a dog’s state.</p>
+      <div class="fact-list">
+        <details class="fact"><summary>🛏️ Can a dog’s sleeping position show comfort?</summary><div class="fact-body">Side sleeping with a relaxed body often appears during comfortable rest. Curling up may conserve warmth or protect the body. Temperature, habit, age and physical condition also affect sleeping positions.</div></details>
+        <details class="fact"><summary>🐕 Why does my dog follow me everywhere?</summary><div class="fact-body">It may come from attachment, expectation, habit or seeking security. If being apart leads to intense distress, destruction or persistent barking, separation-related stress may need further support.</div></details>
+        <details class="fact"><summary>👋 Does a wagging tail always mean a happy dog?</summary><div class="fact-body">Not always. Tail movement shows emotional arousal and may reflect excitement, anticipation, uncertainty or tension. Look at tail height, speed, body stiffness, ears and facial expression together.</div></details>
+        <details class="fact"><summary>🥱 Is yawning only about being sleepy?</summary><div class="fact-body">Dogs yawn when tired, but yawning may also appear during stressful or unfamiliar situations. The timing and surrounding body language help explain what it may mean.</div></details>
+        <details class="fact"><summary>🧸 Why does my dog bring me a toy?</summary><div class="fact-body">Your dog may be inviting play, sharing something valuable, or asking for attention. Some dogs bring toys to show them but do not actually want the toy taken away, so watch the rest of their body language.</div></details>
+        <details class="fact"><summary>💗 Can dogs sense their caregiver’s emotions?</summary><div class="fact-body">Dogs pay close attention to human voice, posture, movement and daily routine, so they may respond differently when a caregiver is tense or calm. This does not mean every dog problem is caused by the caregiver; health, environment, experience and temperament also matter.</div></details>
+      </div>
+    </div>
+  </div>
+  <div class="knowledge-note"><strong>Gentle reminder:</strong> These are everyday observation tips, not diagnostic rules. If your pet suddenly shows persistent hiding, pain, refusal to eat, breathing changes, elimination changes, increased aggression or a noticeable drop in energy, please consult a qualified veterinarian first.</div>
 </section>
 
 <section class="survey">
