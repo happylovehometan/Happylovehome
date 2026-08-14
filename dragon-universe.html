@@ -698,6 +698,131 @@
 
     .coming-list li:last-child{border:0}
 
+    /* 新原創守護龍角色卡 */
+    .future-dragon-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:22px;
+      margin-top:10px;
+    }
+
+    .future-dragon-card{
+      position:relative;
+      overflow:hidden;
+      padding:24px;
+      border-radius:28px;
+      background:
+        radial-gradient(circle at top right, rgba(255,240,212,.32), transparent 34%),
+        linear-gradient(160deg, rgba(255,255,255,.96), rgba(248,243,250,.94));
+      border:1px solid rgba(91,73,117,.10);
+      box-shadow:0 16px 34px rgba(95,76,117,.10);
+    }
+
+    .future-dragon-card::before{
+      content:"";
+      position:absolute;
+      inset:12px;
+      border-radius:22px;
+      border:1px solid rgba(186,160,211,.16);
+      pointer-events:none;
+    }
+
+    .future-dragon-badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      margin-bottom:14px;
+      padding:8px 14px;
+      border-radius:999px;
+      background:#f4edf7;
+      color:#7b6094;
+      font-weight:800;
+      font-size:.84rem;
+      letter-spacing:.05em;
+    }
+
+    .future-dragon-card h3{
+      margin:0 0 8px;
+      color:#5f4a72;
+      font-size:1.28rem;
+      line-height:1.45;
+    }
+
+    .future-dragon-quote{
+      margin:0 0 12px;
+      color:#8b6fa0;
+      font-weight:800;
+      line-height:1.8;
+    }
+
+    .future-dragon-desc{
+      margin:0 0 14px;
+      color:#73697a;
+      line-height:1.85;
+    }
+
+    .future-dragon-story{
+      margin:0;
+      padding:14px 16px;
+      border-radius:18px;
+      background:#faf7fb;
+      border:1px solid rgba(91,73,117,.08);
+      color:#6f6574;
+      line-height:1.9;
+    }
+
+    .future-dragon-story strong{
+      display:block;
+      margin-bottom:6px;
+      color:#6a527d;
+      font-size:.96rem;
+    }
+
+    @media (max-width:820px){
+      .future-dragon-grid{grid-template-columns:1fr}
+    }
+
+
+    .coming-list li strong{
+      display:block;
+      margin-bottom:6px;
+      color:#5f4a72;
+      font-size:1.06rem;
+    }
+
+    .coming-list .future-quote{
+      display:block;
+      margin:4px 0 7px;
+      color:#8b6fa0;
+      font-weight:700;
+      line-height:1.8;
+    }
+
+    .coming-list .future-desc{
+      display:block;
+      color:#73697a;
+      line-height:1.85;
+    }
+
+    .future-story{
+      margin-top:12px;
+      padding:14px 16px;
+      border-radius:16px;
+      background:#faf7fb;
+      border:1px solid rgba(91,73,117,.10);
+      color:#6f6574;
+      line-height:1.9;
+    }
+
+    .future-story strong{
+      display:block;
+      margin-bottom:6px;
+      color:#6a527d;
+      font-size:.98rem;
+    }
+
+
+
     .note-box{
       margin-top:42px;
       padding:22px 24px;
@@ -1484,20 +1609,67 @@
 
   <section class="section">
     <div class="section-head">
-      <div class="section-kicker">COMING NEXT</div>
-      <h2>未來會加入</h2>
+      <div class="section-kicker">MORE ORIGINAL DRAGONS</div>
+      <h2>更多原創守護龍</h2>
+      <p>除了四大元素龍，BoBo 龍族宇宙也會慢慢加入更多不同主題的原創守護龍。</p>
     </div>
 
-    <div class="resource-panel">
-      <ul class="coming-list">
-        <li>🌑 暗影龍｜陪伴低谷與尚未被看見的內在感受</li>
-        <li>🌟 金龍｜陪伴自我價值、值得感與接收能力</li>
-        <li>🌿 翡翠龍｜陪伴身心休息、修復與重新平衡</li>
-        <li>🌹 玫瑰龍｜陪伴愛、關係、界線與柔軟</li>
-        <li>💜 紫晶龍｜陪伴直覺、安靜與內在智慧</li>
-        <li>🌌 宇宙龍｜陪伴信任生命與看見更大的視野</li>
-        <li>✨ 星光龍｜陪伴希望、方向與重新出發</li>
-      </ul>
+    <div class="future-dragon-grid">
+      <article class="future-dragon-card">
+        <div class="future-dragon-badge">🌱 HOPE DRAGON</div>
+        <h3>望芽・希望種子龍</h3>
+        <p class="future-dragon-quote">守護語｜「哪怕只是一顆小小種子，也正在為你長出新的可能。」</p>
+        <p class="future-dragon-desc">陪伴新的開始、相信可能與心裡重新發芽的力量，適合在人生想重新出發、重新相信自己的時候出現。</p>
+        <p class="future-dragon-story"><strong>短故事</strong>在一片看似安靜的土地裡，望芽龍一直守著那些還沒發芽的夢。當有人覺得自己什麼都做不到時，牠會輕輕把一顆小種子放進心裡，提醒對方：有些改變，不是沒有開始，而是在地下慢慢長根。</p>
+      </article>
+
+      <article class="future-dragon-card">
+        <div class="future-dragon-badge">🏡 HOME DRAGON</div>
+        <h3>暖巢・家園守護龍</h3>
+        <p class="future-dragon-quote">守護語｜「你值得有一個能安心呼吸、放心做自己的地方。」</p>
+        <p class="future-dragon-desc">陪伴安全感、家的能量、被溫柔接住的感覺，提醒你把身心慢慢帶回安穩與歸屬。</p>
+        <p class="future-dragon-story"><strong>短故事</strong>暖巢龍喜歡在疲憊的人身旁築起一個看不見的窩。那不是把人困住的地方，而是一個能放心休息、重新呼吸的角落。每當你覺得外面的世界太吵，牠會告訴你：先回來，先讓自己被安穩接住。</p>
+      </article>
+
+      <article class="future-dragon-card">
+        <div class="future-dragon-badge">☕ SLOW LIFE DRAGON</div>
+        <h3>慢煦・慢活咖啡龍</h3>
+        <p class="future-dragon-quote">守護語｜「慢下來，不是落後，而是讓心重新跟上自己。」</p>
+        <p class="future-dragon-desc">陪伴放慢步調、日常療癒與生活裡的小小安定，適合在忙碌、疲憊、想找回生活感時靠近你。</p>
+        <p class="future-dragon-story"><strong>短故事</strong>慢煦龍總是帶著暖暖的香氣，在匆忙的人身邊安靜坐下。牠不急著給答案，只把一杯熱熱的日常遞過來。當你願意停一下，才會發現：原來生活裡那些最小的片刻，也能慢慢治癒一顆太緊繃的心。</p>
+      </article>
+
+      <article class="future-dragon-card">
+        <div class="future-dragon-badge">🕯️ LIGHTHOUSE DRAGON</div>
+        <h3>光岸・燈塔龍</h3>
+        <p class="future-dragon-quote">守護語｜「即使暫時看不清前方，光也沒有離開你。」</p>
+        <p class="future-dragon-desc">陪伴方向、信任與在黑暗裡仍然看見光，提醒你在迷惘中也能慢慢找回自己的路。</p>
+        <p class="future-dragon-story"><strong>短故事</strong>在海霧最濃的夜裡，光岸龍會站在遠遠的岸邊守著微光。牠不會替任何人決定方向，只讓那一束光穩穩亮著。當你不知道該往哪裡走時，牠會提醒你：不用一次看見整條路，只要先看見下一步。</p>
+      </article>
+
+      <article class="future-dragon-card">
+        <div class="future-dragon-badge">🐾 PET GUARDIAN DRAGON</div>
+        <h3>毛語・寵物守護龍</h3>
+        <p class="future-dragon-quote">守護語｜「愛會穿過語言，在你與毛孩之間安靜流動。」</p>
+        <p class="future-dragon-desc">陪伴毛孩連結、愛與安撫，守護人與寵物之間的關係，也讓思念、陪伴與理解被溫柔放進心裡。</p>
+        <p class="future-dragon-story"><strong>短故事</strong>毛語龍最懂那些說不出口的想念與陪伴。牠會輕輕靠近人與毛孩之間，把害怕、擔心和不安慢慢梳開。無論是正在陪伴，還是深深思念，牠都會讓你知道：愛其實一直都在流動。</p>
+      </article>
+
+      <article class="future-dragon-card">
+        <div class="future-dragon-badge">🦋 REBIRTH DRAGON</div>
+        <h3>晨曦・重生龍</h3>
+        <p class="future-dragon-quote">守護語｜「你不需要回到從前，你可以長成新的自己。」</p>
+        <p class="future-dragon-desc">陪伴告別過去、修復與再次站起來的勇氣，適合在經歷失落、轉變、傷痛後重新整理自己的時候出現。</p>
+        <p class="future-dragon-story"><strong>短故事</strong>晨曦龍總在黑夜快結束的時候出現。牠知道有些人不是不想前進，只是仍背著舊傷。於是牠用清晨的光，一點一點照進那些還沒修復的地方，讓人明白：重生不是忘記過去，而是帶著自己重新開始。</p>
+      </article>
+
+      <article class="future-dragon-card">
+        <div class="future-dragon-badge">🌈 JOY DRAGON</div>
+        <h3>晴樂・幸福龍</h3>
+        <p class="future-dragon-quote">守護語｜「幸福不一定轟轟烈烈，它也能是被支持的安穩日常。」</p>
+        <p class="future-dragon-desc">陪伴喜悅、安心、被支持感與簡單的小確幸，提醒你幸福可以很生活化，也可以慢慢被感受到。</p>
+        <p class="future-dragon-story"><strong>短故事</strong>晴樂龍喜歡把彩虹藏進平凡的小日子裡。也許是一頓安心的飯、一個被理解的眼神，或是一個終於能放鬆的午後。牠想讓你知道，幸福有時不是很大的奇蹟，而是生活裡那些悄悄把心照亮的瞬間。</p>
+      </article>
     </div>
   </section>
 
