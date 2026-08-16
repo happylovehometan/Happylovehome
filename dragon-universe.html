@@ -642,7 +642,7 @@
 
     .resource-box{
       display:grid;
-      grid-template-columns:1.15fr .85fr;
+      grid-template-columns:repeat(3,minmax(0,1fr));
       gap:22px;
       align-items:stretch;
     }
@@ -653,6 +653,33 @@
       background:rgba(255,255,255,.82);
       border:1px solid var(--line);
       box-shadow:var(--shadow);
+    }
+
+
+    .resource-cover{
+      width:100%;
+      aspect-ratio:4/5;
+      object-fit:cover;
+      display:block;
+      margin:0 0 18px;
+      border-radius:22px;
+      box-shadow:0 12px 28px rgba(76,61,91,.12);
+    }
+    .resource-price{
+      margin:12px 0 16px;
+      color:#6d4f7c;
+      font-size:1.15rem;
+      font-weight:900;
+    }
+    .resource-badge{
+      display:inline-flex;
+      padding:6px 11px;
+      margin-bottom:10px;
+      border-radius:999px;
+      background:#f3e8f5;
+      color:#7b5c8d;
+      font-size:.82rem;
+      font-weight:800;
     }
 
     .resource-panel h3{
@@ -1592,6 +1619,20 @@
         </p>
         <a class="link-button" href="https://payhip.com/b/hlfjG" target="_blank" rel="noopener noreferrer">
           前往 Payhip 免費下載
+        </a>
+      </article>
+
+      <article class="resource-panel">
+        <img class="resource-cover" src="dragon-energy-workbook.png" alt="龍族能量療癒｜四大元素龍深度陪伴 Workbook">
+        <div class="resource-badge">✨ 付費 Workbook</div>
+        <h3>🐉 龍族能量療癒｜四大元素龍深度陪伴 Workbook</h3>
+        <p>
+          31 頁完整練習，結合四大元素龍、自我覺察、書寫引導、冥想文字與七次陪伴紀錄，
+          陪你整理穩定、行動、流動與清晰。
+        </p>
+        <div class="resource-price">USD 18.80</div>
+        <a class="link-button" href="https://payhip.com/b/Zrx50" target="_blank" rel="noopener noreferrer">
+          前往 Payhip 購買
         </a>
       </article>
 
