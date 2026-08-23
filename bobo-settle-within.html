@@ -159,7 +159,7 @@
           <span class="pill">🕣 晚上8:30–10:30</span>
           <span class="pill">🌐 Zoom 線上直播</span>
         </div>
-        <a class="btn register-link" href="#payment">我要為自己保留兩小時</a>
+        <a class="btn register-link" href="https://payhip.com/b/lG2Ie" target="_blank" rel="noopener">我要為自己保留兩小時</a>
         <p class="micro">新加坡／馬來西亞時間・不需要任何冥想經驗</p>
       </div>
       <div class="aura-card" aria-hidden="true">
@@ -247,7 +247,7 @@
           <div>✓ 7天內觀看回放</div>
           <div>✓ 安頓練習 PDF</div>
         </div>
-        <a class="btn register-link payment-button" href="#" data-payment-url="">我要參加《先把自己安住》</a>
+        <a class="btn register-link payment-button" href="https://payhip.com/b/lG2Ie" target="_blank" rel="noopener">我要參加《先把自己安住》</a>
         <p class="price-note">其他幣別僅供參考，實際金額以付款平台即時匯率為準。完成付款後，將收到活動與Zoom參與資料。</p>
       </div>
       <div class="notice"><strong>溫柔提醒：</strong>本活動屬於身心放鬆、自我覺察與冥想體驗，不提供醫療診斷或心理治療，也不能替代醫生、心理專業人員或緊急救援。如出現突然昏厥、胸痛、呼吸困難或其他急性不適，請立即尋求所在地的緊急醫療協助。</div>
@@ -275,21 +275,6 @@
     </div>
   </footer>
 
-  <div class="sticky-cta"><a class="btn" href="#payment">查看報名方式・USD15</a></div>
-  <div class="toast" role="status" aria-live="polite">付款連結即將開放，請稍後再回來看看。</div>
-
-  <script>
-    document.querySelectorAll('.payment-button').forEach(function(button){
-      button.addEventListener('click',function(event){
-        var url=button.getAttribute('data-payment-url');
-        if(!url){
-          event.preventDefault();
-          var toast=document.querySelector('.toast');
-          toast.classList.add('show');
-          window.setTimeout(function(){toast.classList.remove('show')},3200);
-        }
-      });
-    });
-  </script>
+  <div class="sticky-cta"><a class="btn" href="https://payhip.com/b/lG2Ie" target="_blank" rel="noopener">立即報名・USD15</a></div>
 </body>
 </html>
