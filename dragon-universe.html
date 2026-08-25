@@ -640,6 +640,36 @@
 
     .journey-card p{margin:0;color:var(--muted)}
 
+    /* 龍族故事集入口 */
+    .story-collection-entry{
+      position:relative;
+      overflow:hidden;
+      display:grid;
+      grid-template-columns:minmax(0,1.12fr) minmax(280px,.88fr);
+      min-height:420px;
+      border-radius:34px;
+      border:1px solid rgba(255,255,255,.6);
+      background:#211a2a;
+      box-shadow:0 25px 64px rgba(58,42,71,.22);
+      color:#fff;
+    }
+    .story-collection-copy{
+      position:relative;
+      z-index:2;
+      padding:clamp(30px,5vw,58px);
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      background:linear-gradient(100deg,rgba(31,24,40,.98),rgba(45,34,56,.91));
+    }
+    .story-collection-kicker{color:#e6c77e;font-size:.78rem;font-weight:900;letter-spacing:.18em}
+    .story-collection-copy h2{margin:9px 0 13px;color:#fff;font-size:clamp(2rem,5vw,3.35rem)}
+    .story-collection-copy p{margin:0 0 24px;color:#e0d9e4;font-size:1.04rem}
+    .story-collection-link{align-self:flex-start;display:inline-flex;gap:12px;align-items:center;padding:12px 22px;border-radius:999px;background:linear-gradient(135deg,#f7dfa4,#d9b35b);color:#433649;text-decoration:none;font-weight:900}
+    .story-collection-art{position:relative;min-height:340px;background:url("dragon-story-assets/dragon-awakens-night.webp") center 34%/cover}
+    .story-collection-art::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#2d2238 0%,transparent 35%),linear-gradient(0deg,rgba(15,13,18,.45),transparent 55%)}
+    .story-collection-label{position:absolute;z-index:2;left:24px;right:24px;bottom:22px;padding:12px 15px;border:1px solid rgba(255,255,255,.22);border-radius:18px;background:rgba(8,9,12,.58);backdrop-filter:blur(10px);font-family:"Noto Serif TC","PMingLiU",serif;font-size:1.04rem}
+
     .resource-box{
       display:grid;
       grid-template-columns:repeat(3,minmax(0,1fr));
@@ -928,6 +958,9 @@
       .resource-box{grid-template-columns:1fr}
       .journey-grid{grid-template-columns:1fr}
       .more-buttons{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .story-collection-entry{grid-template-columns:1fr}
+      .story-collection-art{min-height:390px;order:-1}
+      .story-collection-art::after{background:linear-gradient(0deg,#2d2238 0%,transparent 45%)}
     }
 
     @media (max-width:560px){
@@ -1131,7 +1164,7 @@
   <div class="hero-actions">
     <a class="primary-btn" href="#daily-dragon">🐉 抽取守護龍訊息</a>
     <a class="secondary-btn" href="#four-dragons">認識四大元素龍</a>
-    <a class="secondary-btn" href="#dragon-stories">閱讀龍族故事</a>
+    <a class="secondary-btn" href="#story-collection">進入龍族故事集</a>
   </div>
 </section>
 
@@ -1146,6 +1179,20 @@
         這裡沒有必須相信的預言，只有一份溫柔的象徵與陪伴，邀請你回到自己。
       </p>
     </div>
+  </section>
+
+  <section class="section" id="story-collection">
+    <article class="story-collection-entry">
+      <div class="story-collection-copy">
+        <div class="story-collection-kicker">BOBO ORIGINAL DRAGON STORIES</div>
+        <h2>龍族故事集</h2>
+        <p>閱讀龍族與人類相遇的原創療癒小說。每一篇故事都有獨立場景、分章閱讀、自動播放與溫柔的生命訊息。</p>
+        <a class="story-collection-link" href="dragon-story-library.html">進入龍族故事集 <span aria-hidden="true">→</span></a>
+      </div>
+      <div class="story-collection-art" role="img" aria-label="阿寧在森林裡遇見黑色守護龍">
+        <div class="story-collection-label">首篇故事｜《龍會在你願意活下去時醒來》</div>
+      </div>
+    </article>
   </section>
 
   <section class="section" id="four-dragons">
@@ -1727,6 +1774,7 @@
       <a class="nav-btn" href="explore.html">🌿 BoBo 自我探索館</a>
       <a class="nav-btn" href="pet-healing.html">🐾 開心寵物療癒</a>
       <a class="nav-btn" href="story.html">🌈 BoBo 的故事</a>
+      <a class="nav-btn" href="dragon-story-library.html">📖 龍族故事集</a>
       <a class="nav-btn" href="index.html">🏠 返回首頁</a>
     </div>
   </section>
@@ -1743,6 +1791,7 @@
     <a href="index.html">首頁</a>
     <a href="free.html">免費資源</a>
     <a href="story.html">BoBo 的故事</a>
+    <a href="dragon-story-library.html">龍族故事集</a>
     <a href="blog.html">部落格</a>
     <a href="policy.html">退款政策／服務條款／隱私聲明</a>
   </div>
