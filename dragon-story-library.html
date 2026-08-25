@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#17131e">
+  <title>BoBo 龍族故事集｜原創療癒小說</title>
+  <meta name="description" content="BoBo 原創龍族故事集，以龍族守護、人類情感與生命轉折，陪你在故事裡重新看見自己的力量。">
+  <meta property="og:title" content="BoBo 龍族故事集">
+  <meta property="og:description" content="每一個故事，都是一盞在黑暗裡為你留下的燈。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://happylovehomehealing.org/dragon-story-library.html">
+  <link rel="canonical" href="https://happylovehomehealing.org/dragon-story-library.html">
+  <style>
+    :root{--ink:#f5f0e8;--soft:#c9c2cf;--gold:#e1c37d;--line:rgba(255,255,255,.14);--panel:rgba(31,25,39,.84)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}
+    body{margin:0;color:var(--ink);font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;background:radial-gradient(circle at 20% 10%,rgba(104,76,129,.25),transparent 28%),radial-gradient(circle at 85% 15%,rgba(173,126,88,.18),transparent 24%),#121017;line-height:1.8}
+    a{color:inherit}
+    .topbar{position:sticky;top:0;z-index:10;border-bottom:1px solid var(--line);background:rgba(18,16,23,.82);backdrop-filter:blur(16px)}
+    .topbar-inner{width:min(1080px,calc(100% - 28px));min-height:64px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .brand{font-weight:900;text-decoration:none}.nav{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}.nav a{padding:7px 12px;border:1px solid var(--line);border-radius:999px;text-decoration:none;font-size:.84rem}
+    .hero{position:relative;min-height:64svh;display:grid;place-items:center;text-align:center;overflow:hidden;background:linear-gradient(180deg,rgba(5,6,9,.28),#121017 94%),url("dragon-story-assets/dragon-awakens-night.webp") center 31%/cover}
+    .hero::after{content:"";position:absolute;inset:0;background:radial-gradient(circle,rgba(223,190,109,.8) 0 1px,transparent 2px);background-size:150px 175px;opacity:.48}
+    .hero-inner{position:relative;z-index:1;width:min(760px,calc(100% - 38px));padding:100px 0 78px}
+    .kicker{color:var(--gold);font-family:Georgia,serif;font-size:.74rem;letter-spacing:.3em}.hero h1{margin:14px 0;font-family:"Noto Serif TC","PMingLiU",serif;font-size:clamp(2.6rem,10vw,5.8rem);font-weight:500;letter-spacing:.08em;line-height:1.2}.hero p{max-width:620px;margin:auto;color:#ded7e2;font-size:clamp(1rem,2.6vw,1.22rem)}
+    main{width:min(1080px,calc(100% - 28px));margin:auto;padding:50px 0 0}.section-head{text-align:center;margin-bottom:28px}.section-head h2{margin:5px 0;font-family:"Noto Serif TC","PMingLiU",serif;font-size:clamp(1.8rem,5vw,2.7rem);font-weight:500}.section-head p{margin:0;color:var(--soft)}
+    .story-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}.story-card{position:relative;overflow:hidden;min-height:530px;border:1px solid var(--line);border-radius:30px;background:#201a28;box-shadow:0 24px 60px rgba(0,0,0,.3)}.story-card img{width:100%;height:100%;position:absolute;inset:0;object-fit:cover}.story-card::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,8,11,.08),rgba(8,9,12,.93) 78%)}.story-content{position:absolute;z-index:2;left:0;right:0;bottom:0;padding:28px}.badge{display:inline-block;padding:6px 11px;border:1px solid rgba(255,255,255,.2);border-radius:999px;background:rgba(5,6,8,.4);color:#e7d8b3;font-size:.72rem;letter-spacing:.12em}.story-content h3{margin:13px 0 8px;font-family:"Noto Serif TC","PMingLiU",serif;font-size:clamp(1.55rem,4vw,2rem);font-weight:600;line-height:1.45}.story-content p{margin:0 0 20px;color:#cfc8d1}.read{display:inline-flex;align-items:center;gap:15px;padding:11px 21px;border-radius:999px;background:#f4efe7;color:#17141a;text-decoration:none;font-weight:800}
+    .future{display:grid;place-items:center;min-height:530px;padding:35px;text-align:center;border:1px dashed rgba(225,195,125,.3);border-radius:30px;background:radial-gradient(circle at 50% 25%,rgba(109,81,133,.3),transparent 38%),rgba(28,23,35,.65)}.future .icon{font-size:3.4rem}.future h3{margin:13px 0 8px;font-family:"Noto Serif TC","PMingLiU",serif;font-size:1.65rem}.future p{max-width:350px;margin:0;color:var(--soft)}
+    .note{margin:42px 0 0;padding:22px;border:1px solid var(--line);border-radius:22px;background:rgba(255,255,255,.04);text-align:center;color:#bbb3c0;font-size:.9rem}
+    footer{margin-top:65px;padding:38px 20px;text-align:center;border-top:1px solid var(--line);color:#a9a2ad;font-size:.86rem}footer strong{display:block;color:#eee7ef;font-size:1.08rem}.footer-links{display:flex;gap:15px;justify-content:center;flex-wrap:wrap;margin:15px 0}.footer-links a{text-decoration:none;color:#d5cdd9}
+    @media(max-width:760px){.story-grid{grid-template-columns:1fr}.story-card,.future{min-height:500px}.topbar-inner{min-height:60px}.brand{font-size:.9rem}.nav a{font-size:.76rem}.hero{min-height:58svh}}
+  </style>
+</head>
+<body>
+  <header class="topbar"><div class="topbar-inner"><a class="brand" href="index.html">🌿 開心愛家園療癒</a><nav class="nav"><a href="dragon-universe.html">🐉 龍族宇宙</a><a href="index.html">🏠 首頁</a></nav></div></header>
+  <section class="hero"><div class="hero-inner"><div class="kicker">BOBO ORIGINAL DRAGON STORIES</div><h1>龍族故事集</h1><p>每一個故事，都是一盞在黑暗裡為你留下的燈。<br>在龍族與人類的相遇裡，重新看見自己沒有失去的力量。</p></div></section>
+  <main>
+    <div class="section-head"><div class="kicker">STORY COLLECTION</div><h2>走進故事</h2><p>點選故事封面，開啟沉浸式分章閱讀。</p></div>
+    <section class="story-grid" aria-label="龍族故事列表">
+      <article class="story-card">
+        <img src="dragon-story-assets/dragon-awakens-night.webp" alt="阿寧在森林裡遇見黑色守護龍">
+        <div class="story-content"><span class="badge">STORY 01．龍族守護</span><h3>龍會在你願意活下去時醒來</h3><p>她以為自己已經失去所有守護，直到一雙金色的眼睛，在黑暗裡為她睜開。</p><a class="read" href="dragon-awakens.html">開始閱讀 <span aria-hidden="true">→</span></a></div>
+      </article>
+      <article class="future"><div><div class="icon">🐉</div><h3>故事仍在生長</h3><p>未來的龍族故事會繼續收藏在這裡。每一篇都會有獨立場景、分章閱讀與屬於自己的療癒訊息。</p></div></article>
+    </section>
+    <div class="note">本故事集為 BoBo Tan 原創文學與象徵性情緒陪伴內容，不取代醫療、心理治療或其他專業支援。</div>
+  </main>
+  <footer><strong>🌿 開心愛家園療癒</strong>Happy Love Home Healing<div class="footer-links"><a href="dragon-universe.html">BoBo 龍族宇宙</a><a href="healing.html">療癒服務</a><a href="policy.html">服務條款與隱私聲明</a></div><p>© 2026 開心愛家園療癒．All Rights Reserved.</p><p>故事、角色、文字與原創視覺未經書面授權，不得複製、改作、轉售或用於商業用途。</p></footer>
+</body>
+</html>
