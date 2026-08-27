@@ -32,6 +32,10 @@
     .button{display:inline-block;min-width:240px;padding:16px 24px;border-radius:999px;text-align:center;text-decoration:none;font-weight:800;box-shadow:0 10px 24px rgba(94,65,121,.17)}
     .button.primary{color:#fff;background:linear-gradient(135deg,#8162a0,#c0924b)}
     .button.soft{color:#725c86;background:rgba(255,255,255,.88);border:1px solid var(--line)}
+    .poster-section{padding:24px 0 58px}
+    .poster-frame{max-width:650px;margin:auto;padding:14px;border:1px solid rgba(188,145,72,.23);border-radius:32px;background:linear-gradient(145deg,#fffdf2,#f3eafd);box-shadow:0 22px 55px rgba(61,37,82,.18)}
+    .poster-frame img{display:block;width:100%;height:auto;border-radius:23px}
+    .poster-caption{margin:15px 8px 2px;text-align:center;color:#897d8d;font-size:13px}
     section{padding:64px 0}
     .section-title{text-align:center;margin:0 0 12px;color:var(--purple);font-size:clamp(28px,4vw,42px);line-height:1.35}
     .section-intro{max-width:760px;margin:0 auto 34px;text-align:center;color:var(--muted)}
@@ -39,6 +43,24 @@
     .meaning{padding:42px;max-width:900px;margin:auto}
     .meaning p{margin:0 0 18px}.meaning p:last-child{margin:0}
     .truth-note{padding:18px 20px;border-radius:18px;background:#fff9e9;border-left:4px solid #c79a4b;color:#6d6257;font-size:15px}
+    .origin{position:relative;overflow:hidden;max-width:900px;margin:auto;padding:46px;background:linear-gradient(145deg,#17101f 0%,#2d1740 52%,#4a2260 100%);color:#f7efff;border-radius:34px;box-shadow:0 22px 58px rgba(38,20,53,.26)}
+    .origin::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 34px,rgba(255,216,105,.10) 35px,transparent 37px),radial-gradient(circle at 50% 100%,rgba(187,77,255,.46),transparent 42%);pointer-events:none}
+    .origin>*{position:relative}.origin .section-title{color:#ffe5a1}.origin p{max-width:740px;margin:14px auto;text-align:center;color:#eee2f4}.origin strong{color:#ffe09a}
+    .origin-quote{margin:28px auto 0!important;padding:22px 25px;border:1px solid rgba(255,225,149,.25);border-radius:22px;background:rgba(255,255,255,.08);font-size:20px!important;font-weight:800;color:#fff3c6!important}
+    .signature{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;max-width:1040px;margin:auto}
+    .signature-step{position:relative;min-height:250px;padding:25px 18px;border:1px solid var(--line);border-radius:26px;background:rgba(255,255,255,.86);box-shadow:0 12px 30px rgba(72,53,94,.08);text-align:center}
+    .signature-step .sig-no{width:40px;height:40px;display:grid;place-items:center;margin:0 auto 13px;border-radius:50%;background:linear-gradient(135deg,#7d5c9d,#c69a4c);color:#fff;font-weight:900}
+    .signature-step .sig-light{font-size:34px;line-height:1;margin:8px 0 14px}.signature-step h3{margin:0 0 9px;color:#705986;font-size:19px}.signature-step p{margin:0;color:var(--muted);font-size:14px;line-height:1.7}
+    .signature-note{max-width:850px;margin:25px auto 0;padding:18px 22px;border-radius:20px;background:#fff9e9;color:#6e6257;text-align:center;font-size:15px}
+    .meditation-guide{max-width:900px;margin:auto;padding:44px;background:rgba(255,255,255,.86);border:1px solid var(--line);border-radius:34px;box-shadow:var(--shadow)}
+    .guide-meta{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:22px 0 30px}.guide-meta span{padding:8px 14px;border-radius:999px;background:#f5effd;color:#705d80;font-size:14px;font-weight:700}
+    .safety-strip{margin:0 0 25px;padding:18px 20px;border-left:4px solid #c69a4c;border-radius:17px;background:#fff9e9;color:#6d6258;font-size:14px}
+    .phase{margin:15px 0;padding:24px;border:1px solid var(--line);border-radius:23px;background:linear-gradient(145deg,#fff,#fbf8ff)}
+    .phase-head{display:flex;align-items:center;gap:13px;margin-bottom:13px}.phase-no{flex:0 0 42px;width:42px;height:42px;display:grid;place-items:center;border-radius:50%;color:#fff;font-weight:900;background:linear-gradient(135deg,#7d5c9d,#c69a4c)}
+    .phase h3{margin:0;color:#6f5788;font-size:21px}.phase-time{margin-left:auto;color:#9a849e;font-size:13px;white-space:nowrap}
+    .say{margin:0;padding:17px 19px;border-radius:18px;background:#f6f0fb;color:#62566b;font-size:16px;line-height:1.9}.say strong{color:#765c8d}
+    .pause{margin:10px 4px 0;color:#9b849d;font-size:13px;font-style:italic}
+    .aftercare{margin-top:25px;padding:22px;border-radius:20px;background:linear-gradient(135deg,#fff7df,#f4ecff)}.aftercare h3{margin:0 0 8px;color:#705986}.aftercare p{margin:0;color:#6f6873;font-size:15px}
     .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
     .card{padding:30px 25px;background:rgba(255,255,255,.84);border:1px solid var(--line);border-radius:28px;box-shadow:0 12px 32px rgba(72,53,94,.08)}
     .icon{width:52px;height:52px;display:grid;place-items:center;margin-bottom:16px;border-radius:18px;background:linear-gradient(135deg,#fff5c9,#eee0ff);font-size:26px}
@@ -56,7 +78,8 @@
     .reminder{max-width:900px;margin:28px auto 0;padding:22px 25px;border-radius:22px;background:#f7f4f8;color:#726b76;font-size:14px}
     footer{padding:50px 20px;text-align:center;color:#8b818e;font-size:13px;border-top:1px solid rgba(118,92,148,.10)}
     footer p{margin:6px 0}footer a{text-decoration:none;color:#725c86}
-    @media(max-width:820px){.grid{grid-template-columns:1fr}.meaning,.practice,.booking{padding:30px 23px}.hero{padding-top:62px}.nav{min-height:62px}.brand{font-size:14px}.back{font-size:13px}.flow-item{grid-template-columns:48px 1fr;padding:20px 18px}.flow-item::before{width:42px;height:42px}.light-field{transform:scale(.84);margin-top:-18px;margin-bottom:5px}}
+    @media(max-width:980px){.signature{grid-template-columns:repeat(2,1fr)}.signature-step:last-child{grid-column:1/-1}}
+    @media(max-width:820px){.grid,.signature{grid-template-columns:1fr}.signature-step:last-child{grid-column:auto}.meaning,.origin,.meditation-guide,.practice,.booking{padding:30px 20px}.hero{padding-top:62px}.nav{min-height:62px}.brand{font-size:14px}.back{font-size:13px}.flow-item{grid-template-columns:48px 1fr;padding:20px 18px}.flow-item::before{width:42px;height:42px}.light-field{transform:scale(.84);margin-top:-18px;margin-bottom:5px}.phase{padding:20px 16px}.phase-head{align-items:flex-start}.phase-time{margin-left:0}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.core,.orbit{animation:none}}
   </style>
 </head>
@@ -82,6 +105,15 @@
       </div>
     </section>
 
+    <section class="poster-section" aria-label="生命之光細胞量子振動療癒海報">
+      <div class="wrap">
+        <figure class="poster-frame">
+          <img src="life-light-healing-poster.png" alt="生命之光細胞量子振動療癒｜金紫色生命之光圍繞冥想中的人物" loading="eager" decoding="async">
+          <figcaption class="poster-caption">BoBo 專屬生命之光冥想療癒｜開心愛家園療癒</figcaption>
+        </figure>
+      </div>
+    </section>
+
     <section>
       <div class="wrap">
         <h2 class="section-title">這是一場回到內在生命感的旅程</h2>
@@ -90,6 +122,88 @@
           <p><strong>「生命之光」</strong>代表每個人內在仍然存在的活力、希望與覺知；即使走過疲憊或黑暗，它也沒有真正消失。</p>
           <p><strong>「細胞」</strong>在這套療癒中，是用來練習深入感受身體的意象；<strong>「量子振動」</strong>則是對微細感受、聲音、意念與內在共振的靈性描述。</p>
           <p class="truth-note">這些名稱是身心靈與象徵性的語言，並不是量子物理技術，也不表示能改變細胞、診斷疾病或保證治療效果。</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="origin">
+          <h2 class="section-title">源自 BoBo 真實冥想中的生命之光</h2>
+          <p>這套療癒不是先有一個名稱，再拼湊內容。它源自 BoBo 一次真實的冥想自我療癒經驗。</p>
+          <p><strong>很多金黃色線條從上方灑落，紫色點點粒子隨後出現；黑色霧氣慢慢包圍，最後紫色的光再次升起，把黑暗一點一點撥開。</strong></p>
+          <p>在那個過程裡，BoBo 感受到的不是逃離黑暗，而是一股很清楚的<strong>力量</strong>：即使沉重曾經靠近，內在的光仍然能醒來，找回界線、方向與保護自己的能力。</p>
+          <p class="origin-quote">黑暗曾經靠近你，卻沒有成為你。<br>真正撥開黑暗的光，也一直存在於你裡面。</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <h2 class="section-title">BoBo 專屬・生命之光五階冥想療癒</h2>
+        <p class="section-intro">依照真實冥想畫面形成的原創引導路徑。每一階都不是要求你看見同樣的景象，而是陪你走過接收、覺察、承接、轉化與整合。</p>
+        <div class="signature">
+          <article class="signature-step"><div class="sig-no">1</div><div class="sig-light">☀</div><h3>金光降臨</h3><p>讓金黃色的生命之光灑落，先感受支持、溫暖與「我並非孤單」的安全感。</p></article>
+          <article class="signature-step"><div class="sig-no">2</div><div class="sig-light">✦</div><h3>紫光甦醒</h3><p>讓紫色粒子慢慢聚集，象徵直覺、清醒、勇氣與內在力量正在回來。</p></article>
+          <article class="signature-step"><div class="sig-no">3</div><div class="sig-light">●</div><h3>黑霧浮現</h3><p>不驅趕疲憊、委屈、恐懼或沉重，只在安全範圍內允許它們被看見。</p></article>
+          <article class="signature-step"><div class="sig-no">4</div><div class="sig-light">◈</div><h3>紫光撥開</h3><p>感受紫色的光穩定擴展，為自己找回界線、空間與選擇的主導權。</p></article>
+          <article class="signature-step"><div class="sig-no">5</div><div class="sig-light">◎</div><h3>金紫整合</h3><p>讓金光與紫光回到身體，帶著一份新的力量與一句支持自己的話回到日常。</p></article>
+        </div>
+        <p class="signature-note">每個人的畫面與感受都不同。你不需要看見金光、紫光或黑霧；呼吸、身體感受、情緒、句子，甚至「暫時沒有感覺」，都可以是你的療癒經驗。</p>
+      </div>
+    </section>
+
+    <section id="full-meditation">
+      <div class="wrap">
+        <div class="meditation-guide">
+          <h2 class="section-title">生命之光冥想・完整引導步驟</h2>
+          <p class="section-intro">依照 BoBo 真實冥想經驗編寫｜可自行練習，也可由 BoBo 放慢語速帶領</p>
+          <div class="guide-meta"><span>約 15 分鐘</span><span>坐姿或躺姿</span><span>眼睛可張開或輕閉</span><span>不需要看見畫面</span></div>
+          <div class="safety-strip"><strong>開始前：</strong>請在不需要駕駛或操作機器的安全空間練習。任何時候感到不舒服，都可以睜開眼睛、停止觀想、看向周圍並感覺雙腳接觸地面。你永遠保有選擇權。</div>
+
+          <article class="phase">
+            <div class="phase-head"><span class="phase-no">0</span><h3>安住此刻</h3><span class="phase-time">約 2 分鐘</span></div>
+            <p class="say">讓自己選擇一個舒服的姿勢。你不需要坐得很直，也不需要立刻放鬆。<br><br>先看看此刻的空間，找到三樣你看得見的東西。感覺椅子、床或地面正在承托你。<br><br>慢慢吸氣……再把氣呼出去。問問自己：<strong>「此刻，我願意讓自己被陪伴嗎？」</strong></p>
+            <p class="pause">停留三個自然呼吸。</p>
+          </article>
+
+          <article class="phase">
+            <div class="phase-head"><span class="phase-no">1</span><h3>金光降臨・接收支持</h3><span class="phase-time">約 2 分鐘</span></div>
+            <p class="say">想像很多柔和的金黃色光線，像溫暖的細雨，從上方慢慢灑落。<br><br>它不強迫你改變，只是經過頭頂、肩膀、心口、腹部，再流向雙腳。讓身體自己決定，今天願意接收多少。<br><br>在心裡輕輕說：<strong>「我允許支持靠近我。我不需要獨自承擔一切。」</strong></p>
+            <p class="pause">停留約四至五個呼吸；沒有畫面時，只感受呼吸或想像溫暖即可。</p>
+          </article>
+
+          <article class="phase">
+            <div class="phase-head"><span class="phase-no">2</span><h3>紫色粒子・力量甦醒</h3><span class="phase-time">約 2 分鐘</span></div>
+            <p class="say">現在，留意金光之中是否出現一點一點紫色的光。它們可以從心口、身體周圍，或任何讓你感到安全的位置慢慢亮起。<br><br>每一點紫光，都代表一份正在回來的清醒、勇氣、直覺與界線。<br><br>對自己說：<strong>「我的力量不需要很大聲。它正在一點一點回到我裡面。」</strong></p>
+            <p class="pause">停留約四個呼吸，感受紫光慢慢聚集。</p>
+          </article>
+
+          <article class="phase">
+            <div class="phase-head"><span class="phase-no">3</span><h3>黑霧浮現・允許被看見</h3><span class="phase-time">約 2 分鐘</span></div>
+            <p class="say">如果有黑色霧氣、沉重、情緒或不舒服的感覺出現，不需要靠近它，也不需要把它趕走。讓它停在一個你覺得安全的距離。<br><br>你可以只是知道：這裡也許有疲憊、委屈、害怕，或一些暫時說不清楚的感受。<br><br>輕輕告訴它：<strong>「我看見你曾經保護我。現在，我可以選擇靠近多少。」</strong></p>
+            <p class="pause">若情緒變得太強，立即睜開眼睛，說出今天的日期與所在位置，跳到最後的回到日常。</p>
+          </article>
+
+          <article class="phase">
+            <div class="phase-head"><span class="phase-no">4</span><h3>紫光撥開・找回界線</h3><span class="phase-time">約 3 分鐘</span></div>
+            <p class="say">把注意力帶回心口或身體中央的紫色光點。它不需要與黑霧戰鬥，只需要穩定地變亮、變寬。<br><br>隨著每一次呼氣，紫光從身體向外展開，為你清出呼吸的空間。黑霧可以慢慢退到更遠的地方，直到你重新感覺自己的位置。<br><br>對自己說：<strong>「我有權保護自己的空間。我有權選擇讓什麼留下、讓什麼離開。」</strong></p>
+            <p class="pause">停留五個自然呼吸；讓紫光以自己的速度擴展。</p>
+          </article>
+
+          <article class="phase">
+            <div class="phase-head"><span class="phase-no">5</span><h3>金紫整合・生命之光回到身體</h3><span class="phase-time">約 2 分鐘</span></div>
+            <p class="say">現在，讓上方的金光與身體裡的紫光慢慢相遇。金光帶來支持，紫光帶來力量；它們在你周圍形成柔和、穩定的生命之光。<br><br>不用填滿每個地方，只照亮今天願意被照亮的部分。問問自己：<strong>「此刻，我最需要帶回生活的是什麼？」</strong><br><br>也許是一個字、一句話、一個身體感受，也可以暫時沒有答案。</p>
+            <p class="pause">安靜停留片刻，讓答案自己出現。</p>
+          </article>
+
+          <article class="phase">
+            <div class="phase-head"><span class="phase-no">6</span><h3>回到日常・把力量帶回來</h3><span class="phase-time">約 2 分鐘</span></div>
+            <p class="say">把注意力帶回呼吸。感覺身體與椅子、床或地面的接觸。輕輕活動手指、腳趾和肩膀。<br><br>當你準備好，張開眼睛，再次看見周圍三樣東西。<br><br>最後對自己說：<strong>「黑暗曾經靠近我，卻沒有成為我。我的光、界線與力量，正在回到我的生活。」</strong></p>
+            <p class="pause">不用急著站起來，先喝一點水，再慢慢移動。</p>
+          </article>
+
+          <div class="aftercare"><h3>冥想後的小記錄</h3><p>先不要急著分析。寫下三件事：① 身體現在最明顯的感受；② 冥想中出現的情緒、顏色或句子；③ 今天最想留給自己的一句話。若沒有畫面，也可以如實寫下「我今天只是安靜地呼吸」。</p></div>
         </div>
       </div>
     </section>
