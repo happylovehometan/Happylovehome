@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="BoBo 幸福療癒島：7日互動式自我覺察小遊戲，每天透過一個溫柔選擇，照顧能量、安心、連結與生活支持感。">
+<title>BoBo 幸福療癒島｜7日互動式自我覺察</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,"Microsoft JhengHei","Noto Sans TC",sans-serif;background:linear-gradient(180deg,#fffaf5,#f7f2fb 48%,#eef8f3);color:#574c5c}.wrap{width:min(920px,calc(100% - 28px));margin:0 auto;padding:28px 0 48px}.brand{text-align:center;margin-bottom:22px}.brand .small{font-size:14px;color:#927f98;letter-spacing:.06em}.brand h1{margin:10px 0 8px;font-size:clamp(34px,7vw,58px);color:#715e86;line-height:1.15}.brand p{margin:0;color:#7f7185;line-height:1.8}.panel{background:rgba(255,255,255,.92);border:1px solid rgba(121,101,145,.14);border-radius:28px;box-shadow:0 16px 42px rgba(88,66,103,.12);overflow:hidden}.topbar{display:grid;grid-template-columns:1fr auto;gap:14px;align-items:center;padding:18px 20px;border-bottom:1px solid #eee7f0}.daypill{padding:9px 14px;border-radius:999px;background:#f0e8f5;color:#755f87;font-weight:800;font-size:14px}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;padding:16px 20px}.stat{background:#fbf8fc;border:1px solid #eee6f1;border-radius:18px;padding:13px;text-align:center}.stat span{display:block;font-size:13px;color:#887a8d}.stat strong{display:block;margin-top:4px;font-size:24px;color:#66526f}.island{position:relative;min-height:330px;margin:0 20px;border-radius:26px;overflow:hidden;background:linear-gradient(#dff0f5 0 55%,#cce5d4 55%);border:1px solid rgba(85,120,110,.14)}.sun{position:absolute;left:7%;top:8%;font-size:48px}.cloud{position:absolute;right:9%;top:11%;font-size:45px;opacity:.85}.scene{position:absolute;left:50%;bottom:42px;transform:translateX(-50%);text-align:center}.tree{font-size:78px;line-height:1}.house{font-size:70px;line-height:1;margin-top:-8px}.extras{position:absolute;left:5%;right:5%;bottom:18px;display:flex;justify-content:space-between;font-size:36px}.water{position:absolute;left:-6%;right:-6%;bottom:-22px;height:58px;background:rgba(89,174,193,.28);border-radius:50%}.play{padding:24px 20px 22px}.theme{font-size:22px;font-weight:900;color:#695477}.story{margin:9px 0 18px;color:#756979;line-height:1.8}.choices{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.choice{min-height:86px;padding:14px;border:1px solid #dfd4e5;border-radius:18px;background:#fff;color:#5b5060;font:inherit;font-weight:700;text-align:left;cursor:pointer;transition:.18s}.choice:hover{transform:translateY(-2px);border-color:#9c87ad}.choice:disabled{cursor:default}.choice.selected{border:2px solid #806aa2;background:#f8f4fb}.choice.faded{opacity:.45}.result{min-height:55px;margin:16px 0 0;padding:14px 16px;border-radius:16px;background:#faf7fc;color:#6e6173;line-height:1.75}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.btn{border:none;border-radius:999px;padding:14px 22px;font:inherit;font-weight:900;cursor:pointer;min-height:50px}.primary{background:linear-gradient(135deg,#806aa2,#6f9b8e);color:white}.secondary{background:white;border:1px solid #d8cedd;color:#6d5d74}.btn:disabled{opacity:.45;cursor:not-allowed}.ending{display:none;padding:34px 24px;text-align:center}.ending.show{display:block}.ending .emoji{font-size:60px}.ending h2{color:#6f5a81;font-size:clamp(28px,5vw,42px)}.ending p{max-width:650px;margin:12px auto;line-height:1.85;color:#756979}.message{margin:20px auto;max-width:680px;padding:18px;border-radius:18px;background:#f8f4fb;border:1px solid #e7dce9;color:#66576e;line-height:1.8}.footer{text-align:center;margin-top:24px;color:#928597;font-size:13px;line-height:1.9}.footer a{color:#785f8b;text-decoration:none;font-weight:700}.progress{height:8px;background:#eee8f1;border-radius:999px;overflow:hidden}.progress>div{height:100%;width:14.285%;background:linear-gradient(90deg,#806aa2,#6f9b8e);transition:width .3s ease}@media(max-width:720px){.stats{grid-template-columns:repeat(2,1fr)}.choices{grid-template-columns:1fr}.island{min-height:285px}.topbar{grid-template-columns:1fr}.actions .btn{flex:1 1 180px}}@media(max-width:420px){.wrap{width:min(100% - 18px,920px)}.panel{border-radius:22px}.island{margin:0 12px}.play,.stats{padding-left:12px;padding-right:12px}.theme{font-size:20px}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <header class="brand">
+    <div class="small">🌿 開心愛家園療癒</div>
+    <h1>BoBo 幸福療癒島</h1>
+    <p>7 日互動式自我覺察小遊戲<br>BoBo ❤️ 我在｜黑暗中的光．生活的燈塔</p>
+  </header>
+
+  <section class="panel" aria-label="BoBo 幸福療癒島遊戲">
+    <div class="topbar">
+      <div>
+        <div class="progress" aria-label="七日進度"><div id="progressBar"></div></div>
+      </div>
+      <div class="daypill">第 <span id="dayLabel">1</span> / 7 天</div>
+    </div>
+
+    <div class="stats" aria-label="小島狀態">
+      <div class="stat"><span>🌿 能量</span><strong id="energy">50</strong></div>
+      <div class="stat"><span>🏡 安心</span><strong id="calm">50</strong></div>
+      <div class="stat"><span>💞 連結</span><strong id="love">50</strong></div>
+      <div class="stat"><span>✨ 支持</span><strong id="support">50</strong></div>
+    </div>
+
+    <div class="island" aria-label="幸福小島場景">
+      <div class="sun">☀️</div><div class="cloud" id="cloud">☁️</div>
+      <div class="scene"><div class="tree" id="tree">🌱</div><div class="house">🏡</div></div>
+      <div class="extras" id="extras"><span>🌼</span><span>🪨</span></div><div class="water"></div>
+    </div>
+
+    <div class="play" id="playPanel">
+      <div class="theme" id="dayTheme"></div>
+      <div class="story" id="story"></div>
+      <div class="choices" id="choices"></div>
+      <div class="result" id="result" aria-live="polite">選一個今天最想做的小行動。</div>
+      <div class="actions">
+        <button type="button" class="btn primary" id="nextBtn" disabled>選好後繼續</button>
+        <button type="button" class="btn secondary" id="resetBtn">重新開始</button>
+      </div>
+    </div>
+
+    <div class="ending" id="ending">
+      <div class="emoji">🌈🏡✨</div>
+      <h2>你的 7 日幸福療癒島完成了</h2>
+      <p id="endingText"></p>
+      <div class="message" id="finalMessage"></div>
+      <button type="button" class="btn primary" id="playAgainBtn">再玩一次</button>
+    </div>
+  </section>
+
+  <div class="footer">
+    這是一個自我覺察與情緒陪伴小遊戲，不取代醫療、心理治療或其他專業服務。<br>
+    © 2026 BoBo Tan・開心愛家園療癒・All Rights Reserved.<br>
+    <a href="healing.html">← 返回 BoBo 療癒服務</a>
+  </div>
+</main>
+<script>
+(()=>{
+const days=[
+{t:'Day 1 · 先讓自己安定下來',s:'清晨的小島剛醒來。今天你想先照顧哪一部分？',c:[['🌬️ 做 3 次慢呼吸',{calm:12,energy:4},'你沒有急著往前，而是先回到自己的呼吸。'],['☕ 安靜喝一杯喜歡的飲品',{calm:8,love:5},'一小段屬於自己的時間，也是一種照顧。'],['📵 暫時放下手機',{calm:7,energy:7},'少一點外界聲音，小島安靜了一些。']]},
+{t:'Day 2 · 整理生活的空間',s:'島上的小屋有點凌亂。你決定做一件小事。',c:[['🧺 整理一個角落',{calm:8,support:8},'不用一次整理人生，先整理眼前的一小塊。'],['🗑️ 放下一件不再需要的東西',{calm:10,energy:5},'留白出現了，新的空間也跟著出現。'],['🌿 為房間增加一點舒服感',{love:8,calm:6},'你正在告訴自己：我值得住在舒服的地方。']]},
+{t:'Day 3 · 聽見自己的需要',s:'午後，你發現自己其實有點累。',c:[['😴 休息一下',{energy:14,calm:5},'休息不是停滯，而是在補充可以繼續生活的力量。'],['📝 寫下現在的感受',{calm:9,love:7},'當感受被看見，它不必再那麼用力敲門。'],['🚶 出去慢慢走一走',{energy:9,calm:7},'身體移動了，心裡的空氣也開始流動。']]},
+{t:'Day 4 · 接住生活的支持',s:'今天，有一艘小船靠近你的島。',c:[['🤝 接受別人的幫忙',{support:14,love:5},'能夠接受支持，也是一種力量。'],['💌 主動聯絡一位信任的人',{love:13,support:5},'真正的連結，不需要總是一個人撐著。'],['🙏 想起今天已經擁有的三件事',{support:8,calm:8},'你開始看見，生活裡其實已有一些支撐。']]},
+{t:'Day 5 · 為自己做一個選擇',s:'小島出現三條路。沒有標準答案。',c:[['🌱 做一件拖延很久的小事',{energy:9,support:9},'一個小行動，也可以讓生活重新轉動。'],['🛡️ 對不舒服的事情說不',{calm:10,love:9},'界線不是把愛推開，而是保護重要的自己。'],['🎨 做一件純粹喜歡的事',{energy:8,love:10},'快樂不一定需要理由。']]},
+{t:'Day 6 · 讓內在重新有光',s:'傍晚下了一場雨，天空慢慢亮回來。',c:[['🕯️ 安靜陪伴自己 10 分鐘',{calm:10,love:8},'你沒有催促自己變好，只是陪自己待在這裡。'],['🎵 聽一首讓你舒服的歌',{energy:8,love:8},'聲音像風一樣穿過小島。'],['🌅 想像明天值得期待的一件小事',{support:9,energy:8},'希望不需要很巨大，一點點就足夠照亮下一步。']]},
+{t:'Day 7 · 把幸福帶回日常',s:'第七天，小島長出了新的風景。你想留下什麼？',c:[['💗 對自己說一句溫柔的話',{love:14,calm:5},'你也可以成為那個不離開自己的人。'],['🌳 決定保留一個新的生活習慣',{support:12,energy:6},'真正的改變，往往藏在可以持續的小事裡。'],['✨ 為這七天的自己說謝謝',{love:9,support:9},'你走到這裡，不需要完美，也值得被看見。']]}
+];
+const $=id=>document.getElementById(id);let day=0,state={energy:50,calm:50,love:50,support:50},chosen=false;
+function clamp(v){return Math.max(0,Math.min(100,v))}
+function draw(){['energy','calm','love','support'].forEach(k=>$(k).textContent=state[k]);$('dayLabel').textContent=Math.min(day+1,7);$('progressBar').style.width=((day+1)/7*100)+'%';const avg=(state.energy+state.calm+state.love+state.support)/4;$('tree').textContent=avg>=78?'🌳':avg>=64?'🌲':avg>=54?'🌿':'🌱';$('cloud').textContent=state.calm>=74?'☁️✨':'☁️';$('extras').innerHTML=state.love>=72?'<span>🌷</span><span>🦋</span><span>🌼</span>':state.support>=70?'<span>🌼</span><span>⛵</span>':'<span>🌼</span><span>🪨</span>'}
+function render(){chosen=false;$('nextBtn').disabled=true;$('nextBtn').textContent='選好後繼續';$('result').textContent='選一個今天最想做的小行動。';const d=days[day];$('dayTheme').textContent=d.t;$('story').textContent=d.s;const box=$('choices');box.innerHTML='';d.c.forEach((item,i)=>{const b=document.createElement('button');b.type='button';b.className='choice';b.textContent=item[0];b.addEventListener('click',()=>choose(i,b));box.appendChild(b)});draw()}
+function choose(i,btn){if(chosen)return;chosen=true;const item=days[day].c[i];Object.entries(item[1]).forEach(([k,v])=>state[k]=clamp(state[k]+v));document.querySelectorAll('.choice').forEach(b=>{b.disabled=true;b.classList.add(b===btn?'selected':'faded')});$('result').textContent='✨ '+item[2];$('nextBtn').disabled=false;$('nextBtn').textContent=day===6?'看看我的小島':'前往下一天';draw()}
+function finish(){ $('playPanel').style.display='none';$('ending').classList.add('show');const labels={energy:'行動能量',calm:'內在安心',love:'自我連結',support:'生活支持感'};const entries=Object.entries(state).sort((a,b)=>b[1]-a[1]);const top=entries[0][0];const msgs={energy:'你的小島提醒你：力量不一定來自逼自己努力，也可能來自休息之後，再走一小步。',calm:'你的小島提醒你：當內在有一點安定，很多答案不需要急著找，也會慢慢清楚。',love:'你的小島提醒你：照顧自己，不代表只顧自己，而是讓愛有一個可以回來的家。',support:'你的小島提醒你：不必所有事情都靠自己。允許被支持，也是生活的一部分。'};$('endingText').textContent='這次旅程裡，你最明顯長出的是「'+labels[top]+'」。其他部分也在自己的速度裡慢慢累積。';$('finalMessage').textContent='💌 今日小島訊息：'+msgs[top]}
+function reset(){day=0;state={energy:50,calm:50,love:50,support:50};$('ending').classList.remove('show');$('playPanel').style.display='block';render();window.scrollTo({top:0,behavior:'smooth'})}
+$('nextBtn').addEventListener('click',()=>{if(!chosen)return;if(day>=6){finish();return}day++;render()});$('resetBtn').addEventListener('click',reset);$('playAgainBtn').addEventListener('click',reset);render();
+})();
+</script>
+</body>
+</html>
