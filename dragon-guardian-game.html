@@ -1,0 +1,2748 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BoBo 龍族守護島｜專屬背景結局分享卡版</title>
+<meta name="description" content="BoBo 原創龍族互動養成遊戲：7天主線、依每日餵食訓練靜心探索建設觸發不同劇情分支、結局提示、任務動畫、連續獎勵、徽章與龍族養成。>
+<style>
+:root{
+  --ink:#473a52;
+  --muted:#7d7083;
+  --purple:#73558d;
+  --purple2:#9b77b1;
+  --gold:#d7ad59;
+  --cream:#fffaf3;
+  --card:#ffffff;
+  --line:rgba(98,74,111,.18);
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:"Microsoft JhengHei","Noto Sans TC",Arial,sans-serif;
+  color:var(--ink);
+  background:
+    radial-gradient(circle at 15% 5%,rgba(238,218,255,.72),transparent 30%),
+    radial-gradient(circle at 92% 12%,rgba(255,226,157,.45),transparent 28%),
+    linear-gradient(180deg,#fffdf9,#f7f2fb 60%,#fff9ef);
+}
+.wrap{width:min(980px,calc(100% - 24px));margin:0 auto;padding:28px 0 56px}
+.hero{text-align:center;padding:18px 12px 28px}
+.brand{color:#8a6e92;font-weight:700;font-size:15px;letter-spacing:.08em}
+.hero h1{margin:12px 0 6px;font-size:clamp(34px,8vw,60px);line-height:1.15;color:#654d79}
+.hero p{margin:8px auto;max-width:760px;color:var(--muted);line-height:1.8;font-size:17px}
+.tagline{font-weight:700;color:#796285}
+.panel{
+  background:rgba(255,255,255,.9);
+  border:1px solid var(--line);
+  border-radius:28px;
+  box-shadow:0 16px 38px rgba(70,52,82,.1);
+  padding:22px;
+  margin:18px 0;
+}
+.topstats{
+  display:grid;
+  grid-template-columns:repeat(5,minmax(0,1fr));
+  gap:10px;
+}
+.stat{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:14px 10px;
+  text-align:center;
+}
+.stat small{display:block;color:var(--muted);font-size:12px}
+.stat strong{display:block;margin-top:4px;font-size:25px;color:#604a73}
+.realm{
+  position:relative;
+  overflow:hidden;
+  min-height:390px;
+  border-radius:24px;
+  background:
+    linear-gradient(180deg,#dce9ff 0 52%,#cfdab7 52% 100%);
+  border:1px solid var(--line);
+  padding:18px;
+}
+.skyline{display:flex;justify-content:space-between;font-size:38px}
+.realm-center{text-align:center;padding-top:25px}
+.dragon-stage{font-size:94px;line-height:1.1;filter:drop-shadow(0 8px 10px rgba(62,45,77,.14))}
+.dragon-name{font-size:25px;font-weight:900;color:#5f4970;margin-top:10px}
+.dragon-sub{font-size:14px;color:#786a7e;margin-top:4px}
+.buildings{
+  margin-top:34px;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:14px;
+  font-size:34px;
+}
+.building{
+  min-width:110px;
+  padding:10px 12px;
+  border-radius:16px;
+  background:rgba(255,255,255,.72);
+  border:1px solid rgba(255,255,255,.75);
+  text-align:center;
+}
+.building span{display:block;font-size:12px;color:#5f5961;margin-top:3px}
+.progress{
+  height:11px;background:#ece7ef;border-radius:999px;overflow:hidden;margin:16px 0 4px;
+}
+.progress>div{height:100%;width:0;background:linear-gradient(90deg,#76599a,#d2a957);transition:width .3s}
+.section-title{font-size:23px;margin:0 0 8px;color:#634c74}
+.note{color:var(--muted);font-size:14px;line-height:1.7}
+.elements{
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:15px
+}
+.elbtn,.action-btn,.build-btn,.primary,.ghost{
+  border:none;cursor:pointer;font:inherit;
+}
+.elbtn{
+  padding:14px 8px;border-radius:18px;background:#fff;border:1px solid var(--line);
+  min-height:82px;color:var(--ink);font-weight:800;
+}
+.elbtn[aria-pressed="true"]{outline:3px solid rgba(116,86,145,.22);border-color:#8766a1;background:#f7f0fb}
+.elbtn .ico{display:block;font-size:30px;margin-bottom:5px}
+.actions,.build-grid{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:16px
+}
+.action-btn,.build-btn{
+  min-height:82px;padding:13px;border-radius:18px;background:#fff;border:1px solid var(--line);
+  color:var(--ink);font-weight:800;line-height:1.35;
+}
+.action-btn small,.build-btn small{display:block;color:var(--muted);font-weight:400;margin-top:5px}
+.action-btn:disabled,.build-btn:disabled{opacity:.42;cursor:not-allowed}
+.primary,.ghost{
+  min-height:50px;border-radius:999px;padding:13px 24px;font-weight:900
+}
+.primary{background:linear-gradient(135deg,#72538e,#b68a62);color:white;box-shadow:0 10px 22px rgba(91,62,109,.2)}
+.ghost{background:white;border:1px solid var(--line);color:#654d79}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.message{
+  margin-top:14px;padding:14px 16px;border-radius:16px;background:#f8f3fa;color:#6c5878;line-height:1.7;
+}
+.badges{display:flex;flex-wrap:wrap;gap:9px;margin-top:12px}
+.badge{
+  padding:9px 12px;border-radius:999px;background:#f1e8f5;color:#72577f;font-size:13px;font-weight:800;border:1px solid var(--line)
+}
+.badge.locked{filter:grayscale(1);opacity:.45}
+.checkin{
+  display:grid;grid-template-columns:1fr auto;gap:14px;align-items:center
+}
+.footer{text-align:center;color:#8c7e90;font-size:13px;line-height:1.9;padding:24px 8px 0}
+a.back{color:#6f5683;font-weight:800;text-decoration:none}
+
+.story-map{
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:16px;
+  align-items:stretch;
+}
+.story-card{
+  padding:18px;
+  border-radius:20px;
+  background:linear-gradient(145deg,#fffaf4,#f7f0fb);
+  border:1px solid var(--line);
+  text-align:left;
+}
+.story-card h3{margin:0 0 8px;color:#624b74;font-size:22px}
+.story-card p{margin:0;color:#76697e;line-height:1.85;font-size:15px}
+.story-kicker{
+  display:inline-block;
+  margin-bottom:9px;
+  padding:6px 10px;
+  border-radius:999px;
+  background:#eee2f4;
+  color:#755b83;
+  font-size:12px;
+  font-weight:900;
+}
+.region-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px;
+}
+.region{
+  position:relative;
+  min-height:105px;
+  padding:13px;
+  border-radius:18px;
+  background:#fff;
+  border:1px solid var(--line);
+  text-align:center;
+}
+.region .icon{font-size:32px;display:block;margin-bottom:4px}
+.region strong{display:block;color:#654e75}
+.region small{display:block;margin-top:4px;color:var(--muted);line-height:1.45}
+.region.locked{filter:grayscale(1);opacity:.42}
+.region.current{outline:3px solid rgba(118,84,148,.18);background:#fbf5ff}
+.unlock-banner{
+  margin-top:12px;
+  padding:12px 14px;
+  border-radius:15px;
+  background:#fff8df;
+  color:#7b6635;
+  border:1px solid rgba(215,173,89,.3);
+  font-size:14px;
+  font-weight:800;
+  line-height:1.6;
+}
+.story-log{display:grid;gap:9px;margin-top:14px}
+.story-log details{
+  border:1px solid var(--line);
+  border-radius:15px;
+  background:#fff;
+  padding:10px 12px;
+  text-align:left;
+}
+.story-log summary{cursor:pointer;font-weight:900;color:#684f79}
+.story-log p{color:var(--muted);line-height:1.75;font-size:14px}
+
+
+.quest-board{
+  display:grid;
+  gap:14px;
+  margin-top:14px;
+}
+.quest-card{
+  padding:16px;
+  border:1px solid var(--line);
+  border-radius:18px;
+  background:#fff;
+  text-align:left;
+}
+.quest-head{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  align-items:flex-start;
+}
+.quest-title{
+  font-weight:900;
+  color:#654d79;
+  line-height:1.45;
+}
+.quest-reward{
+  flex:0 0 auto;
+  padding:6px 10px;
+  border-radius:999px;
+  background:#fff5d9;
+  color:#7e632c;
+  font-size:12px;
+  font-weight:900;
+}
+.quest-desc{
+  margin-top:6px;
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.65;
+}
+.quest-progress{
+  margin-top:11px;
+  height:9px;
+  border-radius:999px;
+  background:#eee8f1;
+  overflow:hidden;
+}
+.quest-progress > div{
+  height:100%;
+  background:linear-gradient(90deg,#76599a,#d2a957);
+  width:0;
+  transition:width .25s ease;
+}
+.quest-foot{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  align-items:center;
+  margin-top:9px;
+  color:#76687d;
+  font-size:12px;
+}
+.quest-done{
+  color:#6b7d47;
+  font-weight:900;
+}
+.quest-summary{
+  margin-top:14px;
+  padding:14px 16px;
+  border-radius:16px;
+  background:linear-gradient(145deg,#f6effa,#fff8e7);
+  border:1px solid var(--line);
+  color:#66526f;
+  line-height:1.7;
+}
+.quest-hint{
+  margin-top:10px;
+  padding:12px 14px;
+  border-radius:14px;
+  background:#f4f8ff;
+  border:1px solid rgba(96,119,160,.16);
+  color:#5f6f8d;
+  font-size:13px;
+  line-height:1.7;
+}
+
+
+.combo-panel{
+  margin-top:14px;
+  padding:16px;
+  border-radius:18px;
+  border:1px solid var(--line);
+  background:linear-gradient(145deg,#fff9e9,#f6effb);
+}
+.combo-head{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  align-items:flex-start;
+  flex-wrap:wrap;
+}
+.combo-title{
+  font-weight:900;
+  color:#634d74;
+}
+.combo-count{
+  padding:7px 11px;
+  border-radius:999px;
+  background:#fff;
+  border:1px solid var(--line);
+  color:#755a83;
+  font-weight:900;
+  font-size:13px;
+}
+.combo-track{
+  display:grid;
+  grid-template-columns:repeat(5,minmax(0,1fr));
+  gap:8px;
+  margin-top:13px;
+}
+.combo-step{
+  min-width:0;
+  padding:10px 7px;
+  border-radius:14px;
+  border:1px solid var(--line);
+  background:#fff;
+  text-align:center;
+  color:#75677b;
+  font-size:12px;
+  line-height:1.4;
+}
+.combo-step strong{
+  display:block;
+  font-size:20px;
+  margin-bottom:3px;
+}
+.combo-step.done{
+  background:#f0f7e8;
+  color:#607346;
+  border-color:rgba(97,126,67,.18);
+}
+.combo-bonus-list{
+  display:grid;
+  gap:8px;
+  margin-top:12px;
+}
+.combo-bonus{
+  padding:10px 12px;
+  border-radius:14px;
+  background:rgba(255,255,255,.76);
+  border:1px solid var(--line);
+  color:#6d5b75;
+  font-size:13px;
+  line-height:1.55;
+}
+.combo-bonus.claimed{
+  color:#66764f;
+  background:#f3f8ec;
+}
+.full-day-streak{
+  margin-top:12px;
+  padding:12px 14px;
+  border-radius:14px;
+  background:#f3f6ff;
+  border:1px solid rgba(90,107,150,.16);
+  color:#61708d;
+  font-size:13px;
+  line-height:1.65;
+}
+
+
+/* ===== 任務完成動畫與獎勵彈窗 ===== */
+.reward-toast-wrap{
+  position:fixed;
+  right:16px;
+  top:16px;
+  z-index:9998;
+  display:grid;
+  gap:10px;
+  width:min(360px,calc(100% - 32px));
+  pointer-events:none;
+}
+.reward-toast{
+  pointer-events:auto;
+  padding:13px 15px;
+  border-radius:16px;
+  background:rgba(255,255,255,.96);
+  border:1px solid var(--line);
+  box-shadow:0 16px 40px rgba(59,41,71,.18);
+  color:#66526f;
+  line-height:1.55;
+  transform:translateY(-10px);
+  opacity:0;
+  animation:boboToastIn .32s ease forwards;
+}
+.reward-toast strong{color:#5e4671}
+.reward-toast.combo{
+  background:linear-gradient(145deg,#fff8df,#f7effb);
+}
+.reward-toast.story{
+  background:linear-gradient(145deg,#f2f6ff,#fff);
+}
+@keyframes boboToastIn{
+  to{transform:translateY(0);opacity:1}
+}
+@keyframes boboToastOut{
+  to{transform:translateY(-8px);opacity:0}
+}
+.quest-card.quest-pop{
+  animation:questPop .48s ease;
+}
+@keyframes questPop{
+  0%{transform:scale(.98)}
+  45%{transform:scale(1.02)}
+  100%{transform:scale(1)}
+}
+.combo-panel.combo-flash{
+  animation:comboFlash .65s ease;
+}
+@keyframes comboFlash{
+  0%,100%{box-shadow:none}
+  50%{box-shadow:0 0 0 5px rgba(214,173,89,.18),0 12px 28px rgba(92,67,109,.12)}
+}
+.reward-modal-backdrop{
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  display:none;
+  place-items:center;
+  padding:18px;
+  background:rgba(37,27,45,.48);
+  backdrop-filter:blur(4px);
+}
+.reward-modal-backdrop.show{display:grid}
+.reward-modal{
+  width:min(520px,100%);
+  max-height:calc(100vh - 36px);
+  overflow:auto;
+  border-radius:26px;
+  background:linear-gradient(145deg,#fffdf8,#f8f2fb);
+  border:1px solid rgba(122,93,137,.18);
+  box-shadow:0 24px 70px rgba(34,24,41,.28);
+  padding:24px;
+  text-align:center;
+  transform:scale(.96);
+  opacity:0;
+}
+.reward-modal-backdrop.show .reward-modal{
+  animation:rewardModalIn .28s ease forwards;
+}
+@keyframes rewardModalIn{
+  to{transform:scale(1);opacity:1}
+}
+.reward-modal-icon{
+  font-size:58px;
+  line-height:1;
+  margin-bottom:10px;
+}
+.reward-modal h3{
+  margin:0;
+  color:#5f4871;
+  font-size:28px;
+  line-height:1.3;
+}
+.reward-modal p{
+  margin:12px auto 0;
+  color:#75687d;
+  line-height:1.75;
+}
+.reward-items{
+  display:grid;
+  gap:10px;
+  margin:18px 0 0;
+}
+.reward-item{
+  padding:12px 14px;
+  border-radius:15px;
+  background:#fff;
+  border:1px solid var(--line);
+  color:#66536f;
+  font-weight:800;
+}
+.reward-story{
+  margin-top:14px;
+  padding:14px 16px;
+  border-radius:16px;
+  background:#f1f5ff;
+  border:1px solid rgba(95,111,155,.16);
+  color:#5f6d8b;
+  line-height:1.75;
+  text-align:left;
+}
+.reward-close{
+  margin-top:18px;
+  min-height:48px;
+  border:none;
+  border-radius:999px;
+  padding:12px 24px;
+  background:linear-gradient(135deg,#72538e,#b68a62);
+  color:#fff;
+  font-weight:900;
+  cursor:pointer;
+}
+.reward-sparkles{
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  margin:8px 0 0;
+  font-size:22px;
+}
+.reward-sparkles span{
+  animation:sparkleFloat 1.1s ease-in-out infinite alternate;
+}
+.reward-sparkles span:nth-child(2){animation-delay:.18s}
+.reward-sparkles span:nth-child(3){animation-delay:.36s}
+@keyframes sparkleFloat{
+  from{transform:translateY(2px) scale(.95);opacity:.65}
+  to{transform:translateY(-4px) scale(1.08);opacity:1}
+}
+@media (prefers-reduced-motion:reduce){
+  .reward-toast,.quest-card.quest-pop,.combo-panel.combo-flash,
+  .reward-modal-backdrop.show .reward-modal,.reward-sparkles span{
+    animation:none !important;
+    transform:none !important;
+    opacity:1 !important;
+  }
+}
+
+
+/* ===== 龍族劇情分支 ===== */
+.branch-panel{
+  margin-top:14px;
+  padding:18px;
+  border-radius:20px;
+  border:1px solid var(--line);
+  background:linear-gradient(145deg,#fffaf5,#f4eff9);
+}
+.branch-head{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  align-items:flex-start;
+  flex-wrap:wrap;
+}
+.branch-title{
+  font-weight:900;
+  color:#604972;
+}
+.branch-badge{
+  padding:7px 11px;
+  border-radius:999px;
+  background:#fff;
+  border:1px solid var(--line);
+  color:#755a83;
+  font-size:12px;
+  font-weight:900;
+}
+.branch-story{
+  margin-top:12px;
+  padding:15px 16px;
+  border-radius:16px;
+  background:#fff;
+  border:1px solid var(--line);
+  color:#6f6176;
+  line-height:1.8;
+  text-align:left;
+}
+.branch-story strong{
+  color:#5f4871;
+}
+.branch-end-hint{
+  margin-top:10px;
+  padding:12px 14px;
+  border-radius:14px;
+  background:#f3f6ff;
+  border:1px solid rgba(91,108,153,.16);
+  color:#62708d;
+  font-size:13px;
+  line-height:1.7;
+}
+.branch-log{
+  display:grid;
+  gap:9px;
+  margin-top:12px;
+}
+.branch-log details{
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:#fff;
+  padding:10px 12px;
+}
+.branch-log summary{
+  cursor:pointer;
+  color:#684f79;
+  font-weight:900;
+}
+.branch-log p{
+  margin:8px 0 0;
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.75;
+}
+
+
+/* ===== 多重結局與結局圖鑑 ===== */
+.ending-panel{
+  margin-top:18px;
+  padding:20px;
+  border-radius:22px;
+  border:1px solid var(--line);
+  background:linear-gradient(145deg,#fffaf2,#f4eef9);
+}
+.ending-summary{
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:16px;
+  align-items:stretch;
+}
+.ending-main{
+  padding:18px;
+  border-radius:18px;
+  background:#fff;
+  border:1px solid var(--line);
+  text-align:left;
+}
+.ending-main h3{
+  margin:0;
+  color:#5d4670;
+  font-size:24px;
+}
+.ending-main p{
+  margin:10px 0 0;
+  color:#74667b;
+  line-height:1.8;
+}
+.ending-criteria{
+  padding:18px;
+  border-radius:18px;
+  background:#fff;
+  border:1px solid var(--line);
+}
+.ending-criteria strong{
+  display:block;
+  margin-bottom:8px;
+  color:#654f75;
+}
+.ending-criteria div{
+  color:#7b6d82;
+  line-height:1.7;
+  font-size:14px;
+}
+.ending-gallery{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;
+  margin-top:16px;
+}
+.ending-card{
+  min-width:0;
+  padding:16px;
+  border-radius:18px;
+  background:#fff;
+  border:1px solid var(--line);
+  text-align:left;
+}
+.ending-card.locked{
+  filter:grayscale(1);
+  opacity:.5;
+}
+.ending-card .icon{
+  font-size:34px;
+}
+.ending-card h4{
+  margin:8px 0 4px;
+  color:#604a72;
+  font-size:18px;
+}
+.ending-card p{
+  margin:0;
+  color:#786b7e;
+  line-height:1.65;
+  font-size:13px;
+}
+.ending-card .status{
+  display:inline-block;
+  margin-top:10px;
+  padding:6px 9px;
+  border-radius:999px;
+  background:#f0e8f4;
+  color:#725780;
+  font-size:12px;
+  font-weight:900;
+}
+.ending-card.unlocked .status{
+  background:#eef6e7;
+  color:#64784a;
+}
+.ending-record{
+  margin-top:16px;
+  display:grid;
+  gap:9px;
+}
+.ending-record details{
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:#fff;
+  padding:10px 12px;
+  text-align:left;
+}
+.ending-record summary{
+  cursor:pointer;
+  font-weight:900;
+  color:#684f79;
+}
+.ending-record p{
+  margin:8px 0 0;
+  color:#7b6e82;
+  font-size:14px;
+  line-height:1.75;
+}
+.ending-final-btn{
+  margin-top:16px;
+  min-height:50px;
+  border:none;
+  border-radius:999px;
+  padding:13px 24px;
+  background:linear-gradient(135deg,#72538e,#b68a62);
+  color:#fff;
+  font-weight:900;
+  cursor:pointer;
+}
+.ending-final-btn:disabled{
+  opacity:.45;
+  cursor:not-allowed;
+}
+
+
+/* ===== 結局分享卡片 ===== */
+.share-card-panel{
+  margin-top:18px;
+  padding:20px;
+  border-radius:22px;
+  border:1px solid var(--line);
+  background:linear-gradient(145deg,#fffaf5,#f4eef9);
+}
+.share-card-preview{
+  width:min(100%,720px);
+  margin:14px auto 0;
+  padding:22px;
+  border-radius:24px;
+  background:
+    radial-gradient(circle at 88% 12%,rgba(255,220,132,.25),transparent 28%),
+    radial-gradient(circle at 12% 88%,rgba(204,177,255,.24),transparent 30%),
+    linear-gradient(145deg,#fffdf8,#f7f0fb);
+  border:1px solid rgba(113,83,129,.16);
+  box-shadow:0 16px 38px rgba(68,47,81,.1);
+  text-align:center;
+}
+.share-card-preview .share-kicker{
+  color:#866d91;
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:.12em;
+}
+.share-card-preview .share-icon{
+  margin-top:12px;
+  font-size:54px;
+}
+.share-card-preview h3{
+  margin:10px 0 4px;
+  color:#5e4770;
+  font-size:clamp(28px,6vw,40px);
+}
+.share-card-preview .share-title{
+  color:#8b6a95;
+  font-weight:900;
+  font-size:18px;
+}
+.share-card-preview .share-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px;
+  margin-top:18px;
+  text-align:left;
+}
+.share-card-preview .share-item{
+  padding:12px 14px;
+  border-radius:15px;
+  background:rgba(255,255,255,.82);
+  border:1px solid var(--line);
+}
+.share-card-preview .share-item small{
+  display:block;
+  color:#8a7d8e;
+  font-size:11px;
+  margin-bottom:3px;
+}
+.share-card-preview .share-item strong{
+  color:#5f4c6b;
+  font-size:14px;
+  line-height:1.5;
+}
+.share-card-preview .share-footer{
+  margin-top:18px;
+  padding-top:14px;
+  border-top:1px dashed rgba(103,77,117,.2);
+  color:#8a7b8e;
+  font-size:12px;
+  line-height:1.7;
+}
+.share-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  justify-content:center;
+  margin-top:14px;
+}
+.share-download-btn,
+.share-refresh-btn{
+  min-height:48px;
+  border:none;
+  border-radius:999px;
+  padding:12px 22px;
+  font-weight:900;
+  cursor:pointer;
+}
+.share-download-btn{
+  background:linear-gradient(135deg,#72538e,#b68a62);
+  color:#fff;
+}
+.share-refresh-btn{
+  background:#fff;
+  color:#654e75;
+  border:1px solid var(--line);
+}
+.share-download-btn:disabled,
+.share-refresh-btn:disabled{
+  opacity:.45;
+  cursor:not-allowed;
+}
+
+
+/* ===== 結局分享卡主題樣式 ===== */
+.share-card-preview{
+  --share-bg1:#fffdf8;
+  --share-bg2:#f7f0fb;
+  --share-bg3:#fff6e8;
+  --share-accent:#72538e;
+  --share-accent2:#b68a62;
+  --share-ink:#5e4770;
+  --share-soft:#8b6a95;
+  --share-chip:#ffffff;
+  background:
+    radial-gradient(circle at 88% 12%,color-mix(in srgb,var(--share-accent2) 22%,transparent),transparent 28%),
+    radial-gradient(circle at 12% 88%,color-mix(in srgb,var(--share-accent) 20%,transparent),transparent 30%),
+    linear-gradient(145deg,var(--share-bg1),var(--share-bg2) 58%,var(--share-bg3));
+}
+.share-card-preview h3{color:var(--share-ink)}
+.share-card-preview .share-title{color:var(--share-soft)}
+.share-card-preview .share-item{background:color-mix(in srgb,var(--share-chip) 86%,transparent)}
+.share-card-preview .share-item strong{color:var(--share-ink)}
+.share-card-preview .share-kicker,
+.share-card-preview .share-footer{color:var(--share-soft)}
+.share-card-preview[data-theme="companion"]{
+  --share-bg1:#fff9fb;--share-bg2:#f9e9f1;--share-bg3:#fff3e8;
+  --share-accent:#b86f91;--share-accent2:#d6a07a;--share-ink:#6a4158;--share-soft:#9a687d;
+}
+.share-card-preview[data-theme="courage"]{
+  --share-bg1:#fff8f1;--share-bg2:#f9e4d8;--share-bg3:#fff1cf;
+  --share-accent:#b85c3f;--share-accent2:#d39a3b;--share-ink:#6d3d2f;--share-soft:#9b684f;
+}
+.share-card-preview[data-theme="inner"]{
+  --share-bg1:#f9f8ff;--share-bg2:#ece9fa;--share-bg3:#f5f2ff;
+  --share-accent:#7164a8;--share-accent2:#a28fc6;--share-ink:#4f496d;--share-soft:#746d91;
+}
+.share-card-preview[data-theme="explorer"]{
+  --share-bg1:#f5fbff;--share-bg2:#e3edf9;--share-bg3:#eef8ff;
+  --share-accent:#477ea6;--share-accent2:#7ca5c8;--share-ink:#365a76;--share-soft:#63829a;
+}
+.share-card-preview[data-theme="home"]{
+  --share-bg1:#fbfff9;--share-bg2:#e9f2e4;--share-bg3:#fff8e5;
+  --share-accent:#68805a;--share-accent2:#b08c55;--share-ink:#506046;--share-soft:#71806a;
+}
+.share-card-preview[data-theme="architect"]{
+  --share-bg1:#fffdf6;--share-bg2:#efe7d7;--share-bg3:#fff7e4;
+  --share-accent:#80643f;--share-accent2:#c1a15e;--share-ink:#5e4a31;--share-soft:#7d6b53;
+}
+.share-card-preview[data-theme="steadfast"]{
+  --share-bg1:#fff8f4;--share-bg2:#f0dfdc;--share-bg3:#fff2df;
+  --share-accent:#8d4d44;--share-accent2:#c58a56;--share-ink:#663c37;--share-soft:#85615c;
+}
+.share-card-preview[data-theme="lighthouse"]{
+  --share-bg1:#fffef7;--share-bg2:#f2ead4;--share-bg3:#f8f2ff;
+  --share-accent:#8a6b2f;--share-accent2:#d9b45d;--share-ink:#64522e;--share-soft:#8c7a54;
+}
+.share-card-preview[data-theme="balanced"]{
+  --share-bg1:#fff9fc;--share-bg2:#eee9fb;--share-bg3:#fff6dc;
+  --share-accent:#8b65a2;--share-accent2:#d5ab55;--share-ink:#654f74;--share-soft:#7e6a88;
+}
+.share-theme-name{
+  margin-top:8px;
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:.08em;
+  color:var(--share-soft);
+}
+
+
+/* ===== 結局分享卡專屬背景圖與裝飾元素 ===== */
+.share-card-preview{
+  position:relative;
+  overflow:hidden;
+}
+.share-card-preview > *{
+  position:relative;
+  z-index:2;
+}
+.share-bg-layer{
+  position:absolute;
+  inset:0;
+  z-index:1;
+  pointer-events:none;
+  overflow:hidden;
+}
+.share-bg-glow{
+  position:absolute;
+  border-radius:999px;
+  filter:blur(4px);
+  opacity:.72;
+}
+.share-bg-line{
+  position:absolute;
+  width:180px;
+  height:180px;
+  border-radius:50%;
+  border:1px dashed color-mix(in srgb,var(--share-accent) 26%, transparent);
+  opacity:.38;
+}
+.share-bg-icon{
+  position:absolute;
+  line-height:1;
+  user-select:none;
+  opacity:.26;
+  transform:translate(-50%,-50%);
+}
+.share-bg-wave{
+  position:absolute;
+  left:-4%;
+  right:-4%;
+  bottom:-4px;
+  height:92px;
+  opacity:.28;
+  background:
+    radial-gradient(60px 24px at 20% 20%, color-mix(in srgb,var(--share-accent) 16%, transparent), transparent 72%),
+    radial-gradient(90px 34px at 46% 30%, color-mix(in srgb,var(--share-accent2) 18%, transparent), transparent 72%),
+    radial-gradient(80px 30px at 78% 22%, color-mix(in srgb,var(--share-accent) 14%, transparent), transparent 70%);
+}
+.share-card-preview[data-theme="companion"] .share-bg-wave{
+  background:
+    radial-gradient(65px 28px at 18% 22%, rgba(184,111,145,.20), transparent 72%),
+    radial-gradient(95px 38px at 48% 34%, rgba(214,160,122,.20), transparent 72%),
+    radial-gradient(80px 32px at 78% 24%, rgba(184,111,145,.16), transparent 70%);
+}
+.share-card-preview[data-theme="courage"] .share-bg-wave{
+  background:
+    radial-gradient(65px 28px at 18% 22%, rgba(184,92,63,.20), transparent 72%),
+    radial-gradient(95px 38px at 48% 34%, rgba(211,154,59,.20), transparent 72%),
+    radial-gradient(80px 32px at 78% 24%, rgba(184,92,63,.16), transparent 70%);
+}
+.share-card-preview[data-theme="inner"] .share-bg-wave{
+  background:
+    radial-gradient(65px 28px at 18% 22%, rgba(113,100,168,.18), transparent 72%),
+    radial-gradient(95px 38px at 48% 34%, rgba(162,143,198,.20), transparent 72%),
+    radial-gradient(80px 32px at 78% 24%, rgba(113,100,168,.16), transparent 70%);
+}
+.share-card-preview[data-theme="explorer"] .share-bg-wave{
+  background:
+    radial-gradient(65px 28px at 18% 22%, rgba(71,126,166,.18), transparent 72%),
+    radial-gradient(95px 38px at 48% 34%, rgba(124,165,200,.20), transparent 72%),
+    radial-gradient(80px 32px at 78% 24%, rgba(71,126,166,.16), transparent 70%);
+}
+.share-card-preview[data-theme="home"] .share-bg-wave{
+  background:
+    radial-gradient(65px 28px at 18% 22%, rgba(104,128,90,.18), transparent 72%),
+    radial-gradient(95px 38px at 48% 34%, rgba(176,140,85,.18), transparent 72%),
+    radial-gradient(80px 32px at 78% 24%, rgba(104,128,90,.16), transparent 70%);
+}
+.share-card-preview[data-theme="architect"] .share-bg-wave{
+  background:
+    radial-gradient(65px 28px at 18% 22%, rgba(128,100,63,.18), transparent 72%),
+    radial-gradient(95px 38px at 48% 34%, rgba(193,161,94,.18), transparent 72%),
+    radial-gradient(80px 32px at 78% 24%, rgba(128,100,63,.16), transparent 70%);
+}
+.share-card-preview[data-theme="steadfast"] .share-bg-wave{
+  background:
+    radial-gradient(65px 28px at 18% 22%, rgba(141,77,68,.18), transparent 72%),
+    radial-gradient(95px 38px at 48% 34%, rgba(197,138,86,.18), transparent 72%),
+    radial-gradient(80px 32px at 78% 24%, rgba(141,77,68,.16), transparent 70%);
+}
+.share-card-preview[data-theme="lighthouse"] .share-bg-wave{
+  background:
+    radial-gradient(65px 28px at 18% 22%, rgba(138,107,47,.18), transparent 72%),
+    radial-gradient(95px 38px at 48% 34%, rgba(217,180,93,.20), transparent 72%),
+    radial-gradient(80px 32px at 78% 24%, rgba(138,107,47,.16), transparent 70%);
+}
+.share-card-preview[data-theme="balanced"] .share-bg-wave{
+  background:
+    radial-gradient(65px 28px at 18% 22%, rgba(139,101,162,.18), transparent 72%),
+    radial-gradient(95px 38px at 48% 34%, rgba(213,171,85,.20), transparent 72%),
+    radial-gradient(80px 32px at 78% 24%, rgba(139,101,162,.16), transparent 70%);
+}
+
+@media(max-width:760px){
+  .topstats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .elements{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .actions,.build-grid{grid-template-columns:1fr}
+  .checkin{grid-template-columns:1fr}
+  .realm{min-height:350px}
+  .story-map{grid-template-columns:1fr}
+  .region-grid{grid-template-columns:1fr 1fr}
+  .combo-track{grid-template-columns:1fr 1fr}
+  .ending-summary{grid-template-columns:1fr}
+  .ending-gallery{grid-template-columns:1fr}
+  .share-card-preview .share-grid{grid-template-columns:1fr}
+}
+
+
+
+
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <div class="brand">🐉 開心愛家園療癒</div>
+    <h1>BoBo 龍族守護島</h1>
+    <p><strong>Dragon Guardian Realm</strong></p>
+    <p>孵化你的元素守護龍，完成每日任務、收集龍晶、建設龍族領地。不是考試，也沒有唯一答案；這是一段帶著想像力的自我覺察與養成旅程。</p>
+    <p class="tagline">BoBo ❤️ 我在｜黑暗中的光．生活的燈塔</p>
+  </header>
+
+  <section class="panel checkin">
+    <div>
+      <h2 class="section-title">📅 每日龍族簽到</h2>
+      <div class="note">每天回來一次，累積連續登入天數並獲得 1 顆龍晶。</div>
+      <div style="margin-top:8px;font-weight:800">🔥 連續登入：<span id="streak">0</span> 天</div>
+    </div>
+    <button class="primary" id="checkinBtn" type="button">今日簽到</button>
+  </section>
+
+  <section class="panel">
+    <div class="topstats">
+      <div class="stat"><small>💎 龍晶</small><strong id="crystal">3</strong></div>
+      <div class="stat"><small>❤️ 羈絆</small><strong id="bond">0</strong></div>
+      <div class="stat"><small>⚡ 能量</small><strong id="energy">5</strong></div>
+      <div class="stat"><small>🏗️ 建設</small><strong id="built">0</strong></div>
+      <div class="stat"><small>📜 任務日</small><strong id="day">1</strong></div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="realm">
+      <div class="skyline"><span>☀️</span><span>☁️ ✨</span></div>
+      <div class="realm-center">
+        <div class="dragon-stage" id="dragonEmoji">🥚</div>
+        <div class="dragon-name" id="dragonName">尚未孵化的守護龍</div>
+        <div class="dragon-sub" id="dragonStage">選擇元素，開始你的龍族旅程</div>
+        <div class="progress" aria-label="龍族成長進度"><div id="growthBar"></div></div>
+        <div class="buildings" id="buildingsView"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel" id="hatchPanel">
+    <h2 class="section-title">🥚 第一步｜選擇你的元素龍</h2>
+    <div class="note">選擇後可立即孵化。之後仍可以透過遊戲解鎖其他龍族。</div>
+    <div class="elements">
+      <button class="elbtn" type="button" data-el="water"><span class="ico">💧</span>水龍<br><small>流動・情緒</small></button>
+      <button class="elbtn" type="button" data-el="fire"><span class="ico">🔥</span>火龍<br><small>勇氣・行動</small></button>
+      <button class="elbtn" type="button" data-el="earth"><span class="ico">🌿</span>土龍<br><small>穩定・扎根</small></button>
+      <button class="elbtn" type="button" data-el="air"><span class="ico">🌬️</span>風龍<br><small>自由・轉念</small></button>
+    </div>
+    <div class="row" style="margin-top:14px">
+      <button class="primary" id="hatchBtn" type="button" disabled>孵化守護龍｜消耗 2 龍晶</button>
+    </div>
+  </section>
+
+  <section class="panel" id="carePanel">
+    <h2 class="section-title">🐉 照顧你的守護龍</h2>
+    <div class="note">每次行動消耗 1 點能量；完成行動可增加羈絆與成長。能量每天簽到後會補回一些。</div>
+    <div class="actions">
+      <button class="action-btn" data-action="feed" type="button">🍎 餵食龍果<small>羈絆 +2｜成長 +6</small></button>
+      <button class="action-btn" data-action="train" type="button">⚔️ 元素訓練<small>羈絆 +1｜成長 +8</small></button>
+      <button class="action-btn" data-action="meditate" type="button">🧘 靜心共振<small>羈絆 +3｜成長 +4</small></button>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2 class="section-title">📖 7 天龍族任務劇情</h2>
+    <div class="story-map">
+      <div class="story-card">
+        <span class="story-kicker" id="storyDayLabel">DAY 1</span>
+        <h3 id="storyTitle">第一章｜沉睡的龍蛋</h3>
+        <p id="storyText"></p>
+        <div class="unlock-banner" id="unlockBanner"></div>
+      </div>
+      <div>
+        <div class="region-grid" id="regionGrid"></div>
+      </div>
+    </div>
+    <div class="story-log" id="storyLog"></div>
+
+    <div class="branch-panel">
+      <div class="branch-head">
+        <div>
+          <div class="branch-title">🐉 今日龍族劇情分支</div>
+          <div class="note">你今天完成的任務類型，會讓守護龍遇見不同的事件與線索。</div>
+        </div>
+        <div class="branch-badge" id="branchPathLabel">尚未觸發</div>
+      </div>
+      <div class="branch-story" id="branchStory">
+        完成餵食、訓練、靜心、探索或建設任務後，這裡會出現今天的分支故事。
+      </div>
+      <div class="branch-end-hint" id="branchEndingHint">
+        結局提示會依你 7 天最常完成的任務類型逐步形成。
+      </div>
+      <div class="branch-log" id="branchLog"></div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2 class="section-title">🎯 每日龍族任務板</h2>
+    <div class="note">
+      每天會有 5 類任務：餵食、訓練、靜心、探索與建設。
+      完成後可獲得龍晶、徽章進度或新的故事提示。
+    </div>
+    <div class="quest-board" id="dailyQuestBoard"></div>
+    <div class="quest-summary" id="questSummary"></div>
+    <div class="quest-hint" id="storyHint">完成今日任務後，可能會出現新的故事提示。</div>
+
+    <div class="combo-panel">
+      <div class="combo-head">
+        <div>
+          <div class="combo-title">🔥 今日任務連續完成獎勵</div>
+          <div class="note">同一天內，每完成一種不同任務，就會推進任務鏈。連續完成 2、3、5 種任務可獲得額外獎勵。</div>
+        </div>
+        <div class="combo-count">目前連鎖：<span id="comboCount">0</span>/5</div>
+      </div>
+      <div class="combo-track" id="comboTrack"></div>
+      <div class="combo-bonus-list" id="comboBonusList"></div>
+      <div class="full-day-streak" id="fullDayStreak"></div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2 class="section-title">📜 今日龍族任務</h2>
+    <div id="missionText" class="note"></div>
+    <div class="row" style="margin-top:14px">
+      <button class="primary" id="exploreBtn" type="button">🧭 探索今日區域</button>
+      <button class="primary" id="missionBtn" type="button">完成今日任務</button>
+      <button class="ghost" id="nextDayBtn" type="button">前往下一天</button>
+    </div>
+    <div class="message" id="message" aria-live="polite">歡迎來到龍族守護島。先選擇一顆元素龍蛋吧。</div>
+  </section>
+
+  <section class="panel">
+    <h2 class="section-title">🏗️ 建設龍族領地</h2>
+    <div class="note">使用龍晶建設島嶼。部分建築需要龍族成長或指定遊戲日數才會解鎖。</div>
+    <div class="build-grid" id="buildGrid"></div>
+  </section>
+
+  <section class="panel">
+    <h2 class="section-title">🏅 龍族完成徽章</h2>
+    <div class="badges" id="badges"></div>
+  </section>
+
+  <section class="panel">
+    <h2 class="section-title">🏆 龍族多重結局與結局圖鑑</h2>
+    <div class="note">
+      第 7 天後，可依你的任務偏好、建設成果與完整任務連續完成天數，解鎖不同結局。
+      已解鎖結局會永久保留在這個瀏覽器的結局圖鑑中。
+    </div>
+
+    <div class="ending-panel">
+      <div class="ending-summary">
+        <div class="ending-main">
+          <h3 id="currentEndingTitle">尚未完成最終結局</h3>
+          <p id="currentEndingText">完成第 7 天主線後，系統會依你的遊玩方式判定結局。</p>
+        </div>
+        <div class="ending-criteria">
+          <strong>目前結局判定線索</strong>
+          <div id="endingCriteriaText"></div>
+        </div>
+      </div>
+
+      <button class="ending-final-btn" id="resolveEndingBtn" type="button" disabled>
+        解鎖我的 7 日龍族結局
+      </button>
+
+      <div class="ending-gallery" id="endingGallery"></div>
+      <div class="ending-record" id="endingRecord"></div>
+    </div>
+
+    <div class="share-card-panel">
+      <h3 class="section-title" style="font-size:21px;margin:0;">📸 我的龍族結局分享卡</h3>
+      <div class="note">
+        完成 7 天並解鎖結局後，可以查看自己的結局資料，並下載成 PNG 圖片保存或分享。
+      </div>
+
+      <div class="share-card-preview" id="shareCardPreview">
+        <div class="share-bg-layer" id="shareBackgroundLayer" aria-hidden="true"></div>
+        <div class="share-kicker">BoBo Dragon Guardian Realm</div>
+        <div class="share-icon" id="shareEndingIcon">🐉</div>
+        <h3 id="shareEndingName">尚未解鎖結局</h3>
+        <div class="share-title" id="shareDragonTitle">完成 7 天後生成你的龍族稱號</div>
+        <div class="share-theme-name" id="shareThemeName">龍族主題卡</div>
+
+        <div class="share-grid">
+          <div class="share-item">
+            <small>任務偏好</small>
+            <strong id="sharePreference">—</strong>
+          </div>
+          <div class="share-item">
+            <small>建設成果</small>
+            <strong id="shareBuildings">—</strong>
+          </div>
+          <div class="share-item">
+            <small>完整任務連續</small>
+            <strong id="shareStreak">—</strong>
+          </div>
+          <div class="share-item">
+            <small>解鎖日期</small>
+            <strong id="shareDate">—</strong>
+          </div>
+        </div>
+
+        <div class="share-footer">
+          開心愛家園療癒<br>
+          BoBo ❤️ 我在｜黑暗中的光．生活的燈塔
+        </div>
+      </div>
+
+      <div class="share-actions">
+        <button class="share-refresh-btn" id="refreshShareCardBtn" type="button">更新分享卡</button>
+        <button class="share-download-btn" id="downloadShareCardBtn" type="button" disabled>下載 PNG 分享卡</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2 class="section-title">🌌 未來可解鎖的 BoBo 原創龍族</h2>
+    <div class="note">完成遊戲後，可以逐步延伸到金龍、翡翠龍、玫瑰龍、紫晶龍、宇宙龍、星光龍、希望種子龍、燈塔龍與幸福龍等角色。</div>
+  </section>
+
+  <div class="row" style="justify-content:center;margin-top:20px">
+    <button class="ghost" id="resetBtn" type="button">重新開始龍族島</button>
+  </div>
+
+  <footer class="footer">
+    本遊戲屬於創意互動、自我覺察與身心靈陪伴內容，不取代醫療、心理治療或其他專業服務。<br>
+    © 2026 BoBo Tan・開心愛家園療癒・All Rights Reserved.<br>
+    <a class="back" href="dragon-universe.html">← 返回 BoBo 龍族宇宙</a>
+  </footer>
+</div>
+
+<script>
+(() => {
+const KEY="boboDragonGuardianRealmV1";
+const todayKey=()=>new Date().toISOString().slice(0,10);
+const yesterdayKey=()=>{
+  const d=new Date(); d.setDate(d.getDate()-1); return d.toISOString().slice(0,10);
+};
+
+const dragonData={
+ water:{name:"水龍",emoji:["🥚","🐲","🐉"],message:"流動不是失去方向，而是知道什麼時候可以放鬆控制。"},
+ fire:{name:"火龍",emoji:["🥚","🐲","🐉"],message:"勇氣不一定很大聲，有時只是願意往前一步。"},
+ earth:{name:"土龍",emoji:["🥚","🐲","🐉"],message:"先讓自己站穩，很多事情才有力量慢慢展開。"},
+ air:{name:"風龍",emoji:["🥚","🐲","🐉"],message:"當你願意換一個角度，新的路可能已經在眼前。"}
+};
+
+const buildingDefs=[
+ {id:"cave",name:"龍之巢穴",icon:"⛰️",cost:2,unlock:s=>!!s.element},
+ {id:"lake",name:"元素湖",icon:"💧",cost:3,unlock:s=>s.day>=2},
+ {id:"forest",name:"守護森林",icon:"🌲",cost:4,unlock:s=>s.growth>=25},
+ {id:"tower",name:"天空塔",icon:"🗼",cost:5,unlock:s=>s.day>=4},
+ {id:"bridge",name:"龍晶之橋",icon:"🌉",cost:6,unlock:s=>s.growth>=55},
+ {id:"lighthouse",name:"療癒燈塔",icon:"🏮",cost:8,unlock:s=>s.day>=7 && s.growth>=80}
+];
+
+const badgeDefs=[
+ ["hatch","破殼之光","孵化第一隻守護龍"],
+ ["bond10","龍心羈絆","羈絆達到 10"],
+ ["growth50","成長之翼","龍族成長達 50%"],
+ ["builder","領地建築師","完成 3 座建築"],
+ ["quester","龍族任務者","累積 3 點任務徽章進度"],
+ ["sevenQuestChain","七日任務守護者","連續 7 天完成每日五項完整任務"],
+ ["streak3","三日守護","連續登入 3 天"],
+ ["streak7","七日同行","連續登入 7 天"],
+ ["complete","龍族守護者","完成第 7 日並建成療癒燈塔"]
+];
+
+const missions=[
+ "今天完成 1 次照顧行動，感受你與守護龍的第一份連結。",
+ "讓龍族成長，並嘗試建立第一座領地建築。",
+ "完成至少 2 次照顧行動，累積羈絆。",
+ "解鎖天空塔，象徵看見更遠的方向。",
+ "讓龍族成長至少達到 50%。",
+ "建成至少 3 座建築，讓領地逐漸完整。",
+ "完成最終守護日：讓你的龍族成為這座島真正的守護者。"
+];
+
+const storyDays=[
+ {
+  title:"第一章｜沉睡的龍蛋",
+  region:"起源草原",
+  icon:"🌾",
+  story:"很久以前，守護島的中央一直安靜地躺著一顆龍蛋。它沒有裂痕，也沒有聲音，直到你走近。當你的手停在蛋殼上，一道微弱的光從裡面回應。龍族長老留下的文字浮現：『真正的守護，不是控制，而是願意陪伴。』今天，你將決定這顆龍蛋最初甦醒的元素。",
+  unlock:"🌾 新區域解鎖：起源草原｜這裡是所有守護龍故事開始的地方。"
+ },
+ {
+  title:"第二章｜元素之泉",
+  region:"元素之泉",
+  icon:"💧",
+  story:"幼龍出生後，島上的泉水重新流動。水面映照出你的龍，也映照出你此刻的狀態。泉邊的石碑寫著：『力量若沒有覺察，容易變成衝動；覺察若沒有行動，也可能停留原地。』你帶著守護龍來到泉邊，學習感受自己的元素節奏。",
+  unlock:"💧 新區域解鎖：元素之泉｜可在這裡象徵補充、流動與重新整理。"
+ },
+ {
+  title:"第三章｜回聲森林",
+  region:"回聲森林",
+  icon:"🌲",
+  story:"森林裡的樹會記住聲音。你與守護龍走進去後，四周開始傳來過去的回聲：擔心、懷疑、想逃開，也有曾經努力撐過來的自己。龍沒有替你趕走任何聲音，只是陪你繼續走。當你不再急著消滅那些回聲，森林反而慢慢安靜下來。",
+  unlock:"🌲 新區域解鎖：回聲森林｜陪你練習分辨『過去的聲音』與『現在的選擇』。"
+ },
+ {
+  title:"第四章｜天空瞭望台",
+  region:"天空瞭望台",
+  icon:"🗼",
+  story:"走出森林後，山路通往一座很高的瞭望台。從上方看，原本巨大的困難忽然變成島上的一小部分。守護龍張開翅膀，提醒你：換一個高度，不代表否定問題，而是讓自己看見更多可能。今天，你第一次真正看見整座守護島的輪廓。",
+  unlock:"🗼 新區域解鎖：天空瞭望台｜象徵視野、方向與重新選擇。"
+ },
+ {
+  title:"第五章｜龍晶峽谷",
+  region:"龍晶峽谷",
+  icon:"💎",
+  story:"峽谷裡散落著會發光的龍晶，但不是每一顆都需要帶走。長老的提示只有一句：『真正珍貴的，不一定是擁有最多，而是知道什麼值得留下。』你與守護龍開始選擇、整理，也學習不因害怕失去而把所有東西都緊緊抓住。",
+  unlock:"💎 新區域解鎖：龍晶峽谷｜學習珍惜資源、做選擇，也讓空間重新流動。"
+ },
+ {
+  title:"第六章｜星光橋",
+  region:"星光橋",
+  icon:"🌉",
+  story:"夜裡，一座只有在彼此信任時才會亮起的橋出現在山谷上。守護龍先走了一步，又回頭等你。橋上的每一道光，都來自你曾經接受過的一點支持、一次善意、一段陪伴。你開始明白，守護不一定是獨自強大，也可以是知道什麼時候願意被接住。",
+  unlock:"🌉 新區域解鎖：星光橋｜象徵連結、信任與接受支持。"
+ },
+ {
+  title:"第七章｜守護燈塔",
+  region:"守護燈塔",
+  icon:"🏮",
+  story:"第七天清晨，你和已經長大的守護龍來到島嶼最遠端。舊燈塔多年沒有亮起。當你走進塔內，牆上最後一句話寫著：『守護者不是永遠不會跌倒的人，而是願意在黑暗裡留下光的人。』龍停在你身旁，燈塔開始亮起。這座島從今天起，不只是被你完成，而是被你真正地照顧過。",
+  unlock:"🏮 最終區域解鎖：守護燈塔｜七日主線完成後，這裡成為你的龍族守護象徵。"
+ }
+];
+
+const regions=[
+ {day:1,name:"起源草原",icon:"🌾"},
+ {day:2,name:"元素之泉",icon:"💧"},
+ {day:3,name:"回聲森林",icon:"🌲"},
+ {day:4,name:"天空瞭望台",icon:"🗼"},
+ {day:5,name:"龍晶峽谷",icon:"💎"},
+ {day:6,name:"星光橋",icon:"🌉"},
+ {day:7,name:"守護燈塔",icon:"🏮"}
+];
+
+const dailyQuestTemplates=[
+ {id:"feed",label:"🍎 餵食任務",desc:"餵食守護龍，增加羈絆。",target:1,rewardType:"crystal",reward:1},
+ {id:"train",label:"⚔️ 訓練任務",desc:"完成元素訓練，提升龍族成長。",target:1,rewardType:"badge",reward:1},
+ {id:"meditate",label:"🧘 靜心任務",desc:"與守護龍一起靜心共振。",target:1,rewardType:"hint",reward:1},
+ {id:"explore",label:"🧭 探索任務",desc:"探索今天新解鎖的區域。",target:1,rewardType:"crystal",reward:1},
+ {id:"build",label:"🏗️ 建設任務",desc:"完成或推進一項龍族領地建設。",target:1,rewardType:"badge",reward:1}
+];
+
+const storyHintsByDay=[
+ "草原深處有一道微光，似乎在回應你的元素選擇。",
+ "元素之泉的水面浮出一個符號，像是在指向下一段旅程。",
+ "回聲森林裡最安靜的那棵樹，藏著長老留下的一句話。",
+ "天空瞭望台的風向突然改變，遠方出現一條尚未走過的路。",
+ "龍晶峽谷中，有一顆不會被拿走的晶石正在發光。",
+ "星光橋的另一端出現一束光，像有人在等你。",
+ "守護燈塔頂端的光，照亮了一個還未被命名的新世界。"
+];
+
+const comboOrder=[
+ {id:"feed",icon:"🍎",name:"餵食"},
+ {id:"train",icon:"⚔️",name:"訓練"},
+ {id:"meditate",icon:"🧘",name:"靜心"},
+ {id:"explore",icon:"🧭",name:"探索"},
+ {id:"build",icon:"🏗️",name:"建設"}
+];
+
+const comboMilestones=[
+ {count:2,type:"crystal",amount:1,label:"連續完成 2 種任務：額外 💎 1 龍晶"},
+ {count:3,type:"badge",amount:1,label:"連續完成 3 種任務：🏅 徽章進度 +1"},
+ {count:5,type:"special",amount:1,label:"完成 5 種任務鏈：💎 2 龍晶＋🏅 徽章進度 +1＋📖 特殊故事提示"}
+];
+
+const specialStoryHintsByDay=[
+ "你在起源草原的風裡聽見一句很輕的話：『被選中的不是最強的龍，而是願意彼此陪伴的心。』",
+ "元素之泉深處浮出第二層紋路：四種元素其實不是彼此競爭，而是在守護島上互相補足。",
+ "回聲森林最古老的樹幹上出現龍爪印：長老曾經也害怕過，只是他選擇帶著害怕繼續走。",
+ "天空瞭望台的雲層短暫散開，你看見遠方還有一座沒有名字的島，像是在等待未來的龍族。",
+ "龍晶峽谷的核心晶石沒有被任何人帶走，因為它的力量來自『分享後仍然存在的光』。",
+ "星光橋下出現一條隱約的光河，像是在提醒你：真正的連結不只通往別人，也通往更完整的自己。",
+ "守護燈塔亮起後，塔頂浮現一枚新徽記：這不是終點，而是下一個龍族宇宙故事的入口。"
+];
+
+const branchLabels={
+ feed:"陪伴之路",
+ train:"勇氣之路",
+ meditate:"內在之路",
+ explore:"探索之路",
+ build:"守護之路"
+};
+
+const branchStories={
+ feed:[
+  "你餵食守護龍時，它沒有立刻吃下龍果，而是先把其中一半推回你面前。像是在提醒：照顧並不是單向給予，真正的陪伴也包含接收。",
+  "今天的龍果帶著淡淡光芒。守護龍吃完後安靜靠近你，沒有要求你做更多，只是陪你坐了一會。",
+  "你發現守護龍開始記住你的腳步聲。每次你靠近，它都會先抬頭確認是不是你。羈絆正在從習慣變成信任。",
+  "守護龍把最喜歡的一顆龍果留了下來。它似乎想把這份珍惜送給下一個需要的人。",
+  "今天的餵食變成一場分享。你、守護龍與森林裡的小生物一起分食，島上的氣氛也柔和許多。",
+  "守護龍第一次主動把額頭靠近你的手。它沒有說話，但你感覺到一種『你不需要一直證明自己』的安定。",
+  "七日將近完成時，守護龍把最後一顆龍果放在燈塔前。像是在告訴你：真正留下來的，是彼此照顧過的痕跡。"
+ ],
+ train:[
+  "訓練開始時，守護龍第一次失去平衡。它沒有掩飾，而是重新站起來。你忽然明白：勇氣不是從不失誤。",
+  "今天的訓練比昨天更難。守護龍沒有急著變強，而是先學會控制力量，避免傷到自己。",
+  "一道元素光刃劃過空氣。你和守護龍開始學會在『想衝出去』與『先看清楚』之間找到節奏。",
+  "守護龍第一次完成高空轉向。當它回到你身邊時，眼神裡多了一點確定。",
+  "訓練場上的舊石柱突然亮起，上面刻著：『力量若只用來證明自己，就很容易疲憊。』",
+  "今天的挑戰不是更快，而是更穩。守護龍學會把力量收回來，而不是一直往外放。",
+  "最後一天的訓練沒有競賽。你和守護龍只做了一次完整的呼吸與展翼，像是在紀念這七天的成長。"
+ ],
+ meditate:[
+  "靜心時，守護龍的呼吸慢慢與你同步。你第一次感覺到，安靜也可以是一種交流。",
+  "你們在元素之泉旁靜坐。水面沒有出現答案，只映出當下的你們。",
+  "森林裡的回聲今天變小了。不是因為它們消失，而是你開始知道哪些聲音不需要立刻相信。",
+  "天空瞭望台上的風很大，但你們沒有離開。當身體穩下來，遠方的景色也變得清楚。",
+  "龍晶峽谷裡有太多光，靜心反而讓你辨認出哪一道光真正讓自己安心。",
+  "在星光橋上，你聽見守護龍很輕的一聲低鳴。那不像命令，更像一句『我在』。",
+  "燈塔亮起前，你們一起坐在黑暗裡。你發現自己沒有那麼急著讓黑暗立刻消失。"
+ ],
+ explore:[
+  "你帶著守護龍偏離原本的路，發現草原邊緣有一道很舊的龍爪痕。有人曾經也從這裡開始。",
+  "元素之泉後方藏著一條小徑。沿路的石頭上刻著四種元素符號，像是在暗示這座島從來不是只有一種力量。",
+  "回聲森林深處有一塊沒有回音的地方。那裡非常安靜，像是專門留給需要休息的旅人。",
+  "天空瞭望台外側有一道很窄的階梯。你們走上去後，看見了以前沒發現的第二片海岸。",
+  "龍晶峽谷旁的小洞穴裡沒有寶藏，只有一張舊地圖。地圖上畫著一座還未命名的島。",
+  "星光橋下方出現一條短暫的光路。你們沒有追得太遠，只記住了它消失的方向。",
+  "燈塔頂端的視野比你想像中更遠。海平線外，似乎還有更多龍族世界等待被發現。"
+ ],
+ build:[
+  "你開始整理龍之巢穴。守護龍沒有在意是否漂亮，只在意這裡是不是安全。",
+  "元素湖完成後，島上的水流開始變得穩定。建設讓你第一次看見：照顧環境也是照顧自己。",
+  "守護森林逐漸成形。你沒有把每一棵樹排得整整齊齊，而是留下了一些自然生長的空間。",
+  "天空塔建起後，島上的居民有了一個可以遠望的地方。不是為了預測一切，而是為了提前看見方向。",
+  "龍晶之橋完成時，你發現橋的價值不在於壯觀，而在於讓兩個原本分開的地方重新連起來。",
+  "燈塔施工前，守護龍一直守在旁邊。你忽然理解：有些建設不是為了擴張，而是為了讓別人知道這裡有光。",
+  "最後一天，你回頭看見整座島。每一處建築都不是裝飾，而是這七天選擇留下的證明。"
+ ]
+};
+
+const endingHints={
+ feed:"💗 結局傾向：你正在走向「陪伴守護者」結局——重視羈絆、照顧與接收。",
+ train:"🔥 結局傾向：你正在走向「勇氣守護者」結局——重視行動、練習與穩定力量。",
+ meditate:"🌙 結局傾向：你正在走向「內在守護者」結局——重視覺察、安定與聆聽自己。",
+ explore:"🌌 結局傾向：你正在走向「星圖探索者」結局——重視好奇、方向與新的可能。",
+ build:"🏮 結局傾向：你正在走向「家園守護者」結局——重視建立、安全與長久支持。"
+};
+
+const endingDefs=[
+ {
+  id:"companion",
+  icon:"💗",
+  title:"陪伴守護者",
+  text:"你的守護方式不是催促，而是陪伴。你和龍族建立了穩定羈絆，也學會讓照顧包含接收與信任。",
+  condition:"7 天中以餵食／陪伴任務為主要偏好。",
+  type:"feed"
+ },
+ {
+  id:"courage",
+  icon:"🔥",
+  title:"勇氣守護者",
+  text:"你選擇在一次次練習中累積力量。真正的勇氣，不是從不害怕，而是知道何時前進、何時收回力量。",
+  condition:"7 天中以訓練任務為主要偏好。",
+  type:"train"
+ },
+ {
+  id:"inner",
+  icon:"🌙",
+  title:"內在守護者",
+  text:"你最常回到安靜與覺察。你和守護龍學會不急著消除所有不安，而是先聽見自己真正需要什麼。",
+  condition:"7 天中以靜心任務為主要偏好。",
+  type:"meditate"
+ },
+ {
+  id:"explorer",
+  icon:"🌌",
+  title:"星圖探索者",
+  text:"你一直願意往未知多走一步。你沒有把答案當成終點，而是把好奇與方向感帶進下一個龍族世界。",
+  condition:"7 天中以探索任務為主要偏好。",
+  type:"explore"
+ },
+ {
+  id:"home",
+  icon:"🏮",
+  title:"家園守護者",
+  text:"你用一座座建設，把守護島變成能承接生命的地方。你的力量來自建立、安全與長久支持。",
+  condition:"7 天中以建設任務為主要偏好。",
+  type:"build"
+ },
+ {
+  id:"architect",
+  icon:"🏰",
+  title:"龍域建築師",
+  text:"你不只完成任務，也真正把守護島建成一個完整領地。你的結局屬於那些願意把願景落地的人。",
+  condition:"完成至少 5 座建築，且第 7 天已完成。",
+  special:"buildings5"
+ },
+ {
+  id:"steadfast",
+  icon:"🔥",
+  title:"七日誓約守護者",
+  text:"你連續完成了完整的每日任務鏈。這份結局象徵持續、承諾與穩定完成，而不是短暫的衝刺。",
+  condition:"完整任務連續完成天數達 7 天。",
+  special:"streak7"
+ },
+ {
+  id:"lighthouse",
+  icon:"✨",
+  title:"燈塔之心",
+  text:"你完成了守護燈塔，也走完七日主線。你的龍族故事最後留下的，不是勝利，而是一束能照亮自己與他人的光。",
+  condition:"建成療癒燈塔並完成第 7 天。",
+  special:"lighthouse"
+ },
+ {
+  id:"balanced",
+  icon:"🌈",
+  title:"五道合一守護者",
+  text:"你的任務偏好沒有只集中在單一路線。陪伴、勇氣、內在、探索與建設，在你身上形成了一個較平衡的守護方式。",
+  condition:"五類任務分布接近，沒有單一路線明顯領先。",
+  special:"balanced"
+ }
+];
+
+let state={
+ element:null,growth:0,bond:0,energy:5,crystal:3,day:1,
+ buildings:[], missionDone:false,
+ checkinDate:null, streak:0, lastLogin:null, badges:[],
+ questCounts:{feed:0,train:0,meditate:0,explore:0,build:0},
+ questClaimed:[],
+ questBadgeProgress:0,
+ storyHints:[],
+ comboCompleted:[],
+ comboBonusesClaimed:[],
+ fullQuestDayStreak:0,
+ lastFullQuestDay:0,
+ specialStoryHints:[],
+ branchHistory:[],
+ branchCounts:{feed:0,train:0,meditate:0,explore:0,build:0},
+ unlockedEndings:[],
+ endingRecords:[],
+ currentEnding:null
+};
+
+try{
+ const saved=JSON.parse(localStorage.getItem(KEY));
+ if(saved && typeof saved==="object") state={...state,...saved};
+}catch(e){}
+
+const $=id=>document.getElementById(id);
+const clamp=(n,min,max)=>Math.max(min,Math.min(max,n));
+
+function save(){localStorage.setItem(KEY,JSON.stringify(state));}
+
+function unlockBadges(){
+ const has=id=>state.badges.includes(id);
+ const add=id=>{if(!has(id)) state.badges.push(id)};
+ if(state.element)add("hatch");
+ if(state.bond>=10)add("bond10");
+ if(state.growth>=50)add("growth50");
+ if(state.buildings.length>=3)add("builder");
+ if(state.streak>=3)add("streak3");
+ if(state.streak>=7)add("streak7");
+ if(state.day>=7 && state.buildings.includes("lighthouse"))add("complete");
+}
+
+function stageIndex(){
+ if(!state.element)return 0;
+ if(state.growth>=75)return 2;
+ return 1;
+}
+
+
+function ensureQuestState(){
+  if(!state.questCounts || typeof state.questCounts!=="object"){
+    state.questCounts={feed:0,train:0,meditate:0,explore:0,build:0};
+  }
+  ["feed","train","meditate","explore","build"].forEach(k=>{
+    if(typeof state.questCounts[k]!=="number") state.questCounts[k]=0;
+  });
+  if(!Array.isArray(state.questClaimed)) state.questClaimed=[];
+  if(typeof state.questBadgeProgress!=="number") state.questBadgeProgress=0;
+  if(!Array.isArray(state.storyHints)) state.storyHints=[];
+  if(!Array.isArray(state.comboCompleted)) state.comboCompleted=[];
+  if(!Array.isArray(state.comboBonusesClaimed)) state.comboBonusesClaimed=[];
+  if(typeof state.fullQuestDayStreak!=="number") state.fullQuestDayStreak=0;
+  if(typeof state.lastFullQuestDay!=="number") state.lastFullQuestDay=0;
+  if(!Array.isArray(state.specialStoryHints)) state.specialStoryHints=[];
+  if(!Array.isArray(state.branchHistory)) state.branchHistory=[];
+  if(!state.branchCounts || typeof state.branchCounts!=="object"){
+    state.branchCounts={feed:0,train:0,meditate:0,explore:0,build:0};
+  }
+  ["feed","train","meditate","explore","build"].forEach(k=>{
+    if(typeof state.branchCounts[k]!=="number") state.branchCounts[k]=0;
+  });
+  if(!Array.isArray(state.unlockedEndings)) state.unlockedEndings=[];
+  if(!Array.isArray(state.endingRecords)) state.endingRecords=[];
+  if(typeof state.currentEnding!=="string" && state.currentEnding!==null) state.currentEnding=null;
+}
+
+function questKey(id){return `${state.day}-${id}`;}
+
+function questRewardLabel(q){
+  if(q.rewardType==="crystal") return `💎 +${q.reward} 龍晶`;
+  if(q.rewardType==="badge") return `🏅 徽章進度 +${q.reward}`;
+  return "📖 新故事提示";
+}
+
+function claimQuestReward(q){
+  const key=questKey(q.id);
+  if(state.questClaimed.includes(key)) return;
+  state.questClaimed.push(key);
+
+  if(q.rewardType==="crystal"){
+    state.crystal+=q.reward;
+    show(`🎁 任務獎勵：獲得 ${q.reward} 顆龍晶。`);
+    addToast(`<strong>${q.label} 完成</strong><br>💎 龍晶 +${q.reward}`);
+    openRewardModal({
+      icon:"💎",
+      title:"每日任務完成",
+      text:q.label+" 已完成。",
+      items:[`💎 龍晶 +${q.reward}`]
+    });
+  }else if(q.rewardType==="badge"){
+    state.questBadgeProgress+=q.reward;
+    const unlocked=state.questBadgeProgress>=3 && !state.badges.includes("quester");
+    if(unlocked){
+      state.badges.push("quester");
+      show("🏅 你累積完成了足夠的任務進度，解鎖新徽章「龍族任務者」！");
+    }else{
+      show(`🏅 徽章進度 +${q.reward}。目前任務進度：${state.questBadgeProgress}/3`);
+    }
+    addToast(`<strong>${q.label} 完成</strong><br>🏅 徽章進度 +${q.reward}`);
+    openRewardModal({
+      icon:"🏅",
+      title:unlocked?"新徽章解鎖！":"每日任務完成",
+      text:unlocked?"你解鎖了「龍族任務者」徽章。":q.label+" 已完成。",
+      items:[`🏅 徽章進度 +${q.reward}`,`目前進度：${state.questBadgeProgress}/3`,...(unlocked?["🏆 新徽章：龍族任務者"]:[])]
+    });
+  }else if(q.rewardType==="hint"){
+    const hint=storyHintsByDay[Math.min(state.day-1,6)];
+    if(!state.storyHints.includes(hint)) state.storyHints.push(hint);
+    show("📖 你解鎖了一段新的故事提示。");
+    addToast(`<strong>${q.label} 完成</strong><br>📖 新故事提示已解鎖`,"story");
+    openRewardModal({
+      icon:"📖",
+      title:"故事提示解鎖",
+      text:q.label+" 已完成。",
+      items:["✨ 新的龍族線索已出現"],
+      story:hint
+    });
+  }
+}
+
+function checkDailyQuestAutoClaim(){
+  dailyQuestTemplates.forEach(q=>{
+    if((state.questCounts[q.id]||0)>=q.target){
+      claimQuestReward(q);
+    }
+  });
+}
+
+function resetDailyQuestProgress(){
+  state.questCounts={feed:0,train:0,meditate:0,explore:0,build:0};
+  state.questClaimed=state.questClaimed.filter(k=>!k.startsWith(state.day+"-"));
+}
+
+
+function comboBonusKey(count){return `${state.day}-combo-${count}`;}
+
+function registerComboTask(taskId){
+  ensureQuestState();
+  if(!state.comboCompleted.includes(taskId)){
+    state.comboCompleted.push(taskId);
+    evaluateComboRewards();
+  }
+}
+
+function evaluateComboRewards(){
+  const n=state.comboCompleted.length;
+  comboMilestones.forEach(m=>{
+    const key=comboBonusKey(m.count);
+    if(n>=m.count && !state.comboBonusesClaimed.includes(key)){
+      state.comboBonusesClaimed.push(key);
+
+      if(m.type==="crystal"){
+        state.crystal+=m.amount;
+        show(`🔥 任務連鎖達成 ${m.count} 種！額外獲得 ${m.amount} 顆龍晶。`);
+        animateComboPanel();
+        addToast(`<strong>🔥 ${m.count} 連任務達成</strong><br>額外獲得 💎 ${m.amount} 龍晶`,"combo");
+        openRewardModal({
+          icon:"💎",
+          title:`${m.count} 連任務獎勵`,
+          text:"你完成了今天的任務連鎖。",
+          items:[`💎 龍晶 +${m.amount}`]
+        });
+      }
+
+      if(m.type==="badge"){
+        state.questBadgeProgress+=m.amount;
+        if(state.questBadgeProgress>=3 && !state.badges.includes("quester")){
+          state.badges.push("quester");
+        }
+        show(`🔥 任務連鎖達成 ${m.count} 種！徽章進度 +${m.amount}。`);
+        animateComboPanel();
+        addToast(`<strong>🏅 ${m.count} 連任務達成</strong><br>徽章進度 +${m.amount}`,"combo");
+        openRewardModal({
+          icon:"🏅",
+          title:`${m.count} 連任務獎勵`,
+          text:"你的龍族任務徽章進度提升了。",
+          items:[`🏅 徽章進度 +${m.amount}`,`目前進度：${state.questBadgeProgress}/3`]
+        });
+      }
+
+      if(m.type==="special"){
+        state.crystal+=2;
+        state.questBadgeProgress+=1;
+        if(state.questBadgeProgress>=3 && !state.badges.includes("quester")){
+          state.badges.push("quester");
+        }
+        const hint=specialStoryHintsByDay[Math.min(state.day-1,6)];
+        if(!state.specialStoryHints.includes(hint)) state.specialStoryHints.push(hint);
+        show("🌟 今日五連任務完成！額外獲得 2 顆龍晶、徽章進度 +1，並解鎖特殊故事提示。");
+        animateComboPanel();
+        addToast("<strong>🌟 五連任務完成</strong><br>龍晶＋徽章進度＋特殊故事提示","story");
+        openRewardModal({
+          icon:"🌟",
+          title:"五連任務完成！",
+          text:"你完成了今天全部五種任務鏈。",
+          items:["💎 龍晶 +2","🏅 徽章進度 +1"],
+          story:hint
+        });
+      }
+    }
+  });
+}
+
+function finalizeFullQuestDay(){
+  const allDone=comboOrder.every(x=>state.comboCompleted.includes(x.id));
+  if(!allDone) return false;
+
+  if(state.lastFullQuestDay===state.day) return true;
+
+  if(state.lastFullQuestDay===state.day-1){
+    state.fullQuestDayStreak+=1;
+  }else{
+    state.fullQuestDayStreak=1;
+  }
+  state.lastFullQuestDay=state.day;
+
+  if(state.fullQuestDayStreak===3){
+    state.crystal+=2;
+    state.questBadgeProgress+=1;
+    if(state.questBadgeProgress>=3 && !state.badges.includes("quester")){
+      state.badges.push("quester");
+    }
+    show("🌟 連續 3 天完成全套任務！額外獲得 2 顆龍晶與徽章進度 +1。");
+    addToast("<strong>🌟 三日全任務連續完成</strong><br>💎 +2｜🏅 +1","combo");
+    openRewardModal({
+      icon:"🌟",
+      title:"三日連續完成獎勵",
+      text:"你已經連續 3 天完成全部五種每日任務。",
+      items:["💎 龍晶 +2","🏅 徽章進度 +1"]
+    });
+  }
+  if(state.fullQuestDayStreak===7){
+    state.crystal+=5;
+    state.questBadgeProgress+=2;
+    if(!state.badges.includes("sevenQuestChain")) state.badges.push("sevenQuestChain");
+    show("🐉 連續 7 天完成全套任務！獲得 5 顆龍晶、徽章進度 +2，並解鎖「七日任務守護者」徽章！");
+    addToast("<strong>🐉 七日全任務完成</strong><br>特殊徽章已解鎖","story");
+    openRewardModal({
+      icon:"🐉",
+      title:"七日任務守護者",
+      text:"你完成了完整的七日龍族任務鏈。",
+      items:["💎 龍晶 +5","🏅 徽章進度 +2","🏆 新徽章：七日任務守護者"],
+      story:"守護燈塔的光越過海面。你的七日旅程已經留下完整的龍族足跡。"
+    });
+  }
+  return true;
+}
+
+
+function triggerBranchStory(taskId){
+  ensureQuestState();
+  if(!branchStories[taskId]) return;
+
+  const key=`${state.day}-${taskId}`;
+  if(state.branchHistory.some(x=>x.key===key)) return;
+
+  const story=branchStories[taskId][Math.min(state.day-1,6)];
+  const item={
+    key,
+    day:state.day,
+    task:taskId,
+    path:branchLabels[taskId],
+    story
+  };
+  state.branchHistory.push(item);
+  state.branchCounts[taskId]+=1;
+
+  addToast(`<strong>🐉 劇情分支解鎖</strong><br>${branchLabels[taskId]}・Day ${state.day}`,"story");
+  openRewardModal({
+    icon:"🐉",
+    title:"新的龍族劇情分支",
+    text:`你觸發了「${branchLabels[taskId]}」。`,
+    items:[`Day ${state.day}・${storyDays[state.day-1].region}`],
+    story:story
+  });
+}
+
+function dominantBranch(){
+  ensureQuestState();
+  const entries=Object.entries(state.branchCounts);
+  const max=Math.max(...entries.map(([,v])=>v),0);
+  if(max===0) return null;
+  const top=entries.filter(([,v])=>v===max);
+  return top.length===1?top[0][0]:null;
+}
+
+
+function isBalancedEnding(){
+  const vals=Object.values(state.branchCounts);
+  const total=vals.reduce((a,b)=>a+b,0);
+  if(total<5) return false;
+  const max=Math.max(...vals);
+  const min=Math.min(...vals);
+  return (max-min)<=2;
+}
+
+function resolveEnding(){
+  ensureQuestState();
+  if(state.day<7 || !state.missionDone) return null;
+
+  let candidates=[];
+
+  if(state.buildings.length>=5) candidates.push("architect");
+  if(state.fullQuestDayStreak>=7) candidates.push("steadfast");
+  if(state.buildings.includes("lighthouse")) candidates.push("lighthouse");
+  if(isBalancedEnding()) candidates.push("balanced");
+
+  const dominant=dominantBranch();
+  if(dominant){
+    const baseMap={feed:"companion",train:"courage",meditate:"inner",explore:"explorer",build:"home"};
+    candidates.push(baseMap[dominant]);
+  }
+
+  // Priority: rare/special endings first, then dominant-path endings.
+  const priority=["lighthouse","steadfast","architect","balanced","companion","courage","inner","explorer","home"];
+  const endingId=priority.find(id=>candidates.includes(id)) || "balanced";
+
+  state.currentEnding=endingId;
+
+  if(!state.unlockedEndings.includes(endingId)){
+    state.unlockedEndings.push(endingId);
+  }
+
+  const def=endingDefs.find(x=>x.id===endingId);
+  const record={
+    id:endingId,
+    title:def.title,
+    day:state.day,
+    buildings:state.buildings.length,
+    fullQuestDayStreak:state.fullQuestDayStreak,
+    branchCounts:{...state.branchCounts},
+    time:new Date().toLocaleString()
+  };
+
+  const duplicate=state.endingRecords.some(r=>
+    r.id===record.id &&
+    r.buildings===record.buildings &&
+    r.fullQuestDayStreak===record.fullQuestDayStreak &&
+    JSON.stringify(r.branchCounts)===JSON.stringify(record.branchCounts)
+  );
+  if(!duplicate) state.endingRecords.push(record);
+
+  addToast(`<strong>${def.icon} 新結局解鎖</strong><br>${def.title}`,"story");
+  openRewardModal({
+    icon:def.icon,
+    title:"龍族結局解鎖",
+    text:def.title,
+    items:[
+      `🏗️ 建設完成：${state.buildings.length} 座`,
+      `🔥 完整任務連續：${state.fullQuestDayStreak} 天`
+    ],
+    story:def.text
+  });
+
+  save();
+  render();
+  return endingId;
+}
+
+
+function latestEndingRecord(){
+  if(!state.currentEnding) return null;
+  for(let i=state.endingRecords.length-1;i>=0;i--){
+    if(state.endingRecords[i].id===state.currentEnding) return state.endingRecords[i];
+  }
+  return null;
+}
+
+function preferenceSummary(counts){
+  if(!counts) return "—";
+  const labels={feed:"餵食／陪伴",train:"訓練／勇氣",meditate:"靜心／內在",explore:"探索／方向",build:"建設／守護"};
+  const entries=Object.entries(counts);
+  const max=Math.max(...entries.map(([,v])=>v),0);
+  if(max===0) return "尚未形成偏好";
+  const top=entries.filter(([,v])=>v===max);
+  if(top.length>1) return "平衡型｜"+top.map(([k])=>labels[k]).join("・");
+  return labels[top[0][0]]+`（${top[0][1]} 次）`;
+}
+
+function dragonTitleForEnding(id){
+  const map={
+    companion:"龍心陪伴者",
+    courage:"烈焰勇氣者",
+    inner:"月光聆聽者",
+    explorer:"星圖尋路者",
+    home:"家園守護者",
+    architect:"龍域建築師",
+    steadfast:"七日誓約者",
+    lighthouse:"燈塔守光者",
+    balanced:"五道合一者"
+  };
+  return map[id] || "龍族旅人";
+}
+
+
+function endingTheme(id){
+  const themes={
+    companion:{
+      name:"玫瑰陪伴主題",bg1:"#fff9fb",bg2:"#f9e9f1",bg3:"#fff3e8",accent:"#b86f91",accent2:"#d6a07a",ink:"#6a4158",soft:"#9a687d",
+      bgLabel:"玫瑰花園背景",
+      decorations:["🌹","🕊️","💗","✨"]
+    },
+    courage:{
+      name:"烈焰勇氣主題",bg1:"#fff8f1",bg2:"#f9e4d8",bg3:"#fff1cf",accent:"#b85c3f",accent2:"#d39a3b",ink:"#6d3d2f",soft:"#9b684f",
+      bgLabel:"烈焰龍翼背景",
+      decorations:["🔥","🛡️","⚔️","✨"]
+    },
+    inner:{
+      name:"月光內在主題",bg1:"#f9f8ff",bg2:"#ece9fa",bg3:"#f5f2ff",accent:"#7164a8",accent2:"#a28fc6",ink:"#4f496d",soft:"#746d91",
+      bgLabel:"月光靜心背景",
+      decorations:["🌙","🔮","✨","🕯️"]
+    },
+    explorer:{
+      name:"星圖探索主題",bg1:"#f5fbff",bg2:"#e3edf9",bg3:"#eef8ff",accent:"#477ea6",accent2:"#7ca5c8",ink:"#365a76",soft:"#63829a",
+      bgLabel:"星圖海域背景",
+      decorations:["🧭","⭐","🌌","✨"]
+    },
+    home:{
+      name:"森林家園主題",bg1:"#fbfff9",bg2:"#e9f2e4",bg3:"#fff8e5",accent:"#68805a",accent2:"#b08c55",ink:"#506046",soft:"#71806a",
+      bgLabel:"森林家園背景",
+      decorations:["🌿","🌲","🏡","✨"]
+    },
+    architect:{
+      name:"龍域建築主題",bg1:"#fffdf6",bg2:"#efe7d7",bg3:"#fff7e4",accent:"#80643f",accent2:"#c1a15e",ink:"#5e4a31",soft:"#7d6b53",
+      bgLabel:"龍域殿堂背景",
+      decorations:["🏰","🪨","🏛️","✨"]
+    },
+    steadfast:{
+      name:"七日誓約主題",bg1:"#fff8f4",bg2:"#f0dfdc",bg3:"#fff2df",accent:"#8d4d44",accent2:"#c58a56",ink:"#663c37",soft:"#85615c",
+      bgLabel:"誓約火紋背景",
+      decorations:["🔥","📜","⛰️","✨"]
+    },
+    lighthouse:{
+      name:"燈塔之光主題",bg1:"#fffef7",bg2:"#f2ead4",bg3:"#f8f2ff",accent:"#8a6b2f",accent2:"#d9b45d",ink:"#64522e",soft:"#8c7a54",
+      bgLabel:"燈塔海光背景",
+      decorations:["🏮","🌊","⭐","✨"]
+    },
+    balanced:{
+      name:"五道合一主題",bg1:"#fff9fc",bg2:"#eee9fb",bg3:"#fff6dc",accent:"#8b65a2",accent2:"#d5ab55",ink:"#654f74",soft:"#7e6a88",
+      bgLabel:"虹光平衡背景",
+      decorations:["🌈","✨","🔶","🔷"]
+    }
+  };
+  return themes[id] || {name:"龍族主題卡",bg1:"#fffdf8",bg2:"#f7f0fb",bg3:"#fff6e8",accent:"#72538e",accent2:"#b68a62",ink:"#5e4770",soft:"#8b6a95",bgLabel:"龍族背景",decorations:["🐉","✨","💎"]};
+}
+
+function renderShareDecor(theme){
+  const layer=$("shareBackgroundLayer");
+  if(!layer) return;
+  layer.innerHTML="";
+  const topGlow=document.createElement("div");
+  topGlow.className="share-bg-glow";
+  topGlow.style.left="-6%";
+  topGlow.style.top="9%";
+  topGlow.style.width="160px";
+  topGlow.style.height="160px";
+  topGlow.style.background=theme.accent+"26";
+  layer.appendChild(topGlow);
+
+  const rightGlow=document.createElement("div");
+  rightGlow.className="share-bg-glow";
+  rightGlow.style.right="-7%";
+  rightGlow.style.top="-2%";
+  rightGlow.style.width="190px";
+  rightGlow.style.height="190px";
+  rightGlow.style.background=theme.accent2+"2a";
+  layer.appendChild(rightGlow);
+
+  const line1=document.createElement("div");
+  line1.className="share-bg-line";
+  line1.style.right="24px";
+  line1.style.top="78px";
+  layer.appendChild(line1);
+
+  const line2=document.createElement("div");
+  line2.className="share-bg-line";
+  line2.style.left="-40px";
+  line2.style.bottom="58px";
+  line2.style.width="140px";
+  line2.style.height="140px";
+  layer.appendChild(line2);
+
+  const positions=[
+    {left:"13%",top:"20%",size:"42px",opacity:.22,rotate:"-8deg"},
+    {left:"86%",top:"23%",size:"44px",opacity:.18,rotate:"8deg"},
+    {left:"18%",top:"74%",size:"34px",opacity:.20,rotate:"-12deg"},
+    {left:"84%",top:"76%",size:"38px",opacity:.18,rotate:"10deg"}
+  ];
+
+  (theme.decorations || []).forEach((emoji,i)=>{
+    const pos=positions[i % positions.length];
+    const icon=document.createElement("div");
+    icon.className="share-bg-icon";
+    icon.textContent=emoji;
+    icon.style.left=pos.left;
+    icon.style.top=pos.top;
+    icon.style.fontSize=pos.size;
+    icon.style.opacity=String(pos.opacity);
+    icon.style.transform=`translate(-50%,-50%) rotate(${pos.rotate})`;
+    layer.appendChild(icon);
+  });
+
+  const wave=document.createElement("div");
+  wave.className="share-bg-wave";
+  layer.appendChild(wave);
+}
+
+function renderShareCard(){
+  ensureQuestState();
+  const def=endingDefs.find(x=>x.id===state.currentEnding);
+  const rec=latestEndingRecord();
+  const ready=!!def && !!rec;
+
+  $("downloadShareCardBtn").disabled=!ready;
+  $("refreshShareCardBtn").disabled=!ready;
+
+  if(!ready){
+    $("shareCardPreview").removeAttribute("data-theme");
+    $("shareThemeName").textContent="龍族主題卡";
+    renderShareDecor(endingTheme());
+    $("shareEndingIcon").textContent="🐉";
+    $("shareEndingName").textContent="尚未解鎖結局";
+    $("shareDragonTitle").textContent="完成 7 天後生成你的龍族稱號";
+    $("sharePreference").textContent="—";
+    $("shareBuildings").textContent="—";
+    $("shareStreak").textContent="—";
+    $("shareDate").textContent="—";
+    return;
+  }
+
+  const theme=endingTheme(def.id);
+  const preview=$("shareCardPreview");
+  preview.setAttribute("data-theme",def.id);
+  $("shareThemeName").textContent=theme.name+"｜"+theme.bgLabel;
+  renderShareDecor(theme);
+  $("shareEndingIcon").textContent=def.icon;
+  $("shareEndingName").textContent=def.title;
+  $("shareDragonTitle").textContent="龍族稱號｜"+dragonTitleForEnding(def.id);
+  $("sharePreference").textContent=preferenceSummary(rec.branchCounts);
+  $("shareBuildings").textContent=`${rec.buildings} / ${buildingDefs.length} 座`;
+  $("shareStreak").textContent=`${rec.fullQuestDayStreak} 天`;
+  $("shareDate").textContent=rec.time;
+}
+
+function wrapCanvasText(ctx,text,x,y,maxWidth,lineHeight,maxLines=4){
+  const chars=[...String(text)];
+  let line="";
+  const lines=[];
+  for(const ch of chars){
+    const test=line+ch;
+    if(ctx.measureText(test).width>maxWidth && line){
+      lines.push(line);
+      line=ch;
+      if(lines.length>=maxLines-1) break;
+    }else{
+      line=test;
+    }
+  }
+  if(line && lines.length<maxLines) lines.push(line);
+  lines.forEach((ln,i)=>ctx.fillText(ln,x,y+i*lineHeight));
+}
+
+
+function drawShareCardDecorations(ctx,theme){
+  const deco=theme.decorations || ["✨","💎","🐉"];
+  const spots=[
+    [150,170,74,-8,.18],
+    [920,195,82,8,.15],
+    [170,1080,64,-10,.16],
+    [900,1120,70,10,.14]
+  ];
+
+  ctx.save();
+  ctx.textAlign="center";
+  ctx.textBaseline="middle";
+  spots.forEach((s,i)=>{
+    const [x,y,size,rot,alpha]=s;
+    ctx.save();
+    ctx.translate(x,y);
+    ctx.rotate(rot*Math.PI/180);
+    ctx.globalAlpha=alpha;
+    ctx.font=`${size}px "Segoe UI Emoji","Apple Color Emoji",sans-serif`;
+    ctx.fillText(deco[i % deco.length],0,0);
+    ctx.restore();
+  });
+
+  // Subtle themed landscape strip
+  ctx.globalAlpha=.24;
+  const lg=ctx.createLinearGradient(0,1115,1080,1115);
+  lg.addColorStop(0,theme.accent);
+  lg.addColorStop(.5,theme.accent2);
+  lg.addColorStop(1,theme.accent);
+  ctx.fillStyle=lg;
+  ctx.beginPath();
+  ctx.moveTo(0,1120);
+  ctx.bezierCurveTo(180,1055,320,1185,540,1118);
+  ctx.bezierCurveTo(760,1050,900,1180,1080,1110);
+  ctx.lineTo(1080,1350);
+  ctx.lineTo(0,1350);
+  ctx.closePath();
+  ctx.fill();
+
+  ctx.globalAlpha=.14;
+  ctx.strokeStyle=theme.accent;
+  ctx.lineWidth=3;
+  ctx.beginPath();
+  ctx.arc(860,210,120,0,Math.PI*2);
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.arc(180,1095,95,0,Math.PI*2);
+  ctx.stroke();
+  ctx.restore();
+}
+
+function downloadShareCard(){
+  const def=endingDefs.find(x=>x.id===state.currentEnding);
+  const rec=latestEndingRecord();
+  if(!def || !rec) return;
+
+  const canvas=document.createElement("canvas");
+  canvas.width=1080;
+  canvas.height=1350;
+  const ctx=canvas.getContext("2d");
+
+  const theme=endingTheme(def.id);
+
+  // Background
+  const g=ctx.createLinearGradient(0,0,1080,1350);
+  g.addColorStop(0,theme.bg1);
+  g.addColorStop(.55,theme.bg2);
+  g.addColorStop(1,theme.bg3);
+  ctx.fillStyle=g;
+  ctx.fillRect(0,0,1080,1350);
+
+  // Decorative circles
+  ctx.fillStyle=theme.accent+"33";
+  ctx.beginPath(); ctx.arc(120,1180,180,0,Math.PI*2); ctx.fill();
+  ctx.fillStyle=theme.accent2+"2e";
+  ctx.beginPath(); ctx.arc(940,150,150,0,Math.PI*2); ctx.fill();
+
+  // Frame
+  ctx.strokeStyle=theme.accent+"38";
+  ctx.lineWidth=3;
+  ctx.strokeRect(48,48,984,1254);
+
+  ctx.textAlign="center";
+  drawShareCardDecorations(ctx,theme);
+
+  ctx.fillStyle=theme.soft;
+  ctx.font='700 28px "Microsoft JhengHei", sans-serif';
+  ctx.fillText("BoBo Dragon Guardian Realm",540,110);
+
+  ctx.font='88px "Segoe UI Emoji","Apple Color Emoji",sans-serif';
+  ctx.fillText(def.icon,540,235);
+
+  ctx.fillStyle=theme.ink;
+  ctx.font='900 62px "Microsoft JhengHei", sans-serif';
+  ctx.fillText(def.title,540,330);
+
+  ctx.fillStyle=theme.soft;
+  ctx.font='800 34px "Microsoft JhengHei", sans-serif';
+  ctx.fillText("龍族稱號｜"+dragonTitleForEnding(def.id),540,388);
+
+  ctx.font='700 23px "Microsoft JhengHei", sans-serif';
+  ctx.fillText(theme.name+"｜"+theme.bgLabel,540,428);
+
+  // Info boxes
+  const boxes=[
+    ["任務偏好",preferenceSummary(rec.branchCounts)],
+    ["建設成果",`${rec.buildings} / ${buildingDefs.length} 座`],
+    ["完整任務連續",`${rec.fullQuestDayStreak} 天`],
+    ["解鎖日期",rec.time]
+  ];
+  const positions=[[90,495],[555,495],[90,690],[555,690]];
+
+  ctx.textAlign="left";
+  boxes.forEach((b,i)=>{
+    const [x,y]=positions[i];
+    ctx.fillStyle="rgba(255,255,255,.82)";
+    ctx.strokeStyle=theme.accent+"29";
+    ctx.lineWidth=2;
+    ctx.beginPath();
+    ctx.roundRect(x,y,435,155,24);
+    ctx.fill(); ctx.stroke();
+
+    ctx.fillStyle=theme.soft;
+    ctx.font='700 23px "Microsoft JhengHei", sans-serif';
+    ctx.fillText(b[0],x+24,y+42);
+
+    ctx.fillStyle=theme.ink;
+    ctx.font='800 29px "Microsoft JhengHei", sans-serif';
+    wrapCanvasText(ctx,b[1],x+24,y+86,385,38,2);
+  });
+
+  // Ending text
+  ctx.fillStyle="rgba(255,255,255,.78)";
+  ctx.strokeStyle=theme.accent+"24";
+  ctx.beginPath();
+  ctx.roundRect(90,885,900,250,28);
+  ctx.fill(); ctx.stroke();
+
+  ctx.fillStyle=theme.soft;
+  ctx.font='700 27px "Microsoft JhengHei", sans-serif';
+  ctx.fillText("我的龍族結局",120,935);
+
+  ctx.fillStyle=theme.ink;
+  ctx.font='500 29px "Microsoft JhengHei", sans-serif';
+  wrapCanvasText(ctx,def.text,120,990,840,44,4);
+
+  // Footer
+  ctx.textAlign="center";
+  ctx.fillStyle=theme.soft;
+  ctx.font='700 24px "Microsoft JhengHei", sans-serif';
+  ctx.fillText("開心愛家園療癒",540,1215);
+  ctx.font='500 22px "Microsoft JhengHei", sans-serif';
+  ctx.fillText("BoBo ❤️ 我在｜黑暗中的光．生活的燈塔",540,1255);
+  ctx.fillText("© 2026 BoBo Tan · All Rights Reserved.",540,1295);
+
+  const a=document.createElement("a");
+  const safe=def.title.replace(/[^\u4e00-\u9fffA-Za-z0-9_-]/g,"");
+  a.download=`BoBo-龍族守護島-${safe || "結局"}.png`;
+  a.href=canvas.toDataURL("image/png");
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+
+  addToast(`<strong>📸 分享卡已產生</strong><br>${def.title} PNG 已開始下載`,"story");
+}
+function render(){
+ ensureQuestState();
+ unlockBadges();
+ $("crystal").textContent=state.crystal;
+ $("bond").textContent=state.bond;
+ $("energy").textContent=state.energy;
+ $("built").textContent=state.buildings.length;
+ $("day").textContent=state.day;
+ $("streak").textContent=state.streak;
+ $("growthBar").style.width=clamp(state.growth,0,100)+"%";
+
+ if(!state.element){
+   $("dragonEmoji").textContent="🥚";
+   $("dragonName").textContent="尚未孵化的守護龍";
+   $("dragonStage").textContent="選擇元素，開始你的龍族旅程";
+ }else{
+   const d=dragonData[state.element], idx=stageIndex();
+   $("dragonEmoji").textContent=d.emoji[idx];
+   $("dragonName").textContent=d.name;
+   $("dragonStage").textContent=(idx===1?"幼龍":"守護龍")+"｜成長 "+state.growth+"%｜"+d.message;
+ }
+
+ const sd=storyDays[Math.min(state.day-1,6)];
+ $("storyDayLabel").textContent="DAY "+state.day;
+ $("storyTitle").textContent=sd.title;
+ $("storyText").textContent=sd.story;
+ $("unlockBanner").textContent=sd.unlock;
+
+ const rg=$("regionGrid"); rg.innerHTML="";
+ regions.forEach(r=>{
+   const x=document.createElement("div");
+   x.className="region"+(state.day<r.day?" locked":state.day===r.day?" current":"");
+   x.innerHTML=`<span class="icon">${r.icon}</span><strong>${r.name}</strong><small>${state.day<r.day?`第 ${r.day} 天解鎖`:state.day===r.day?"今日新區域":"已解鎖"}</small>`;
+   rg.appendChild(x);
+ });
+
+ const log=$("storyLog"); log.innerHTML="";
+ storyDays.forEach((s,i)=>{
+   if(i+1>state.day)return;
+   const d=document.createElement("details");
+   if(i+1===state.day)d.open=true;
+   d.innerHTML=`<summary>Day ${i+1}・${s.title.replace(/^第.+?｜/,"")}</summary><p>${s.story}</p>`;
+   log.appendChild(d);
+ });
+
+ $("missionText").textContent=missions[Math.min(state.day-1,6)];
+ $("exploreBtn").disabled=!state.element || (state.questCounts.explore||0)>=1;
+ $("exploreBtn").textContent=(state.questCounts.explore||0)>=1?"✓ 今日區域已探索":"🧭 探索今日區域";
+ $("missionBtn").disabled=state.missionDone || !state.element;
+ $("missionBtn").textContent=state.missionDone?"今日任務已完成":"完成今日任務";
+ $("nextDayBtn").disabled=!state.missionDone || state.day>=7;
+
+ document.querySelectorAll(".action-btn").forEach(b=>{
+   b.disabled=!state.element || state.energy<=0;
+ });
+
+ $("checkinBtn").disabled=state.checkinDate===todayKey();
+ $("checkinBtn").textContent=state.checkinDate===todayKey()?"今日已簽到":"今日簽到";
+
+ $("hatchPanel").style.display=state.element?"none":"block";
+
+ const bv=$("buildingsView"); bv.innerHTML="";
+ state.buildings.forEach(id=>{
+   const d=buildingDefs.find(x=>x.id===id);
+   const el=document.createElement("div"); el.className="building";
+   el.innerHTML=`${d.icon}<span>${d.name}</span>`; bv.appendChild(el);
+ });
+
+ const bg=$("buildGrid"); bg.innerHTML="";
+ buildingDefs.forEach(def=>{
+   const done=state.buildings.includes(def.id);
+   const unlocked=def.unlock(state);
+   const b=document.createElement("button");
+   b.type="button"; b.className="build-btn";
+   b.disabled=done || !unlocked || state.crystal<def.cost;
+   b.innerHTML=`${def.icon} ${def.name}<small>${done?"已完成":unlocked?`需要 ${def.cost} 龍晶`:"尚未解鎖"}</small>`;
+   b.addEventListener("click",()=>build(def));
+   bg.appendChild(b);
+ });
+
+ const qb=$("dailyQuestBoard"); qb.innerHTML="";
+ dailyQuestTemplates.forEach(q=>{
+   const count=state.questCounts[q.id]||0;
+   const pct=Math.min(100,(count/q.target)*100);
+   const claimed=state.questClaimed.includes(questKey(q.id));
+   const card=document.createElement("div");
+   card.className="quest-card";
+   card.innerHTML=`
+     <div class="quest-head">
+       <div class="quest-title">${q.label}</div>
+       <div class="quest-reward">${questRewardLabel(q)}</div>
+     </div>
+     <div class="quest-desc">${q.desc}</div>
+     <div class="quest-progress"><div style="width:${pct}%"></div></div>
+     <div class="quest-foot">
+       <span>${Math.min(count,q.target)} / ${q.target}</span>
+       <span class="${claimed?"quest-done":""}">${claimed?"✓ 獎勵已領取":count>=q.target?"等待領取":"進行中"}</span>
+     </div>`;
+   qb.appendChild(card);
+ });
+
+ const completedToday=dailyQuestTemplates.filter(q=>
+   state.questClaimed.includes(questKey(q.id))
+ ).length;
+ $("questSummary").innerHTML=`今日任務完成：<strong>${completedToday} / ${dailyQuestTemplates.length}</strong>　
+ 任務徽章進度：<strong>${state.questBadgeProgress} / 3</strong>`;
+
+ const latestHint=state.storyHints.length?state.storyHints[state.storyHints.length-1]:"完成靜心任務後，可能會出現新的故事提示。";
+ $("storyHint").textContent="📖 故事提示："+latestHint;
+
+ $("comboCount").textContent=state.comboCompleted.length;
+
+ const ct=$("comboTrack"); ct.innerHTML="";
+ comboOrder.forEach(x=>{
+   const done=state.comboCompleted.includes(x.id);
+   const el=document.createElement("div");
+   el.className="combo-step"+(done?" done":"");
+   el.innerHTML=`<strong>${x.icon}</strong>${x.name}<br>${done?"✓ 已完成":"尚未完成"}`;
+   ct.appendChild(el);
+ });
+
+ const cbl=$("comboBonusList"); cbl.innerHTML="";
+ comboMilestones.forEach(m=>{
+   const claimed=state.comboBonusesClaimed.includes(comboBonusKey(m.count));
+   const el=document.createElement("div");
+   el.className="combo-bonus"+(claimed?" claimed":"");
+   el.textContent=(claimed?"✓ ":"○ ")+m.label;
+   cbl.appendChild(el);
+ });
+
+ const latestSpecial=state.specialStoryHints.length
+   ? state.specialStoryHints[state.specialStoryHints.length-1]
+   : "完成今日五種任務鏈，可解鎖特殊故事提示。";
+
+ $("fullDayStreak").innerHTML=
+   `🐉 全套任務連續完成：<strong>${state.fullQuestDayStreak} 天</strong><br>`+
+   `3 天獎勵：額外 2 龍晶＋徽章進度 +1｜7 天獎勵：5 龍晶＋徽章進度 +2＋特殊徽章<br>`+
+   `📖 特殊提示：${latestSpecial}`;
+
+ const todaysBranches=state.branchHistory.filter(x=>x.day===state.day);
+ const latestBranch=todaysBranches.length?todaysBranches[todaysBranches.length-1]:null;
+
+ if(latestBranch){
+   $("branchPathLabel").textContent=latestBranch.path;
+   $("branchStory").innerHTML=`<strong>${latestBranch.path}</strong><br>${latestBranch.story}`;
+ }else{
+   $("branchPathLabel").textContent="尚未觸發";
+   $("branchStory").textContent="完成餵食、訓練、靜心、探索或建設任務後，這裡會出現今天的分支故事。";
+ }
+
+ const dominant=dominantBranch();
+ if(dominant){
+   $("branchEndingHint").textContent=endingHints[dominant];
+ }else{
+   $("branchEndingHint").textContent="結局提示仍在形成中。完成更多不同任務，看看你的守護龍最常走向哪一條路。";
+ }
+
+ const blog=$("branchLog"); blog.innerHTML="";
+ state.branchHistory.slice().reverse().slice(0,10).forEach(item=>{
+   const d=document.createElement("details");
+   d.innerHTML=`<summary>Day ${item.day}・${item.path}</summary><p>${item.story}</p>`;
+   blog.appendChild(d);
+ });
+
+ renderShareCard();
+
+ const resolveBtn=$("resolveEndingBtn");
+ resolveBtn.disabled=!(state.day>=7 && state.missionDone);
+
+ const dominantNow=dominantBranch();
+ const dominantText=dominantNow?branchLabels[dominantNow]:"尚未形成單一路線";
+ $("endingCriteriaText").innerHTML=
+   `任務主要傾向：<strong>${dominantText}</strong><br>`+
+   `建設成果：<strong>${state.buildings.length} / ${buildingDefs.length}</strong><br>`+
+   `完整任務連續完成：<strong>${state.fullQuestDayStreak} 天</strong><br>`+
+   `已解鎖結局：<strong>${state.unlockedEndings.length} / ${endingDefs.length}</strong>`;
+
+ if(state.currentEnding){
+   const def=endingDefs.find(x=>x.id===state.currentEnding);
+   if(def){
+     $("currentEndingTitle").textContent=`${def.icon} ${def.title}`;
+     $("currentEndingText").textContent=def.text;
+   }
+ }else{
+   $("currentEndingTitle").textContent="尚未完成最終結局";
+   $("currentEndingText").textContent="完成第 7 天主線後，系統會依你的遊玩方式判定結局。";
+ }
+
+ const gallery=$("endingGallery"); gallery.innerHTML="";
+ endingDefs.forEach(def=>{
+   const unlocked=state.unlockedEndings.includes(def.id);
+   const card=document.createElement("div");
+   card.className="ending-card "+(unlocked?"unlocked":"locked");
+   card.innerHTML=`
+     <div class="icon">${unlocked?def.icon:"🔒"}</div>
+     <h4>${unlocked?def.title:"？？？"}</h4>
+     <p>${unlocked?def.text:def.condition}</p>
+     <span class="status">${unlocked?"已解鎖":"未解鎖"}</span>`;
+   gallery.appendChild(card);
+ });
+
+ const er=$("endingRecord"); er.innerHTML="";
+ state.endingRecords.slice().reverse().forEach((r,idx)=>{
+   const d=document.createElement("details");
+   d.innerHTML=`
+     <summary>${r.title}・紀錄 ${state.endingRecords.length-idx}</summary>
+     <p>
+       解鎖時間：${r.time}<br>
+       建設成果：${r.buildings} 座<br>
+       完整任務連續：${r.fullQuestDayStreak} 天<br>
+       任務傾向：
+       餵食 ${r.branchCounts.feed}・訓練 ${r.branchCounts.train}・靜心 ${r.branchCounts.meditate}・探索 ${r.branchCounts.explore}・建設 ${r.branchCounts.build}
+     </p>`;
+   er.appendChild(d);
+ });
+
+ const badgeBox=$("badges"); badgeBox.innerHTML="";
+ badgeDefs.forEach(([id,name,desc])=>{
+   const x=document.createElement("div");
+   x.className="badge"+(state.badges.includes(id)?"":" locked");
+   x.title=desc; x.textContent=(state.badges.includes(id)?"🏅 ":"🔒 ")+name;
+   badgeBox.appendChild(x);
+ });
+
+ save();
+}
+
+function show(msg){$("message").textContent=msg;}
+
+function addToast(text,type=""){
+  const wrap=$("rewardToastWrap");
+  if(!wrap) return;
+  const t=document.createElement("div");
+  t.className="reward-toast"+(type?" "+type:"");
+  t.innerHTML=text;
+  wrap.appendChild(t);
+  setTimeout(()=>{
+    t.style.animation="boboToastOut .25s ease forwards";
+    setTimeout(()=>t.remove(),260);
+  },2800);
+}
+
+function openRewardModal({icon="🎁",title="任務完成",text="",items=[],story=""}={}){
+  const backdrop=$("rewardModalBackdrop");
+  if(!backdrop) return;
+  $("rewardModalIcon").textContent=icon;
+  $("rewardModalTitle").textContent=title;
+  $("rewardModalText").textContent=text;
+  const list=$("rewardItems");
+  list.innerHTML="";
+  items.forEach(item=>{
+    const div=document.createElement("div");
+    div.className="reward-item";
+    div.textContent=item;
+    list.appendChild(div);
+  });
+  const storyBox=$("rewardStory");
+  if(story){
+    storyBox.hidden=false;
+    storyBox.textContent="📖 "+story;
+  }else{
+    storyBox.hidden=true;
+    storyBox.textContent="";
+  }
+  backdrop.classList.add("show");
+  document.body.style.overflow="hidden";
+  setTimeout(()=>$("rewardCloseBtn").focus(),0);
+}
+
+function closeRewardModal(){
+  const backdrop=$("rewardModalBackdrop");
+  if(!backdrop) return;
+  backdrop.classList.remove("show");
+  document.body.style.overflow="";
+}
+
+function animateQuestCard(taskId){
+  const cards=[...document.querySelectorAll(".quest-card")];
+  const index=["feed","train","meditate","explore","build"].indexOf(taskId);
+  if(index>=0 && cards[index]){
+    cards[index].classList.remove("quest-pop");
+    void cards[index].offsetWidth;
+    cards[index].classList.add("quest-pop");
+  }
+}
+
+function animateComboPanel(){
+  const panel=document.querySelector(".combo-panel");
+  if(!panel)return;
+  panel.classList.remove("combo-flash");
+  void panel.offsetWidth;
+  panel.classList.add("combo-flash");
+}
+
+
+let selected=null;
+document.querySelectorAll(".elbtn").forEach(btn=>{
+ btn.addEventListener("click",()=>{
+   selected=btn.dataset.el;
+   document.querySelectorAll(".elbtn").forEach(x=>x.setAttribute("aria-pressed",x===btn?"true":"false"));
+   $("hatchBtn").disabled=false;
+ });
+});
+
+$("hatchBtn").addEventListener("click",()=>{
+ if(!selected || state.crystal<2)return;
+ state.element=selected; state.crystal-=2; state.growth=5; state.bond=2;
+ show(`✨ ${dragonData[selected].name}破殼而出了！你們的第一份羈絆已經開始。`);
+ addToast(`<strong>🥚 孵化成功</strong><br>${dragonData[selected].name} 已成為你的守護龍`,"story");
+ openRewardModal({
+   icon:"🐉",
+   title:"守護龍誕生",
+   text:`${dragonData[selected].name} 已經破殼而出。`,
+   items:["❤️ 初始羈絆 +2","🌱 成長進度 5%","🏅 徽章：破殼之光"]
+ });
+ render();
+});
+
+document.querySelectorAll(".action-btn").forEach(btn=>{
+ btn.addEventListener("click",()=>{
+   if(!state.element || state.energy<=0)return;
+   const a=btn.dataset.action;
+   state.energy--;
+   if(a==="feed"){state.bond+=2;state.growth+=6;state.questCounts.feed++;registerComboTask("feed");animateQuestCard("feed");triggerBranchStory("feed");show("🍎 守護龍吃下龍果，開心地靠近你。");}
+   if(a==="train"){state.bond+=1;state.growth+=8;state.questCounts.train++;registerComboTask("train");animateQuestCard("train");triggerBranchStory("train");show("⚔️ 完成一次元素訓練，力量與方向都更清楚了。");}
+   if(a==="meditate"){state.bond+=3;state.growth+=4;state.questCounts.meditate++;registerComboTask("meditate");animateQuestCard("meditate");triggerBranchStory("meditate");show("🧘 你和守護龍一起安靜下來，羈絆變得更深。");}
+   state.growth=clamp(state.growth,0,100);
+   checkDailyQuestAutoClaim();
+   render();
+ });
+});
+
+function build(def){
+ if(state.buildings.includes(def.id) || !def.unlock(state) || state.crystal<def.cost)return;
+ state.crystal-=def.cost; state.buildings.push(def.id); state.questCounts.build++; registerComboTask("build"); animateQuestCard("build"); triggerBranchStory("build");
+ show(`🏗️ ${def.name}建設完成！你的龍族領地又多了一處新的風景。`);
+ checkDailyQuestAutoClaim();
+ render();
+}
+
+$("exploreBtn").addEventListener("click",()=>{
+ if(!state.element || (state.questCounts.explore||0)>=1)return;
+ state.questCounts.explore++; registerComboTask("explore"); animateQuestCard("explore"); triggerBranchStory("explore");
+ state.bond+=1;
+ show(`🧭 你和守護龍探索了「${storyDays[state.day-1].region}」。新的細節被你們發現了。`);
+ checkDailyQuestAutoClaim();
+ render();
+});
+
+$("missionBtn").addEventListener("click",()=>{
+ if(!state.element || state.missionDone)return;
+ state.missionDone=true; state.crystal+=2; state.bond+=1;
+ const fullDone=finalizeFullQuestDay();
+ if(!fullDone){
+   show(`📜 今日主線任務完成！獲得 2 顆龍晶與 1 點羈絆。若今天再完成五種每日任務，還可累積全套任務連續完成獎勵。`);
+ }else{
+   show(`📜 今日主線與五種每日任務都完成了！你已完成「${storyDays[state.day-1].title}」的完整守護日。`);
+ }
+ render();
+});
+
+$("nextDayBtn").addEventListener("click",()=>{
+ if(!state.missionDone || state.day>=7)return;
+ state.day++; state.missionDone=false; state.energy=Math.min(7,state.energy+3);
+ state.questCounts={feed:0,train:0,meditate:0,explore:0,build:0};
+ state.comboCompleted=[];
+ show(`🌅 來到第 ${state.day} 天。${storyDays[state.day-1].region} 已解鎖，新的龍族故事與任務開啟了。今日任務連鎖也重新開始。`);
+ render();
+});
+
+$("checkinBtn").addEventListener("click",()=>{
+ const t=todayKey();
+ if(state.checkinDate===t)return;
+ if(state.lastLogin===yesterdayKey()) state.streak+=1;
+ else if(state.lastLogin!==t) state.streak=1;
+ state.lastLogin=t; state.checkinDate=t;
+ state.crystal+=1; state.energy=Math.min(7,state.energy+2);
+ show("📅 今日簽到完成！獲得 1 顆龍晶，並補充 2 點能量。");
+ addToast("<strong>📅 今日簽到完成</strong><br>💎 龍晶 +1｜⚡ 能量 +2");
+ openRewardModal({
+   icon:"📅",
+   title:"每日簽到完成",
+   text:`連續登入 ${state.streak} 天`,
+   items:["💎 龍晶 +1","⚡ 能量 +2",`🔥 連續登入：${state.streak} 天`]
+ });
+ render();
+});
+
+$("resetBtn").addEventListener("click",()=>{
+ if(!confirm("要重新開始龍族守護島嗎？簽到與徽章會保留，但龍族與建設進度會重置。"))return;
+ const keep={
+   checkinDate:state.checkinDate,
+   streak:state.streak,
+   lastLogin:state.lastLogin,
+   badges:state.badges,
+   unlockedEndings:state.unlockedEndings,
+   endingRecords:state.endingRecords
+ };
+ state={element:null,growth:0,bond:0,energy:5,crystal:3,day:1,buildings:[],missionDone:false,
+        questCounts:{feed:0,train:0,meditate:0,explore:0,build:0},
+        questClaimed:[],questBadgeProgress:0,storyHints:[],
+        comboCompleted:[],comboBonusesClaimed:[],fullQuestDayStreak:0,lastFullQuestDay:0,
+        specialStoryHints:[],branchHistory:[],branchCounts:{feed:0,train:0,meditate:0,explore:0,build:0},
+        currentEnding:null,
+        ...keep};
+ selected=null;
+ document.querySelectorAll(".elbtn").forEach(x=>x.setAttribute("aria-pressed","false"));
+ show("新的龍族旅程已經準備好了。");
+ render();
+});
+
+
+$("resolveEndingBtn").addEventListener("click",()=>{
+  resolveEnding();
+});
+
+$("refreshShareCardBtn").addEventListener("click",()=>{
+  renderShareCard();
+  addToast("<strong>📸 分享卡已更新</strong><br>已同步最新結局資料");
+});
+
+$("downloadShareCardBtn").addEventListener("click",()=>{
+  downloadShareCard();
+});
+
+$("rewardCloseBtn").addEventListener("click",closeRewardModal);
+$("rewardModalBackdrop").addEventListener("click",(e)=>{
+  if(e.target===$("rewardModalBackdrop")) closeRewardModal();
+});
+document.addEventListener("keydown",(e)=>{
+  if(e.key==="Escape" && $("rewardModalBackdrop").classList.contains("show")){
+    closeRewardModal();
+  }
+});
+
+renderShareDecor(endingTheme());
+render();
+})();
+</script>
+
+<div class="reward-toast-wrap" id="rewardToastWrap" aria-live="polite" aria-atomic="false"></div>
+
+<div class="reward-modal-backdrop" id="rewardModalBackdrop" role="dialog" aria-modal="true" aria-labelledby="rewardModalTitle">
+  <div class="reward-modal">
+    <div class="reward-modal-icon" id="rewardModalIcon">🎁</div>
+    <div class="reward-sparkles" aria-hidden="true"><span>✨</span><span>💎</span><span>✨</span></div>
+    <h3 id="rewardModalTitle">任務完成</h3>
+    <p id="rewardModalText">你獲得了新的獎勵。</p>
+    <div class="reward-items" id="rewardItems"></div>
+    <div class="reward-story" id="rewardStory" hidden></div>
+    <button class="reward-close" id="rewardCloseBtn" type="button">收下獎勵</button>
+  </div>
+</div>
+
+</body>
+</html>
