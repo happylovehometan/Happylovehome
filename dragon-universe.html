@@ -670,6 +670,144 @@
     .story-collection-art::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#2d2238 0%,transparent 35%),linear-gradient(0deg,rgba(15,13,18,.45),transparent 55%)}
     .story-collection-label{position:absolute;z-index:2;left:24px;right:24px;bottom:22px;padding:12px 15px;border:1px solid rgba(255,255,255,.22);border-radius:18px;background:rgba(8,9,12,.58);backdrop-filter:blur(10px);font-family:"Noto Serif TC","PMingLiU",serif;font-size:1.04rem}
 
+
+    /* 龍族守護島遊戲入口 */
+    .dragon-game-entry{
+      position:relative;
+      overflow:hidden;
+      display:grid;
+      grid-template-columns:minmax(0,1.08fr) minmax(280px,.92fr);
+      min-height:400px;
+      border-radius:34px;
+      border:1px solid rgba(255,255,255,.62);
+      background:
+        radial-gradient(circle at 78% 18%,rgba(255,224,142,.24),transparent 24%),
+        linear-gradient(135deg,#31263f 0%,#55406a 55%,#78577f 100%);
+      box-shadow:0 25px 64px rgba(58,42,71,.20);
+      color:#fff;
+    }
+
+    .dragon-game-copy{
+      position:relative;
+      z-index:2;
+      padding:clamp(30px,5vw,58px);
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+    }
+
+    .dragon-game-kicker{
+      color:#f2d58e;
+      font-size:.78rem;
+      font-weight:900;
+      letter-spacing:.18em;
+    }
+
+    .dragon-game-copy h2{
+      margin:9px 0 13px;
+      color:#fff;
+      font-size:clamp(2rem,5vw,3.25rem);
+    }
+
+    .dragon-game-copy p{
+      margin:0 0 20px;
+      color:#eee6f2;
+      font-size:1.03rem;
+      line-height:1.9;
+    }
+
+    .dragon-game-tags{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin:0 0 24px;
+    }
+
+    .dragon-game-tags span{
+      padding:7px 11px;
+      border-radius:999px;
+      background:rgba(255,255,255,.10);
+      border:1px solid rgba(255,255,255,.15);
+      color:#fff8ff;
+      font-size:.82rem;
+      font-weight:800;
+    }
+
+    .dragon-game-link{
+      align-self:flex-start;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      min-height:52px;
+      padding:12px 23px;
+      border-radius:999px;
+      background:linear-gradient(135deg,#f7dfa4,#d9b35b);
+      color:#433649;
+      text-decoration:none;
+      font-weight:900;
+      box-shadow:0 12px 26px rgba(25,17,31,.18);
+    }
+
+    .dragon-game-visual{
+      position:relative;
+      min-height:330px;
+      display:grid;
+      place-items:center;
+      overflow:hidden;
+      background:
+        radial-gradient(circle at 50% 38%,rgba(255,255,255,.18),transparent 25%),
+        radial-gradient(circle at 50% 50%,rgba(233,207,255,.16),transparent 46%);
+    }
+
+    .dragon-game-visual::before,
+    .dragon-game-visual::after{
+      content:"";
+      position:absolute;
+      border-radius:50%;
+      border:1px solid rgba(255,255,255,.16);
+    }
+
+    .dragon-game-visual::before{
+      width:290px;height:290px;
+    }
+
+    .dragon-game-visual::after{
+      width:210px;height:210px;
+    }
+
+    .dragon-game-dragon{
+      position:relative;
+      z-index:2;
+      width:180px;
+      height:180px;
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      font-size:94px;
+      background:rgba(255,255,255,.10);
+      border:1px solid rgba(255,255,255,.22);
+      box-shadow:
+        inset 0 0 36px rgba(255,255,255,.08),
+        0 18px 42px rgba(20,14,26,.18);
+    }
+
+    .dragon-game-mini{
+      position:absolute;
+      z-index:2;
+      left:22px;
+      right:22px;
+      bottom:22px;
+      padding:13px 15px;
+      border-radius:18px;
+      background:rgba(16,12,21,.46);
+      border:1px solid rgba(255,255,255,.17);
+      backdrop-filter:blur(10px);
+      color:#f4edf7;
+      text-align:center;
+      font-size:.92rem;
+      font-weight:800;
+    }
+
     .resource-box{
       display:grid;
       grid-template-columns:repeat(3,minmax(0,1fr));
@@ -959,6 +1097,8 @@
       .journey-grid{grid-template-columns:1fr}
       .more-buttons{grid-template-columns:repeat(2,minmax(0,1fr))}
       .story-collection-entry{grid-template-columns:1fr}
+      .dragon-game-entry{grid-template-columns:1fr}
+      .dragon-game-visual{min-height:310px;order:-1}
       .story-collection-art{min-height:390px;order:-1}
       .story-collection-art::after{background:linear-gradient(0deg,#2d2238 0%,transparent 45%)}
     }
@@ -1165,6 +1305,7 @@
     <a class="primary-btn" href="#daily-dragon">🐉 抽取守護龍訊息</a>
     <a class="secondary-btn" href="#four-dragons">認識四大元素龍</a>
     <a class="secondary-btn" href="#story-collection">進入龍族故事集</a>
+    <a class="secondary-btn" href="#dragon-game">玩龍族守護島</a>
   </div>
 </section>
 
@@ -1191,6 +1332,35 @@
       </div>
       <div class="story-collection-art" role="img" aria-label="阿寧在森林裡遇見黑色守護龍">
         <div class="story-collection-label">首篇故事｜《龍會在你願意活下去時醒來》</div>
+      </div>
+    </article>
+  </section>
+
+  <section class="section" id="dragon-game">
+    <article class="dragon-game-entry">
+      <div class="dragon-game-copy">
+        <div class="dragon-game-kicker">BOBO DRAGON INTERACTIVE GAME</div>
+        <h2>🐉 BoBo 龍族守護島</h2>
+        <p>
+          孵化你的元素守護龍，走過 7 天任務劇情，完成餵食、訓練、靜心、探索與建設，
+          收集龍晶、解鎖徽章、劇情分支、多重結局與專屬結局分享卡。
+        </p>
+        <div class="dragon-game-tags" aria-label="遊戲特色">
+          <span>🥚 守護龍養成</span>
+          <span>📖 7 天劇情</span>
+          <span>🏗️ 島嶼建設</span>
+          <span>🏅 徽章系統</span>
+          <span>🏆 多重結局</span>
+          <span>📸 PNG 分享卡</span>
+        </div>
+        <a class="dragon-game-link" href="dragon-guardian-game.html">
+          進入龍族守護島 <span aria-hidden="true">→</span>
+        </a>
+      </div>
+
+      <div class="dragon-game-visual" aria-hidden="true">
+        <div class="dragon-game-dragon">🐉</div>
+        <div class="dragon-game-mini">7 日龍族養成・任務・探索・建設・結局收藏</div>
       </div>
     </article>
   </section>
@@ -1775,6 +1945,7 @@
       <a class="nav-btn" href="pet-healing.html">🐾 開心寵物療癒</a>
       <a class="nav-btn" href="story.html">🌈 BoBo 的故事</a>
       <a class="nav-btn" href="dragon-story-library.html">📖 龍族故事集</a>
+      <a class="nav-btn" href="dragon-guardian-game.html">🐉 龍族守護島遊戲</a>
       <a class="nav-btn" href="index.html">🏠 返回首頁</a>
     </div>
   </section>
