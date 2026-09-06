@@ -1263,6 +1263,20 @@ a.back{color:#6f5683;font-weight:800;text-decoration:none}
   </footer>
 </div>
 
+<div class="reward-toast-wrap" id="rewardToastWrap" aria-live="polite" aria-atomic="false"></div>
+
+<div class="reward-modal-backdrop" id="rewardModalBackdrop" role="dialog" aria-modal="true" aria-labelledby="rewardModalTitle">
+  <div class="reward-modal">
+    <div class="reward-modal-icon" id="rewardModalIcon">🎁</div>
+    <div class="reward-sparkles" aria-hidden="true"><span>✨</span><span>💎</span><span>✨</span></div>
+    <h3 id="rewardModalTitle">任務完成</h3>
+    <p id="rewardModalText">你獲得了新的獎勵。</p>
+    <div class="reward-items" id="rewardItems"></div>
+    <div class="reward-story" id="rewardStory" hidden></div>
+    <button class="reward-close" id="rewardCloseBtn" type="button">收下獎勵</button>
+  </div>
+</div>
+
 <script>
 (() => {
 const KEY="boboDragonGuardianRealmV1";
@@ -2715,9 +2729,11 @@ $("downloadShareCardBtn").addEventListener("click",()=>{
   downloadShareCard();
 });
 
-$("rewardCloseBtn").addEventListener("click",closeRewardModal);
-$("rewardModalBackdrop").addEventListener("click",(e)=>{
-  if(e.target===$("rewardModalBackdrop")) closeRewardModal();
+const rewardCloseBtn=$("rewardCloseBtn");
+const rewardModalBackdrop=$("rewardModalBackdrop");
+if(rewardCloseBtn) rewardCloseBtn.addEventListener("click",closeRewardModal);
+if(rewardModalBackdrop) rewardModalBackdrop.addEventListener("click",(e)=>{
+  if(e.target===rewardModalBackdrop) closeRewardModal();
 });
 document.addEventListener("keydown",(e)=>{
   if(e.key==="Escape" && $("rewardModalBackdrop").classList.contains("show")){
@@ -2730,19 +2746,7 @@ render();
 })();
 </script>
 
-<div class="reward-toast-wrap" id="rewardToastWrap" aria-live="polite" aria-atomic="false"></div>
 
-<div class="reward-modal-backdrop" id="rewardModalBackdrop" role="dialog" aria-modal="true" aria-labelledby="rewardModalTitle">
-  <div class="reward-modal">
-    <div class="reward-modal-icon" id="rewardModalIcon">🎁</div>
-    <div class="reward-sparkles" aria-hidden="true"><span>✨</span><span>💎</span><span>✨</span></div>
-    <h3 id="rewardModalTitle">任務完成</h3>
-    <p id="rewardModalText">你獲得了新的獎勵。</p>
-    <div class="reward-items" id="rewardItems"></div>
-    <div class="reward-story" id="rewardStory" hidden></div>
-    <button class="reward-close" id="rewardCloseBtn" type="button">收下獎勵</button>
-  </div>
-</div>
 
 </body>
 </html>
