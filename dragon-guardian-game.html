@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BoBo 龍族守護島｜專屬背景結局分享卡版</title>
+<title>BoBo 龍族守護島｜結局圖鑑篩選版</title>
 <meta name="description" content="BoBo 原創龍族互動養成遊戲：7天主線、劇情分支、多重結局、結局圖鑑、專屬背景分享卡、每日任務、連續獎勵與龍族養成。">
 <style>
 :root{
@@ -1010,6 +1010,95 @@ a.back{color:#6f5683;font-weight:800;text-decoration:none}
     radial-gradient(80px 32px at 78% 24%, rgba(139,101,162,.16), transparent 70%);
 }
 
+
+/* ===== 結局圖鑑解鎖條件提示 ===== */
+.ending-condition{
+  margin-top:10px;
+  padding:10px 12px;
+  border-radius:13px;
+  background:#f8f5fa;
+  border:1px solid rgba(105,78,119,.10);
+  color:#74687a;
+  font-size:12px;
+  line-height:1.65;
+}
+.ending-condition strong{
+  display:block;
+  margin-bottom:4px;
+  color:#66536f;
+  font-size:12px;
+}
+.ending-condition .condition-line{
+  display:block;
+}
+.ending-condition .condition-met{
+  color:#687b4d;
+  font-weight:800;
+}
+.ending-condition .condition-unmet{
+  color:#8b7b8f;
+}
+
+
+/* ===== 結局圖鑑篩選 ===== */
+.ending-filter-bar{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:16px;
+}
+.ending-filter-btn{
+  min-height:42px;
+  padding:10px 14px;
+  border-radius:999px;
+  border:1px solid var(--line);
+  background:#fff;
+  color:#6a5578;
+  font-weight:900;
+  cursor:pointer;
+}
+.ending-filter-btn.active{
+  background:linear-gradient(135deg,#72538e,#b68a62);
+  color:#fff;
+  border-color:transparent;
+}
+.ending-filter-btn .count{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:22px;
+  height:22px;
+  margin-left:8px;
+  padding:0 7px;
+  border-radius:999px;
+  background:rgba(255,255,255,.7);
+  color:#6a5578;
+  font-size:12px;
+  font-weight:900;
+}
+.ending-filter-btn.active .count{
+  background:rgba(255,255,255,.18);
+  color:#fff;
+}
+.ending-empty{
+  margin-top:16px;
+  padding:18px;
+  border-radius:16px;
+  border:1px dashed rgba(105,78,119,.18);
+  background:#fff;
+  color:#7a6f82;
+  text-align:center;
+  line-height:1.8;
+}
+.ending-card.near{
+  border-color:#e7d7ab;
+  box-shadow:0 8px 24px rgba(176,140,85,.08);
+}
+.ending-card.near .status{
+  background:#fff4d8;
+  color:#8a6a25;
+}
+
 @media(max-width:760px){
   .topstats{grid-template-columns:repeat(2,minmax(0,1fr))}
   .elements{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -1178,7 +1267,7 @@ a.back{color:#6f5683;font-weight:800;text-decoration:none}
     <h2 class="section-title">🏆 龍族多重結局與結局圖鑑</h2>
     <div class="note">
       第 7 天後，可依你的任務偏好、建設成果與完整任務連續完成天數，解鎖不同結局。
-      已解鎖結局會永久保留在這個瀏覽器的結局圖鑑中。
+      每張結局卡都會顯示解鎖條件與目前進度；已解鎖結局會永久保留在這個瀏覽器的結局圖鑑中。
     </div>
 
     <div class="ending-panel">
@@ -1196,6 +1285,13 @@ a.back{color:#6f5683;font-weight:800;text-decoration:none}
       <button class="ending-final-btn" id="resolveEndingBtn" type="button" disabled>
         解鎖我的 7 日龍族結局
       </button>
+
+      <div class="ending-filter-bar" id="endingFilterBar">
+        <button class="ending-filter-btn active" data-filter="all" type="button">全部<span class="count" id="endingCountAll">0</span></button>
+        <button class="ending-filter-btn" data-filter="unlocked" type="button">已解鎖<span class="count" id="endingCountUnlocked">0</span></button>
+        <button class="ending-filter-btn" data-filter="near" type="button">接近解鎖<span class="count" id="endingCountNear">0</span></button>
+        <button class="ending-filter-btn" data-filter="locked" type="button">未解鎖<span class="count" id="endingCountLocked">0</span></button>
+      </div>
 
       <div class="ending-gallery" id="endingGallery"></div>
       <div class="ending-record" id="endingRecord"></div>
@@ -1583,7 +1679,8 @@ let state={
  branchCounts:{feed:0,train:0,meditate:0,explore:0,build:0},
  unlockedEndings:[],
  endingRecords:[],
- currentEnding:null
+ currentEnding:null,
+ endingGalleryFilter:"all"
 };
 
 try{
@@ -1640,6 +1737,7 @@ function ensureQuestState(){
   if(!Array.isArray(state.unlockedEndings)) state.unlockedEndings=[];
   if(!Array.isArray(state.endingRecords)) state.endingRecords=[];
   if(typeof state.currentEnding!=="string" && state.currentEnding!==null) state.currentEnding=null;
+  if(!["all","unlocked","near","locked"].includes(state.endingGalleryFilter)) state.endingGalleryFilter="all";
 }
 
 function questKey(id){return `${state.day}-${id}`;}
@@ -1870,6 +1968,188 @@ function isBalancedEnding(){
   const max=Math.max(...vals);
   const min=Math.min(...vals);
   return (max-min)<=2;
+}
+
+
+function endingConditionDetails(def){
+  const dominant=dominantBranch();
+  const dominantMap={
+    feed:"餵食／陪伴",
+    train:"訓練／勇氣",
+    meditate:"靜心／內在",
+    explore:"探索／方向",
+    build:"建設／守護"
+  };
+
+  if(def.id==="companion"){
+    return {
+      lines:[
+        `主要任務偏好：餵食／陪伴`,
+        `目前主要傾向：${dominant?dominantMap[dominant]:"尚未形成"}`
+      ],
+      met:dominant==="feed",
+      progress:(()=>{
+        const vals=Object.values(state.branchCounts || {});
+        const max=Math.max(...vals,0);
+        const cur=(state.branchCounts.feed||0);
+        if(max<=0) return 0;
+        return Math.min(1,cur/max);
+      })()
+    };
+  }
+
+  if(def.id==="courage"){
+    return {
+      lines:[
+        `主要任務偏好：訓練／勇氣`,
+        `目前主要傾向：${dominant?dominantMap[dominant]:"尚未形成"}`
+      ],
+      met:dominant==="train",
+      progress:(()=>{
+        const vals=Object.values(state.branchCounts || {});
+        const max=Math.max(...vals,0);
+        const cur=(state.branchCounts.train||0);
+        if(max<=0) return 0;
+        return Math.min(1,cur/max);
+      })()
+    };
+  }
+
+  if(def.id==="inner"){
+    return {
+      lines:[
+        `主要任務偏好：靜心／內在`,
+        `目前主要傾向：${dominant?dominantMap[dominant]:"尚未形成"}`
+      ],
+      met:dominant==="meditate",
+      progress:(()=>{
+        const vals=Object.values(state.branchCounts || {});
+        const max=Math.max(...vals,0);
+        const cur=(state.branchCounts.meditate||0);
+        if(max<=0) return 0;
+        return Math.min(1,cur/max);
+      })()
+    };
+  }
+
+  if(def.id==="explorer"){
+    return {
+      lines:[
+        `主要任務偏好：探索／方向`,
+        `目前主要傾向：${dominant?dominantMap[dominant]:"尚未形成"}`
+      ],
+      met:dominant==="explore",
+      progress:(()=>{
+        const vals=Object.values(state.branchCounts || {});
+        const max=Math.max(...vals,0);
+        const cur=(state.branchCounts.explore||0);
+        if(max<=0) return 0;
+        return Math.min(1,cur/max);
+      })()
+    };
+  }
+
+  if(def.id==="home"){
+    return {
+      lines:[
+        `主要任務偏好：建設／守護`,
+        `目前主要傾向：${dominant?dominantMap[dominant]:"尚未形成"}`
+      ],
+      met:dominant==="build",
+      progress:(()=>{
+        const vals=Object.values(state.branchCounts || {});
+        const max=Math.max(...vals,0);
+        const cur=(state.branchCounts.build||0);
+        if(max<=0) return 0;
+        return Math.min(1,cur/max);
+      })()
+    };
+  }
+
+  if(def.id==="architect"){
+    return {
+      lines:[
+        `建設成果：至少 5 座`,
+        `目前建設：${state.buildings.length} / 5`
+      ],
+      met:state.buildings.length>=5,
+      progress:Math.min(1,state.buildings.length/5)
+    };
+  }
+
+  if(def.id==="steadfast"){
+    return {
+      lines:[
+        `完整任務連續完成：7 天`,
+        `目前連續：${state.fullQuestDayStreak} / 7 天`
+      ],
+      met:state.fullQuestDayStreak>=7,
+      progress:Math.min(1,state.fullQuestDayStreak/7)
+    };
+  }
+
+  if(def.id==="lighthouse"){
+    return {
+      lines:[
+        `建成療癒燈塔`,
+        `完成第 7 天主線`,
+        `目前燈塔：${state.buildings.includes("lighthouse")?"已完成":"未完成"}`,
+        `目前主線：${state.day>=7 && state.missionDone?"已完成":"未完成"}`
+      ],
+      met:state.buildings.includes("lighthouse") && state.day>=7 && state.missionDone,
+      progress:((state.buildings.includes("lighthouse")?0.5:0)+(state.day>=7 && state.missionDone?0.5:Math.min(0.5,state.day/14)))
+    };
+  }
+
+  if(def.id==="balanced"){
+    const vals=Object.values(state.branchCounts || {});
+    const max=vals.length?Math.max(...vals):0;
+    const min=vals.length?Math.min(...vals):0;
+    return {
+      lines:[
+        `五類任務分布接近`,
+        `最高與最低差距需 ≤ 2`,
+        `目前差距：${max-min}`
+      ],
+      met:isBalancedEnding(),
+      progress:(()=>{
+        const diff=max-min;
+        if(diff<=2) return 1;
+        if(diff===3) return .8;
+        if(diff===4) return .6;
+        return .3;
+      })()
+    };
+  }
+
+  return {lines:[def.condition || "完成指定條件"],met:false,progress:0};
+}
+
+
+function endingFilterState(def){
+  const unlocked=state.unlockedEndings.includes(def.id);
+  if(unlocked) return "unlocked";
+  const info=endingConditionDetails(def);
+  if(info.met) return "near";
+  if((info.progress || 0) >= .75) return "near";
+  return "locked";
+}
+
+function endingCountsByFilter(){
+  const counts={all:endingDefs.length,unlocked:0,near:0,locked:0};
+  endingDefs.forEach(def=>{
+    const status=endingFilterState(def);
+    if(status==="unlocked") counts.unlocked++;
+    else if(status==="near") counts.near++;
+    else counts.locked++;
+  });
+  return counts;
+}
+
+function setEndingGalleryFilter(filter){
+  if(!["all","unlocked","near","locked"].includes(filter)) filter="all";
+  state.endingGalleryFilter=filter;
+  render();
 }
 
 function resolveEnding(){
@@ -2492,18 +2772,50 @@ function render(){
    $("currentEndingText").textContent="完成第 7 天主線後，系統會依你的遊玩方式判定結局。";
  }
 
- const gallery=$("endingGallery"); gallery.innerHTML="";
- endingDefs.forEach(def=>{
-   const unlocked=state.unlockedEndings.includes(def.id);
-   const card=document.createElement("div");
-   card.className="ending-card "+(unlocked?"unlocked":"locked");
-   card.innerHTML=`
-     <div class="icon">${unlocked?def.icon:"🔒"}</div>
-     <h4>${unlocked?def.title:"？？？"}</h4>
-     <p>${unlocked?def.text:def.condition}</p>
-     <span class="status">${unlocked?"已解鎖":"未解鎖"}</span>`;
-   gallery.appendChild(card);
+ const counts=endingCountsByFilter();
+ $("endingCountAll").textContent=counts.all;
+ $("endingCountUnlocked").textContent=counts.unlocked;
+ $("endingCountNear").textContent=counts.near;
+ $("endingCountLocked").textContent=counts.locked;
+
+ document.querySelectorAll("#endingFilterBar .ending-filter-btn").forEach(btn=>{
+   btn.classList.toggle("active",btn.dataset.filter===state.endingGalleryFilter);
  });
+
+ const gallery=$("endingGallery"); gallery.innerHTML="";
+ const visibleEndings=endingDefs.filter(def=>{
+   const status=endingFilterState(def);
+   if(state.endingGalleryFilter==="all") return true;
+   return status===state.endingGalleryFilter;
+ });
+
+ if(!visibleEndings.length){
+   const empty=document.createElement("div");
+   empty.className="ending-empty";
+   empty.textContent="目前這個分類暫時沒有結局。繼續完成任務，之後再回來看看。";
+   gallery.appendChild(empty);
+ }else{
+   visibleEndings.forEach(def=>{
+     const unlocked=state.unlockedEndings.includes(def.id);
+     const info=endingConditionDetails(def);
+     const status=endingFilterState(def);
+     const card=document.createElement("div");
+     card.className="ending-card "+(unlocked?"unlocked":status==="near"?"near":"locked");
+     card.innerHTML=`
+       <div class="icon">${unlocked?def.icon:status==="near"?"✨":"🔒"}</div>
+       <h4>${unlocked?def.title:status==="near"?"接近解鎖":"？？？"}</h4>
+       <p>${unlocked?def.text:status==="near"?"你已經接近這個結局，繼續依照下方條件完成即可。":"完成條件後即可解鎖這個結局。"}</p>
+       <div class="ending-condition">
+         <strong>🔎 解鎖條件提示</strong>
+         ${info.lines.map(line=>`<span class="condition-line">${line}</span>`).join("")}
+         <span class="condition-line ${info.met?"condition-met":"condition-unmet"}">
+           ${info.met?"✓ 目前條件已達成":"○ 目前尚未達成"}
+         </span>
+       </div>
+       <span class="status">${unlocked?"已解鎖":status==="near"?"接近解鎖":"未解鎖"}</span>`;
+     gallery.appendChild(card);
+   });
+ }
 
  const er=$("endingRecord"); er.innerHTML="";
  state.endingRecords.slice().reverse().forEach((r,idx)=>{
@@ -2718,6 +3030,12 @@ $("resetBtn").addEventListener("click",()=>{
 
 $("resolveEndingBtn").addEventListener("click",()=>{
   resolveEnding();
+});
+
+document.querySelectorAll("#endingFilterBar .ending-filter-btn").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    setEndingGalleryFilter(btn.dataset.filter || "all");
+  });
 });
 
 $("refreshShareCardBtn").addEventListener("click",()=>{
