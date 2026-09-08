@@ -3,69 +3,101 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="BoBo 幸福療癒島：7日互動式自我覺察小遊戲，每天透過一個溫柔選擇，照顧能量、安心、連結與生活支持感。">
-<title>BoBo 幸福療癒島｜7日互動式自我覺察</title>
+<meta name="description" content="BoBo 幸福療癒島：7日互動養成小遊戲。和小島居民對話、送禮、解鎖角色故事，同時完成每日任務、收集幸福種子、建設小島與解鎖徽章。">
+<title>BoBo 幸福療癒島｜居民陪伴互動版</title>
 <style>
-*{box-sizing:border-box}body{margin:0;font-family:Arial,"Microsoft JhengHei","Noto Sans TC",sans-serif;background:linear-gradient(180deg,#fffaf5,#f7f2fb 48%,#eef8f3);color:#574c5c}.wrap{width:min(920px,calc(100% - 28px));margin:0 auto;padding:28px 0 48px}.brand{text-align:center;margin-bottom:22px}.brand .small{font-size:14px;color:#927f98;letter-spacing:.06em}.brand h1{margin:10px 0 8px;font-size:clamp(34px,7vw,58px);color:#715e86;line-height:1.15}.brand p{margin:0;color:#7f7185;line-height:1.8}.panel{background:rgba(255,255,255,.92);border:1px solid rgba(121,101,145,.14);border-radius:28px;box-shadow:0 16px 42px rgba(88,66,103,.12);overflow:hidden}.topbar{display:grid;grid-template-columns:1fr auto;gap:14px;align-items:center;padding:18px 20px;border-bottom:1px solid #eee7f0}.daypill{padding:9px 14px;border-radius:999px;background:#f0e8f5;color:#755f87;font-weight:800;font-size:14px}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;padding:16px 20px}.stat{background:#fbf8fc;border:1px solid #eee6f1;border-radius:18px;padding:13px;text-align:center}.stat span{display:block;font-size:13px;color:#887a8d}.stat strong{display:block;margin-top:4px;font-size:24px;color:#66526f}.island{position:relative;min-height:330px;margin:0 20px;border-radius:26px;overflow:hidden;background:linear-gradient(#dff0f5 0 55%,#cce5d4 55%);border:1px solid rgba(85,120,110,.14)}.sun{position:absolute;left:7%;top:8%;font-size:48px}.cloud{position:absolute;right:9%;top:11%;font-size:45px;opacity:.85}.scene{position:absolute;left:50%;bottom:42px;transform:translateX(-50%);text-align:center}.tree{font-size:78px;line-height:1}.house{font-size:70px;line-height:1;margin-top:-8px}.extras{position:absolute;left:5%;right:5%;bottom:18px;display:flex;justify-content:space-between;font-size:36px}.water{position:absolute;left:-6%;right:-6%;bottom:-22px;height:58px;background:rgba(89,174,193,.28);border-radius:50%}.play{padding:24px 20px 22px}.theme{font-size:22px;font-weight:900;color:#695477}.story{margin:9px 0 18px;color:#756979;line-height:1.8}.choices{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.choice{min-height:86px;padding:14px;border:1px solid #dfd4e5;border-radius:18px;background:#fff;color:#5b5060;font:inherit;font-weight:700;text-align:left;cursor:pointer;transition:.18s}.choice:hover{transform:translateY(-2px);border-color:#9c87ad}.choice:disabled{cursor:default}.choice.selected{border:2px solid #806aa2;background:#f8f4fb}.choice.faded{opacity:.45}.result{min-height:55px;margin:16px 0 0;padding:14px 16px;border-radius:16px;background:#faf7fc;color:#6e6173;line-height:1.75}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.btn{border:none;border-radius:999px;padding:14px 22px;font:inherit;font-weight:900;cursor:pointer;min-height:50px}.primary{background:linear-gradient(135deg,#806aa2,#6f9b8e);color:white}.secondary{background:white;border:1px solid #d8cedd;color:#6d5d74}.btn:disabled{opacity:.45;cursor:not-allowed}.ending{display:none;padding:34px 24px;text-align:center}.ending.show{display:block}.ending .emoji{font-size:60px}.ending h2{color:#6f5a81;font-size:clamp(28px,5vw,42px)}.ending p{max-width:650px;margin:12px auto;line-height:1.85;color:#756979}.message{margin:20px auto;max-width:680px;padding:18px;border-radius:18px;background:#f8f4fb;border:1px solid #e7dce9;color:#66576e;line-height:1.8}.footer{text-align:center;margin-top:24px;color:#928597;font-size:13px;line-height:1.9}.footer a{color:#785f8b;text-decoration:none;font-weight:700}.progress{height:8px;background:#eee8f1;border-radius:999px;overflow:hidden}.progress>div{height:100%;width:14.285%;background:linear-gradient(90deg,#806aa2,#6f9b8e);transition:width .3s ease}@media(max-width:720px){.stats{grid-template-columns:repeat(2,1fr)}.choices{grid-template-columns:1fr}.island{min-height:285px}.topbar{grid-template-columns:1fr}.actions .btn{flex:1 1 180px}}@media(max-width:420px){.wrap{width:min(100% - 18px,920px)}.panel{border-radius:22px}.island{margin:0 12px}.play,.stats{padding-left:12px;padding-right:12px}.theme{font-size:20px}}
+:root{--ink:#574c5c;--muted:#827487;--violet:#806aa2;--green:#6f9b8e;--gold:#d7ae59;--paper:#fffdfb;--line:rgba(121,101,145,.14);--shadow:0 16px 42px rgba(88,66,103,.12)}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,"Microsoft JhengHei","Noto Sans TC",sans-serif;background:radial-gradient(circle at 10% 8%,rgba(244,219,230,.72),transparent 24%),radial-gradient(circle at 90% 14%,rgba(220,234,247,.7),transparent 25%),linear-gradient(180deg,#fffaf5,#f7f2fb 48%,#eef8f3);color:var(--ink)}
+button{font:inherit}.wrap{width:min(1040px,calc(100% - 24px));margin:0 auto;padding:24px 0 54px}.brand{text-align:center;margin-bottom:18px}.brand .small{font-size:14px;color:#927f98;letter-spacing:.06em;font-weight:800}.brand h1{margin:9px 0 7px;font-size:clamp(34px,7vw,58px);color:#715e86;line-height:1.15}.brand p{margin:0;color:#7f7185;line-height:1.75}
+.panel{background:rgba(255,255,255,.94);border:1px solid var(--line);border-radius:30px;box-shadow:var(--shadow);overflow:hidden}
+.topbar{display:grid;grid-template-columns:1fr auto;gap:14px;align-items:center;padding:18px 20px;border-bottom:1px solid #eee7f0}.progress{height:9px;background:#eee8f1;border-radius:999px;overflow:hidden}.progress>div{height:100%;width:14.285%;background:linear-gradient(90deg,var(--violet),var(--green));transition:width .3s ease}.daypill{padding:9px 14px;border-radius:999px;background:#f0e8f5;color:#755f87;font-weight:900;font-size:14px}
+.stats{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;padding:16px 20px}.stat{background:#fbf8fc;border:1px solid #eee6f1;border-radius:18px;padding:12px;text-align:center}.stat span{display:block;font-size:12px;color:#887a8d}.stat strong{display:block;margin-top:3px;font-size:22px;color:#66526f}
+.game-grid{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(300px,.92fr);gap:18px;padding:0 20px 20px}.island-wrap{display:grid;gap:12px}.island{position:relative;min-height:410px;border-radius:28px;overflow:hidden;background:linear-gradient(#dff0f5 0 54%,#cce5d4 54%);border:1px solid rgba(85,120,110,.14)}.sun{position:absolute;left:7%;top:7%;font-size:50px}.cloud{position:absolute;right:9%;top:10%;font-size:46px;opacity:.88}.scene{position:absolute;left:50%;bottom:60px;transform:translateX(-50%);text-align:center}.tree{font-size:86px;line-height:1;filter:drop-shadow(0 8px 12px rgba(51,90,69,.12))}.house{font-size:70px;line-height:1;margin-top:-8px}.extras{position:absolute;left:5%;right:5%;bottom:24px;display:flex;justify-content:space-between;align-items:end;font-size:36px}.water{position:absolute;left:-6%;right:-6%;bottom:-22px;height:62px;background:rgba(89,174,193,.28);border-radius:50%}.build-layer{position:absolute;inset:0;pointer-events:none}.building{position:absolute;font-size:42px;filter:drop-shadow(0 5px 8px rgba(64,52,72,.14))}.building.garden{left:14%;bottom:80px}.building.bridge{right:14%;bottom:52px}.building.cafe{left:9%;top:46%}.building.pavilion{right:8%;top:45%}.building.lighthouse{right:6%;top:20%}.float-reward{position:absolute;left:50%;top:42%;transform:translate(-50%,-50%);padding:8px 12px;border-radius:999px;background:rgba(255,255,255,.9);font-weight:900;color:#6d5b78;opacity:0;pointer-events:none}.float-reward.show{animation:floatUp 1.15s ease forwards}@keyframes floatUp{0%{opacity:0;transform:translate(-50%,-20%) scale(.9)}25%{opacity:1}100%{opacity:0;transform:translate(-50%,-120%) scale(1.05)}}
+.quick-actions{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.quick-btn{min-height:68px;padding:10px;border:1px solid #dfd4e5;border-radius:16px;background:#fff;color:#5b5060;font-weight:800;cursor:pointer}.quick-btn small{display:block;margin-top:4px;color:#8e8192;font-weight:500}.quick-btn:disabled{opacity:.42;cursor:not-allowed}
+.side{display:grid;gap:14px;align-content:start}.card{border:1px solid var(--line);border-radius:22px;background:#fff;padding:18px;box-shadow:0 10px 28px rgba(88,66,103,.06)}.card h3{margin:0 0 8px;color:#695477;font-size:20px}.card p{margin:0;color:#786b7d;line-height:1.7}.build-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin-top:12px}.build-btn{min-height:78px;padding:11px;border:1px solid #dfd4e5;border-radius:16px;background:#fff;text-align:left;font-weight:800;color:#5d5262;cursor:pointer}.build-btn small{display:block;color:#8b7e90;margin-top:4px;font-weight:500}.build-btn.done{background:#eef7ef;border-color:#cce1ce}.build-btn:disabled{opacity:.45;cursor:not-allowed}.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}.badge{padding:7px 10px;border-radius:999px;background:#f2ebf6;color:#715d82;font-size:12px;font-weight:900}.badge.locked{filter:grayscale(1);opacity:.38}
+.play{padding:22px 20px 24px;border-top:1px solid #eee7f0}.theme{font-size:22px;font-weight:900;color:#695477}.story{margin:9px 0 16px;color:#756979;line-height:1.8}.choices{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.choice{min-height:92px;padding:14px;border:1px solid #dfd4e5;border-radius:18px;background:#fff;color:#5b5060;font-weight:800;text-align:left;cursor:pointer;transition:.18s}.choice:hover{transform:translateY(-2px);border-color:#9c87ad}.choice:disabled{cursor:default}.choice.selected{border:2px solid var(--violet);background:#f8f4fb}.choice.faded{opacity:.45}.result{min-height:58px;margin:15px 0 0;padding:14px 16px;border-radius:16px;background:#faf7fc;color:#6e6173;line-height:1.75}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:15px}.btn{border:none;border-radius:999px;padding:13px 22px;font-weight:900;cursor:pointer;min-height:48px}.primary{background:linear-gradient(135deg,var(--violet),var(--green));color:white}.secondary{background:white;border:1px solid #d8cedd;color:#6d5d74}.btn:disabled{opacity:.45;cursor:not-allowed}
+.quest-row{display:grid;gap:8px;margin-top:10px}.quest-item{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:10px 12px;border-radius:14px;background:#faf7fb;border:1px solid #eee6f1;font-size:13px;color:#716477}.quest-item.done{background:#f1f7ed;color:#67754e}.quest-item strong{white-space:nowrap}.event-log{margin-top:10px;max-height:170px;overflow:auto;padding-right:3px;display:grid;gap:7px}.event-log div{padding:9px 11px;border-radius:12px;background:#faf7fb;color:#756979;font-size:13px;line-height:1.55}
+.ending{display:none;padding:34px 24px;text-align:center}.ending.show{display:block}.ending .emoji{font-size:62px}.ending h2{color:#6f5a81;font-size:clamp(28px,5vw,42px)}.ending p{max-width:700px;margin:12px auto;line-height:1.85;color:#756979}.message{margin:20px auto;max-width:720px;padding:18px;border-radius:18px;background:#f8f4fb;border:1px solid #e7dce9;color:#66576e;line-height:1.8}.ending-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;max-width:720px;margin:18px auto}.ending-summary div{padding:14px;border-radius:16px;background:#fff;border:1px solid #e8dfeb}.ending-summary span{display:block;font-size:12px;color:#8a7c8f}.ending-summary strong{display:block;margin-top:5px;color:#67536f}
+.modal-backdrop{position:fixed;inset:0;display:none;place-items:center;padding:18px;background:rgba(42,33,48,.48);backdrop-filter:blur(4px);z-index:999}.modal-backdrop.show{display:grid}.modal{width:min(500px,100%);padding:24px;border-radius:26px;background:#fffdfb;box-shadow:0 24px 70px rgba(34,24,41,.28);text-align:center}.modal .icon{font-size:56px}.modal h3{margin:8px 0;color:#604d6e;font-size:28px}.modal p{color:#756979;line-height:1.75}.modal .reward-box{margin:14px 0;padding:13px;border-radius:15px;background:#f7f3fa;color:#6d5b78;font-weight:900}
+.footer{text-align:center;margin-top:24px;color:#928597;font-size:13px;line-height:1.9}.footer a{color:#785f8b;text-decoration:none;font-weight:700}
+@media(max-width:840px){.stats{grid-template-columns:repeat(3,1fr)}.game-grid{grid-template-columns:1fr}}@media(max-width:720px){.choices{grid-template-columns:1fr}.island{min-height:330px}.topbar{grid-template-columns:1fr}.actions .btn{flex:1 1 180px}}
+.resident-layer{position:absolute;inset:0;pointer-events:none}
+.resident-sprite{
+  position:absolute;display:grid;place-items:center;width:54px;height:54px;
+  border-radius:50%;background:rgba(255,255,255,.78);
+  border:1px solid rgba(121,101,145,.15);font-size:30px;
+  box-shadow:0 7px 16px rgba(75,59,85,.10)
+}
+.resident-sprite.r1{left:24%;bottom:112px}
+.resident-sprite.r2{right:20%;bottom:118px}
+.resident-sprite.r3{left:15%;top:28%}
+.resident-sprite.r4{right:13%;top:30%}
+
+.residents-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:12px}
+.resident-card{
+  padding:13px;border-radius:17px;background:#fff;border:1px solid #e7ddeb;
+}
+.resident-top{display:flex;gap:10px;align-items:center}
+.resident-face{
+  flex:0 0 48px;width:48px;height:48px;border-radius:50%;display:grid;place-items:center;
+  background:#f7f2f9;font-size:28px;border:1px solid #eadfeb
+}
+.resident-name{font-weight:900;color:#66536f}
+.resident-role{font-size:12px;color:#8c7f91;margin-top:2px}
+.friendship{margin-top:9px;height:7px;border-radius:999px;background:#eee8f1;overflow:hidden}
+.friendship>div{height:100%;background:linear-gradient(90deg,#d79ab1,#8f82ae);transition:width .25s ease}
+.friendship-text{margin-top:5px;color:#85798a;font-size:12px}
+.resident-actions{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:10px}
+.resident-btn{
+  min-height:40px;border-radius:999px;border:1px solid #ded4e3;background:#fff;
+  color:#65576d;font-weight:800;cursor:pointer;padding:8px 10px;font-size:13px
+}
+.resident-btn.gift{background:#fff8e8;border-color:#eadab3}
+.resident-btn:disabled{opacity:.42;cursor:not-allowed}
+.resident-story{
+  margin-top:9px;padding:9px 10px;border-radius:12px;background:#faf7fb;
+  color:#746878;font-size:12px;line-height:1.55
+}
+.storybook{display:grid;gap:7px;margin-top:10px}
+.storybook details{
+  padding:9px 10px;border:1px solid #ece3ef;border-radius:12px;background:#fff
+}
+.storybook summary{cursor:pointer;font-weight:900;color:#6d5a78;font-size:13px}
+.storybook p{margin:7px 0 0;color:#7c7080;font-size:12px;line-height:1.6}
+
+@media(max-width:480px){.wrap{width:min(100% - 14px,1040px)}.panel{border-radius:22px}.game-grid,.play,.stats{padding-left:12px;padding-right:12px}.stats{grid-template-columns:repeat(2,1fr)}.quick-actions{grid-template-columns:repeat(2,1fr)}.build-grid{grid-template-columns:1fr}.ending-summary{grid-template-columns:1fr}.residents-grid{grid-template-columns:1fr}.theme{font-size:20px}}
 </style>
 </head>
 <body>
 <main class="wrap">
-  <header class="brand">
-    <div class="small">🌿 開心愛家園療癒</div>
-    <h1>BoBo 幸福療癒島</h1>
-    <p>7 日互動式自我覺察小遊戲<br>BoBo ❤️ 我在｜黑暗中的光．生活的燈塔</p>
-  </header>
-
-  <section class="panel" aria-label="BoBo 幸福療癒島遊戲">
-    <div class="topbar">
-      <div>
-        <div class="progress" aria-label="七日進度"><div id="progressBar"></div></div>
-      </div>
-      <div class="daypill">第 <span id="dayLabel">1</span> / 7 天</div>
-    </div>
-
-    <div class="stats" aria-label="小島狀態">
-      <div class="stat"><span>🌿 能量</span><strong id="energy">50</strong></div>
-      <div class="stat"><span>🏡 安心</span><strong id="calm">50</strong></div>
-      <div class="stat"><span>💞 連結</span><strong id="love">50</strong></div>
-      <div class="stat"><span>✨ 支持</span><strong id="support">50</strong></div>
-    </div>
-
-    <div class="island" aria-label="幸福小島場景">
-      <div class="sun">☀️</div><div class="cloud" id="cloud">☁️</div>
-      <div class="scene"><div class="tree" id="tree">🌱</div><div class="house">🏡</div></div>
-      <div class="extras" id="extras"><span>🌼</span><span>🪨</span></div><div class="water"></div>
-    </div>
-
-    <div class="play" id="playPanel">
-      <div class="theme" id="dayTheme"></div>
-      <div class="story" id="story"></div>
-      <div class="choices" id="choices"></div>
-      <div class="result" id="result" aria-live="polite">選一個今天最想做的小行動。</div>
-      <div class="actions">
-        <button type="button" class="btn primary" id="nextBtn" disabled>選好後繼續</button>
-        <button type="button" class="btn secondary" id="resetBtn">重新開始</button>
-      </div>
-    </div>
-
-    <div class="ending" id="ending">
-      <div class="emoji">🌈🏡✨</div>
-      <h2>你的 7 日幸福療癒島完成了</h2>
-      <p id="endingText"></p>
-      <div class="message" id="finalMessage"></div>
-      <button type="button" class="btn primary" id="playAgainBtn">再玩一次</button>
-    </div>
-  </section>
-
-  <div class="footer">
-    這是一個自我覺察與情緒陪伴小遊戲，不取代醫療、心理治療或其他專業服務。<br>
-    © 2026 BoBo Tan・開心愛家園療癒・All Rights Reserved.<br>
-    <a href="healing.html">← 返回 BoBo 療癒服務</a>
-  </div>
+<header class="brand"><div class="small">🌿 開心愛家園療癒</div><h1>BoBo 幸福療癒島</h1><p>7 日互動養成小遊戲<br>種下幸福、照顧小島，也慢慢照顧自己</p></header>
+<section class="panel" aria-label="BoBo 幸福療癒島遊戲">
+<div class="topbar"><div><div class="progress" aria-label="七日進度"><div id="progressBar"></div></div></div><div class="daypill">第 <span id="dayLabel">1</span> / 7 天</div></div>
+<div class="stats" aria-label="小島狀態"><div class="stat"><span>🌿 能量</span><strong id="energy">50</strong></div><div class="stat"><span>🏡 安心</span><strong id="calm">50</strong></div><div class="stat"><span>💞 連結</span><strong id="love">50</strong></div><div class="stat"><span>✨ 支持</span><strong id="support">50</strong></div><div class="stat"><span>🌱 幸福種子</span><strong id="seeds">3</strong></div><div class="stat"><span>🏗️ 建設</span><strong id="buildCount">0</strong></div></div>
+<div class="game-grid">
+<div class="island-wrap"><div class="island" aria-label="幸福小島場景"><div class="sun">☀️</div><div class="cloud" id="cloud">☁️</div><div class="scene"><div class="tree" id="tree">🌱</div><div class="house">🏡</div></div><div class="build-layer" id="buildLayer"></div><div class="resident-layer" id="residentLayer"></div><div class="extras" id="extras"><span>🌼</span><span>🪨</span></div><div class="water"></div><div class="float-reward" id="floatReward">+1 🌱</div></div>
+<div class="quick-actions" aria-label="小島互動"><button class="quick-btn" type="button" data-act="water">💧 澆水<small>安心 +2</small></button><button class="quick-btn" type="button" data-act="walk">🚶 散步<small>能量 +2</small></button><button class="quick-btn" type="button" data-act="tidy">🧺 整理<small>支持 +2</small></button><button class="quick-btn" type="button" data-act="connect">💌 聯繫<small>連結 +2</small></button><button class="quick-btn" type="button" data-act="rest">☕ 休息<small>安心 +1・能量 +1</small></button><button class="quick-btn" type="button" data-act="collect">✨ 撿拾微光<small>可能得到種子</small></button></div></div>
+<aside class="side"><div class="card"><h3>🎯 今日小島任務</h3><p>除了今天的主要選擇，再完成 2 個小島互動，就可以拿到額外幸福種子。</p><div class="quest-row" id="questRow"></div></div><div class="card"><h3>🏗️ 建設幸福小島</h3><p>用幸福種子慢慢把小島建起來。不同建築也會影響最後的島嶼結局。</p><div class="build-grid" id="buildGrid"></div></div><div class="card">
+<h3>👥 小島居民與陪伴角色</h3>
+<p>和居民對話、送小禮物，提升熟悉度。不同熟悉度與建設會解鎖角色故事。</p>
+<div class="residents-grid" id="residentsGrid"></div>
+</div>
+<div class="card">
+<h3>📖 居民故事集</h3>
+<p>你解鎖過的居民故事會留在這裡，可以重新閱讀。</p>
+<div class="storybook" id="residentStorybook"></div>
+</div><div class="card"><h3>🏅 島嶼徽章</h3><div class="badges" id="badges"></div></div><div class="card"><h3>📜 小島日誌</h3><div class="event-log" id="eventLog"></div></div></aside>
+</div>
+<div class="play" id="playPanel"><div class="theme" id="dayTheme"></div><div class="story" id="story"></div><div class="choices" id="choices"></div><div class="result" id="result" aria-live="polite">選一個今天最想做的小行動。</div><div class="actions"><button type="button" class="btn primary" id="nextBtn" disabled>選好後繼續</button><button type="button" class="btn secondary" id="resetBtn">重新開始</button></div></div>
+<div class="ending" id="ending"><div class="emoji" id="endingEmoji">🌈🏡✨</div><h2 id="endingTitle">你的 7 日幸福療癒島完成了</h2><p id="endingText"></p><div class="ending-summary"><div><span>幸福種子</span><strong id="endingSeeds">0</strong></div><div><span>完成建設</span><strong id="endingBuildings">0</strong></div><div><span>解鎖徽章</span><strong id="endingBadges">0</strong></div></div><div class="message" id="finalMessage"></div><button type="button" class="btn primary" id="playAgainBtn">再玩一次</button></div>
+</section>
+<div class="footer">這是一個自我覺察與情緒陪伴小遊戲，不取代醫療、心理治療或其他專業服務。<br>© 2026 BoBo Tan・開心愛家園療癒・All Rights Reserved.<br><a href="healing.html">← 返回 BoBo 療癒服務</a></div>
 </main>
+<div class="modal-backdrop" id="modalBackdrop"><div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="icon" id="modalIcon">🎁</div><h3 id="modalTitle">獲得獎勵</h3><p id="modalText"></p><div class="reward-box" id="modalReward"></div><button type="button" class="btn primary" id="modalClose">收下獎勵</button></div></div>
 <script>
 (()=>{
+const KEY="boboHappyHealingIslandV2";
 const days=[
 {t:'Day 1 · 先讓自己安定下來',s:'清晨的小島剛醒來。今天你想先照顧哪一部分？',c:[['🌬️ 做 3 次慢呼吸',{calm:12,energy:4},'你沒有急著往前，而是先回到自己的呼吸。'],['☕ 安靜喝一杯喜歡的飲品',{calm:8,love:5},'一小段屬於自己的時間，也是一種照顧。'],['📵 暫時放下手機',{calm:7,energy:7},'少一點外界聲音，小島安靜了一些。']]},
 {t:'Day 2 · 整理生活的空間',s:'島上的小屋有點凌亂。你決定做一件小事。',c:[['🧺 整理一個角落',{calm:8,support:8},'不用一次整理人生，先整理眼前的一小塊。'],['🗑️ 放下一件不再需要的東西',{calm:10,energy:5},'留白出現了，新的空間也跟著出現。'],['🌿 為房間增加一點舒服感',{love:8,calm:6},'你正在告訴自己：我值得住在舒服的地方。']]},
@@ -75,14 +107,211 @@ const days=[
 {t:'Day 6 · 讓內在重新有光',s:'傍晚下了一場雨，天空慢慢亮回來。',c:[['🕯️ 安靜陪伴自己 10 分鐘',{calm:10,love:8},'你沒有催促自己變好，只是陪自己待在這裡。'],['🎵 聽一首讓你舒服的歌',{energy:8,love:8},'聲音像風一樣穿過小島。'],['🌅 想像明天值得期待的一件小事',{support:9,energy:8},'希望不需要很巨大，一點點就足夠照亮下一步。']]},
 {t:'Day 7 · 把幸福帶回日常',s:'第七天，小島長出了新的風景。你想留下什麼？',c:[['💗 對自己說一句溫柔的話',{love:14,calm:5},'你也可以成為那個不離開自己的人。'],['🌳 決定保留一個新的生活習慣',{support:12,energy:6},'真正的改變，往往藏在可以持續的小事裡。'],['✨ 為這七天的自己說謝謝',{love:9,support:9},'你走到這裡，不需要完美，也值得被看見。']]}
 ];
-const $=id=>document.getElementById(id);let day=0,state={energy:50,calm:50,love:50,support:50},chosen=false;
-function clamp(v){return Math.max(0,Math.min(100,v))}
-function draw(){['energy','calm','love','support'].forEach(k=>$(k).textContent=state[k]);$('dayLabel').textContent=Math.min(day+1,7);$('progressBar').style.width=((day+1)/7*100)+'%';const avg=(state.energy+state.calm+state.love+state.support)/4;$('tree').textContent=avg>=78?'🌳':avg>=64?'🌲':avg>=54?'🌿':'🌱';$('cloud').textContent=state.calm>=74?'☁️✨':'☁️';$('extras').innerHTML=state.love>=72?'<span>🌷</span><span>🦋</span><span>🌼</span>':state.support>=70?'<span>🌼</span><span>⛵</span>':'<span>🌼</span><span>🪨</span>'}
-function render(){chosen=false;$('nextBtn').disabled=true;$('nextBtn').textContent='選好後繼續';$('result').textContent='選一個今天最想做的小行動。';const d=days[day];$('dayTheme').textContent=d.t;$('story').textContent=d.s;const box=$('choices');box.innerHTML='';d.c.forEach((item,i)=>{const b=document.createElement('button');b.type='button';b.className='choice';b.textContent=item[0];b.addEventListener('click',()=>choose(i,b));box.appendChild(b)});draw()}
-function choose(i,btn){if(chosen)return;chosen=true;const item=days[day].c[i];Object.entries(item[1]).forEach(([k,v])=>state[k]=clamp(state[k]+v));document.querySelectorAll('.choice').forEach(b=>{b.disabled=true;b.classList.add(b===btn?'selected':'faded')});$('result').textContent='✨ '+item[2];$('nextBtn').disabled=false;$('nextBtn').textContent=day===6?'看看我的小島':'前往下一天';draw()}
-function finish(){ $('playPanel').style.display='none';$('ending').classList.add('show');const labels={energy:'行動能量',calm:'內在安心',love:'自我連結',support:'生活支持感'};const entries=Object.entries(state).sort((a,b)=>b[1]-a[1]);const top=entries[0][0];const msgs={energy:'你的小島提醒你：力量不一定來自逼自己努力，也可能來自休息之後，再走一小步。',calm:'你的小島提醒你：當內在有一點安定，很多答案不需要急著找，也會慢慢清楚。',love:'你的小島提醒你：照顧自己，不代表只顧自己，而是讓愛有一個可以回來的家。',support:'你的小島提醒你：不必所有事情都靠自己。允許被支持，也是生活的一部分。'};$('endingText').textContent='這次旅程裡，你最明顯長出的是「'+labels[top]+'」。其他部分也在自己的速度裡慢慢累積。';$('finalMessage').textContent='💌 今日小島訊息：'+msgs[top]}
-function reset(){day=0;state={energy:50,calm:50,love:50,support:50};$('ending').classList.remove('show');$('playPanel').style.display='block';render();window.scrollTo({top:0,behavior:'smooth'})}
-$('nextBtn').addEventListener('click',()=>{if(!chosen)return;if(day>=6){finish();return}day++;render()});$('resetBtn').addEventListener('click',reset);$('playAgainBtn').addEventListener('click',reset);render();
+const buildingDefs=[
+{id:"garden",name:"🌷 幸福花園",cost:3,bonus:{love:4},emoji:"🌷",desc:"讓連結慢慢開花"},
+{id:"cafe",name:"☕ 慢活咖啡角",cost:4,bonus:{calm:4},emoji:"☕",desc:"留一個休息的位置"},
+{id:"bridge",name:"🌉 支持小橋",cost:5,bonus:{support:5},emoji:"🌉",desc:"讓支持可以走進來"},
+{id:"pavilion",name:"⛺ 安心休息亭",cost:6,bonus:{energy:3,calm:3},emoji:"⛺",desc:"累了就先停一下"},
+{id:"lighthouse",name:"🏮 幸福燈塔",cost:8,bonus:{support:4,love:4},emoji:"🏮",desc:"照亮下一步"}
+];
+const residentDefs=[
+{id:"an",emoji:"🦌",name:"安安",role:"森林散步夥伴",likes:"🌿",giftCost:1,
+ dialogues:[
+  "今天不用走很遠，慢慢走到你覺得剛剛好的地方就好。",
+  "樹林不是每天都一樣綠，但它還是在長。",
+  "有些答案，要走慢一點才聽得見。"
+ ],
+ stories:[
+  {need:2,title:"安安的第一條小徑",text:"安安帶你走到一條平常不容易注意到的小路。路不長，卻很安靜。你們沒有談大道理，只一起看風吹過草地。"},
+  {need:5,title:"沒有走完也可以",text:"有一天你們走到一半突然下雨。安安說，今天不需要硬走完。於是你們回到小屋喝熱飲。原來改變計畫，也可以是一種照顧。"},
+  {need:8,title:"森林把路交給你",text:"第七日附近，安安把一枚小木牌放在岔路口。上面沒有箭頭，只寫著：『你已經知道怎麼聽自己的步伐。』"}
+ ]},
+{id:"nuan",emoji:"🐈",name:"暖暖",role:"小屋陪伴貓",likes:"☕",giftCost:1,
+ dialogues:[
+  "暖暖跳到窗邊，像是在說：坐一下也沒關係。",
+  "牠把尾巴繞到腳邊，今天的陪伴不需要很多話。",
+  "暖暖看著你打了一個哈欠。休息大概也是重要任務。"
+ ],
+ stories:[
+  {need:2,title:"窗邊的位置",text:"暖暖每天都會留一個窗邊位置給你。你開始發現，安心有時不是很大的改變，只是一個知道自己可以回來的地方。"},
+  {need:5,title:"不必一直有用",text:"暖暖一整個下午什麼都沒做。看著牠，你突然覺得，人也不需要每一分鐘都證明自己有用。"},
+  {need:8,title:"小屋裡的燈",text:"夜裡，暖暖趴在門邊等你。你回到屋內時，燈還亮著。那一刻你明白：家也可以是一種內在感覺。"}
+ ]},
+{id:"yu",emoji:"🕊️",name:"晴羽",role:"海邊消息使者",likes:"✨",giftCost:1,
+ dialogues:[
+  "晴羽從海面帶回一陣風：外面的世界很大，但今天先照顧眼前。",
+  "牠在欄杆上停了一會，像是從遠方帶來一句『你不是孤島』。",
+  "今天海面有光。晴羽說，有些支持正在來的路上。"
+ ],
+ stories:[
+  {need:2,title:"第一封海風信",text:"晴羽帶回一張沒有署名的小紙片：『有人曾經因為你的存在而感到溫暖。』你不知道是誰寫的，但還是把它收進抽屜。"},
+  {need:5,title:"支持小橋的另一端",text:"當支持小橋建起後，晴羽開始常常停在橋邊。你發現接受支持不是欠誰什麼，而是允許關係有來有往。"},
+  {need:8,title:"海平線以外",text:"晴羽帶你看向海平線。牠沒有保證未來一定順利，只提醒你：世界比今天的困難更大。"}
+ ]},
+{id:"ya",emoji:"🌱",name:"芽芽",role:"幸福花園小樹精",likes:"🌷",giftCost:1,
+ dialogues:[
+  "芽芽說：每天只長一點點，也算長大。",
+  "牠蹲在新芽旁邊，很認真地替一片小葉子加油。",
+  "芽芽提醒你，不是所有成長都要被別人看見。"
+ ],
+ stories:[
+  {need:2,title:"第一片新葉",text:"芽芽邀請你看一片剛長出的新葉。它很小，幾乎沒有人會注意，但芽芽很開心。你開始理解，微小進步也值得慶祝。"},
+  {need:5,title:"花園不需要整齊",text:"幸福花園裡有一株花長歪了。芽芽沒有修剪它，只說：『它正在找自己的光。』"},
+  {need:8,title:"種子會記得",text:"芽芽把一顆幸福種子交還給你。牠說，每一顆被好好照顧過的種子，都會記得曾經有人相信它會長大。"}
+ ]}
+];
+const badgeDefs=[["first","第一顆種子","完成第一次主要選擇"],["active","小島行動家","完成 6 次小島互動"],["builder","幸福建築師","完成 3 座建築"],["balanced","四心平衡","四項狀態都達到 70"],["seed10","種子收藏家","累積擁有 10 顆幸福種子"],["friend","島民之友","任一居民熟悉度達 5"],["storybook","故事收藏家","解鎖 5 段居民故事"],["complete","七日島主","完成 7 日旅程"]];
+let state={day:0,stats:{energy:50,calm:50,love:50,support:50},seeds:3,buildings:[],badges:[],chosen:false,choiceHistory:[],quickActionsToday:0,quickActionsTotal:0,dailyQuestClaimed:false,
+residents:{an:{friend:0,talkDay:-1,giftDay:-1},nuan:{friend:0,talkDay:-1,giftDay:-1},yu:{friend:0,talkDay:-1,giftDay:-1},ya:{friend:0,talkDay:-1,giftDay:-1}},
+residentStories:[],
+log:["🌱 歡迎來到幸福療癒島。今天先從一件小事開始。"]};
+try{const saved=JSON.parse(localStorage.getItem(KEY));if(saved&&typeof saved==="object"){state={...state,...saved,stats:{...state.stats,...(saved.stats||{})}};
+const baseResidents={an:{friend:0,talkDay:-1,giftDay:-1},nuan:{friend:0,talkDay:-1,giftDay:-1},yu:{friend:0,talkDay:-1,giftDay:-1},ya:{friend:0,talkDay:-1,giftDay:-1}};
+state.residents={...baseResidents,...(saved.residents||{})};
+Object.keys(baseResidents).forEach(k=>state.residents[k]={...baseResidents[k],...(state.residents[k]||{})});
+if(!Array.isArray(state.residentStories))state.residentStories=[]}}catch(e){}
+const $=id=>document.getElementById(id),clamp=v=>Math.max(0,Math.min(100,v));
+function save(){localStorage.setItem(KEY,JSON.stringify(state))}function log(msg){state.log.unshift(msg);state.log=state.log.slice(0,20)}
+function unlockBadges(){const add=id=>{if(!state.badges.includes(id))state.badges.push(id)};if(state.choiceHistory.length>=1)add("first");if(state.quickActionsTotal>=6)add("active");if(state.buildings.length>=3)add("builder");if(Object.values(state.stats).every(v=>v>=70))add("balanced");if(state.seeds>=10)add("seed10");
+if(Object.values(state.residents||{}).some(r=>(r.friend||0)>=5))add("friend");
+if((state.residentStories||[]).length>=5)add("storybook");
+if(state.day>=6&&state.chosen)add("complete")}
+function floatReward(text){const el=$("floatReward");el.textContent=text;el.classList.remove("show");void el.offsetWidth;el.classList.add("show")}
+function openModal(icon,title,text,reward){$("modalIcon").textContent=icon;$("modalTitle").textContent=title;$("modalText").textContent=text;$("modalReward").textContent=reward;$("modalBackdrop").classList.add("show")}
+function closeModal(){$("modalBackdrop").classList.remove("show")}
+function renderScene(){const avg=Object.values(state.stats).reduce((a,b)=>a+b,0)/4;$("tree").textContent=avg>=82?"🌳":avg>=70?"🌲":avg>=58?"🌿":"🌱";$("cloud").textContent=state.stats.calm>=75?"☁️✨":"☁️";$("extras").innerHTML=state.stats.love>=75?'<span>🌷</span><span>🦋</span><span>🌼</span>':state.stats.support>=72?'<span>🌼</span><span>⛵</span>':'<span>🌼</span><span>🪨</span>';const layer=$("buildLayer");layer.innerHTML="";state.buildings.forEach(id=>{const def=buildingDefs.find(x=>x.id===id);if(!def)return;const x=document.createElement("div");x.className="building "+def.id;x.textContent=def.emoji;x.title=def.name;layer.appendChild(x)})}
+function renderStats(){Object.entries(state.stats).forEach(([k,v])=>$(k).textContent=v);$("seeds").textContent=state.seeds;$("buildCount").textContent=state.buildings.length;$("dayLabel").textContent=Math.min(state.day+1,7);$("progressBar").style.width=((state.day+1)/7*100)+"%"}
+function renderBuildings(){const box=$("buildGrid");box.innerHTML="";buildingDefs.forEach(def=>{const done=state.buildings.includes(def.id);const b=document.createElement("button");b.type="button";b.className="build-btn"+(done?" done":"");b.disabled=done||state.seeds<def.cost;b.innerHTML=`${def.name}<small>${done?"已完成":`需要 ${def.cost} 🌱｜${def.desc}`}</small>`;b.addEventListener("click",()=>build(def.id));box.appendChild(b)})}
+function renderBadges(){unlockBadges();const box=$("badges");box.innerHTML="";badgeDefs.forEach(([id,name,desc])=>{const ok=state.badges.includes(id);const b=document.createElement("span");b.className="badge"+(ok?"":" locked");b.title=desc;b.textContent=(ok?"🏅 ":"🔒 ")+name;box.appendChild(b)})}
+function renderQuests(){const box=$("questRow");box.innerHTML="";const mainDone=state.chosen,quickDone=state.quickActionsToday>=2;[["完成今日主要選擇",mainDone],["完成 2 次小島互動",quickDone],["今日額外獎勵",state.dailyQuestClaimed]].forEach(([label,done],i)=>{const x=document.createElement("div");x.className="quest-item"+(done?" done":"");x.innerHTML=`<span>${done?"✓":"○"} ${label}</span><strong>${i===2?"+2 🌱":""}</strong>`;box.appendChild(x)});if(mainDone&&quickDone&&!state.dailyQuestClaimed){state.dailyQuestClaimed=true;state.seeds+=2;log("🎁 今日小島任務完成，獲得 2 顆幸福種子。");openModal("🎁","今日任務完成","你同時完成了主要選擇與 2 次小島互動。","🌱 幸福種子 +2")}}
+
+function unlockResidentStories(id){
+  const def=residentDefs.find(x=>x.id===id),r=state.residents[id];
+  if(!def||!r)return;
+  def.stories.forEach((story,idx)=>{
+    const key=id+"-"+idx;
+    if(r.friend>=story.need && !state.residentStories.includes(key)){
+      state.residentStories.push(key);
+      log(`📖 解鎖居民故事：${def.name}・${story.title}`);
+      openModal("📖","新居民故事解鎖",`${def.name}｜${story.title}`,story.text);
+    }
+  });
+}
+
+function residentTalk(id){
+  const def=residentDefs.find(x=>x.id===id),r=state.residents[id];
+  if(!def||!r||r.talkDay===state.day)return;
+  r.talkDay=state.day;r.friend=Math.min(10,r.friend+1);
+  const line=def.dialogues[(state.day+r.friend)%def.dialogues.length];
+  state.stats.love=clamp(state.stats.love+1);
+  log(`${def.emoji} ${def.name}：${line}`);
+  unlockResidentStories(id);
+  openModal(def.emoji,`和 ${def.name} 聊聊天`,line,"💞 熟悉度 +1｜連結 +1");
+  draw();
+}
+
+function residentGift(id){
+  const def=residentDefs.find(x=>x.id===id),r=state.residents[id];
+  if(!def||!r||r.giftDay===state.day||state.seeds<def.giftCost)return;
+  state.seeds-=def.giftCost;r.giftDay=state.day;r.friend=Math.min(10,r.friend+2);
+  state.stats.support=clamp(state.stats.support+1);
+  log(`🎁 你送給 ${def.name} 一份小禮物。熟悉度提升。`);
+  unlockResidentStories(id);
+  openModal("🎁",`送給 ${def.name} 的小禮物`,`${def.name} 很開心地收下了 ${def.likes}。`,"💞 熟悉度 +2｜支持 +1");
+  draw();
+}
+
+function renderResidents(){
+  const layer=$("residentLayer");layer.innerHTML="";
+  residentDefs.forEach((def,i)=>{
+    const s=document.createElement("div");
+    s.className="resident-sprite r"+(i+1);s.textContent=def.emoji;s.title=def.name;layer.appendChild(s);
+  });
+
+  const grid=$("residentsGrid");grid.innerHTML="";
+  residentDefs.forEach(def=>{
+    const r=state.residents[def.id];
+    const card=document.createElement("div");card.className="resident-card";
+    const unlockedCount=def.stories.filter((_,idx)=>state.residentStories.includes(def.id+"-"+idx)).length;
+    const nextStory=def.stories.find((_,idx)=>!state.residentStories.includes(def.id+"-"+idx));
+    card.innerHTML=`
+      <div class="resident-top">
+        <div class="resident-face">${def.emoji}</div>
+        <div><div class="resident-name">${def.name}</div><div class="resident-role">${def.role}</div></div>
+      </div>
+      <div class="friendship"><div style="width:${(r.friend/10)*100}%"></div></div>
+      <div class="friendship-text">💞 熟悉度 ${r.friend}/10｜故事 ${unlockedCount}/${def.stories.length}</div>
+      <div class="resident-actions">
+        <button type="button" class="resident-btn talk">💬 對話</button>
+        <button type="button" class="resident-btn gift">🎁 送 ${def.likes}・1🌱</button>
+      </div>
+      <div class="resident-story">${nextStory?`下一故事：熟悉度 ${nextStory.need} 解鎖`:"✨ 已解鎖全部故事"}</div>`;
+    const [talkBtn,giftBtn]=card.querySelectorAll(".resident-btn");
+    talkBtn.disabled=r.talkDay===state.day;
+    giftBtn.disabled=r.giftDay===state.day||state.seeds<def.giftCost;
+    talkBtn.addEventListener("click",()=>residentTalk(def.id));
+    giftBtn.addEventListener("click",()=>residentGift(def.id));
+    grid.appendChild(card);
+  });
+}
+
+function renderResidentStorybook(){
+  const box=$("residentStorybook");box.innerHTML="";
+  if(!state.residentStories.length){
+    box.innerHTML="<div class='resident-story'>還沒有解鎖故事。先和居民聊聊天吧。</div>";
+    return;
+  }
+  state.residentStories.slice().reverse().forEach(key=>{
+    if(key.startsWith("event-")){
+      const eventMap={
+        "event-ya-garden":["🌱","芽芽","芽芽搬進花園","幸福花園完成後，芽芽在角落找到一塊最喜歡的土地。從今天起，牠會幫你照顧新芽。"],
+        "event-nuan-cafe":["🐈","暖暖","暖暖的固定座位","慢活咖啡角完成後，暖暖立刻選了窗邊的位置。看來這裡正式多了一位常客。"],
+        "event-yu-bridge":["🕊️","晴羽","晴羽帶來遠方消息","支持小橋建成後，晴羽帶來第一封跨過小橋的信：『需要幫忙時，可以讓人走近。』"],
+        "event-an-pavilion":["🦌","安安","安安在休息亭等你","安心休息亭建成後，安安說：『走累的時候，知道哪裡能停下來，也很重要。』"]
+      };
+      const e=eventMap[key];if(!e)return;
+      const d=document.createElement("details");d.innerHTML=`<summary>${e[0]} ${e[1]}｜${e[2]}</summary><p>${e[3]}</p>`;box.appendChild(d);return;
+    }
+    const [id,idxText]=key.split("-"),idx=Number(idxText),def=residentDefs.find(x=>x.id===id);
+    const story=def&&def.stories[idx];if(!def||!story)return;
+    const d=document.createElement("details");
+    d.innerHTML=`<summary>${def.emoji} ${def.name}｜${story.title}</summary><p>${story.text}</p>`;
+    box.appendChild(d);
+  });
+}
+
+function residentBuildingEvent(id){
+  const conditions=[
+    {resident:"ya",building:"garden",key:"event-ya-garden",title:"芽芽搬進花園",text:"幸福花園完成後，芽芽在角落找到一塊最喜歡的土地。從今天起，牠會幫你照顧新芽。"},
+    {resident:"nuan",building:"cafe",key:"event-nuan-cafe",title:"暖暖的固定座位",text:"慢活咖啡角完成後，暖暖立刻選了窗邊的位置。看來這裡正式多了一位常客。"},
+    {resident:"yu",building:"bridge",key:"event-yu-bridge",title:"晴羽帶來遠方消息",text:"支持小橋建成後，晴羽帶來第一封跨過小橋的信：『需要幫忙時，可以讓人走近。』"},
+    {resident:"an",building:"pavilion",key:"event-an-pavilion",title:"安安在休息亭等你",text:"安心休息亭建成後，安安說：『走累的時候，知道哪裡能停下來，也很重要。』"}
+  ];
+  conditions.forEach(ev=>{
+    if(state.buildings.includes(ev.building)&&!state.residentStories.includes(ev.key)){
+      state.residentStories.push(ev.key);
+      const r=state.residents[ev.resident]; if(r)r.friend=Math.min(10,r.friend+1);
+      log(`🌟 居民事件：${ev.title}`);
+      openModal("🌟",ev.title,ev.text,"💞 對應居民熟悉度 +1");
+    }
+  });
+}
+
+function renderLog(){const box=$("eventLog");box.innerHTML="";state.log.forEach(t=>{const d=document.createElement("div");d.textContent=t;box.appendChild(d)})}
+function renderQuickButtons(){document.querySelectorAll(".quick-btn").forEach(btn=>{btn.disabled=state.day>6||!state.chosen||state.quickActionsToday>=4})}
+function renderDay(){const d=days[state.day];$("dayTheme").textContent=d.t;$("story").textContent=d.s;$("result").textContent=state.chosen?"✨ 今天的主要選擇已完成。可以再玩小島互動，或直接前往下一天。":"選一個今天最想做的小行動。";const box=$("choices");box.innerHTML="";d.c.forEach((item,i)=>{const b=document.createElement("button");b.type="button";b.className="choice";b.textContent=item[0];if(state.chosen){b.disabled=true;const chosenIndex=state.choiceHistory[state.day];b.classList.add(chosenIndex===i?"selected":"faded")}else{b.addEventListener("click",()=>choose(i,b))}box.appendChild(b)});$("nextBtn").disabled=!state.chosen;$("nextBtn").textContent=state.day===6?"看看我的小島結局":"前往下一天"}
+function draw(){renderStats();renderScene();renderBuildings();renderResidents();renderResidentStorybook();renderBadges();renderQuests();renderLog();renderQuickButtons();renderDay();save()}
+function choose(i,btn){if(state.chosen)return;state.chosen=true;state.choiceHistory[state.day]=i;const item=days[state.day].c[i];Object.entries(item[1]).forEach(([k,v])=>state.stats[k]=clamp(state.stats[k]+v));state.seeds+=1;log("✨ "+item[2]);floatReward("+1 🌱");openModal("🌱","今日選擇完成",item[2],"幸福種子 +1");draw()}
+function quickAction(type){if(!state.chosen||state.quickActionsToday>=4)return;const effects={water:{text:"💧 你替小島澆了水，土地慢慢有了光澤。",stats:{calm:2}},walk:{text:"🚶 你沿著小島走了一圈，身體也醒了一點。",stats:{energy:2}},tidy:{text:"🧺 你整理了一個小角落，空間變得更舒服。",stats:{support:2}},connect:{text:"💌 你送出一份連結，小島不再只有自己。",stats:{love:2}},rest:{text:"☕ 你坐下來休息一下，沒有急著趕路。",stats:{calm:1,energy:1}},collect:{text:"✨ 你在草地上發現一點微光。",stats:{}}};const e=effects[type];if(!e)return;Object.entries(e.stats).forEach(([k,v])=>state.stats[k]=clamp(state.stats[k]+v));state.quickActionsToday++;state.quickActionsTotal++;let seedReward=0;if(type==="collect"&&Math.random()<0.55)seedReward=1;if(state.quickActionsToday===4)seedReward+=1;if(seedReward){state.seeds+=seedReward;floatReward(`+${seedReward} 🌱`)}log(e.text+(seedReward?` 獲得 ${seedReward} 顆幸福種子。`:""));if(Math.random()<0.28)randomEvent();draw()}
+function randomEvent(){const events=[{icon:"🦋",title:"蝴蝶停在花邊",text:"你停下來看了一會兒，沒有急著做下一件事。",key:"calm",value:2,reward:"安心 +2"},{icon:"⛵",title:"一艘小船靠岸",text:"島外送來一點善意與支持。",key:"support",value:2,reward:"支持 +2"},{icon:"🌈",title:"雨後出現彩虹",text:"你發現今天其實也有一些值得記住的小片刻。",key:"love",value:2,reward:"連結 +2"},{icon:"🌞",title:"陽光照進樹梢",text:"你感覺精神恢復了一點。",key:"energy",value:2,reward:"能量 +2"}];const ev=events[Math.floor(Math.random()*events.length)];state.stats[ev.key]=clamp(state.stats[ev.key]+ev.value);log(`${ev.icon} 隨機事件：${ev.title}。${ev.text}`);openModal(ev.icon,ev.title,ev.text,ev.reward)}
+function build(id){const def=buildingDefs.find(x=>x.id===id);if(!def||state.buildings.includes(id)||state.seeds<def.cost)return;state.seeds-=def.cost;state.buildings.push(id);Object.entries(def.bonus).forEach(([k,v])=>state.stats[k]=clamp(state.stats[k]+v));log(`🏗️ 建成 ${def.name}。`);residentBuildingEvent(id);openModal("🏗️","建設完成",`${def.name} 已經出現在你的幸福小島。`,`花費 ${def.cost} 🌱`);draw()}
+function nextDay(){if(!state.chosen)return;if(state.day>=6){finish();return}state.day++;state.chosen=false;state.quickActionsToday=0;state.dailyQuestClaimed=false;log(`🌅 來到第 ${state.day+1} 天。`);draw();window.scrollTo({top:0,behavior:"smooth"})}
+function finish(){unlockBadges();if(!state.badges.includes("complete"))state.badges.push("complete");$("playPanel").style.display="none";$("ending").classList.add("show");const entries=Object.entries(state.stats).sort((a,b)=>b[1]-a[1]),top=entries[0][0],labels={energy:"行動能量",calm:"內在安心",love:"自我連結",support:"生活支持感"},msgs={energy:"你的島比較像「晨光行動島」：你願意從小小行動中累積力量。",calm:"你的島比較像「安心慢活島」：你正在學會先讓自己穩下來，再決定下一步。",love:"你的島比較像「溫柔連結島」：你在這七天裡，讓自我照顧與關係慢慢開花。",support:"你的島比較像「被支持的家園島」：你開始讓生活不再只靠自己一個人撐著。"};let title=msgs[top].split("：")[0].replace("你的島比較像「","").replace("」",""),emoji={energy:"🌞🌱",calm:"☕🌿",love:"🌷🦋",support:"🏡⛵"}[top];if(state.buildings.includes("lighthouse")&&state.buildings.length>=4){title="幸福燈塔島";emoji="🏮🌈🏡"}else if(state.buildings.length>=5){title="完整幸福家園島";emoji="🏡🌷🌉"}$("endingEmoji").textContent=emoji;$("endingTitle").textContent=title;$("endingText").textContent=`這次旅程裡，你最明顯長出的是「${labels[top]}」。你完成了 ${state.buildings.length} 座建設，也留下了自己的小島節奏。`;$("endingSeeds").textContent=state.seeds;$("endingBuildings").textContent=state.buildings.length+" / "+buildingDefs.length;$("endingBadges").textContent=state.badges.length+" / "+badgeDefs.length;$("finalMessage").textContent="💌 "+msgs[top];save()}
+function resetGame(){if(!confirm("要重新開始幸福療癒島嗎？目前進度會清空。"))return;localStorage.removeItem(KEY);state={day:0,stats:{energy:50,calm:50,love:50,support:50},seeds:3,buildings:[],badges:[],chosen:false,choiceHistory:[],quickActionsToday:0,quickActionsTotal:0,dailyQuestClaimed:false,
+residents:{an:{friend:0,talkDay:-1,giftDay:-1},nuan:{friend:0,talkDay:-1,giftDay:-1},yu:{friend:0,talkDay:-1,giftDay:-1},ya:{friend:0,talkDay:-1,giftDay:-1}},
+residentStories:[],
+log:["🌱 歡迎來到幸福療癒島。今天先從一件小事開始。"]};$("ending").classList.remove("show");$("playPanel").style.display="block";draw();window.scrollTo({top:0,behavior:"smooth"})}
+document.querySelectorAll(".quick-btn").forEach(btn=>btn.addEventListener("click",()=>quickAction(btn.dataset.act)));$("nextBtn").addEventListener("click",nextDay);$("resetBtn").addEventListener("click",resetGame);$("playAgainBtn").addEventListener("click",resetGame);$("modalClose").addEventListener("click",closeModal);$("modalBackdrop").addEventListener("click",e=>{if(e.target===$("modalBackdrop"))closeModal()});draw();
 })();
 </script>
 </body>
