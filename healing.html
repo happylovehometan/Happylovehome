@@ -489,6 +489,105 @@ box-shadow:0 4px 12px rgba(0,0,0,.15);
   }
 }
 
+/* BoBo 溫柔療癒陪伴館 */
+.membership-entry{
+  position:relative;
+  width:min(88%,760px);
+  margin:38px auto;
+  padding:46px 38px;
+  box-sizing:border-box;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.28);
+  border-radius:38px;
+  background:
+    radial-gradient(circle at 12% 12%,rgba(255,225,180,.24),transparent 28%),
+    radial-gradient(circle at 88% 86%,rgba(214,174,231,.30),transparent 34%),
+    linear-gradient(145deg,#6a536f,#98768d 55%,#b78b91);
+  box-shadow:0 18px 42px rgba(89,62,82,.22);
+  color:#fff;
+  text-align:center;
+}
+.membership-entry::before{
+  content:"♡";
+  position:absolute;
+  right:24px;
+  top:12px;
+  color:rgba(255,255,255,.16);
+  font-size:92px;
+  line-height:1;
+}
+.membership-entry .membership-kicker{
+  position:relative;
+  margin:0 0 10px;
+  color:#f8e8bc;
+  font-size:13px;
+  font-weight:800;
+  letter-spacing:.18em;
+}
+.membership-entry h2{
+  position:relative;
+  margin:0 0 14px;
+  color:#fff;
+  font-size:clamp(28px,5vw,40px);
+}
+.membership-entry .membership-copy{
+  position:relative;
+  max-width:570px;
+  margin:0 auto;
+  color:#fffafc;
+  font-size:18px;
+  line-height:1.85;
+}
+.membership-tags{
+  position:relative;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:9px;
+  margin:22px 0 0;
+}
+.membership-tags span{
+  padding:7px 13px;
+  border:1px solid rgba(255,255,255,.24);
+  border-radius:999px;
+  background:rgba(255,255,255,.12);
+  color:#fff;
+  font-size:14px;
+  font-weight:700;
+}
+.membership-entry .membership-button{
+  position:relative;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:54px;
+  margin:27px auto 0;
+  padding:13px 28px;
+  border-radius:999px;
+  background:linear-gradient(135deg,#fff3cf,#e3c77d);
+  box-shadow:0 12px 28px rgba(48,31,47,.22);
+  color:#59465e !important;
+  font-size:18px;
+  font-weight:900;
+  text-decoration:none !important;
+}
+.membership-entry .membership-button:hover{transform:translateY(-2px);}
+.membership-entry .membership-note{
+  position:relative;
+  margin:14px 0 0;
+  color:#f8eef4;
+  font-size:14px;
+}
+@media(max-width:600px){
+  .membership-entry{
+    width:calc(100% - 30px);
+    padding:36px 21px;
+    border-radius:30px;
+  }
+  .membership-entry .membership-copy{font-size:17px;}
+  .membership-entry .membership-button{width:100%;box-sizing:border-box;}
+}
+
 </style>
 </head>
 
@@ -568,6 +667,26 @@ href="https://wa.me/6594574732">
 </a>
 
 </div>
+
+<section class="membership-entry" aria-labelledby="membership-entry-title">
+  <p class="membership-kicker">MONTHLY GENTLE PRACTICE</p>
+  <h2 id="membership-entry-title">💗 BoBo 溫柔療癒陪伴館</h2>
+  <p class="membership-copy">
+    每個月，用一個溫柔主題陪自己慢下來。<br>
+    不追趕進度，只在適合你的節奏裡，重新感受自己。
+  </p>
+  <div class="membership-tags" aria-label="會員內容">
+    <span>每月新 PDF</span>
+    <span>Email 寄送</span>
+    <span>溫柔自我練習</span>
+    <span>可隨時停止</span>
+  </div>
+  <a class="membership-button" href="gentle-healing-membership.html">
+    了解會員內容與加入方式
+  </a>
+  <p class="membership-note">USD 18／月｜每月自動續費</p>
+</section>
+
 <div class="card">
 
 
