@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="BoBo 溫柔療癒陪伴館：每月一份溫柔療癒 PDF 練習，透過 Email 陪你慢慢回到自己。">
+  <title>BoBo 溫柔療癒陪伴館｜每月療癒練習</title>
+  <style>
+    :root{
+      --ink:#594853;
+      --muted:#786773;
+      --cream:#fffaf7;
+      --rose:#ad7786;
+      --plum:#684f6c;
+      --gold:#ddc27d;
+      --line:#eadde2;
+    }
+    *{box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{
+      margin:0;
+      background:
+        radial-gradient(circle at 10% 0,rgba(226,194,200,.38),transparent 30%),
+        radial-gradient(circle at 95% 20%,rgba(212,192,224,.35),transparent 28%),
+        #fbf5f2;
+      color:var(--ink);
+      font-family:Arial,"Microsoft JhengHei",sans-serif;
+      font-size:17px;
+      line-height:1.8;
+    }
+    a{color:inherit;}
+    .wrap{width:min(100% - 32px,860px);margin:auto;}
+    .topbar{padding:20px 0;display:flex;align-items:center;justify-content:space-between;gap:16px;}
+    .brand{font-weight:900;letter-spacing:.04em;}
+    .back{text-decoration:none;color:var(--muted);font-weight:700;}
+    .back:hover{text-decoration:underline;}
+    .hero{
+      position:relative;
+      overflow:hidden;
+      padding:70px 48px;
+      border-radius:42px;
+      background:
+        radial-gradient(circle at 16% 10%,rgba(255,232,190,.24),transparent 30%),
+        radial-gradient(circle at 90% 85%,rgba(220,184,233,.30),transparent 36%),
+        linear-gradient(145deg,#624c69,#98748a 58%,#b8848b);
+      box-shadow:0 22px 55px rgba(85,57,78,.22);
+      color:white;
+      text-align:center;
+    }
+    .hero::after{content:"♡";position:absolute;right:25px;top:4px;font-size:128px;line-height:1;color:rgba(255,255,255,.12);}
+    .eyebrow{position:relative;margin:0 0 12px;color:#fae8b8;font-size:13px;font-weight:900;letter-spacing:.18em;}
+    h1{position:relative;margin:0;font-size:clamp(34px,7vw,57px);line-height:1.25;}
+    .lead{position:relative;max-width:620px;margin:20px auto 0;color:#fffafc;font-size:20px;}
+    .price{position:relative;margin:24px 0 0;font-size:18px;}
+    .price strong{font-size:34px;color:#fff0bd;}
+    .actions{position:relative;display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-top:27px;}
+    .button{display:inline-flex;min-height:55px;align-items:center;justify-content:center;padding:13px 24px;border-radius:999px;font-weight:900;text-decoration:none;transition:.2s ease;}
+    .button:hover{transform:translateY(-2px);}
+    .button.primary{background:linear-gradient(135deg,#fff4d3,#dfc176);color:#58465e;box-shadow:0 12px 28px rgba(39,25,41,.22);}
+    .button.secondary{border:1px solid rgba(255,255,255,.55);background:rgba(255,255,255,.12);color:#fff;}
+    .renewal{position:relative;margin:14px 0 0;color:#f7edf2;font-size:14px;}
+    main{padding:34px 0 64px;}
+    .panel{margin-top:25px;padding:34px;border:1px solid var(--line);border-radius:30px;background:rgba(255,255,255,.80);box-shadow:0 12px 35px rgba(98,69,87,.08);}
+    h2{margin:0 0 17px;color:var(--plum);font-size:29px;text-align:center;}
+    .center{text-align:center;}
+    .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px;}
+    .item{padding:22px;border-radius:21px;background:#fff8f6;border:1px solid #f0e1e4;}
+    .item strong{display:block;color:#7d5969;font-size:18px;}
+    .steps{display:grid;gap:13px;counter-reset:step;}
+    .step{position:relative;padding:18px 20px 18px 66px;border-radius:19px;background:#f8f1f6;}
+    .step::before{counter-increment:step;content:counter(step);position:absolute;left:19px;top:17px;width:32px;height:32px;display:grid;place-items:center;border-radius:50%;background:var(--plum);color:#fff;font-weight:900;}
+    .download-help{margin:18px 0 0;padding:16px 18px;border-left:4px solid var(--gold);background:#fffaf0;color:#66565d;}
+    .plain-list{padding-left:1.3em;}
+    .plain-list li{margin:8px 0;}
+    .final-action{text-align:center;margin-top:28px;}
+    .final-action .button{background:var(--plum);color:#fff;}
+    .fine{font-size:14px;color:var(--muted);}
+    footer{padding:30px 0 44px;border-top:1px solid var(--line);text-align:center;color:var(--muted);font-size:14px;}
+    footer a{font-weight:700;}
+    a:focus-visible{outline:3px solid #f2c95e;outline-offset:4px;}
+    @media(max-width:650px){
+      .topbar{align-items:flex-start;flex-direction:column;}
+      .hero{padding:50px 22px;border-radius:30px;}
+      .lead{font-size:18px;}
+      .actions{flex-direction:column;}
+      .button{width:100%;}
+      .panel{padding:27px 21px;border-radius:25px;}
+      .grid{grid-template-columns:1fr;}
+    }
+  </style>
+</head>
+<body>
+  <header class="wrap topbar">
+    <div class="brand">開心愛家園療癒</div>
+    <a class="back" href="healing.html">← 回到 BoBo 療癒服務</a>
+  </header>
+
+  <div class="wrap">
+    <section class="hero" aria-labelledby="page-title">
+      <p class="eyebrow">MONTHLY GENTLE PRACTICE</p>
+      <h1 id="page-title">BoBo 溫柔療癒陪伴館</h1>
+      <p class="lead">每個月，用一個溫柔主題陪你慢下來。不是要求自己變得更好，而是練習聽見自己、照顧自己，慢慢回到心裡安穩的位置。</p>
+      <p class="price"><strong>USD 18</strong>／月</p>
+      <div class="actions">
+        <a class="button primary" href="https://payhip.com/order?link=szBYF&amp;pricing_plan=bZz2MrYLWr" target="_blank" rel="noopener">加入會員｜前往安全付款</a>
+        <a class="button secondary" href="bobo-gentle-healing-membership-guide.pdf" download>下載會員介紹 PDF</a>
+      </div>
+      <p class="renewal">每月自動續費｜可自行取消｜付款後以 Email 收取每月內容</p>
+    </section>
+  </div>
+
+  <main class="wrap">
+    <section class="panel">
+      <h2>每個月，你會收到</h2>
+      <div class="grid">
+        <div class="item"><strong>📖 每月主題 PDF</strong>一個適合日常實踐的溫柔主題，包含引導、覺察與練習。</div>
+        <div class="item"><strong>💌 Email 寄送</strong>付款後使用你的訂購 Email 收件，不必每天登入平台尋找。</div>
+        <div class="item"><strong>🌿 自己的步調</strong>沒有追趕進度，也沒有必須完成的壓力；需要時再打開。</div>
+        <div class="item"><strong>💬 一次文字提問</strong>如對當月內容有疑問，可用 Email 提出一次簡短問題。</div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>付款後會怎麼進行？</h2>
+      <div class="steps">
+        <div class="step"><strong>完成每月會員付款</strong><br>按下加入會員按鈕，前往 Payhip 的安全結帳頁。</div>
+        <div class="step"><strong>確認你的 Email</strong><br>付款完成後，你會收到付款與會員確認訊息。</div>
+        <div class="step"><strong>收到當月內容</strong><br>確認後，BoBo 會將當月的 PDF 練習寄到你的 Email。</div>
+        <div class="step"><strong>每月繼續陪伴</strong><br>之後每月第一週，會寄出新的主題 PDF 練習。</div>
+      </div>
+    </section>
+
+    <section class="panel center">
+      <h2>先看完整介紹</h2>
+      <p>介紹 PDF 內有會員內容、付款方式、收到練習的方法與注意事項；不包含第一個月的正式練習內容。</p>
+      <a class="button" style="background:#fff0d0;color:#624f60" href="bobo-gentle-healing-membership-guide.pdf" download>下載會員介紹 PDF</a>
+      <p class="download-help">如果手機瀏覽器先開啟 PDF，請按畫面右上角的「下載」圖示，把檔案保存到手機。</p>
+    </section>
+
+    <section class="panel">
+      <h2>適合你的情況</h2>
+      <ul class="plain-list">
+        <li>想固定留一點時間照顧自己，但不喜歡被催促。</li>
+        <li>喜歡文字引導、書寫覺察與可重複使用的練習。</li>
+        <li>希望每個月有人溫柔提醒：你也值得被自己好好陪伴。</li>
+      </ul>
+      <p class="fine">本會員內容屬自我探索與身心靈成長用途，不取代醫療、心理治療、診斷或緊急協助。如正處於危機或有醫療需要，請尋求所在地的專業支援。</p>
+      <div class="final-action">
+        <a class="button" href="https://payhip.com/order?link=szBYF&amp;pricing_plan=bZz2MrYLWr" target="_blank" rel="noopener">加入 BoBo 溫柔療癒陪伴館</a>
+        <p class="fine">USD 18／月，每月自動續費；可透過 Payhip 帳戶管理或取消訂閱。</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p>BoBo ❤️ 我在<br>黑暗中的光．生活的燈塔</p>
+      <p><a href="healing.html">療癒服務首頁</a> · <a href="policy.html">服務條款與退款政策</a></p>
+      <p>© 開心愛家園療癒. All Rights Reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
