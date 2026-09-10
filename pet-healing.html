@@ -41,6 +41,15 @@ section{padding:70px 6%}.head{text-align:center;max-width:760px;margin:0 auto 35
 
 
 .pet-knowledge{background:linear-gradient(180deg,#fffaf6,#f7eee8)}
+.pet-island{background:linear-gradient(180deg,#e9f8f6,#fffaf3)}
+.island-card{max-width:1050px;margin:auto;display:grid;grid-template-columns:1.15fr .85fr;overflow:hidden;border:1px solid #cfe8e4;border-radius:30px;background:#fff;box-shadow:var(--shadow)}
+.island-card img{width:100%;height:100%;min-height:330px;object-fit:cover}
+.island-info{display:flex;flex-direction:column;justify-content:center;padding:34px}
+.island-info h2{font-size:clamp(1.8rem,3.4vw,2.8rem);line-height:1.25;color:var(--brown);margin:8px 0}
+.island-info p{margin:0 0 18px}
+.island-points{display:grid;gap:8px;margin:0 0 22px}.island-points div{padding:9px 12px;border-radius:12px;background:#f1faf7}
+.island-info .primary{align-self:flex-start;background:#3f9aa3}
+@media(max-width:900px){.island-card{grid-template-columns:1fr}.island-card img{min-height:260px;max-height:420px}.island-info .primary{align-self:stretch}}
 .knowledge-intro{max-width:900px;margin:0 auto 28px;text-align:center;color:#796760}
 .knowledge-columns{max-width:1120px;margin:auto;display:grid;grid-template-columns:1fr 1fr;gap:24px}
 .knowledge-group{background:#fff;border:1px solid #ead8d1;border-radius:28px;padding:25px;box-shadow:var(--shadow)}
@@ -64,6 +73,18 @@ section{padding:70px 6%}.head{text-align:center;max-width:760px;margin:0 auto 35
 <section class="hero">
 <div><span class="tag">HAPPY PET HEALING</span><h1>開心寵物療癒</h1><p class="lead">每一位毛孩，都是靈魂的家人。當牠們出現焦慮、害怕、環境改變、年老、身體不適或行為改變時，除了必要的獸醫照護，也可以透過溫柔的遠距能量支持，幫助牠們放鬆、穩定，慢慢找回安全感。</p><div class="note">不是要求毛孩立刻改變，而是先讓牠感受到：我被看見，我是安全的。</div><div class="buttons"><a class="btn primary" href="https://payhip.com/b/Aj6GW" target="_blank" rel="noopener">查看付費療癒方案</a><a class="btn secondary" href="https://happylovehomehealing.org/pet-survey.html">填寫寵物需求調查</a></div></div>
 
+</section>
+<section class="pet-island" id="happy-pet-island">
+  <div class="island-card">
+    <div><img src="happy-pet-healing-island.png" alt="貓咪與狗狗在開心寵物療癒島上休息玩耍" loading="lazy"></div>
+    <div class="island-info">
+      <span class="free-badge">免費互動小遊戲</span>
+      <h2>開心寵物療癒島</h2>
+      <p>選擇貓咪或狗狗，陪牠完成三個溫柔照顧任務，收集愛心能量，再接收今天的毛孩訊息。</p>
+      <div class="island-points"><div>🐾 沒有輸贏，依自己的步調玩</div><div>💗 練習觀察、尊重與安心陪伴</div><div>🏝️ 手機、平板與電腦都能遊玩</div></div>
+      <a class="btn primary" href="happy-pet-healing-island.html">進入寵物療癒島</a>
+    </div>
+  </div>
 </section>
 <section id="suitable"><div class="head"><span class="tag">適合的毛孩狀況</span><h2>在牠需要的時候，溫柔陪伴</h2><p>療癒以情緒安撫、能量平衡與關係支持為主。</p></div><div class="grid">
 <article class="card"><div class="icon">💗</div><h3>情緒焦慮</h3><p>緊張、害怕、容易受驚，或長時間無法安定。</p></article>
