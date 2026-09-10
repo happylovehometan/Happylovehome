@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#3b8f9c">
+<title>開心寵物療癒島｜溫柔照顧毛孩小遊戲</title>
+<meta name="description" content="來到開心寵物療癒島，陪貓咪或狗狗喝水、玩耍、梳毛和休息，完成三個溫柔照顧任務，接收今天的毛孩訊息。">
+<meta name="author" content="BoBo Tan｜開心愛家園療癒">
+<meta property="og:title" content="開心寵物療癒島｜溫柔照顧毛孩小遊戲">
+<meta property="og:description" content="陪毛孩完成三個溫柔照顧任務，收集愛心能量。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://happylovehomehealing.org/happy-pet-healing-island.html">
+<style>
+:root{--ink:#264d55;--deep:#236f7d;--sea:#54c4cf;--sun:#ffd76a;--coral:#ed7780;--cream:#fffdf4;--white:#fff;--line:rgba(38,77,85,.16);--shadow:0 18px 45px rgba(25,91,102,.18)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;font-family:"Noto Sans TC","Microsoft JhengHei",Arial,sans-serif;color:var(--ink);background:linear-gradient(180deg,#bcebf0 0,#effcf8 50%,#fff8e8 100%);line-height:1.65}button,a{font:inherit}button{cursor:pointer}a{text-decoration:none;color:inherit}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px max(4%,20px);background:rgba(255,255,255,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.brand{font-weight:900}.back{border:1px solid #8acbd0;border-radius:999px;padding:8px 14px;color:var(--deep);font-weight:800;background:#fff}
+main{width:min(1180px,94%);margin:24px auto 48px}
+.game-shell{overflow:hidden;border:1px solid rgba(255,255,255,.8);border-radius:34px;background:rgba(255,255,255,.93);box-shadow:var(--shadow)}
+.island-view{position:relative;min-height:430px;display:flex;align-items:flex-end;background:linear-gradient(rgba(15,75,85,.06),rgba(15,75,85,.26)),url("happy-pet-healing-island.png") center/cover no-repeat;padding:26px}
+.title-card{max-width:560px;padding:24px;border-radius:25px;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);box-shadow:0 12px 30px rgba(22,73,82,.22)}
+.eyebrow{margin:0;color:#aa5961;font-size:.84rem;font-weight:900;letter-spacing:.1em}.title-card h1{font-size:clamp(2rem,5vw,3.8rem);line-height:1.12;margin:7px 0 9px;color:#275c62}.title-card p{margin:0;font-size:1.02rem}
+.play-area{padding:26px}.status{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:22px}.status h2{margin:0;font-size:clamp(1.35rem,3vw,2rem)}.hearts{display:flex;gap:7px;font-size:1.65rem}.heart{filter:grayscale(1);opacity:.28;transform:scale(.92);transition:.35s}.heart.on{filter:none;opacity:1;transform:scale(1.1)}
+.panel{display:none}.panel.active{display:block;animation:rise .45s ease}@keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.choose-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:760px;margin:auto}.pet-choice{border:2px solid transparent;border-radius:24px;padding:24px;background:#f4fbf8;color:var(--ink);text-align:center;transition:.2s}.pet-choice:hover,.pet-choice:focus-visible{border-color:#58aeb7;transform:translateY(-3px);outline:none}.pet-icon{display:block;font-size:4.3rem;line-height:1.1}.pet-choice strong{display:block;margin-top:10px;font-size:1.2rem}
+.task-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}.task{min-height:158px;border:1px solid var(--line);border-radius:21px;background:#fffdf8;padding:19px 14px;color:var(--ink);text-align:center;transition:.2s}.task:hover:not(:disabled),.task:focus-visible:not(:disabled){transform:translateY(-3px);border-color:#48aeba;box-shadow:0 9px 20px rgba(43,134,147,.12);outline:none}.task:disabled{cursor:default;background:#edf8f4;color:#66878b}.task.done{border-color:#82c5aa}.task-icon{display:block;font-size:2.6rem}.task strong{display:block;margin:6px 0 2px}.task small{font-size:.86rem}.feedback{min-height:42px;margin:15px 0 0;padding:9px 14px;text-align:center;color:#3a737c;font-weight:800}
+.result{text-align:center;max-width:720px;margin:auto;padding:16px}.result-badge{display:inline-flex;width:94px;height:94px;align-items:center;justify-content:center;border-radius:50%;background:#fff1bc;font-size:3.7rem;box-shadow:0 10px 25px rgba(177,130,34,.15)}.result h2{font-size:clamp(1.7rem,4vw,2.6rem);margin:14px 0 8px}.message{margin:18px 0;padding:20px;border-radius:20px;background:#effaf7;font-size:1.08rem;font-weight:800;color:#31636a}.actions{display:flex;justify-content:center;flex-wrap:wrap;gap:11px}.btn{border:0;border-radius:999px;padding:12px 20px;font-weight:900}.primary{background:var(--coral);color:#fff;box-shadow:0 9px 18px rgba(237,119,128,.25)}.secondary{background:#e3f4f4;color:var(--deep)}
+.gentle-note{margin:25px 0 0;padding:18px 22px;border-radius:20px;background:rgba(255,255,255,.76);border:1px solid var(--line);font-size:.92rem}.gentle-note strong{color:#a95d62}
+footer{text-align:center;padding:25px 5%;color:#547178;font-size:.84rem}
+@media(max-width:850px){.task-grid{grid-template-columns:1fr 1fr}.island-view{min-height:390px;background-position:56% center}.title-card{max-width:470px}}
+@media(max-width:570px){main{width:100%;margin:0 auto}.game-shell{border-radius:0}.topbar{font-size:.82rem}.back{padding:6px 10px}.island-view{min-height:350px;padding:16px;align-items:flex-end}.title-card{padding:18px}.play-area{padding:21px 16px}.status{align-items:flex-start}.hearts{font-size:1.35rem}.choose-grid{grid-template-columns:1fr 1fr;gap:10px}.pet-choice{padding:18px 8px}.pet-icon{font-size:3.4rem}.task{min-height:145px;padding:16px 8px}.gentle-note{margin-left:16px;margin-right:16px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header class="topbar"><div class="brand">🐾 BoBo · 開心愛家園療癒</div><a class="back" href="pet-healing.html">回到寵物療癒</a></header>
+<main>
+<section class="game-shell" aria-labelledby="game-title">
+  <div class="island-view">
+    <div class="title-card">
+      <p class="eyebrow">HAPPY PET HEALING ISLAND</p>
+      <h1 id="game-title">開心寵物療癒島</h1>
+      <p>今天，陪一位毛孩在島上慢慢放鬆。沒有輸贏，只要完成三個溫柔照顧任務。</p>
+    </div>
+  </div>
+  <div class="play-area">
+    <div class="status">
+      <h2 id="stepTitle">先選擇今天陪伴的毛孩</h2>
+      <div class="hearts" aria-label="愛心能量進度"><span class="heart">💗</span><span class="heart">💗</span><span class="heart">💗</span></div>
+    </div>
+
+    <div class="panel active" id="choosePanel">
+      <div class="choose-grid">
+        <button class="pet-choice" data-pet="貓咪"><span class="pet-icon" aria-hidden="true">🐱</span><strong>陪伴貓咪</strong><span>安靜、好奇，也需要自己的步調</span></button>
+        <button class="pet-choice" data-pet="狗狗"><span class="pet-icon" aria-hidden="true">🐶</span><strong>陪伴狗狗</strong><span>真誠、熱情，也需要安心的回應</span></button>
+      </div>
+    </div>
+
+    <div class="panel" id="taskPanel">
+      <div class="task-grid">
+        <button class="task" data-task="water"><span class="task-icon">💧</span><strong>清泉補水</strong><small>留意今天的飲水狀況</small></button>
+        <button class="task" data-task="play"><span class="task-icon">🧶</span><strong>花園玩耍</strong><small>陪牠做喜歡的小活動</small></button>
+        <button class="task" data-task="groom"><span class="task-icon">🪮</span><strong>溫柔梳理</strong><small>尊重牠願意被碰觸的程度</small></button>
+        <button class="task" data-task="rest"><span class="task-icon">🌙</span><strong>安心休息</strong><small>給牠安靜、不被打擾的空間</small></button>
+      </div>
+      <div class="feedback" id="feedback" role="status" aria-live="polite">請選一個照顧任務。</div>
+    </div>
+
+    <div class="panel result" id="resultPanel">
+      <div class="result-badge" id="resultPet" aria-hidden="true">🐾</div>
+      <h2>愛心能量收集完成</h2>
+      <p>你沒有催促毛孩，而是用牠舒服的方式陪伴。這份被理解的感覺，就是珍貴的安全感。</p>
+      <div class="message" id="dailyMessage"></div>
+      <div class="actions"><button class="btn primary" id="againBtn">再玩一次</button><a class="btn secondary" href="pet-healing.html">探索寵物療癒</a></div>
+    </div>
+  </div>
+</section>
+<aside class="gentle-note"><strong>溫柔提醒：</strong>這是一個陪伴與覺察小遊戲，不是健康評估或獸醫診斷。若毛孩有拒食、呼吸異常、疼痛、精神變差或其他令人擔心的狀況，請優先諮詢合資格獸醫。</aside>
+</main>
+<footer>© BoBo Tan · 開心愛家園療癒 · Happy Love Home Healing<br>All Rights Reserved · 版權所有</footer>
+<script>
+(() => {
+  const choosePanel=document.getElementById('choosePanel'),taskPanel=document.getElementById('taskPanel'),resultPanel=document.getElementById('resultPanel');
+  const title=document.getElementById('stepTitle'),feedback=document.getElementById('feedback'),hearts=[...document.querySelectorAll('.heart')];
+  const messages=['今天不必做很多。放慢一點，牠會感受到你安穩的陪伴。','毛孩不需要完美的照顧者，只需要一個願意觀察、願意理解牠的人。','陪伴不一定要一直碰觸。尊重距離，也是一種溫柔的愛。','你照顧牠的同時，也別忘了讓自己喝水、呼吸和休息。'];
+  const replies={water:'清澈的水讓身體慢慢恢復活力。',play:'一小段專心玩耍，是屬於你們的快樂時間。',groom:'輕柔地靠近，也細心聽見牠說「可以」或「先不要」。',rest:'在不被打擾的角落，毛孩安心地閉上眼睛。'};
+  let pet='',count=0;
+  document.querySelectorAll('.pet-choice').forEach(btn=>btn.addEventListener('click',()=>{pet=btn.dataset.pet;choosePanel.classList.remove('active');taskPanel.classList.add('active');title.textContent='陪'+pet+'完成三個照顧任務';feedback.textContent='請選一個照顧任務。';}));
+  document.querySelectorAll('.task').forEach(btn=>btn.addEventListener('click',()=>{if(btn.disabled)return;btn.disabled=true;btn.classList.add('done');btn.querySelector('strong').textContent+=' ✓';hearts[count].classList.add('on');count++;feedback.textContent=replies[btn.dataset.task];if(count===3)setTimeout(showResult,650);}));
+  function showResult(){taskPanel.classList.remove('active');resultPanel.classList.add('active');title.textContent='今天的療癒陪伴完成了';document.getElementById('resultPet').textContent=pet==='貓咪'?'🐱':'🐶';document.getElementById('dailyMessage').textContent='今日毛孩訊息：'+messages[Math.floor(Math.random()*messages.length)];}
+  document.getElementById('againBtn').addEventListener('click',()=>{pet='';count=0;hearts.forEach(h=>h.classList.remove('on'));document.querySelectorAll('.task').forEach(btn=>{btn.disabled=false;btn.classList.remove('done');btn.querySelector('strong').textContent=btn.querySelector('strong').textContent.replace(' ✓','');});resultPanel.classList.remove('active');choosePanel.classList.add('active');title.textContent='先選擇今天陪伴的毛孩';feedback.textContent='請選一個照顧任務。';window.scrollTo({top:0,behavior:'smooth'});});
+})();
+</script>
+</body>
+</html>
