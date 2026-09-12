@@ -320,10 +320,74 @@ text-align:left;
     transition:.3s;
 }
 
-.healing-btn:hover{
+ .healing-btn:hover{
     transform:translateY(-3px);
     box-shadow:0 12px 24px rgba(0,0,0,.25);
 } 
+
+/* 網站完整入口｜放在訂閱區下方 */
+.site-directory{
+  width:calc(100% - 32px);
+  max-width:720px;
+  box-sizing:border-box;
+  margin:22px auto 34px;
+  padding:22px 18px;
+  background:#fffaf8;
+  border:1px solid #eadbd8;
+  border-radius:24px;
+  box-shadow:0 8px 22px rgba(110,78,92,.08);
+}
+.site-directory h2{
+  margin:0 0 6px;
+  color:#76536f;
+  font-size:20px;
+}
+.site-directory-intro{
+  margin:0 0 16px;
+  color:#8b7c83;
+  font-size:13px;
+  line-height:1.6;
+}
+.site-directory-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:9px;
+}
+.site-directory-link{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:42px;
+  box-sizing:border-box;
+  padding:9px 10px;
+  border-radius:14px;
+  background:#9b6a91;
+  color:#fff !important;
+  text-decoration:none !important;
+  font-size:13px;
+  font-weight:700;
+  line-height:1.35;
+  box-shadow:0 3px 8px rgba(110,78,92,.14);
+}
+.site-directory-link:hover,
+.site-directory-link:focus-visible{
+  background:#875f82;
+  transform:translateY(-1px);
+}
+@media (max-width:560px){
+  .site-directory{
+    padding:20px 14px;
+  }
+  .site-directory-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:8px;
+  }
+  .site-directory-link{
+    min-height:40px;
+    padding:8px 7px;
+    font-size:12.5px;
+  }
+}
 </style>
 </head>
 
@@ -704,35 +768,6 @@ href="happy-home.html">
 <!-- 光耀豐盛人生｜首頁獨立入口結束 -->
 
 
-<a class="btn" href="story.html">🌈 BoBo 的故事</a>
-
-<a class="btn" href="healing.html">💜 療癒服務</a>
-
-<a class="btn" href="pet-healing.html">🐾 開心寵物療癒</a>
-
-<a class="btn" href="free.html">🎁 免費療癒資源館</a>
-
-<a class="btn" href="seed.html">🌻 幸福種子計畫</a>
-
-<a class="btn" href="testimonial.html">🌟 學員回饋</a>
-
-<a class="btn" href="blog.html">🌿 BoBo 部落格</a>
-
-<a class="btn" href="recommend.html">🌍 BoBo 慢活推薦館</a>
-
-<a href="explore.html" class="btn">🌿 BoBo 自我探索館</a> 
-<a class="btn" href="healing-tree.html">🌳 種下安心 Healing Tree</a>
- <a class="btn" href="international.html">
-    <div style="font-size:1.25rem;font-weight:700;">
-        🌍 International Visitors
-    </div>
-
-    <div style="font-size:0.95rem;font-weight:400;margin-top:6px;">
-        English Services
-    </div>
-</a>
-<a class="btn" href="https://wa.me/6594574732">📱 免費諮詢</a>
-  
 </div>  
   
 
@@ -1289,6 +1324,49 @@ style="background:#9b6a91;color:white;border:none;padding:15px 35px;border-radiu
 </form>
 
 </div>
+
+<!-- 網站完整入口｜訂閱區下方 -->
+<nav class="site-directory" aria-label="開心愛家園療癒網站完整入口">
+  <h2>🏡 網站快速入口</h2>
+  <p class="site-directory-intro">所有頁面都整理在這裡，方便你慢慢探索。</p>
+
+  <div class="site-directory-grid">
+    <a class="site-directory-link" href="story.html">🌈 BoBo 的故事</a>
+    <a class="site-directory-link" href="healing.html">💜 療癒服務</a>
+    <a class="site-directory-link" href="free.html">🎁 免費療癒資源館</a>
+    <a class="site-directory-link" href="pet-healing.html">🐾 開心寵物療癒</a>
+    <a class="site-directory-link" href="seed.html">🌻 幸福種子計畫</a>
+    <a class="site-directory-link" href="testimonial.html">🌟 學員回饋</a>
+    <a class="site-directory-link" href="blog.html">🌿 BoBo 部落格</a>
+    <a class="site-directory-link" href="recommend.html">🌍 慢活推薦館</a>
+    <a class="site-directory-link" href="explore.html">🩷 自我探索館</a>
+    <a class="site-directory-link" href="happy-home.html">🏡 開心幸福家園</a>
+    <a class="site-directory-link" href="healing-tree.html">🌳 Healing Tree</a>
+    <a class="site-directory-link" href="healing-prompt.html">💬 Healing Prompt</a>
+    <a class="site-directory-link" href="healing-survey.html">🌿 療癒需求探索</a>
+    <a class="site-directory-link" href="bobo-settle-within.html">🫧 先把自己安住</a>
+    <a class="site-directory-link" href="gentle-healing-membership.html">🌷 溫柔療癒會員</a>
+    <a class="site-directory-link" href="emotion-card-member.html">💌 情緒卡會員專區</a>
+    <a class="site-directory-link" href="life-light-cellular-quantum-healing.html">✨ 生命之光</a>
+    <a class="site-directory-link" href="money-gratitude-manifestation.html">🌻 金錢關係練習</a>
+    <a class="site-directory-link" href="knowledge-business.html">🌟 光耀豐盛人生</a>
+    <a class="site-directory-link" href="dragon-universe.html">🐉 龍族宇宙</a>
+    <a class="site-directory-link" href="dragon-story-library.html">📖 龍族故事集</a>
+    <a class="site-directory-link" href="dragon-awakens.html">🐲 龍的覺醒故事</a>
+    <a class="site-directory-link" href="dragon-guardian-game.html">🛡️ 龍族守護遊戲</a>
+    <a class="site-directory-link" href="focus-game.html">🎯 專注放鬆遊戲</a>
+    <a class="site-directory-link" href="happy-healing-island.html">🏝️ 開心療癒島</a>
+    <a class="site-directory-link" href="happy-pet-healing-island.html">🐾 寵物療癒島</a>
+    <a class="site-directory-link" href="mirror-war.html">🪞 鏡子之戰</a>
+    <a class="site-directory-link" href="pet-survey.html">🐾 寵物療癒探索</a>
+    <a class="site-directory-link" href="international.html">🌍 English Services</a>
+    <a class="site-directory-link" href="pet-healing-en.html">🐾 Pet Healing EN</a>
+    <a class="site-directory-link" href="policy.html">📜 政策與條款</a>
+    <a class="site-directory-link" href="policy_en.html">📜 Policy (English)</a>
+    <a class="site-directory-link" href="https://wa.me/6594574732">📱 聯絡 BoBo</a>
+  </div>
+</nav>
+
 <iframe
 name="hidden_iframe"
 style="display:none;">
