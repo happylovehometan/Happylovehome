@@ -52,9 +52,9 @@
     .quality .num{font-size:13px;letter-spacing:.12em;color:var(--gold);font-weight:900}
     .quality h3{margin:5px 0 8px;color:var(--deep);font-size:22px}
     .quality p{margin:0;color:#5b7471}
-    .service{overflow:hidden;border-radius:34px;background:linear-gradient(135deg,#064f56,#0b7d75);color:#fff;box-shadow:var(--shadow);display:grid;grid-template-columns:.8fr 1.2fr}
-    .service img{width:100%;height:100%;object-fit:cover}
-    .service-body{padding:46px}
+    .service{display:flex;flex-direction:column;gap:28px;color:#fff}
+    .service img{width:min(100%,720px);height:auto;object-fit:contain;margin:0 auto;border-radius:34px;box-shadow:var(--shadow)}
+    .service-body{padding:46px;border-radius:34px;background:linear-gradient(135deg,#064f56,#0b7d75);box-shadow:var(--shadow)}
     .service h2{font-size:clamp(30px,5vw,44px);line-height:1.25;margin:0 0 6px;color:#fff}
     .price{font-size:clamp(32px,5vw,48px);font-weight:950;color:#ffdda0;margin:14px 0}
     .price-options{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:20px 0 24px}
@@ -90,7 +90,7 @@
       .origin,.service,.feather,.effects{grid-template-columns:1fr}
       .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
       .steps{grid-template-columns:repeat(2,minmax(0,1fr))}
-      .service img{max-height:520px}
+      .service img{height:auto}
     }
     @media(max-width:520px){
       .nav-links{display:none}.grid,.practice,.steps,.price-options{grid-template-columns:1fr}
@@ -126,7 +126,6 @@
 
   <main>
     <section class="origin">
-      <img src="peacock-energy-healing-poster.png" alt="孔雀能量療癒：一對一線上療癒，30分鐘 USD99，60分鐘 USD198">
       <div class="paper">
         <p class="eyebrow">來自真實相遇的療癒方式</p>
         <h2>孔雀不只是美麗的象徵</h2>
