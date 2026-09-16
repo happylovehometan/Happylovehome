@@ -360,6 +360,163 @@ text-align:left;
   font-size:14px;
   line-height:1.7;
 }
+
+.healing-map-guide{
+  width:calc(100% - 32px);
+  max-width:760px;
+  box-sizing:border-box;
+  margin:0 auto 38px;
+  padding:24px 18px;
+  background:#fffaf8;
+  border:1px solid #eadbd8;
+  border-radius:22px;
+  box-shadow:0 8px 22px rgba(94,63,84,.09);
+}
+
+.healing-map-guide h2{
+  margin:0 0 8px;
+  color:#704f67;
+  text-align:center;
+  font-size:24px;
+}
+
+.healing-map-guide-intro{
+  margin:0 0 20px;
+  color:#786972;
+  text-align:center;
+  line-height:1.8;
+}
+
+.healing-map-group{
+  margin-top:20px;
+}
+
+.healing-map-group h3{
+  margin:0 0 10px;
+  color:#704f67;
+  font-size:17px;
+}
+
+.healing-map-buttons{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px;
+}
+
+.healing-map-btn{
+  width:100%;
+  min-height:74px;
+  padding:13px 14px;
+  border:1px solid #e7d8df;
+  border-radius:16px;
+  background:#ffffff;
+  color:#5e4758;
+  text-align:left;
+  font-family:inherit;
+  cursor:pointer;
+  transition:.2s ease;
+}
+
+.healing-map-btn strong,
+.healing-map-btn span{
+  display:block;
+}
+
+.healing-map-btn strong{
+  margin-bottom:5px;
+  font-size:16px;
+}
+
+.healing-map-btn span{
+  color:#897681;
+  font-size:13px;
+  line-height:1.55;
+}
+
+.healing-map-btn:hover,
+.healing-map-btn:focus-visible{
+  transform:translateY(-2px);
+  border-color:#b88ca9;
+  box-shadow:0 6px 14px rgba(112,79,103,.12);
+}
+
+.healing-map-btn[aria-pressed="true"]{
+  background:#9b6a91;
+  color:#ffffff;
+  border-color:#9b6a91;
+}
+
+.healing-map-btn[aria-pressed="true"] span{
+  color:#fff7fc;
+}
+
+.healing-map-detail{
+  margin-top:20px;
+  padding:18px;
+  background:#f7eef4;
+  border-radius:16px;
+  color:#604b5a;
+}
+
+.healing-map-detail h3{
+  margin:0 0 8px;
+  font-size:20px;
+}
+
+.healing-map-detail p{
+  margin:0;
+  line-height:1.8;
+}
+
+.healing-map-levels{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:9px;
+  margin-top:20px;
+}
+
+.healing-map-level{
+  padding:14px 8px;
+  border-radius:15px;
+  background:#efe5ec;
+  color:#654f5f;
+  text-align:center;
+  line-height:1.55;
+}
+
+.healing-map-level strong,
+.healing-map-level span{
+  display:block;
+}
+
+.healing-map-level span{
+  margin-top:4px;
+  color:#887580;
+  font-size:13px;
+}
+
+.healing-map-boundary{
+  margin:18px 0 0;
+  padding-top:16px;
+  border-top:1px solid #e4d5dd;
+  color:#806d78;
+  font-size:13px;
+  line-height:1.75;
+  text-align:center;
+}
+
+@media (max-width:560px){
+  .healing-map-guide{
+    padding:21px 14px;
+  }
+  .healing-map-buttons,
+  .healing-map-levels{
+    grid-template-columns:1fr;
+  }
+  .healing-map-btn{
+    min-height:68px;
+  }
+}
 .site-directory h2{
   margin:0 0 6px;
   color:#76536f;
@@ -446,6 +603,90 @@ box-shadow:0 4px 15px rgba(0,0,0,.15);
     decoding="async">
   <figcaption>從被看見、被陪伴，到溫柔地走回自己。</figcaption>
 </figure>
+
+<section class="healing-map-guide" aria-labelledby="healing-map-guide-title">
+  <h2 id="healing-map-guide-title">BoBo 療癒服務理念與方向</h2>
+  <p class="healing-map-guide-intro">點擊不同區塊，看看開心愛家園療癒所相信與實踐的方向。</p>
+
+  <div class="healing-map-group">
+    <h3>核心</h3>
+    <div class="healing-map-buttons">
+      <button class="healing-map-btn" type="button" aria-pressed="true" data-healing-map-key="core">
+        <strong>把自己抱回來</strong>
+        <span>回到內在生命之光</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="healing-map-group">
+    <h3>01｜相信什麼</h3>
+    <div class="healing-map-buttons">
+      <button class="healing-map-btn" type="button" aria-pressed="false" data-healing-map-key="home">
+        <strong>開心愛家園</strong>
+        <span>家也是自己的內在</span>
+      </button>
+      <button class="healing-map-btn" type="button" aria-pressed="false" data-healing-map-key="truth">
+        <strong>真實而溫柔</strong>
+        <span>不誇大、不操弄、不承諾奇蹟</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="healing-map-group">
+    <h3>02｜陪伴誰</h3>
+    <div class="healing-map-buttons">
+      <button class="healing-map-btn" type="button" aria-pressed="false" data-healing-map-key="people">
+        <strong>正在撐住生活的人</strong>
+        <span>情緒、關係、金錢壓力或方向迷惘</span>
+      </button>
+      <button class="healing-map-btn" type="button" aria-pressed="false" data-healing-map-key="child">
+        <strong>想接回內在小孩的人</strong>
+        <span>理解委屈與害怕，把位置留回自己</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="healing-map-group">
+    <h3>03｜如何陪伴</h3>
+    <div class="healing-map-buttons">
+      <button class="healing-map-btn" type="button" aria-pressed="false" data-healing-map-key="path">
+        <strong>先安住・再看見・後行動</strong>
+        <span>傾聽、書寫、冥想、呼吸與能量療癒</span>
+      </button>
+      <button class="healing-map-btn" type="button" aria-pressed="false" data-healing-map-key="choice">
+        <strong>多入口、可選擇</strong>
+        <span>免費資源、課程、團體與一對一</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="healing-map-group">
+    <h3>04｜走向哪裡</h3>
+    <div class="healing-map-buttons">
+      <button class="healing-map-btn" type="button" aria-pressed="false" data-healing-map-key="brand">
+        <strong>清楚的品牌主軸</strong>
+        <span>內在小孩、情緒安撫、金錢關係、生命之光</span>
+      </button>
+      <button class="healing-map-btn" type="button" aria-pressed="false" data-healing-map-key="future">
+        <strong>可持續的療癒家園</strong>
+        <span>讓網站、內容、課程與陪伴彼此連結</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="healing-map-detail" aria-live="polite">
+    <h3 id="healing-map-detail-title">核心定位</h3>
+    <p id="healing-map-detail-text">BoBo 不是替人決定答案，而是在對方看不清、想不通或累了的時候，陪他先停下來，重新聽見自己的感受與選擇。</p>
+  </div>
+
+  <div class="healing-map-levels" aria-label="療癒陪伴三層方向">
+    <div class="healing-map-level"><strong>被看見</strong><span>免費內容與溫柔提醒</span></div>
+    <div class="healing-map-level"><strong>被陪伴</strong><span>練習、課程與團體體驗</span></div>
+    <div class="healing-map-level"><strong>走回自己</strong><span>一對一與長期支持</span></div>
+  </div>
+
+  <p class="healing-map-boundary">服務界線：療癒陪伴不取代醫療、心理治療、法律或財務等專業協助。</p>
+</section>
 
 <section class="home-intro">
   <h1>你不需要一個人撐著</h1>
@@ -1503,6 +1744,65 @@ document.addEventListener("DOMContentLoaded", function () {
 
   document.querySelectorAll(".start_time").forEach(function(input){
       input.value = Date.now();
+  });
+
+  const healingMapDetails = {
+    core: {
+      title: "核心定位",
+      text: "BoBo 不是替人決定答案，而是在對方看不清、想不通或累了的時候，陪他先停下來，重新聽見自己的感受與選擇。"
+    },
+    home: {
+      title: "開心愛家園",
+      text: "家是原生家庭、我們居住的地球、所在的宇宙，也是自己的內在生命之光。照顧好自己，也是在為更大的共同家園帶來一份安定。"
+    },
+    truth: {
+      title: "真實而溫柔",
+      text: "每一項內容都清楚說明範圍與限制，不用恐懼催促購買，不誇大效果，也尊重每個人的選擇與步調。"
+    },
+    people: {
+      title: "正在撐住生活的人",
+      text: "陪伴那些表面努力生活，心裡卻很累、缺乏安全感，或正在情緒、關係、金錢壓力與失落中尋找方向的人。"
+    },
+    child: {
+      title: "想接回內在小孩的人",
+      text: "承認曾經的委屈、害怕與渴望被愛，練習停止追趕與討好，把心裡的位置慢慢留回自己。"
+    },
+    path: {
+      title: "先安住・再看見・後行動",
+      text: "先讓身體與情緒安定下來，再辨認真正的感受、需要與信念，最後把理解化成生活裡能做到的小行動。"
+    },
+    choice: {
+      title: "多入口、可選擇",
+      text: "不同需要與預算的人，都能從合適的入口開始：免費內容與體驗、數位資源、小課程、團體陪伴，以及一對一服務。"
+    },
+    brand: {
+      title: "清楚的品牌主軸",
+      text: "以內在小孩與情緒安撫為根，延伸至金錢關係、生命之光、寵物陪伴、龍族與其他具有 BoBo 個人特色的療癒內容。"
+    },
+    future: {
+      title: "可持續的療癒家園",
+      text: "逐步整合網站、YouTube、數位產品、線上課程與個人陪伴，讓每一份內容彼此連結，成為能長期回來休息、學習與重新出發的地方。"
+    }
+  };
+
+  const healingMapTitle = document.getElementById("healing-map-detail-title");
+  const healingMapText = document.getElementById("healing-map-detail-text");
+  const healingMapButtons = document.querySelectorAll("[data-healing-map-key]");
+
+  healingMapButtons.forEach(function(button){
+    button.addEventListener("click", function(){
+      healingMapButtons.forEach(function(item){
+        item.setAttribute("aria-pressed", "false");
+      });
+
+      button.setAttribute("aria-pressed", "true");
+      const detail = healingMapDetails[button.dataset.healingMapKey];
+
+      if(detail && healingMapTitle && healingMapText){
+        healingMapTitle.textContent = detail.title;
+        healingMapText.textContent = detail.text;
+      }
+    });
   });
 
 });
