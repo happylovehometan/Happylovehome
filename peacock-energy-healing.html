@@ -52,6 +52,12 @@
     .quality .num{font-size:13px;letter-spacing:.12em;color:var(--gold);font-weight:900}
     .quality h3{margin:5px 0 8px;color:var(--deep);font-size:22px}
     .quality p{margin:0;color:#5b7471}
+    .game-invite{display:grid;grid-template-columns:1fr auto;gap:28px;align-items:center;padding:34px 38px;border-radius:30px;background:linear-gradient(135deg,#48216c,#7b3fa1 55%,#126b74);color:#fff;box-shadow:0 18px 42px rgba(72,33,108,.2);overflow:hidden;position:relative}
+    .game-invite:after{content:"✦";position:absolute;right:18%;top:-34px;font-size:120px;color:rgba(255,255,255,.08);line-height:1}
+    .game-invite h2{margin:4px 0 8px;color:#fff;font-size:clamp(28px,4vw,39px);line-height:1.25}
+    .game-invite p{margin:0;color:#f4eafa;max-width:650px}
+    .game-invite .game-label{font-size:13px;font-weight:900;letter-spacing:.15em;color:#f8d98a}
+    .game-invite .game-btn{position:relative;z-index:1;white-space:nowrap;background:#fff;color:#5f2c82;box-shadow:0 10px 25px rgba(18,13,29,.2)}
     .service{display:flex;flex-direction:column;gap:28px;color:#fff}
     .service img{width:min(100%,720px);height:auto;object-fit:contain;margin:0 auto;border-radius:34px;box-shadow:var(--shadow)}
     .service-body{padding:46px;border-radius:34px;background:linear-gradient(135deg,#064f56,#0b7d75);box-shadow:var(--shadow)}
@@ -88,6 +94,7 @@
       .hero{min-height:690px;align-items:end;padding-bottom:30px;background-position:42% center}
       .hero-card{margin:0;padding:32px 26px}
       .origin,.service,.feather,.effects{grid-template-columns:1fr}
+      .game-invite{grid-template-columns:1fr;padding:30px 26px}
       .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
       .steps{grid-template-columns:repeat(2,minmax(0,1fr))}
       .service img{height:auto}
@@ -134,6 +141,15 @@
         <div class="quote">我可以善良，也可以有界線；我可以發光，也可以休息。</div>
         <p><small>孔雀能量療癒是 BoBo 依親身經驗，結合冥想、呼吸、意念引導與溫柔覺察所整理的原創陪伴方式；不是宗教儀式或古老傳承。</small></p>
       </div>
+    </section>
+
+    <section class="game-invite" aria-labelledby="peacock-game-title">
+      <div>
+        <div class="game-label">免費互動小遊戲</div>
+        <h2 id="peacock-game-title">孔雀展羽能量之旅</h2>
+        <p>陪伴孔雀蛋孵化、小孔雀慢慢長大，最後展開翅膀飛向天空。每一道羽光都帶來一個溫柔提醒與生活小任務。</p>
+      </div>
+      <a class="btn game-btn" href="peacock-energy-game.html">🦚 開始孔雀成長遊戲</a>
     </section>
 
     <section>
