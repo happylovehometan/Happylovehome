@@ -565,6 +565,53 @@ text-align:left;
   background:#875f82;
   transform:translateY(-1px);
 }
+
+/* BoBo 郵寄祝福計畫 */
+.blessing-mail-card{
+  overflow:hidden;
+  border:1px solid #eadbd8;
+  background:linear-gradient(180deg,#fffdfb 0%,#fff7f4 100%);
+}
+.blessing-mail-poster{
+  display:block;
+  width:100%;
+  max-width:700px;
+  height:auto;
+  margin:0 auto 24px;
+  border-radius:22px;
+  box-shadow:0 9px 24px rgba(110,78,92,.12);
+}
+.blessing-mail-card p{
+  max-width:610px;
+  margin:12px auto;
+  line-height:1.9;
+}
+.blessing-options{
+  margin:18px auto;
+  padding:16px;
+  max-width:560px;
+  background:#fff;
+  border:1px solid #eadde4;
+  border-radius:18px;
+  line-height:1.9;
+}
+.blessing-required{
+  color:#76536f;
+  font-weight:700;
+}
+.blessing-privacy{
+  max-width:580px;
+  margin:18px auto;
+  padding:15px 16px;
+  border-radius:16px;
+  background:#f5edf3;
+  color:#6d5766;
+  font-size:14px;
+  line-height:1.8;
+}
+.blessing-mail-btn{
+  cursor:pointer;
+}
 @media (max-width:560px){
   .site-directory{
     padding:20px 14px;
@@ -1570,6 +1617,55 @@ font-size:18px;
 </form>
 
 </div>
+
+<!-- 💌 BoBo 郵寄祝福計畫｜放在鼓勵留言與訂閱之間 -->
+<div class="card blessing-mail-card" id="bobo-blessing-mail">
+
+  <img
+    class="blessing-mail-poster"
+    src="bobo-blessing-letter-poster.png"
+    alt="BoBo 想寫個祝福語給你：一張卡片、一封短信或一句親筆鼓勵"
+    loading="lazy"
+    decoding="async">
+
+  <h2>💌 BoBo 想寫個祝福語給你</h2>
+
+  <p>
+    這份祝福，可以是一張卡片、一封簡短的信件，<br>
+    或是一句你希望 BoBo 親筆寫給你的鼓勵話語。💛
+  </p>
+
+  <div class="blessing-options">
+    📮 祝福會貼上郵票，以普通郵件寄出。<br>
+    <span class="blessing-required">申請時必須 Email 告訴 BoBo：收件姓名及完整郵寄地址（包括國家與郵遞區號）。</span>
+  </div>
+
+  <p>
+    普通郵件沒有追蹤服務；郵寄途中若遺失，恕無法保證送達或補寄。<br>
+    收到祝福後，你無須回信。也歡迎把這個祝福計畫分享給有需要的人。
+  </p>
+
+  <div class="blessing-options">
+    💛 郵費由 BoBo 自費承擔，你不需要付費或回禮。<br>
+    若你願意，可以把 <strong>happylovehomehealing.org</strong> 分享給適合的人，
+    作為一份溫柔的能量平衡就好。分享完全自願，不是申請或收到祝福的條件。
+  </div>
+
+  <div class="blessing-privacy">
+    🔒 你的姓名、郵寄地址及來信內容會絕對保密，只用於寄送這份祝福；
+    不會公開、不會分享，也不會用作其他用途。
+  </div>
+
+  <p class="blessing-boundary">
+    🌿 BoBo 會依來信內容與實際情況決定是否寄送；若要求不合適、不尊重、
+    超出能力範圍或屬於其他無理要求，BoBo 有權婉拒或不予處理。
+  </p>
+
+  <button class="linkbtn blessing-mail-btn" type="button" onclick="openBlessingEmail()">
+    💌 Email BoBo 申請祝福
+  </button>
+
+</div>
   
 <div class="card" id="subscribe">
 
@@ -1715,6 +1811,30 @@ function showSubscribeSuccess(){
     document.getElementById("encourageSuccess").style.display="block";
   },1000);
 } 
+
+function openBlessingEmail(){
+  const recipient = ["happylovehome", "tan", "@", "gmail", ".com"].join("");
+  const subject = "申請 BoBo 郵寄祝福";
+  const body = [
+    "您好 BoBo：",
+    "",
+    "我想收到一份郵寄祝福。",
+    "",
+    "收件姓名（必填）：",
+    "完整郵寄地址（必填，請包括國家與郵遞區號）：",
+    "",
+    "我希望收到：卡片／簡短信件／一句親筆鼓勵（請保留適合的選項）",
+    "想讓 BoBo 知道的近況（選填）：",
+    "",
+    "我知道郵費由 BoBo 自費承擔，不需要付費或回禮；分享 happylovehomehealing.org 完全出於自願，也不是收到祝福的條件。",
+    "我明白祝福會以沒有追蹤服務的普通郵件寄出；郵寄途中若遺失，恕無法保證送達或補寄。",
+    "我也明白 BoBo 會依來信內容與實際情況決定是否寄送，並有權婉拒不合適、不尊重、超出能力範圍或其他無理要求。"
+  ].join("\n");
+
+  window.location.href = "mailto:" + recipient
+    + "?subject=" + encodeURIComponent(subject)
+    + "&body=" + encodeURIComponent(body);
+}
 </script>
 
 
