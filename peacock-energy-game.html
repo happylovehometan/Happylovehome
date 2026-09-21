@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>孔雀展羽能量之旅｜免費互動療癒遊戲</title>
+  <meta name="description" content="依照當下感受，探索七道孔雀羽光，收集溫柔提醒與生活小任務。BoBo 原創孔雀能量療癒互動遊戲。">
+  <meta name="theme-color" content="#3f1d61">
+  <style>
+    :root{--purple:#5b2a7d;--purple2:#8650a8;--teal:#08756f;--gold:#f4cf7b;--ink:#253e43;--cream:#fffaf0;--white:#fff;--shadow:0 18px 50px rgba(35,19,55,.18)}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;min-height:100vh;color:var(--ink);font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;background:radial-gradient(circle at 10% 8%,rgba(162,105,194,.22),transparent 30%),radial-gradient(circle at 90% 16%,rgba(14,135,126,.22),transparent 28%),linear-gradient(160deg,#f7f0fb 0%,#eefaf6 48%,#fff8e9 100%);line-height:1.75}
+    button,a{font:inherit}
+    button{cursor:pointer}
+    .topbar{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.88);backdrop-filter:blur(12px);border-bottom:1px solid rgba(91,42,125,.1)}
+    .nav{max-width:1100px;margin:auto;padding:11px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .brand{font-weight:900;color:var(--purple);text-decoration:none}
+    .back{color:#5b5160;text-decoration:none;font-size:14px;padding:7px 12px;border-radius:999px;background:#f4edf7}
+    main{width:min(1100px,calc(100% - 28px));margin:28px auto 70px}
+    .game-shell{position:relative;overflow:hidden;border:1px solid rgba(91,42,125,.12);border-radius:34px;background:rgba(255,255,255,.83);box-shadow:var(--shadow);backdrop-filter:blur(8px)}
+    .game-head{padding:34px 28px 24px;text-align:center;background:linear-gradient(135deg,rgba(91,42,125,.98),rgba(8,117,111,.94));color:#fff}
+    .game-head .peacock{font-size:58px;line-height:1;filter:drop-shadow(0 8px 12px rgba(0,0,0,.18))}
+    .game-head .eyebrow{margin:10px 0 3px;color:var(--gold);font-size:13px;font-weight:900;letter-spacing:.15em}
+    h1{font-size:clamp(29px,5vw,48px);line-height:1.2;margin:0}
+    .game-head p{max-width:650px;margin:10px auto 0;color:#f0eaf4}
+    .progress-wrap{max-width:720px;margin:22px auto 0}
+    .progress-text{display:flex;justify-content:space-between;font-size:14px;font-weight:800;margin-bottom:7px}
+    .progress{height:12px;background:rgba(255,255,255,.2);border-radius:999px;overflow:hidden}
+    .progress span{display:block;width:0;height:100%;border-radius:inherit;background:linear-gradient(90deg,#ffe49b,#fff4cc);transition:width .45s ease}
+    .game-body{padding:30px}
+    .mood{max-width:820px;margin:0 auto 28px;text-align:center}
+    .mood h2{font-size:22px;color:var(--purple);margin:0 0 12px}
+    .mood-options{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+    .mood-btn{border:1px solid rgba(91,42,125,.16);border-radius:999px;background:#fff;padding:10px 17px;color:#594c5e;font-weight:800;transition:.2s ease}
+    .mood-btn:hover,.mood-btn:focus-visible{transform:translateY(-2px);border-color:var(--purple2)}
+    .mood-btn.active{background:var(--purple);color:#fff;border-color:var(--purple);box-shadow:0 8px 18px rgba(91,42,125,.22)}
+    .instruction{text-align:center;margin:0 auto 22px;color:#61706f}
+    .life-stage{max-width:780px;margin:0 auto 28px;padding:24px 20px;border-radius:26px;background:linear-gradient(145deg,#f6edfb,#e9faf5);border:1px solid rgba(91,42,125,.13);text-align:center;overflow:hidden}
+    .stage-label{font-size:12px;font-weight:900;letter-spacing:.13em;color:#8b5aa3}
+    .stage-visual{min-height:92px;display:flex;align-items:center;justify-content:center;gap:8px;font-size:58px;line-height:1.1;margin:5px 0;filter:drop-shadow(0 9px 10px rgba(40,30,46,.12))}
+    .stage-visual.change{animation:hatch .55s ease}
+    .stage-visual.fly{animation:fly 1.8s ease-in-out infinite alternate}
+    .stage-title{font-size:22px;font-weight:950;color:var(--purple);margin:3px 0}
+    .stage-copy{margin:0;color:#5d716e}
+    .stage-track{display:grid;grid-template-columns:repeat(8,1fr);gap:5px;max-width:520px;margin:17px auto 0}
+    .stage-dot{height:7px;border-radius:999px;background:rgba(91,42,125,.13)}
+    .stage-dot.done{background:linear-gradient(90deg,var(--purple2),var(--teal))}
+    .feathers{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;max-width:880px;margin:auto}
+    .feather{min-height:150px;border:1px solid rgba(91,42,125,.13);border-radius:25px;background:linear-gradient(150deg,#fff,#f5effa);color:var(--purple);padding:18px 12px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:7px;box-shadow:0 9px 24px rgba(69,39,83,.08);transition:transform .2s ease,box-shadow .2s ease,background .3s ease}
+    .feather:hover,.feather:focus-visible{transform:translateY(-4px) rotate(-1deg);box-shadow:0 14px 28px rgba(69,39,83,.16)}
+    .feather:nth-child(even):hover{transform:translateY(-4px) rotate(1deg)}
+    .feather .icon{font-size:35px;line-height:1}
+    .feather .number{font-size:12px;letter-spacing:.1em;font-weight:900;color:#9b72ad}
+    .feather .name{font-size:18px;font-weight:900}
+    .feather.collected{background:linear-gradient(145deg,#e8faf4,#fff4d6);border-color:rgba(8,117,111,.28);color:var(--teal)}
+    .feather.collected .number{color:#99721d}
+    .feather.collected:after{content:"已收集 ✓";font-size:12px;color:#6c7e75;font-weight:800}
+    .feather.final{grid-column:2/4}
+    .message{display:none;max-width:720px;margin:26px auto 0;padding:26px;border-radius:25px;background:linear-gradient(145deg,#fff9e7,#effaf6);border:1px solid rgba(183,137,57,.22);text-align:center;animation:rise .35s ease}
+    .message.show{display:block}
+    .message .mini{font-size:13px;color:#9a711e;font-weight:900;letter-spacing:.12em}
+    .message h2{margin:5px 0 8px;color:var(--purple);font-size:27px}
+    .message p{margin:7px 0}
+    .message .practice{padding:12px 15px;margin:16px 0 0;border-radius:16px;background:#fff;color:#376660;font-weight:800}
+    .completion{display:none;max-width:780px;margin:28px auto 0;padding:31px 25px;text-align:center;border-radius:28px;background:linear-gradient(135deg,#4f246f,#08756f);color:#fff;box-shadow:0 16px 36px rgba(58,29,78,.2);animation:rise .45s ease}
+    .completion.show{display:block}
+    .completion h2{font-size:30px;line-height:1.25;margin:0 0 8px;color:#ffe49b}
+    .completion p{margin:8px auto;max-width:610px}
+    .complete-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:20px}
+    .action{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:10px 18px;border:0;border-radius:999px;background:#fff;color:var(--purple);font-weight:900;text-decoration:none}
+    .action.secondary{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.55)}
+    .reset-wrap{text-align:center;margin-top:24px}
+    .reset{border:0;background:transparent;color:#7a657c;text-decoration:underline;padding:8px}
+    .note{max-width:750px;margin:27px auto 0;text-align:center;font-size:13px;color:#6b7977}
+    footer{text-align:center;padding:28px 18px;color:#6e6070;font-size:13px}
+    @keyframes rise{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:none}}
+    @keyframes hatch{0%{transform:scale(.84) rotate(-3deg);opacity:.55}55%{transform:scale(1.12) rotate(3deg)}100%{transform:scale(1) rotate(0);opacity:1}}
+    @keyframes fly{from{transform:translate(-10px,7px) rotate(-2deg)}to{transform:translate(12px,-12px) rotate(2deg)}}
+    @media(max-width:760px){.feathers{grid-template-columns:repeat(2,minmax(0,1fr))}.feather.final{grid-column:auto}.game-body{padding:25px 18px}.game-head{padding:30px 18px 23px}}
+    @media(max-width:430px){main{width:min(100% - 18px,1100px);margin-top:12px}.game-shell{border-radius:26px}.feather{min-height:135px;padding:14px 8px}.feather .name{font-size:16px}.nav{align-items:flex-start}.back{font-size:13px}.game-head .peacock{font-size:50px}}
+    @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <nav class="nav" aria-label="頁面導覽">
+      <a class="brand" href="index.html">🌿 開心愛家園療癒</a>
+      <a class="back" href="peacock-energy-healing.html">返回孔雀能量療癒</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="game-shell" aria-labelledby="game-title">
+      <div class="game-head">
+        <div class="peacock" aria-hidden="true">🦚</div>
+        <p class="eyebrow">BOBO 原創互動小遊戲</p>
+        <h1 id="game-title">孔雀展羽能量之旅</h1>
+        <p>陪伴一顆孔雀蛋孵化、慢慢長大，直到展開翅膀飛向天空。沒有標準答案，也不用一次完成。</p>
+        <div class="progress-wrap" aria-label="收集進度">
+          <div class="progress-text"><span>展羽進度</span><span id="progressCount">0 / 7</span></div>
+          <div class="progress"><span id="progressBar"></span></div>
+        </div>
+      </div>
+
+      <div class="game-body">
+        <div class="mood">
+          <h2>此刻的你，比較像哪一種感受？</h2>
+          <div class="mood-options" role="group" aria-label="選擇現在的感受">
+            <button class="mood-btn" type="button" data-mood="tired">😮‍💨 有點累</button>
+            <button class="mood-btn" type="button" data-mood="lost">🌫️ 有點迷惘</button>
+            <button class="mood-btn" type="button" data-mood="hurt">💧 心裡委屈</button>
+            <button class="mood-btn" type="button" data-mood="ready">✨ 想往前走</button>
+          </div>
+        </div>
+
+        <section class="life-stage" aria-live="polite" aria-labelledby="stageTitle">
+          <div class="stage-label">孔雀生命旅程</div>
+          <div class="stage-visual" id="stageVisual" aria-hidden="true">🦚 🥚</div>
+          <div class="stage-title" id="stageTitle">一顆新的孔雀蛋</div>
+          <p class="stage-copy" id="stageCopy">孔雀媽媽生下一顆蛋。它正安靜等待溫暖與陪伴。</p>
+          <div class="stage-track" id="stageTrack" aria-label="成長階段"></div>
+        </section>
+
+        <p class="instruction" id="instruction">選好感受後，憑直覺點一片羽光，陪伴小孔雀成長。</p>
+
+        <div class="feathers" id="feathers">
+          <button class="feather" type="button" data-key="wisdom"><span class="icon">💠</span><span class="number">羽光 01</span><span class="name">聰明</span></button>
+          <button class="feather" type="button" data-key="kindness"><span class="icon">💚</span><span class="number">羽光 02</span><span class="name">善良</span></button>
+          <button class="feather" type="button" data-key="freedom"><span class="icon">🪽</span><span class="number">羽光 03</span><span class="name">自由</span></button>
+          <button class="feather" type="button" data-key="truth"><span class="icon">🌈</span><span class="number">羽光 04</span><span class="name">真實色彩</span></button>
+          <button class="feather" type="button" data-key="shine"><span class="icon">☀️</span><span class="number">羽光 05</span><span class="name">安心展羽</span></button>
+          <button class="feather" type="button" data-key="rest"><span class="icon">🌙</span><span class="number">羽光 06</span><span class="name">溫柔收羽</span></button>
+          <button class="feather final" type="button" data-key="transform"><span class="icon">🦚</span><span class="number">羽光 07</span><span class="name">百羽轉化</span></button>
+        </div>
+
+        <div class="message" id="message" aria-live="polite">
+          <div class="mini">你打開了</div>
+          <h2 id="messageTitle"></h2>
+          <p id="messageText"></p>
+          <div class="practice" id="messagePractice"></div>
+        </div>
+
+        <div class="completion" id="completion" aria-live="polite">
+          <h2>你的孔雀羽屏已完整展開</h2>
+          <p id="finalMessage">你不需要向任何人證明自己的光。可以展羽，也可以收羽；可以停留，也可以飛向自己選擇的方向。</p>
+          <p><strong>我是聰明的。我是善良的。我是自由的。</strong></p>
+          <div class="complete-actions">
+            <a class="action" href="peacock-energy-healing.html#meditation">做孔雀能量冥想</a>
+            <a class="action secondary" href="peacock-energy-healing.html#service">了解療癒陪伴</a>
+          </div>
+        </div>
+
+        <div class="reset-wrap"><button class="reset" id="reset" type="button">重新開始這趟旅程</button></div>
+        <p class="note">這是一個自我覺察與放鬆小遊戲，不是心理測驗，也不取代醫療或心理專業協助。若某個練習讓你不舒服，可以隨時停下來。</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>© 2026 BoBo Tan｜開心愛家園療癒｜All Rights Reserved.</footer>
+
+  <script>
+    const energy = {
+      wisdom:{title:"聰明之羽",text:"先觀察，再選擇。你不必在混亂裡立刻給出答案。",practice:"小任務：寫下眼前這件事的『事實、感受、我的選擇』。"},
+      kindness:{title:"善良之羽",text:"你的善良不需要以犧牲自己為代價。照顧別人，也可以保留自己的位置。",practice:"小任務：今天為自己做一件不需要解釋的小事。"},
+      freedom:{title:"自由之羽",text:"自由不是逼自己飛得更高，而是知道自己仍然擁有選擇。",practice:"小任務：完成這句話——『其實，我可以重新選擇……』"},
+      truth:{title:"真實色彩之羽",text:"安靜、脆弱、自信與勇敢，都是你的色彩。完整不等於完美。",practice:"小任務：說出一個現在真實的感受，不批評它。"},
+      shine:{title:"安心展羽",text:"你可以讓能力和聲音被看見，不必搶走任何人的光。",practice:"小任務：分享一個想法或作品，不過度解釋。"},
+      rest:{title:"溫柔收羽",text:"休息不是失去光芒。不展示、不回應、不追趕時，你依然有價值。",practice:"小任務：讓一件不急的事情，留到明天再做。"},
+      transform:{title:"百羽轉化",text:"你走過的委屈與害怕，不必被美化；它們可以慢慢成為理解自己的智慧。",practice:"小任務：把手放在心口，說：『我願意把位置留回自己。』"}
+    };
+    const moodMessages={
+      tired:"今天的你不用再加快。真正的自由，也包含安心休息。",
+      lost:"答案還沒出現，不代表你走錯了。先回到自己的感受，下一步會慢慢清楚。",
+      hurt:"你的委屈值得被承認。善良可以留下，追趕與討好可以慢慢放下。",
+      ready:"你已經準備好用自己的速度前進。不是為了證明，而是因為你願意選擇自己。"
+    };
+    const growthStages=[
+      {visual:"🦚 🥚",title:"一顆新的孔雀蛋",copy:"孔雀媽媽生下一顆蛋。它正安靜等待溫暖與陪伴。"},
+      {visual:"🥚 💛",title:"蛋正在溫暖中",copy:"第一道羽光化成溫暖，輕輕守護蛋裡的小生命。"},
+      {visual:"🥚 ✨",title:"蛋殼出現小裂縫",copy:"喀、喀……裡面傳來細小的聲音。小孔雀正在努力。"},
+      {visual:"🐣",title:"小孔雀孵化了！",copy:"它慢慢探出頭來。今天不必飛翔，平安出生已經很勇敢。"},
+      {visual:"🐥 🌱",title:"小孔雀慢慢長大",copy:"它開始走路、吃東西，也好奇地認識這個世界。"},
+      {visual:"🦚 🌈",title:"羽毛長出色彩",copy:"每一種顏色都慢慢出現。它不需要和其他孔雀比較。"},
+      {visual:"🦚 ✨",title:"第一次安心展羽",copy:"它站穩腳步，展開自己的羽屏；美麗，也有自己的界線。"},
+      {visual:"🪽 🦚 ☁️",title:"長大了，飛向天空！",copy:"孔雀相信自己的翅膀，飛向更開闊的地方，也記得隨時可以回來休息。"}
+    ];
+    const storeKey="boboPeacockEnergyGameV1";
+    let state={mood:"",collected:[]};
+    try{state=Object.assign(state,JSON.parse(localStorage.getItem(storeKey)||"{}"));}catch(e){}
+    const message=document.getElementById("message");
+    const completion=document.getElementById("completion");
+    const progressBar=document.getElementById("progressBar");
+    const progressCount=document.getElementById("progressCount");
+    const stageVisual=document.getElementById("stageVisual");
+    const stageTitle=document.getElementById("stageTitle");
+    const stageCopy=document.getElementById("stageCopy");
+    const stageTrack=document.getElementById("stageTrack");
+
+    function save(){try{localStorage.setItem(storeKey,JSON.stringify(state));}catch(e){}}
+    function render(){
+      document.querySelectorAll(".mood-btn").forEach(btn=>btn.classList.toggle("active",btn.dataset.mood===state.mood));
+      document.querySelectorAll(".feather").forEach(btn=>{
+        const found=state.collected.includes(btn.dataset.key);
+        btn.classList.toggle("collected",found);
+        btn.setAttribute("aria-pressed",String(found));
+      });
+      const count=state.collected.length;
+      progressCount.textContent=count+" / 7";
+      progressBar.style.width=(count/7*100)+"%";
+      const stage=growthStages[count];
+      stageVisual.textContent=stage.visual;
+      stageVisual.classList.toggle("fly",count===7);
+      stageTitle.textContent=stage.title;
+      stageCopy.textContent=stage.copy;
+      stageTrack.innerHTML=growthStages.map((_,index)=>'<span class="stage-dot '+(index<=count?'done':'')+'"></span>').join("");
+      completion.classList.toggle("show",count===7);
+      if(count===7){
+        document.getElementById("finalMessage").textContent=moodMessages[state.mood]||"你不需要向任何人證明自己的光。可以展羽，也可以收羽；可以停留，也可以飛向自己選擇的方向。";
+        completion.scrollIntoView({behavior:"smooth",block:"center"});
+      }
+    }
+    document.querySelectorAll(".mood-btn").forEach(btn=>btn.addEventListener("click",()=>{
+      state.mood=btn.dataset.mood;save();render();
+      document.getElementById("instruction").textContent="很好，現在憑直覺點一片羽光。";
+    }));
+    document.querySelectorAll(".feather").forEach(btn=>btn.addEventListener("click",()=>{
+      if(!state.mood){
+        document.getElementById("instruction").textContent="先選一個最接近此刻的感受，再打開羽光喔。";
+        document.querySelector(".mood").scrollIntoView({behavior:"smooth",block:"center"});
+        return;
+      }
+      const key=btn.dataset.key;
+      if(!state.collected.includes(key))state.collected.push(key);
+      const item=energy[key];
+      stageVisual.classList.remove("change");void stageVisual.offsetWidth;stageVisual.classList.add("change");
+      document.getElementById("messageTitle").textContent=item.title;
+      document.getElementById("messageText").textContent=item.text;
+      document.getElementById("messagePractice").textContent=item.practice;
+      message.classList.remove("show");void message.offsetWidth;message.classList.add("show");
+      save();render();message.scrollIntoView({behavior:"smooth",block:"center"});
+    }));
+    document.getElementById("reset").addEventListener("click",()=>{
+      if(!confirm("要清除目前進度，重新開始嗎？"))return;
+      state={mood:"",collected:[]};save();message.classList.remove("show");completion.classList.remove("show");render();window.scrollTo({top:0,behavior:"smooth"});
+    });
+    render();
+  </script>
+</body>
+</html>
