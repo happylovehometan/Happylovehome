@@ -693,6 +693,105 @@ box-shadow:0 4px 12px rgba(0,0,0,.15);
   .inner-home-game-entry .ih-button{width:100%;box-sizing:border-box;font-size:18px;}
 }
 
+/* 財富顯化七步法｜生命之光互動小遊戲 */
+.wealth-light-game-entry{
+  position:relative;
+  width:min(88%,760px);
+  margin:38px auto;
+  padding:46px 38px;
+  box-sizing:border-box;
+  overflow:hidden;
+  border:1px solid rgba(181,133,55,.24);
+  border-radius:38px;
+  background:
+    radial-gradient(circle at 10% 10%,rgba(255,224,151,.48),transparent 28%),
+    radial-gradient(circle at 92% 88%,rgba(126,145,185,.22),transparent 34%),
+    linear-gradient(145deg,#fffdf5 0%,#fff5dc 50%,#edf0f8 100%);
+  box-shadow:0 16px 40px rgba(83,68,47,.15);
+  text-align:center;
+}
+.wealth-light-game-entry .wlg-symbol{
+  width:82px;
+  height:82px;
+  margin:0 auto 15px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  background:radial-gradient(circle at 35% 30%,#fff9ca,#efbd59 56%,#b9782f);
+  color:#382b27;
+  font-size:38px;
+  box-shadow:0 0 26px rgba(223,169,70,.42);
+}
+.wealth-light-game-entry .wlg-kicker{
+  margin:0 0 8px;
+  color:#9b6b2e;
+  font-size:13px;
+  font-weight:800;
+  letter-spacing:.14em;
+}
+.wealth-light-game-entry h2{
+  margin:0;
+  color:#4a3b52;
+  font-size:clamp(29px,5vw,42px);
+  line-height:1.35;
+}
+.wealth-light-game-entry .wlg-subtitle{
+  margin:9px 0 0;
+  color:#a16c2a;
+  font-size:18px;
+  font-weight:800;
+}
+.wealth-light-game-entry .wlg-copy{
+  max-width:620px;
+  margin:18px auto 0;
+  color:#625d6e;
+  font-size:18px;
+  line-height:1.9;
+}
+.wealth-light-game-entry .wlg-tags{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:9px;
+  margin:23px 0 0;
+}
+.wealth-light-game-entry .wlg-tags span{
+  padding:8px 14px;
+  border-radius:999px;
+  background:rgba(255,255,255,.82);
+  color:#72562f;
+  font-size:14px;
+  font-weight:700;
+  box-shadow:0 5px 15px rgba(83,68,47,.07);
+}
+.wealth-light-game-entry .wlg-button{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:56px;
+  margin:28px auto 0;
+  padding:14px 30px;
+  border-radius:999px;
+  background:linear-gradient(135deg,#3c436c,#bd8033);
+  color:#fff !important;
+  text-decoration:none !important;
+  font-size:19px;
+  font-weight:900;
+  box-shadow:0 12px 27px rgba(76,65,77,.23);
+}
+.wealth-light-game-entry .wlg-button:hover{transform:translateY(-2px);}
+.wealth-light-game-entry .wlg-note{
+  margin:14px 0 0;
+  color:#777180;
+  font-size:13px;
+  line-height:1.7;
+}
+@media(max-width:600px){
+  .wealth-light-game-entry{width:calc(100% - 30px);padding:36px 21px;border-radius:30px;}
+  .wealth-light-game-entry .wlg-copy{font-size:17px;}
+  .wealth-light-game-entry .wlg-button{width:100%;box-sizing:border-box;font-size:18px;}
+}
+
 </style>
 </head>
 
@@ -903,6 +1002,31 @@ href="https://wa.me/6594574732">
   </a>
   <p class="entry-note">免費閱讀與自我練習｜不保證特定金額或結果</p>
 </section>
+
+<!-- ✨ 財富顯化七步法｜生命之光互動小遊戲 -->
+<section class="wealth-light-game-entry" aria-labelledby="wealth-light-game-title">
+  <div class="wlg-symbol" aria-hidden="true">✦</div>
+  <p class="wlg-kicker">SEVEN LIGHTS • INNER ABUNDANCE • ACTION</p>
+  <h2 id="wealth-light-game-title">財富顯化<br>回到內在充足與生活行動</h2>
+  <p class="wlg-subtitle">BoBo 財富顯化七步法＋生命之光財富冥想</p>
+  <p class="wlg-copy">
+    收集七道生命之光，從安住、感恩與信念覺察開始，
+    再把願望帶回今天能夠完成的一個生活行動。
+  </p>
+  <div class="wlg-tags" aria-label="小遊戲內容">
+    <span>安心呼吸</span>
+    <span>匱乏覺察</span>
+    <span>信念轉換</span>
+    <span>生活行動</span>
+    <span>生命之光冥想</span>
+  </div>
+  <a class="wlg-button" href="bobo-wealth-manifestation-seven-step-light-game.html">
+    開始收集七道生命之光
+  </a>
+  <p class="wlg-note">免費互動練習｜紀錄只保存在自己的瀏覽器｜不保證任何財富、收入或結果</p>
+</section>
+
+<!-- 錄影課程完成後，請把課程介紹格子放在此處，接在互動小遊戲下方。 -->
 
 <!-- ✨ 生命之光細胞量子振動療癒入口 -->
 <section class="life-light-entry" aria-labelledby="life-light-entry-title">
