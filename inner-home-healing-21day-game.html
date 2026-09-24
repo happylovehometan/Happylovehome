@@ -40,17 +40,23 @@
     .progress-ring:before{content:"";position:absolute;inset:7px;border-radius:50%;background:#f8fbf9}.progress-ring span{position:relative;font-weight:900;font-size:.88rem;text-align:center;line-height:1.15}
     .today-card{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center;padding:18px 20px;background:linear-gradient(135deg,var(--deep),#4b8086);color:#fff;border-radius:22px;margin-bottom:21px;box-shadow:0 14px 28px rgba(49,95,105,.2)}
     .today-card p{margin:2px 0 0;opacity:.84;font-size:.9rem}.today-card strong{font-size:1.18rem}
+    .journey-stages{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:0 0 17px}
+    .stage-pill{padding:9px 8px;border:1px solid rgba(49,95,105,.14);border-radius:14px;background:rgba(255,255,255,.62);color:#6c8084;font-size:.8rem;font-weight:800;text-align:center}
+    .stage-pill.active{background:var(--deep);color:#fff;border-color:var(--deep)}.stage-pill.complete{background:#f7e5b8;color:#6a5119;border-color:#e7c66f}
     .primary{border:0;background:var(--sun);color:#513d13;font-weight:900;padding:12px 17px;border-radius:14px;cursor:pointer;box-shadow:0 7px 15px rgba(28,46,48,.18)}
     .primary:hover{filter:brightness(1.05);transform:translateY(-1px)}
     .days{display:grid;grid-template-columns:repeat(7,1fr);gap:10px}
     .day{position:relative;min-width:0;aspect-ratio:1;border:1px solid rgba(49,95,105,.15);background:rgba(255,255,255,.84);color:var(--ink);border-radius:17px;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;transition:.18s ease;box-shadow:0 4px 12px rgba(47,84,88,.07)}
     .day:hover,.day:focus-visible{transform:translateY(-3px);border-color:var(--teal);outline:none;box-shadow:0 9px 17px rgba(47,84,88,.13)}
     .day .num{font-weight:900;font-size:1.08rem}.day .icon{font-size:1.25rem;line-height:1}.day.done{background:linear-gradient(150deg,#fff7d8,#f2ddb2);border-color:#e0b95d}.day.done:after{content:"✓";position:absolute;right:7px;top:5px;font-weight:900;color:#6f571d}.day.current{outline:3px solid rgba(233,155,117,.45)}
+    .home-growth{margin:20px 0 0;padding:16px;border-radius:20px;background:rgba(255,255,255,.58);border:1px solid rgba(49,95,105,.12)}
+    .home-growth h3{margin:0 0 10px;font-size:1rem}.reward-row{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.reward{min-height:78px;padding:10px 6px;border-radius:15px;background:#edf2f1;color:#829094;display:grid;place-items:center;text-align:center;font-size:.78rem;font-weight:800}.reward span{display:block;font-size:1.5rem;filter:grayscale(1);opacity:.55}.reward.unlocked{background:linear-gradient(145deg,#fff8de,#e8f3ed);color:var(--ink);box-shadow:0 6px 15px rgba(47,84,88,.08)}.reward.unlocked span{filter:none;opacity:1}
     .gentle-note{display:flex;gap:10px;align-items:flex-start;margin:20px 2px 0;color:#61777b;font-size:.88rem}.gentle-note span{font-size:1.1rem}
-    dialog{width:min(680px,calc(100% - 28px));max-height:min(88vh,780px);border:0;border-radius:28px;padding:0;color:var(--ink);box-shadow:0 26px 80px rgba(20,54,59,.34);background:#fffdf8}
+    dialog{width:min(680px,calc(100% - 28px));max-height:min(88vh,780px);overflow:auto;border:0;border-radius:28px;padding:0;color:var(--ink);box-shadow:0 26px 80px rgba(20,54,59,.34);background:#fffdf8}
     dialog::backdrop{background:rgba(19,48,54,.54);backdrop-filter:blur(5px)}
     .modal{padding:clamp(22px,5vw,38px);position:relative}.close{position:absolute;right:16px;top:14px;border:0;background:#edf3f1;border-radius:50%;width:40px;height:40px;font-size:1.25rem;cursor:pointer;color:var(--ink)}
     .day-label{display:inline-flex;padding:5px 11px;border-radius:999px;background:var(--mist);color:var(--deep);font-weight:800;font-size:.86rem}.modal h3{font-family:"Noto Serif TC","Songti TC",serif;font-size:clamp(1.55rem,4vw,2.2rem);margin:12px 0 5px}.theme{color:#6b7e82;margin:0 0 22px}.practice{background:linear-gradient(135deg,#e9f3f1,#f9efe0);border-radius:20px;padding:19px 21px;margin:0 0 18px}.practice strong{display:block;margin-bottom:6px}.practice p{margin:0}
+    .mini-game{margin:0 0 18px;padding:18px;border:1px solid rgba(49,95,105,.14);border-radius:20px;background:#fff}.mini-game h4{margin:0 0 4px;font-size:1rem}.mini-hint{margin:0 0 13px;color:#718286;font-size:.87rem}.mini-controls{display:flex;flex-wrap:wrap;justify-content:center;gap:9px}.mini-btn{border:1px solid rgba(49,95,105,.18);background:var(--mist);color:var(--ink);padding:10px 13px;border-radius:13px;font-weight:800;cursor:pointer}.mini-btn:hover,.mini-btn.selected{background:var(--deep);color:#fff}.mini-result{min-height:26px;margin:12px 0 0;color:#426970;text-align:center;font-weight:800}.breath-orb{width:76px;height:76px;margin:4px auto 14px;display:grid;place-items:center;border-radius:50%;background:radial-gradient(circle,#fff4cb,#8eb9b9);color:var(--ink);font-weight:900;transition:transform 4s ease,background 1s ease}.breath-orb.expand{transform:scale(1.35);background:radial-gradient(circle,#fff,#f2ce7b)}.stone-btn{font-size:1.5rem}.stone-btn.released{opacity:.28;transform:translateY(10px)}.star-btn{font-size:1.55rem;filter:grayscale(1);opacity:.55}.star-btn.lit{filter:none;opacity:1;background:#fff5c9;color:#684f13}.energy-wrap{width:100%}.energy-range{width:100%;accent-color:var(--deep)}
     label{display:block;font-weight:800;margin:0 0 7px}.note{width:100%;min-height:105px;resize:vertical;border:1px solid rgba(49,95,105,.22);background:#fff;padding:13px 14px;border-radius:15px;color:var(--ink)}.note:focus{outline:3px solid rgba(79,127,130,.18);border-color:var(--teal)}
     .privacy{font-size:.82rem;color:#718286;margin:6px 0 16px}.affirmation{border-left:4px solid var(--peach);padding:10px 0 10px 14px;font-family:"Noto Serif TC","Songti TC",serif;font-weight:700;margin:18px 0}
     .actions{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:10px}.secondary{border:1px solid rgba(49,95,105,.22);background:#fff;color:var(--deep);padding:11px 16px;border-radius:14px;font-weight:800;cursor:pointer}.complete{border:0;background:var(--deep);color:#fff;padding:12px 18px;border-radius:14px;font-weight:900;cursor:pointer}.complete.done{background:#b27836}
@@ -85,11 +91,16 @@
           <div><h2>我的回家地圖</h2><p class="muted" id="progressText">已點亮 0 間小房間</p></div>
           <div class="progress-ring" id="progressRing" role="img" aria-label="完成進度 0%"><span id="progressPct">0%<br>回家</span></div>
         </div>
+        <div class="journey-stages" id="journeyStages" aria-label="三階段回家旅程"></div>
         <div class="today-card">
           <div><strong id="nextTitle">從 Day 1 開始</strong><p id="nextHint">今天只做一件讓自己安心的小事。</p></div>
           <button class="primary" id="nextBtn" type="button">打開今日小門</button>
         </div>
         <div class="days" id="days" aria-label="21天練習選擇"></div>
+        <section class="home-growth" aria-labelledby="home-growth-title">
+          <h3 id="home-growth-title">🏡 我的內在家園收藏</h3>
+          <div class="reward-row" id="rewardRow"></div>
+        </section>
         <p class="gentle-note"><span>🌿</span><span>可以照順序，也可以選今天最有感覺的一天。沒有追趕、沒有補課；你的步調，就是合適的步調。</span></p>
       </section>
     </section>
@@ -102,6 +113,12 @@
       <span class="day-label" id="modalDay">Day 1</span>
       <h3 id="modalTitle"></h3><p class="theme" id="modalTheme"></p>
       <div class="practice"><strong>今天的小行動</strong><p id="modalPractice"></p></div>
+      <section class="mini-game" aria-labelledby="miniGameTitle">
+        <h4 id="miniGameTitle">今天的互動小練習</h4>
+        <p class="mini-hint" id="miniHint"></p>
+        <div id="miniGameBody"></div>
+        <p class="mini-result" id="miniResult" aria-live="polite"></p>
+      </section>
       <div class="affirmation" id="modalAffirmation"></div>
       <label for="note">留一句話給今天的自己（可不填）</label>
       <textarea class="note" id="note" placeholder="此刻，我想對自己說……"></textarea>
@@ -134,15 +151,41 @@
       ["寫一封回家信","自我承諾","以『親愛的自己，歡迎回家』開頭，寫三句話給自己。","無論走了多遠，我都能再次回到自己。","💌"],
       ["我就是我的家","完整與延續","抱抱自己，回看這21天，選一個想繼續保留的練習。","我願意住回自己的心裡，溫柔而清醒地生活。","✨"]
     ];
-    const key="bobo-inner-home-v1";let state={done:[],notes:{},last:0};try{state={...state,...JSON.parse(localStorage.getItem(key)||"{}")}}catch(e){}
+    const key="bobo-inner-home-v1";let state={done:[],notes:{},plays:{},last:0};try{state={...state,...JSON.parse(localStorage.getItem(key)||"{}")}}catch(e){}
     const $=s=>document.querySelector(s),daysEl=$("#days"),dialog=$("#dayDialog");let active=0;
     function persist(){localStorage.setItem(key,JSON.stringify(state))}
-    function render(){daysEl.innerHTML="";lessons.forEach((l,i)=>{const b=document.createElement("button");b.type="button";b.className="day"+(state.done.includes(i)?" done":"")+(i===nextIndex()?" current":"");b.setAttribute("aria-label",`Day ${i+1} ${l[0]}${state.done.includes(i)?"，已完成":""}`);b.innerHTML=`<span class="icon">${l[4]}</span><span class="num">${i+1}</span>`;b.onclick=()=>openDay(i);daysEl.appendChild(b)});const n=state.done.length,pct=Math.round(n/21*100);$("#progressText").textContent=`已點亮 ${n} 間小房間`;$("#progressPct").innerHTML=`${pct}%<br>回家`;$("#progressRing").style.setProperty("--p",pct);$("#progressRing").setAttribute("aria-label",`完成進度 ${pct}%`);const nx=nextIndex();if(n===21){$("#nextTitle").textContent="21 間小房間都亮了";$("#nextHint").textContent="你不必完美，願意回來就已經很好。";$("#nextBtn").textContent="回看我的旅程"}else{$("#nextTitle").textContent=`下一扇門：Day ${nx+1} ${lessons[nx][0]}`;$("#nextHint").textContent=lessons[nx][1];$("#nextBtn").textContent="打開今日小門"}}
+    const stages=[["第一站","安住自己","🌱"],["第二站","抱回自己","🤍"],["第三站","住回心裡","🏡"]];
+    const rewards=[[7,"一盞安心燈","🏮"],[14,"一張柔軟椅","🪑"],[21,"一棵家園樹","🌳"]];
+    const comfortCards=["今天不必把所有事情做完。","你的感受，不需要先被別人同意。","慢一點，也是在照顧生命。","可以休息，再決定下一步。","你已經陪自己走過很多路。","先把今天照顧好，就很足夠。"];
+    function render(){
+      daysEl.innerHTML="";
+      lessons.forEach((l,i)=>{const b=document.createElement("button");b.type="button";b.className="day"+(state.done.includes(i)?" done":"")+(i===nextIndex()?" current":"");b.setAttribute("aria-label",`Day ${i+1} ${l[0]}${state.done.includes(i)?"，已完成":""}`);b.innerHTML=`<span class="icon">${l[4]}</span><span class="num">${i+1}</span>`;b.onclick=()=>openDay(i);daysEl.appendChild(b)});
+      const n=state.done.length,pct=Math.round(n/21*100),stageIndex=Math.min(2,Math.floor((n===21?20:nextIndex())/7));
+      $("#progressText").textContent=`已點亮 ${n} 間小房間`;$("#progressPct").innerHTML=`${pct}%<br>回家`;$("#progressRing").style.setProperty("--p",pct);$("#progressRing").setAttribute("aria-label",`完成進度 ${pct}%`);
+      $("#journeyStages").innerHTML=stages.map((s,i)=>`<div class="stage-pill ${n>=(i+1)*7?'complete':i===stageIndex?'active':''}">${s[2]} ${s[0]}<br>${s[1]}</div>`).join("");
+      $("#rewardRow").innerHTML=rewards.map(r=>`<div class="reward ${n>=r[0]?'unlocked':''}"><div><span>${n>=r[0]?r[2]:'🔒'}</span>${n>=r[0]?r[1]:`完成 Day ${r[0]} 解鎖`}</div></div>`).join("");
+      const nx=nextIndex();if(n===21){$("#nextTitle").textContent="21 間小房間都亮了";$("#nextHint").textContent="你不必完美，願意回來就已經很好。";$("#nextBtn").textContent="回看我的旅程"}else{$("#nextTitle").textContent=`下一扇門：Day ${nx+1} ${lessons[nx][0]}`;$("#nextHint").textContent=`${stages[Math.floor(nx/7)][2]} ${stages[Math.floor(nx/7)][1]}・${lessons[nx][1]}`;$("#nextBtn").textContent="打開今日小門"}
+    }
     function nextIndex(){const n=lessons.findIndex((_,i)=>!state.done.includes(i));return n<0?20:n}
-    function openDay(i){active=i;state.last=i;persist();const l=lessons[i];$("#modalDay").textContent=`Day ${i+1}`;$("#modalTitle").textContent=l[0];$("#modalTheme").textContent=`今天的回家主題：${l[1]}`;$("#modalPractice").textContent=l[2];$("#modalAffirmation").textContent=`「${l[3]}」`;$("#note").value=state.notes[i]||"";const done=state.done.includes(i);$("#completeBtn").textContent=done?"已完成・再抱抱自己":"完成今天的練習";$("#completeBtn").classList.toggle("done",done);dialog.showModal()}
+    function openDay(i){active=i;state.last=i;persist();const l=lessons[i],stage=stages[Math.floor(i/7)];$("#modalDay").textContent=`${stage[2]} ${stage[1]}・Day ${i+1}`;$("#modalTitle").textContent=l[0];$("#modalTheme").textContent=`今天的回家主題：${l[1]}`;$("#modalPractice").textContent=l[2];$("#modalAffirmation").textContent=`「${l[3]}」`;$("#note").value=state.notes[i]||"";renderMiniGame(i);const done=state.done.includes(i);$("#completeBtn").textContent=done?"已完成・再抱抱自己":"完成今天的練習";$("#completeBtn").classList.toggle("done",done);dialog.showModal()}
+    function savePlay(value){state.plays[active]=value;persist()}
+    function miniResult(text){$("#miniResult").textContent=text}
+    function renderMiniGame(i){
+      const type=i%7,body=$("#miniGameBody"),saved=state.plays[i];$("#miniResult").textContent=saved?`上次留下：${saved}`:"";
+      const titles=["呼吸泡泡","此刻的心情","抽一張安定小卡","放下三顆石頭","點亮三顆星","選一句界線","今日能量刻度"];
+      const hints=["跟著圓球，緩緩吸氣與呼氣。","沒有正確答案，只是看見現在。","抽一句今天可以帶走的話。","點一下石頭，象徵放下一點重量。","想起三個微小的支持，逐一點亮。","選一句今天最想練習的說法。","滑到最接近此刻的位置。"];
+      $("#miniGameTitle").textContent=`🎲 ${titles[type]}`;$("#miniHint").textContent=hints[type];
+      if(type===0){body.innerHTML=`<div class="breath-orb" id="breathOrb">準備</div><div class="mini-controls"><button class="mini-btn" id="breathBtn" type="button">開始12秒呼吸</button></div>`;$("#breathBtn").onclick=()=>{let step=0;const orb=$("#breathOrb"),words=["吸氣","呼氣","吸氣","呼氣"];const tick=()=>{orb.textContent=words[step];orb.classList.toggle("expand",step%2===0);step++;if(step===4){setTimeout(()=>{orb.textContent="完成 ♡";orb.classList.remove("expand");savePlay("完成一次呼吸泡泡");miniResult("你已為自己留下一小段安定時間。")},3000)}else setTimeout(tick,3000)};tick()}}
+      if(type===1){const moods=["🙂 平靜","🥺 委屈","😮‍💨 疲累","🌧️ 低落","🌱 有希望"];body.innerHTML=`<div class="mini-controls">${moods.map(m=>`<button class="mini-btn ${saved===m?'selected':''}" type="button">${m}</button>`).join("")}</div>`;body.querySelectorAll("button").forEach(b=>b.onclick=()=>{body.querySelectorAll("button").forEach(x=>x.classList.remove("selected"));b.classList.add("selected");savePlay(b.textContent);miniResult("謝謝你誠實地看見現在的自己。")})}
+      if(type===2){body.innerHTML=`<div class="mini-controls"><button class="mini-btn" id="cardBtn" type="button">✨ 抽一張小卡</button></div>`;$("#cardBtn").onclick=()=>{const card=comfortCards[Math.floor(Math.random()*comfortCards.length)];savePlay(card);miniResult(`「${card}」`)}}
+      if(type===3){let count=Number(saved)||0;body.innerHTML=`<div class="mini-controls">${[0,1,2].map(x=>`<button class="mini-btn stone-btn ${x<count?'released':''}" type="button" aria-label="放下一顆石頭">🪨</button>`).join("")}</div>`;body.querySelectorAll("button").forEach((b,x)=>b.onclick=()=>{b.classList.add("released");count=Math.max(count,x+1);savePlay(String(count));miniResult(count>=3?"三顆石頭已放下。剩下的，可以明天再整理。":`已放下 ${count} 顆石頭。`)})}
+      if(type===4){let count=Number(saved)||0;body.innerHTML=`<div class="mini-controls">${[0,1,2].map(x=>`<button class="mini-btn star-btn ${x<count?'lit':''}" type="button" aria-label="點亮一顆星">★</button>`).join("")}</div>`;body.querySelectorAll("button").forEach((b,x)=>b.onclick=()=>{b.classList.add("lit");count=Math.max(count,x+1);savePlay(String(count));miniResult(count>=3?"三份微小的支持，都被你看見了。":`已點亮 ${count} 顆星。`)})}
+      if(type===5){const lines=["我現在需要一點時間。","這件事，我需要想一想。","謝謝你，但這次我先不答應。"] ;body.innerHTML=`<div class="mini-controls">${lines.map(x=>`<button class="mini-btn ${saved===x?'selected':''}" type="button">${x}</button>`).join("")}</div>`;body.querySelectorAll("button").forEach(b=>b.onclick=()=>{body.querySelectorAll("button").forEach(x=>x.classList.remove("selected"));b.classList.add("selected");savePlay(b.textContent);miniResult("界線不是拒絕愛，而是讓關係更清楚。")})}
+      if(type===6){const value=Number(saved)||5;body.innerHTML=`<div class="energy-wrap"><input class="energy-range" id="energyRange" type="range" min="1" max="10" value="${value}" aria-label="今日能量 1 到 10"><div class="mini-result" id="energyLabel">今日能量：${value}／10</div></div>`;$("#energyRange").oninput=e=>{$("#energyLabel").textContent=`今日能量：${e.target.value}／10`;savePlay(e.target.value);miniResult(Number(e.target.value)<=4?"今天可以少做一點，把力氣留給自己。":"看見自己的能量，再選擇合適的步調。")}}
+    }
     function toast(msg){const t=$("#toast");t.textContent=msg;t.classList.add("show");clearTimeout(t.timer);t.timer=setTimeout(()=>t.classList.remove("show"),2200)}
     function petals(){if(matchMedia("(prefers-reduced-motion: reduce)").matches)return;const box=$("#celebrate");box.innerHTML="";for(let i=0;i<22;i++){const p=document.createElement("span");p.className="petal";p.textContent=["🌿","✨","🌼","♡"][i%4];p.style.left=Math.random()*100+"%";p.style.animationDelay=Math.random()*.55+"s";p.style.setProperty("--drift",(Math.random()*160-80)+"px");box.appendChild(p)}setTimeout(()=>box.innerHTML="",3400)}
-    $("#nextBtn").onclick=()=>openDay(state.done.length===21?(state.last||20):nextIndex());$("#closeBtn").onclick=()=>dialog.close();dialog.addEventListener("click",e=>{if(e.target===dialog)dialog.close()});$("#saveBtn").onclick=()=>{state.notes[active]=$("#note").value.trim();persist();toast("這句話已好好收在你的裝置裡")};$("#completeBtn").onclick=()=>{state.notes[active]=$("#note").value.trim();if(!state.done.includes(active)){state.done.push(active);state.done.sort((a,b)=>a-b);petals();$("#whisper").textContent=["謝謝你，今天也有回來。","不用趕，我會在這裡陪你。","這一小步，也值得被看見。","你的感受，在這裡有位置。"][active%4]}persist();render();dialog.close();toast(state.done.length===21?"歡迎回家。你已點亮完整的21天 ✨":"今天的小房間亮起來了 ✨")};$("#resetBtn").onclick=()=>{if(confirm("要清除21天的完成記錄與文字，重新開始嗎？這個動作無法復原。")){localStorage.removeItem(key);state={done:[],notes:{},last:0};render();toast("新的回家旅程，從此刻開始")}};render();
+    $("#nextBtn").onclick=()=>openDay(state.done.length===21?(state.last||20):nextIndex());$("#closeBtn").onclick=()=>dialog.close();dialog.addEventListener("click",e=>{if(e.target===dialog)dialog.close()});$("#saveBtn").onclick=()=>{state.notes[active]=$("#note").value.trim();persist();toast("這句話已好好收在你的裝置裡")};$("#completeBtn").onclick=()=>{state.notes[active]=$("#note").value.trim();let milestone=0;if(!state.done.includes(active)){state.done.push(active);state.done.sort((a,b)=>a-b);milestone=[7,14,21].includes(state.done.length)?state.done.length:0;petals();$("#whisper").textContent=["謝謝你，今天也有回來。","不用趕，我會在這裡陪你。","這一小步，也值得被看見。","你的感受，在這裡有位置。"][active%4]}persist();render();dialog.close();if(milestone){const gift=rewards.find(r=>r[0]===milestone);toast(`${gift[2]} 已解鎖：${gift[1]}`)}else toast(state.done.length===21?"歡迎回家。你已點亮完整的21天 ✨":"今天的小房間亮起來了 ✨")};$("#resetBtn").onclick=()=>{if(confirm("要清除21天的完成記錄、互動選擇與文字，重新開始嗎？這個動作無法復原。")){localStorage.removeItem(key);state={done:[],notes:{},plays:{},last:0};render();toast("新的回家旅程，從此刻開始")}};render();
   </script>
 </body>
 </html>
