@@ -600,6 +600,99 @@ box-shadow:0 4px 12px rgba(0,0,0,.15);
   .membership-entry .membership-button{width:100%;box-sizing:border-box;}
 }
 
+/* 21天內在家園互動小遊戲 */
+.inner-home-game-entry{
+  position:relative;
+  width:min(88%,760px);
+  margin:38px auto;
+  padding:46px 38px;
+  box-sizing:border-box;
+  overflow:hidden;
+  border:1px solid rgba(84,130,132,.22);
+  border-radius:38px;
+  background:
+    radial-gradient(circle at 12% 15%,rgba(246,211,145,.35),transparent 26%),
+    radial-gradient(circle at 90% 88%,rgba(143,187,195,.32),transparent 32%),
+    linear-gradient(145deg,#fffdf7 0%,#edf7f4 56%,#e5f0f4 100%);
+  box-shadow:0 16px 40px rgba(55,91,96,.15);
+  text-align:center;
+}
+.inner-home-game-entry .ih-icon{
+  width:82px;
+  height:82px;
+  margin:0 auto 15px;
+  display:grid;
+  place-items:center;
+  border-radius:26px;
+  background:#3e7077;
+  color:#fff;
+  font-size:40px;
+  box-shadow:0 10px 24px rgba(49,95,105,.20);
+}
+.inner-home-game-entry .ih-kicker{
+  margin:0 0 8px;
+  color:#49757b;
+  font-size:13px;
+  font-weight:800;
+  letter-spacing:.16em;
+}
+.inner-home-game-entry h2{
+  margin:0;
+  color:#315f69;
+  font-size:clamp(29px,5vw,42px);
+  line-height:1.35;
+}
+.inner-home-game-entry .ih-copy{
+  max-width:600px;
+  margin:18px auto 0;
+  color:#586d71;
+  font-size:18px;
+  line-height:1.9;
+}
+.inner-home-game-entry .ih-tags{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:9px;
+  margin:23px 0 0;
+}
+.inner-home-game-entry .ih-tags span{
+  padding:8px 14px;
+  border-radius:999px;
+  background:rgba(255,255,255,.82);
+  color:#456d72;
+  font-size:14px;
+  font-weight:700;
+  box-shadow:0 5px 15px rgba(54,89,94,.07);
+}
+.inner-home-game-entry .ih-button{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:56px;
+  margin:28px auto 0;
+  padding:14px 30px;
+  border-radius:999px;
+  background:linear-gradient(135deg,#315f69,#56858a);
+  color:#fff !important;
+  text-decoration:none !important;
+  font-size:19px;
+  font-weight:900;
+  box-shadow:0 12px 27px rgba(49,95,105,.24);
+}
+.inner-home-game-entry .ih-button:hover{transform:translateY(-2px);}
+.inner-home-game-entry .ih-note{
+  margin:14px 0 0;
+  color:#718286;
+  font-size:13px;
+  line-height:1.7;
+}
+@media(max-width:600px){
+  .inner-home-game-entry{width:calc(100% - 30px);padding:36px 21px;border-radius:30px;}
+  .inner-home-game-entry .ih-copy{font-size:17px;}
+  .inner-home-game-entry .ih-button{width:100%;box-sizing:border-box;font-size:18px;}
+}
+
 </style>
 </head>
 
@@ -679,6 +772,26 @@ href="https://wa.me/6594574732">
 </a>
 
 </div>
+
+<section class="inner-home-game-entry" aria-labelledby="inner-home-game-title">
+  <div class="ih-icon" aria-hidden="true">🏡</div>
+  <p class="ih-kicker">21 DAYS • GENTLE SELF-COMPANIONSHIP</p>
+  <h2 id="inner-home-game-title">BoBo 內在家園療癒<br>21天歡迎自己回家</h2>
+  <p class="ih-copy">
+    每天打開一扇小門，透過簡短的覺察、安定與自我照顧練習，
+    慢慢把位置留回自己。沒有追趕，也不需要補課。
+  </p>
+  <div class="ih-tags" aria-label="遊戲內容">
+    <span>21天不同練習</span>
+    <span>每日溫柔提醒</span>
+    <span>自動保存進度</span>
+    <span>私人文字記錄</span>
+  </div>
+  <a class="ih-button" href="inner-home-healing-21day-game.html">
+    開始21天歡迎自己回家
+  </a>
+  <p class="ih-note">免費互動小遊戲｜依照自己的步調進行｜不取代醫療或心理專業協助</p>
+</section>
 
 <section class="membership-entry" aria-labelledby="membership-entry-title">
   <p class="membership-kicker">MONTHLY GENTLE PRACTICE</p>
