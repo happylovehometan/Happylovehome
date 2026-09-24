@@ -528,6 +528,7 @@ text-align:left;
     min-height:68px;
   }
 }
+html{scroll-behavior:smooth;}
 .site-directory h2{
   margin:0 0 6px;
   color:#76536f;
@@ -538,6 +539,42 @@ text-align:left;
   color:#8b7c83;
   font-size:13px;
   line-height:1.6;
+}
+.site-directory-jump{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:8px;
+  margin:0 0 20px;
+}
+.site-directory-jump a{
+  padding:8px 13px;
+  border:1px solid #dcc9d7;
+  border-radius:999px;
+  background:#fff;
+  color:#76536f !important;
+  text-decoration:none !important;
+  font-size:13px;
+  font-weight:700;
+}
+.site-directory-jump a:hover,
+.site-directory-jump a:focus-visible{
+  background:#f5edf3;
+}
+.site-directory-group{
+  scroll-margin-top:18px;
+  margin:0 0 22px;
+  padding:15px;
+  border:1px solid #eadde5;
+  border-radius:20px;
+  background:rgba(255,255,255,.62);
+}
+.site-directory-group:last-child{margin-bottom:0;}
+.site-directory-group h3{
+  margin:0 0 11px;
+  color:#76536f;
+  font-size:15px;
+  text-align:left;
 }
 .site-directory-grid{
   display:grid;
@@ -767,6 +804,7 @@ box-shadow:0 4px 15px rgba(0,0,0,.15);
   <div class="home-intro-buttons">
     <a href="#universe-card" class="intro-btn">🌙 先抽一則今日療癒訊息</a>
     <a href="free.html" class="intro-btn">🎁 進入免費療癒資源館</a>
+    <a href="inner-home-healing-21day-game.html" class="intro-btn">🏡 玩21天歡迎自己回家</a>
     <a href="peacock-energy-game.html" class="intro-btn peacock-game-btn">🦚 玩孔雀成長療癒遊戲</a>
     <a href="#subscribe" class="intro-btn">💌 訂閱療癒陪伴</a>
   </div>
@@ -1709,47 +1747,83 @@ style="background:#9b6a91;color:white;border:none;padding:15px 35px;border-radiu
 <!-- 網站完整入口｜訂閱區下方 -->
 <nav class="site-directory" aria-label="開心愛家園療癒網站完整入口">
   <h2>🏡 網站快速入口</h2>
-  <p class="site-directory-intro">所有頁面都整理在這裡，方便你慢慢探索。</p>
+  <p class="site-directory-intro">先選擇想去的分類，頁面會帶你滑到相關入口。</p>
 
-  <div class="site-directory-grid">
-    <a class="site-directory-link" href="story.html">🌈 BoBo 的故事</a>
-    <a class="site-directory-link" href="healing.html">💜 療癒服務</a>
-    <a class="site-directory-link" href="peacock-energy-healing.html">🦚 孔雀能量療癒｜了解與預約</a>
-    <a class="site-directory-link" href="peacock-energy-game.html">💜 孔雀成長療癒遊戲</a>
-    <a class="site-directory-link" href="free.html">🎁 免費療癒資源館</a>
-    <a class="site-directory-link" href="pet-healing.html">🐾 開心寵物療癒</a>
-    <a class="site-directory-link" href="seed.html">🌻 幸福種子計畫</a>
-    <a class="site-directory-link" href="testimonial.html">🌟 學員回饋</a>
-    <a class="site-directory-link" href="blog.html">🌿 BoBo 部落格</a>
-    <a class="site-directory-link" href="recommend.html">🌍 慢活推薦館</a>
-    <a class="site-directory-link" href="explore.html">🩷 自我探索館</a>
-    <a class="site-directory-link" href="happy-home.html">🏡 開心幸福家園</a>
-    <a class="site-directory-link" href="healing-tree.html">🌳 Healing Tree</a>
-    <a class="site-directory-link" href="healing-prompt.html">💬 Healing Prompt</a>
-    <a class="site-directory-link" href="healing-survey.html">🌿 療癒需求探索</a>
-    <a class="site-directory-link" href="https://happylovehomehealing.org/pendulum-free-experience.html#free">🔮 免費靈擺體驗</a>
-    <a class="site-directory-link" href="bobo-settle-within.html">🫧 先把自己安住</a>
-    <a class="site-directory-link" href="gentle-healing-membership.html">🌷 溫柔療癒陪伴館</a>
-    <a class="site-directory-link" href="emotion-card-member.html">💌 情緒卡會員專區</a>
-    <a class="site-directory-link" href="life-light-cellular-quantum-healing.html">✨ 生命之光</a>
-    <a class="site-directory-link" href="money-gratitude-manifestation.html">🌻 金錢關係練習</a>
-    <a class="site-directory-link" href="knowledge-business.html">🌟 光耀豐盛人生</a>
-    <a class="site-directory-link" href="dragon-universe.html">🐉 龍族宇宙</a>
-    <a class="site-directory-link" href="dragon-story-library.html">📖 龍族故事集</a>
-    <a class="site-directory-link" href="dragon-awakens.html">🐲 龍的覺醒故事</a>
-    <a class="site-directory-link" href="dragon-guardian-game.html">🛡️ 龍族守護遊戲</a>
-    <a class="site-directory-link" href="focus-game.html">🎯 專注放鬆遊戲</a>
-    <a class="site-directory-link" href="happy-healing-island.html">🏝️ 開心療癒島</a>
-    <a class="site-directory-link" href="happy-pet-healing-island.html">🐾 寵物療癒島</a>
-    <a class="site-directory-link" href="mirror-war.html">🪞 鏡子之戰</a>
-    <a class="site-directory-link" href="pet-survey.html">🐾 寵物療癒探索</a>
-    <a class="site-directory-link" href="international.html">🌍 English Services</a>
-    <a class="site-directory-link" href="pet-healing-en.html">🐾 Pet Healing EN</a>
-    <a class="site-directory-link" href="policy.html">📜 政策與條款</a>
-    <a class="site-directory-link" href="policy.html#ethics">🤍 療癒服務倫理與參與者權益</a>
-    <a class="site-directory-link" href="policy-en.html">📜 Policy (English)</a>
-    <a class="site-directory-link" href="https://wa.me/6594574732">📱 聯絡 BoBo</a>
+  <div class="site-directory-jump" aria-label="入口分類快速跳轉">
+    <a href="#directory-about">🌈 認識 BoBo</a>
+    <a href="#directory-healing">💜 療癒與陪伴</a>
+    <a href="#directory-games">🎮 互動遊戲</a>
+    <a href="#directory-learning">🎁 學習與資源</a>
+    <a href="#directory-info">📜 聯絡與政策</a>
   </div>
+
+  <section class="site-directory-group" id="directory-about">
+    <h3>🌈 認識 BoBo 與家園</h3>
+    <div class="site-directory-grid">
+      <a class="site-directory-link" href="story.html">🌈 BoBo 的故事</a>
+      <a class="site-directory-link" href="testimonial.html">🌟 學員回饋</a>
+      <a class="site-directory-link" href="seed.html">🌻 幸福種子計畫</a>
+      <a class="site-directory-link" href="happy-home.html">🏡 開心幸福家園</a>
+      <a class="site-directory-link" href="blog.html">🌿 BoBo 部落格</a>
+      <a class="site-directory-link" href="recommend.html">🌍 慢活推薦館</a>
+    </div>
+  </section>
+
+  <section class="site-directory-group" id="directory-healing">
+    <h3>💜 療癒與陪伴</h3>
+    <div class="site-directory-grid">
+      <a class="site-directory-link" href="healing.html">💜 療癒服務</a>
+      <a class="site-directory-link" href="peacock-energy-healing.html">🦚 孔雀能量療癒</a>
+      <a class="site-directory-link" href="pet-healing.html">🐾 開心寵物療癒</a>
+      <a class="site-directory-link" href="bobo-settle-within.html">🫧 先把自己安住</a>
+      <a class="site-directory-link" href="gentle-healing-membership.html">🌷 溫柔療癒陪伴館</a>
+      <a class="site-directory-link" href="life-light-cellular-quantum-healing.html">✨ 生命之光</a>
+      <a class="site-directory-link" href="healing-survey.html">🌿 療癒需求探索</a>
+      <a class="site-directory-link" href="pet-survey.html">🐾 寵物療癒探索</a>
+    </div>
+  </section>
+
+  <section class="site-directory-group" id="directory-games">
+    <h3>🎮 互動遊戲與體驗</h3>
+    <div class="site-directory-grid">
+      <a class="site-directory-link" href="inner-home-healing-21day-game.html">🏡 21天歡迎自己回家</a>
+      <a class="site-directory-link" href="peacock-energy-game.html">🦚 孔雀成長療癒遊戲</a>
+      <a class="site-directory-link" href="dragon-universe.html">🐉 龍族宇宙</a>
+      <a class="site-directory-link" href="dragon-guardian-game.html">🛡️ 龍族守護遊戲</a>
+      <a class="site-directory-link" href="focus-game.html">🎯 專注放鬆遊戲</a>
+      <a class="site-directory-link" href="happy-healing-island.html">🏝️ 開心療癒島</a>
+      <a class="site-directory-link" href="happy-pet-healing-island.html">🐾 寵物療癒島</a>
+      <a class="site-directory-link" href="mirror-war.html">🪞 鏡子之戰</a>
+    </div>
+  </section>
+
+  <section class="site-directory-group" id="directory-learning">
+    <h3>🎁 學習、練習與免費資源</h3>
+    <div class="site-directory-grid">
+      <a class="site-directory-link" href="free.html">🎁 免費療癒資源館</a>
+      <a class="site-directory-link" href="explore.html">🩷 自我探索館</a>
+      <a class="site-directory-link" href="healing-tree.html">🌳 Healing Tree</a>
+      <a class="site-directory-link" href="healing-prompt.html">💬 Healing Prompt</a>
+      <a class="site-directory-link" href="https://happylovehomehealing.org/pendulum-free-experience.html#free">🔮 免費靈擺體驗</a>
+      <a class="site-directory-link" href="emotion-card-member.html">💌 情緒卡專區</a>
+      <a class="site-directory-link" href="money-gratitude-manifestation.html">🌻 金錢關係練習</a>
+      <a class="site-directory-link" href="knowledge-business.html">🌟 光耀豐盛人生</a>
+      <a class="site-directory-link" href="dragon-story-library.html">📖 龍族故事集</a>
+      <a class="site-directory-link" href="dragon-awakens.html">🐲 龍的覺醒故事</a>
+    </div>
+  </section>
+
+  <section class="site-directory-group" id="directory-info">
+    <h3>📜 English、聯絡與政策</h3>
+    <div class="site-directory-grid">
+      <a class="site-directory-link" href="international.html">🌍 English Services</a>
+      <a class="site-directory-link" href="pet-healing-en.html">🐾 Pet Healing EN</a>
+      <a class="site-directory-link" href="policy.html">📜 政策與條款</a>
+      <a class="site-directory-link" href="policy.html#ethics">🤍 療癒服務倫理與參與者權益</a>
+      <a class="site-directory-link" href="policy-en.html">📜 Policy (English)</a>
+      <a class="site-directory-link" href="https://wa.me/6594574732">📱 聯絡 BoBo</a>
+    </div>
+  </section>
 </nav>
 
 <iframe
