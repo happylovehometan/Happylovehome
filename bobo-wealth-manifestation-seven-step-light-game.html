@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#171d36">
+  <meta name="description" content="BoBo 財富顯化七步法與生命之光財富冥想互動練習，陪你回到內在充足與生活行動。">
+  <title>財富顯化｜回到內在充足與生活行動</title>
+  <style>
+    :root{
+      --night:#11172e;--night2:#20284a;--cream:#fff9ed;--paper:#fffdf7;
+      --gold:#f6c86e;--gold2:#ffe6a8;--rose:#eaa9aa;--sage:#a8c7ad;
+      --ink:#26304c;--muted:#6d7184;--line:rgba(40,48,76,.13);
+      --shadow:0 20px 55px rgba(9,14,35,.18);--radius:28px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;min-height:100vh;color:var(--ink);font-family:"Noto Serif TC","PingFang TC","Microsoft JhengHei",serif;background:
+      radial-gradient(circle at 15% 8%,rgba(246,200,110,.18),transparent 24%),
+      radial-gradient(circle at 90% 12%,rgba(234,169,170,.13),transparent 25%),
+      linear-gradient(145deg,var(--night),var(--night2));overflow-x:hidden}
+    button,input,textarea,select{font:inherit}
+    button{cursor:pointer}
+    .stars{position:fixed;inset:0;pointer-events:none;opacity:.55;background-image:
+      radial-gradient(circle,#fff 1px,transparent 1.5px),radial-gradient(circle,#ffe6a8 1px,transparent 1.5px);
+      background-size:90px 90px,130px 130px;background-position:10px 15px,45px 70px}
+    .shell{width:min(980px,calc(100% - 28px));margin:0 auto;padding:22px 0 70px;position:relative}
+    .brand{display:flex;align-items:center;justify-content:space-between;color:#fff9ed;font-size:.9rem;letter-spacing:.08em;margin-bottom:18px}
+    .brand span:last-child{opacity:.72;font-size:.78rem}
+    .hero{color:#fff;text-align:center;padding:34px 16px 22px}
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;padding:7px 13px;border:1px solid rgba(255,255,255,.22);border-radius:999px;color:var(--gold2);font-size:.8rem;letter-spacing:.12em;background:rgba(255,255,255,.05)}
+    h1{font-size:clamp(2rem,7vw,3.8rem);line-height:1.18;margin:20px auto 12px;max-width:850px;letter-spacing:.03em}
+    .subtitle{color:#f6e9d8;font-size:clamp(1rem,3vw,1.25rem);line-height:1.9;margin:0 auto;max-width:720px}
+    .subline{display:block;color:var(--gold2);font-size:.9em;margin-top:5px}
+    .card{background:linear-gradient(180deg,rgba(255,253,247,.98),rgba(255,249,237,.97));border:1px solid rgba(255,255,255,.65);box-shadow:var(--shadow);border-radius:var(--radius)}
+    .intro{padding:28px;margin:18px auto 22px;max-width:820px;text-align:center}
+    .intro p{line-height:1.85;margin:0 auto 18px;max-width:690px}
+    .privacy{font-size:.83rem;color:var(--muted);background:#f7f1e7;border-radius:16px;padding:12px 14px}
+    .primary,.secondary,.ghost{border:0;border-radius:999px;padding:13px 22px;transition:.2s transform,.2s box-shadow,.2s background;min-height:48px}
+    .primary{background:linear-gradient(135deg,#d89a42,#f2c86f);color:#29213a;font-weight:800;box-shadow:0 9px 22px rgba(201,139,53,.27)}
+    .secondary{background:#273254;color:white;font-weight:700}
+    .ghost{background:transparent;border:1px solid var(--line);color:var(--ink)}
+    .primary:hover,.secondary:hover,.ghost:hover{transform:translateY(-2px)}
+    .primary:focus-visible,.secondary:focus-visible,.ghost:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid rgba(227,164,67,.38);outline-offset:3px}
+    .journey{display:none}
+    .journey.active{display:block}
+    .lightbar{padding:18px 20px;margin:20px 0;position:sticky;top:8px;z-index:10;backdrop-filter:blur(12px);background:rgba(255,253,247,.92)}
+    .progress-row{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:12px;font-size:.84rem;color:var(--muted)}
+    .track{height:8px;background:#eee4d4;border-radius:999px;overflow:hidden}
+    .fill{height:100%;width:0;background:linear-gradient(90deg,#d8963e,#f9d889);border-radius:inherit;transition:width .5s ease}
+    .lights{display:grid;grid-template-columns:repeat(7,1fr);gap:7px;margin-top:14px}
+    .light{display:flex;flex-direction:column;align-items:center;gap:4px;color:#9193a0;font-size:.68rem}
+    .orb{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:#e7e1d7;color:#777;transition:.45s}
+    .light.lit .orb{background:radial-gradient(circle at 35% 30%,#fff8c4,#f2bd4d 48%,#d68b2c);color:#352713;box-shadow:0 0 18px rgba(246,199,103,.85)}
+    .light.current .orb{outline:3px solid rgba(216,150,62,.25);outline-offset:3px}
+    .step{display:none;padding:clamp(22px,5vw,42px);min-height:560px}
+    .step.active{display:block;animation:rise .45s ease}
+    @keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+    .step-head{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center;margin-bottom:22px}
+    .step-icon{width:60px;height:60px;border-radius:22px;display:grid;place-items:center;font-size:1.8rem;background:linear-gradient(145deg,#fff0c8,#efc975);box-shadow:0 8px 20px rgba(184,123,42,.18)}
+    h2{font-size:clamp(1.55rem,5vw,2.35rem);margin:0 0 5px;line-height:1.35}
+    .kicker{color:#a36a2a;font-weight:700;font-size:.85rem;letter-spacing:.08em}
+    .lead{font-size:1.02rem;line-height:1.9;color:#4f566d;margin:0 0 22px}
+    .practice{border:1px solid var(--line);border-radius:20px;padding:18px;background:rgba(255,255,255,.55);margin:16px 0}
+    .practice h3{margin:0 0 12px;font-size:1.05rem}
+    label{display:block;font-weight:700;margin:15px 0 8px}
+    input[type="text"],textarea,select{width:100%;border:1px solid #dcd4c8;border-radius:14px;background:white;color:var(--ink);padding:13px 14px}
+    textarea{min-height:96px;resize:vertical;line-height:1.65}
+    .gratitude-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+    .choice-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+    .choice{position:relative}
+    .choice input{position:absolute;opacity:0;pointer-events:none}
+    .choice label{margin:0;border:1px solid #ded5c8;border-radius:15px;padding:13px;background:white;font-weight:500;line-height:1.5;transition:.2s;min-height:100%;display:flex;align-items:center}
+    .choice input:checked+label{border-color:#d7973d;background:#fff4d9;box-shadow:0 0 0 3px rgba(215,151,61,.12)}
+    .breath-wrap{text-align:center;padding:15px}
+    .breath-orb{width:150px;height:150px;margin:10px auto 20px;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 35% 30%,#fff7cd,#e8b551 55%,#bb7330);box-shadow:0 0 28px rgba(226,171,78,.38);color:#3d2d22;font-weight:800;transition:transform 4s ease-in-out}
+    .breath-orb.inhale{transform:scale(1.18)}.breath-orb.exhale{transform:scale(.88)}
+    .timer{font-variant-numeric:tabular-nums;font-size:2rem;font-weight:800;letter-spacing:.08em;margin:8px 0;color:#a36a2a}
+    .timer-controls{display:flex;flex-wrap:wrap;justify-content:center;gap:9px}
+    .affirmation{border-left:4px solid var(--gold);padding:15px 18px;background:#fff5dd;border-radius:0 14px 14px 0;line-height:1.8;margin:15px 0}
+    .action-options{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+    .meditation{background:linear-gradient(145deg,#1f294c,#363d66);color:#fff;border-radius:23px;padding:22px;text-align:center;position:relative;overflow:hidden}
+    .meditation:before{content:"";position:absolute;inset:-45%;background:radial-gradient(circle,rgba(255,224,147,.22),transparent 45%);animation:glow 5s ease-in-out infinite}
+    @keyframes glow{50%{transform:scale(1.12);opacity:.65}}
+    .meditation>*{position:relative}
+    .meditation .timer{color:#ffe3a2;font-size:2.6rem}
+    .meditation-text{min-height:95px;display:grid;place-items:center;line-height:1.8;color:#fff8e8;max-width:620px;margin:auto}
+    .nav{display:flex;justify-content:space-between;gap:12px;margin-top:28px;padding-top:20px;border-top:1px solid var(--line)}
+    .complete{display:none;text-align:center;padding:clamp(28px,7vw,58px);overflow:hidden;position:relative}
+    .complete.active{display:block;animation:rise .5s ease}
+    .big-light{font-size:5rem;filter:drop-shadow(0 0 20px rgba(246,198,101,.65));animation:float 3s ease-in-out infinite}
+    @keyframes float{50%{transform:translateY(-8px)}}
+    .summary{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;text-align:left;margin:24px 0}
+    .summary-item{padding:14px;background:#fff8e8;border:1px solid var(--line);border-radius:15px;line-height:1.55}
+    .summary-item strong{display:block;color:#a36a2a;margin-bottom:5px}
+    .closing{font-size:1.1rem;line-height:1.95;max-width:650px;margin:20px auto}
+    .button-row{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+    .disclaimer{color:rgba(255,255,255,.76);font-size:.78rem;line-height:1.7;text-align:center;max-width:760px;margin:24px auto 0}
+    footer{text-align:center;color:#fff4df;padding:30px 10px 10px;line-height:1.75;font-size:.85rem}
+    footer small{display:block;opacity:.68;margin-top:5px}
+    .spark{position:absolute;border-radius:50%;background:#f7ce75;pointer-events:none;animation:spark 1.5s ease-out forwards}
+    @keyframes spark{to{transform:translate(var(--x),var(--y)) scale(0);opacity:0}}
+    @media(max-width:700px){.gratitude-grid,.choice-grid,.action-options,.summary{grid-template-columns:1fr}.brand span:last-child{display:none}.step{min-height:auto}.lights{gap:3px}.light{font-size:.58rem}.orb{width:29px;height:29px}.lightbar{top:4px}.nav{position:sticky;bottom:8px;background:rgba(255,253,247,.94);padding:12px;border-radius:18px;box-shadow:0 7px 25px rgba(20,24,40,.14)}}
+    @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+  </style>
+</head>
+<body>
+  <div class="stars" aria-hidden="true"></div>
+  <main class="shell">
+    <div class="brand"><span>開心愛家園療癒</span><span>BoBo ❤️ 我在｜黑暗中的光・生活的燈塔</span></div>
+    <header class="hero">
+      <span class="eyebrow">✦ 生命之光互動練習 ✦</span>
+      <h1>財富顯化<br>回到內在充足與生活行動</h1>
+      <p class="subtitle">BoBo 財富顯化七步法<span class="subline">＋生命之光財富冥想</span></p>
+    </header>
+
+    <section class="card intro" id="intro">
+      <p>這不是一個預測金錢結果的遊戲，而是一段回到自己的小旅程。你將收集七道「生命之光」，看見內在信念、感謝已經擁有的支持，再為生活選擇一個可以完成的小行動。</p>
+      <p class="privacy">🔒 你的書寫只儲存在目前使用的瀏覽器，不會自動傳送或公開。共用裝置使用後，可按「清除紀錄」。</p>
+      <button class="primary" id="startBtn">開始收集七道光</button>
+    </section>
+
+    <section class="journey" id="journey" aria-live="polite">
+      <div class="card lightbar">
+        <div class="progress-row"><span id="progressText">第 1 步，共 7 步</span><span id="progressPercent">0%</span></div>
+        <div class="track"><div class="fill" id="fill"></div></div>
+        <div class="lights" id="lights"></div>
+      </div>
+
+      <section class="card step active" data-step="0">
+        <div class="step-head"><div class="step-icon">🌿</div><div><div class="kicker">第一道光｜安住</div><h2>先讓身體知道：此刻是安全的</h2></div></div>
+        <p class="lead">當內在很害怕時，我們容易把每一個決定都看成危機。先不用急著改變人生，陪自己呼吸一分鐘。</p>
+        <div class="practice breath-wrap">
+          <div class="breath-orb" id="breathOrb">準備好</div>
+          <div class="timer" id="breathTimer">01:00</div>
+          <div class="timer-controls"><button class="secondary" id="breathBtn">開始呼吸</button><button class="ghost" id="breathReset">重新開始</button></div>
+          <p id="breathHint">吸氣 4 秒・停留 2 秒・吐氣 6 秒</p>
+        </div>
+        <label for="safeNote">此刻，什麼能讓我多一點安心？</label>
+        <textarea id="safeNote" data-save placeholder="例如：喝一杯溫水、查看帳目、先休息十分鐘……"></textarea>
+        <div class="nav"><span></span><button class="primary next">點亮第一道光</button></div>
+      </section>
+
+      <section class="card step" data-step="1">
+        <div class="step-head"><div class="step-icon">🤲</div><div><div class="kicker">第二道光｜看見</div><h2>看見生活已經給予的支持</h2></div></div>
+        <p class="lead">感恩不是假裝沒有困難，而是在困難裡，也願意看見仍然存在的資源、關係與能力。</p>
+        <div class="gratitude-grid">
+          <div><label for="support1">一份實際支持</label><textarea id="support1" data-save placeholder="食物、住處、收入、交通……"></textarea></div>
+          <div><label for="support2">一個陪伴我的人</label><textarea id="support2" data-save placeholder="家人、朋友、同事或自己……"></textarea></div>
+          <div><label for="support3">我已擁有的能力</label><textarea id="support3" data-save placeholder="耐心、技能、經驗、願意學習……"></textarea></div>
+        </div>
+        <div class="affirmation">我感謝此刻已有的支持，也允許自己繼續尋找新的可能。</div>
+        <div class="nav"><button class="ghost prev">返回</button><button class="primary next">點亮第二道光</button></div>
+      </section>
+
+      <section class="card step" data-step="2">
+        <div class="step-head"><div class="step-icon">🪞</div><div><div class="kicker">第三道光｜覺察</div><h2>聽見匱乏與恐懼想說什麼</h2></div></div>
+        <p class="lead">恐懼不是敵人，它常常是在保護曾經受傷的自己。選出現在最接近你的聲音，不需要責怪它。</p>
+        <div class="choice-grid" id="fearChoices">
+          <div class="choice"><input type="checkbox" id="fear1" value="我擔心錢不夠用"><label for="fear1">我擔心錢不夠用</label></div>
+          <div class="choice"><input type="checkbox" id="fear2" value="我害怕做錯決定"><label for="fear2">我害怕做錯決定</label></div>
+          <div class="choice"><input type="checkbox" id="fear3" value="我覺得自己不值得接收"><label for="fear3">我覺得自己不值得接收</label></div>
+          <div class="choice"><input type="checkbox" id="fear4" value="我擔心擁有後又會失去"><label for="fear4">我擔心擁有後又會失去</label></div>
+        </div>
+        <label for="fearNeed">這份恐懼真正需要的是什麼？</label>
+        <textarea id="fearNeed" data-save placeholder="例如：更清楚的資料、有人商量、休息、界線或一個小計畫……"></textarea>
+        <div class="nav"><button class="ghost prev">返回</button><button class="primary next">點亮第三道光</button></div>
+      </section>
+
+      <section class="card step" data-step="3">
+        <div class="step-head"><div class="step-icon">🌱</div><div><div class="kicker">第四道光｜轉換</div><h2>寫下一個願意練習的新信念</h2></div></div>
+        <p class="lead">新的信念不必很誇張，只要你的身體願意相信一點點。從「一定會」改成「我願意練習」，會更真實。</p>
+        <label for="oldBelief">我想鬆開的舊信念</label>
+        <input type="text" id="oldBelief" data-save placeholder="例如：我永遠沒有足夠的錢">
+        <label for="newBelief">我願意練習的新信念</label>
+        <select id="newBelief" data-save>
+          <option value="">請選擇一句接近你的話</option>
+          <option>我願意一步一步建立生活的安全感。</option>
+          <option>我可以學習更清楚地照顧與運用金錢。</option>
+          <option>我允許自己接收合理的回報與支持。</option>
+          <option>我的價值不由金錢數字決定。</option>
+          <option>我可以在感恩現在的同時，創造新的選擇。</option>
+        </select>
+        <label for="ownBelief">或寫下自己的版本</label>
+        <textarea id="ownBelief" data-save placeholder="以「我願意……」或「我正在學習……」開始"></textarea>
+        <div class="nav"><button class="ghost prev">返回</button><button class="primary next">點亮第四道光</button></div>
+      </section>
+
+      <section class="card step" data-step="4">
+        <div class="step-head"><div class="step-icon">💛</div><div><div class="kicker">第五道光｜接收</div><h2>感謝每一份真實的流動</h2></div></div>
+        <p class="lead">金錢可能來自工作、交易、退款、禮物或被節省下來的費用。接收時說謝謝，也誠實看見它的來源與用途。</p>
+        <label for="received">最近，我接收到的一份支持是……</label>
+        <textarea id="received" data-save placeholder="不一定是現金，也可以是一頓飯、一個機會、一份資訊……"></textarea>
+        <label for="giveDirection">我想讓這份支持照顧哪一部分生活？</label>
+        <textarea id="giveDirection" data-save placeholder="生活需要、儲蓄、學習、休息、分享……"></textarea>
+        <div class="affirmation">謝謝每一份正當而真實的支持。我願意珍惜，也願意負責任地運用。</div>
+        <div class="nav"><button class="ghost prev">返回</button><button class="primary next">點亮第五道光</button></div>
+      </section>
+
+      <section class="card step" data-step="5">
+        <div class="step-head"><div class="step-icon">👣</div><div><div class="kicker">第六道光｜行動</div><h2>讓願望落在今天可以完成的一步</h2></div></div>
+        <p class="lead">內在整理之後，選一個小而清楚的行動。它不需要完美，只需要能夠開始。</p>
+        <div class="action-options" id="actionChoices">
+          <div class="choice"><input type="radio" name="action" id="action1" value="整理今天的收入與支出"><label for="action1">整理今天的收入與支出</label></div>
+          <div class="choice"><input type="radio" name="action" id="action2" value="完成一項可帶來收入的工作"><label for="action2">完成一項可帶來收入的工作</label></div>
+          <div class="choice"><input type="radio" name="action" id="action3" value="為未來存下一個可負擔的小額"><label for="action3">為未來存下一個可負擔的小額</label></div>
+          <div class="choice"><input type="radio" name="action" id="action4" value="詢問一個需要的資訊或機會"><label for="action4">詢問一個需要的資訊或機會</label></div>
+        </div>
+        <label for="customAction">我的自訂小行動</label>
+        <input type="text" id="customAction" data-save placeholder="例如：更新服務介紹、寄出一封合作信……">
+        <label for="actionTime">我願意在什麼時候開始？</label>
+        <input type="text" id="actionTime" data-save placeholder="例如：今天晚上 8 點，先做 15 分鐘">
+        <div class="nav"><button class="ghost prev">返回</button><button class="primary next">點亮第六道光</button></div>
+      </section>
+
+      <section class="card step" data-step="6">
+        <div class="step-head"><div class="step-icon">✨</div><div><div class="kicker">第七道光｜整合</div><h2>生命之光財富冥想</h2></div></div>
+        <p class="lead">不用追趕結果。讓這道光提醒你：你可以感謝現在、照顧自己，也可以用行動慢慢創造下一步。</p>
+        <div class="meditation">
+          <div class="timer" id="meditationTimer">05:00</div>
+          <div class="meditation-text" id="meditationText">選擇時間，讓雙腳穩穩落地。準備好後，輕輕閉上眼睛或放鬆視線。</div>
+          <div class="timer-controls">
+            <button class="ghost med-length" data-min="3" style="color:#fff;border-color:rgba(255,255,255,.3)">3 分鐘</button>
+            <button class="ghost med-length" data-min="5" style="color:#fff;border-color:rgba(255,255,255,.3)">5 分鐘</button>
+            <button class="ghost med-length" data-min="8" style="color:#fff;border-color:rgba(255,255,255,.3)">8 分鐘</button>
+            <button class="primary" id="meditationBtn">開始冥想</button>
+          </div>
+        </div>
+        <label for="afterMeditation">冥想後，我想帶回生活的一句話</label>
+        <textarea id="afterMeditation" data-save placeholder="例如：我願意感恩現在，也踏實創造下一步。"></textarea>
+        <div class="nav"><button class="ghost prev">返回</button><button class="primary" id="finishBtn">點亮第七道光</button></div>
+      </section>
+
+      <section class="card complete" id="complete">
+        <div class="big-light">☀️</div>
+        <div class="kicker">七道生命之光已點亮</div>
+        <h2>你已完成今天的內在充足練習</h2>
+        <p class="closing">願你不需要用金錢證明自己的價值，也不需要否認生活的現實。願你帶著感恩與清楚，接住支持、尊重界線，完成屬於自己的下一步。</p>
+        <div class="summary" id="summary"></div>
+        <div class="button-row"><button class="primary" id="downloadBtn">儲存我的練習文字</button><button class="secondary" id="againBtn">重新走一次</button><button class="ghost" id="clearBtn">清除紀錄</button></div>
+      </section>
+    </section>
+
+    <p class="disclaimer">本互動練習用於自我覺察、冥想與生活整理，不構成財務、投資、醫療或心理治療建議，也不代表任何財富、收入或結果保證。若你正面對財務危機，請尋求合資格的財務或社會支援。</p>
+    <footer>BoBo ❤️ 我在<br>黑暗中的光・生活的燈塔<br>開心愛家園療癒<small>happylovehomehealing.org</small></footer>
+  </main>
+
+  <script>
+  (()=>{
+    const $=(s,p=document)=>p.querySelector(s), $$=(s,p=document)=>[...p.querySelectorAll(s)];
+    const storeKey='boboWealthLightGameV1';
+    const state={step:0,completed:[],fields:{},medMinutes:5};
+    const labels=['安住','看見','覺察','轉換','接收','行動','整合'];
+    const journey=$('#journey'),intro=$('#intro'),steps=$$('.step'),complete=$('#complete');
+    let breathInterval=null,medInterval=null,breathLeft=60,medLeft=300;
+
+    function load(){
+      try{Object.assign(state,JSON.parse(localStorage.getItem(storeKey)||'{}'));}catch(e){}
+      $$('[data-save]').forEach(el=>{if(state.fields[el.id]!==undefined)el.value=state.fields[el.id]});
+      $$('#fearChoices input').forEach(el=>{el.checked=(state.fields.fears||[]).includes(el.value)});
+      $$('input[name="action"]').forEach(el=>{el.checked=state.fields.action===el.value});
+      if(state.medMinutes){setMeditationLength(state.medMinutes)}
+    }
+    function save(){
+      $$('[data-save]').forEach(el=>state.fields[el.id]=el.value.trim());
+      state.fields.fears=$$('#fearChoices input:checked').map(el=>el.value);
+      state.fields.action=$('input[name="action"]:checked')?.value||'';
+      localStorage.setItem(storeKey,JSON.stringify(state));
+    }
+    function buildLights(){
+      $('#lights').innerHTML=labels.map((x,i)=>`<div class="light ${state.completed.includes(i)?'lit':''} ${state.step===i?'current':''}"><span class="orb">${state.completed.includes(i)?'✦':i+1}</span><span>${x}</span></div>`).join('');
+    }
+    function showStep(n){
+      state.step=Math.max(0,Math.min(6,n));
+      steps.forEach((el,i)=>el.classList.toggle('active',i===state.step));
+      complete.classList.remove('active');
+      const done=state.completed.length;
+      $('#progressText').textContent=`第 ${state.step+1} 步，共 7 步`;
+      $('#progressPercent').textContent=`${Math.round(done/7*100)}%`;
+      $('#fill').style.width=`${done/7*100}%`;
+      buildLights();save();
+      journey.scrollIntoView({behavior:'smooth',block:'start'});
+    }
+    function begin(){intro.style.display='none';journey.classList.add('active');showStep(state.step||0)}
+    $('#startBtn').addEventListener('click',begin);
+    $$('.next').forEach((btn,i)=>btn.addEventListener('click',()=>{if(!state.completed.includes(i))state.completed.push(i);showStep(i+1)}));
+    $$('.prev').forEach((btn,i)=>btn.addEventListener('click',()=>showStep(i)));
+    $$('input,textarea,select').forEach(el=>el.addEventListener('change',save));
+
+    const breathPhases=[['吸氣',4,'inhale'],['停留',2,''],['慢慢吐氣',6,'exhale']];
+    function startBreath(){
+      clearInterval(breathInterval);breathLeft=60;let phase=0,phaseLeft=breathPhases[0][1];
+      $('#breathBtn').textContent='呼吸進行中';$('#breathBtn').disabled=true;
+      const tick=()=>{
+        const [name,,cls]=breathPhases[phase];$('#breathOrb').textContent=`${name} ${phaseLeft}`;
+        $('#breathOrb').className=`breath-orb ${cls}`;$('#breathTimer').textContent=`00:${String(breathLeft).padStart(2,'0')}`;
+        if(breathLeft--<=0){clearInterval(breathInterval);$('#breathOrb').textContent='我回來了';$('#breathOrb').className='breath-orb';$('#breathTimer').textContent='完成';$('#breathBtn').textContent='再呼吸一次';$('#breathBtn').disabled=false;chime();return}
+        if(--phaseLeft<=0){phase=(phase+1)%breathPhases.length;phaseLeft=breathPhases[phase][1]}
+      };tick();breathInterval=setInterval(tick,1000);
+    }
+    $('#breathBtn').addEventListener('click',startBreath);
+    $('#breathReset').addEventListener('click',()=>{clearInterval(breathInterval);breathLeft=60;$('#breathOrb').textContent='準備好';$('#breathOrb').className='breath-orb';$('#breathTimer').textContent='01:00';$('#breathBtn').textContent='開始呼吸';$('#breathBtn').disabled=false});
+
+    const medLines=['讓雙腳穩穩落地，感受身體被支持。','想像一束溫暖的生命之光，從心口慢慢亮起。','這道光不要求你證明什麼，只陪你回到自己的價值。','輕輕感謝生命裡已經存在的人、資源與能力。','對自己說：我允許接收正當、清楚而合適的支持。','想起今天能完成的一個小行動，讓光陪你走向它。','慢慢回到呼吸。感謝現在，也準備好踏出下一步。'];
+    function setMeditationLength(min){state.medMinutes=Number(min);medLeft=state.medMinutes*60;$('#meditationTimer').textContent=`${String(state.medMinutes).padStart(2,'0')}:00`;save()}
+    $$('.med-length').forEach(b=>b.addEventListener('click',()=>setMeditationLength(b.dataset.min)));
+    $('#meditationBtn').addEventListener('click',()=>{
+      if(medInterval){clearInterval(medInterval);medInterval=null;$('#meditationBtn').textContent='繼續冥想';return}
+      if(medLeft<=0)setMeditationLength(state.medMinutes);
+      $('#meditationBtn').textContent='暫停';
+      medInterval=setInterval(()=>{
+        medLeft--;const m=Math.floor(medLeft/60),s=medLeft%60;$('#meditationTimer').textContent=`${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+        const total=state.medMinutes*60,idx=Math.min(medLines.length-1,Math.floor((total-medLeft)/(total/medLines.length)));$('#meditationText').textContent=medLines[idx];
+        if(medLeft<=0){clearInterval(medInterval);medInterval=null;$('#meditationTimer').textContent='完成';$('#meditationText').textContent='把手放在心口，謝謝自己願意回來。';$('#meditationBtn').textContent='再做一次';chime()}
+      },1000);
+    });
+    function chime(){
+      try{const c=new (window.AudioContext||window.webkitAudioContext)(),o=c.createOscillator(),g=c.createGain();o.frequency.value=528;g.gain.setValueAtTime(.001,c.currentTime);g.gain.exponentialRampToValueAtTime(.12,c.currentTime+.02);g.gain.exponentialRampToValueAtTime(.001,c.currentTime+1.5);o.connect(g);g.connect(c.destination);o.start();o.stop(c.currentTime+1.6)}catch(e){}
+    }
+    function esc(s){return (s||'尚未填寫').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+    function finish(){
+      if(!state.completed.includes(6))state.completed.push(6);save();steps.forEach(x=>x.classList.remove('active'));complete.classList.add('active');
+      $('#progressText').textContent='七道光已完成';$('#progressPercent').textContent='100%';$('#fill').style.width='100%';buildLights();
+      const belief=state.fields.ownBelief||state.fields.newBelief;
+      const action=state.fields.customAction||state.fields.action;
+      $('#summary').innerHTML=`<div class="summary-item"><strong>我的安心支持</strong>${esc(state.fields.safeNote)}</div><div class="summary-item"><strong>我願意練習的新信念</strong>${esc(belief)}</div><div class="summary-item"><strong>我的生活行動</strong>${esc(action)}</div><div class="summary-item"><strong>開始時間</strong>${esc(state.fields.actionTime)}</div>`;
+      sparkle();complete.scrollIntoView({behavior:'smooth'});
+    }
+    $('#finishBtn').addEventListener('click',finish);
+    function sparkle(){for(let i=0;i<26;i++){const s=document.createElement('i');s.className='spark';s.style.left='50%';s.style.top='90px';s.style.width=s.style.height=(4+Math.random()*8)+'px';s.style.setProperty('--x',(Math.random()*500-250)+'px');s.style.setProperty('--y',(Math.random()*320-80)+'px');complete.appendChild(s);setTimeout(()=>s.remove(),1700)}}
+    $('#downloadBtn').addEventListener('click',()=>{
+      save();const f=state.fields,belief=f.ownBelief||f.newBelief||'',action=f.customAction||f.action||'';
+      const text=`《財富顯化｜回到內在充足與生活行動》\nBoBo 財富顯化七步法練習紀錄\n\n1. 讓我安心的事：${f.safeNote||''}\n\n2. 此刻的支持：\n・${f.support1||''}\n・${f.support2||''}\n・${f.support3||''}\n\n3. 我看見的恐懼：${(f.fears||[]).join('、')}\n它真正需要：${f.fearNeed||''}\n\n4. 我願意鬆開：${f.oldBelief||''}\n我願意練習：${belief}\n\n5. 我收到的支持：${f.received||''}\n我想如何運用：${f.giveDirection||''}\n\n6. 我的生活行動：${action}\n開始時間：${f.actionTime||''}\n\n7. 冥想後想帶走的話：${f.afterMeditation||''}\n\n願我感恩現在，也踏實創造下一步。\n\n開心愛家園療癒｜BoBo ❤️ 我在`;
+      const blob=new Blob([text],{type:'text/plain;charset=utf-8'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='BoBo_七步生命之光練習紀錄.txt';a.click();URL.revokeObjectURL(a.href);
+    });
+    $('#againBtn').addEventListener('click',()=>{state.step=0;state.completed=[];save();showStep(0)});
+    $('#clearBtn').addEventListener('click',()=>{if(confirm('確定清除這台裝置上的所有練習紀錄嗎？')){localStorage.removeItem(storeKey);location.reload()}});
+    load();buildLights();
+  })();
+  </script>
+</body>
+</html>
