@@ -17,7 +17,9 @@
     .shell{width:min(1180px,100%);margin:auto;padding:20px clamp(16px,4vw,44px) 54px}
     header{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:18px}
     .brand{display:flex;align-items:center;gap:11px;font-weight:800;letter-spacing:.04em}.brand-mark{display:grid;place-items:center;width:42px;height:42px;border-radius:15px;background:var(--deep);color:white;box-shadow:0 8px 18px rgba(49,95,105,.22)}
-    .ghost{border:1px solid rgba(23,59,66,.18);background:rgba(255,255,255,.55);color:var(--ink);padding:9px 14px;border-radius:999px;cursor:pointer}
+    .header-actions{display:flex;align-items:center;justify-content:flex-end;gap:8px}
+    .nav-pill,.ghost{display:inline-flex;align-items:center;justify-content:center;min-height:42px;box-sizing:border-box;border:1px solid rgba(23,59,66,.18);background:rgba(255,255,255,.66);color:var(--ink);padding:9px 14px;border-radius:999px;text-decoration:none;font-weight:800;cursor:pointer;white-space:nowrap}
+    .nav-pill:hover,.nav-pill:focus-visible,.ghost:hover,.ghost:focus-visible{background:#fff;outline:3px solid rgba(49,95,105,.12)}
     .game{display:grid;grid-template-columns:minmax(280px,.92fr) minmax(0,1.55fr);gap:22px;align-items:stretch}
     .welcome,.board{border:1px solid rgba(255,255,255,.78);background:rgba(255,255,255,.68);backdrop-filter:blur(14px);box-shadow:var(--shadow);border-radius:30px}
     .welcome{padding:clamp(22px,3vw,36px);display:flex;flex-direction:column;min-height:650px;overflow:hidden;position:relative}
@@ -56,14 +58,19 @@
     .celebrate{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:30}.petal{position:absolute;top:-24px;font-size:20px;animation:fall 2.8s linear forwards}@keyframes fall{to{transform:translate(var(--drift),110vh) rotate(500deg);opacity:.15}}
     footer{text-align:center;color:#668084;margin-top:24px;font-size:.85rem}footer strong{color:var(--deep)}
     @media(max-width:850px){.game{grid-template-columns:1fr}.welcome{min-height:auto}.avatar-wrap{min-height:220px}.avatar{height:245px;width:235px}.days{grid-template-columns:repeat(7,1fr)}}
-    @media(max-width:560px){.shell{padding-top:13px}.brand span:last-child{font-size:.9rem}.ghost{padding:8px 11px}.welcome,.board{border-radius:24px}.welcome{padding-bottom:22px}.avatar-wrap{min-height:190px}.avatar{height:215px;width:205px}.days{gap:7px}.day{border-radius:13px}.day .num{font-size:.94rem}.day .icon{font-size:1rem}.today-card{grid-template-columns:1fr}.today-card .primary{width:100%}.board-top{align-items:center}.progress-ring{width:68px;height:68px}.actions>*{flex:1}.modal{padding-top:50px}}
+    @media(max-width:650px){header{flex-wrap:wrap}.brand{flex:1}.header-actions{width:100%;display:grid;grid-template-columns:1fr 1fr auto}.nav-pill,.ghost{min-height:44px;padding:8px 11px;font-size:.9rem}}
+    @media(max-width:560px){.shell{padding-top:13px}.brand span:last-child{font-size:.9rem}.welcome,.board{border-radius:24px}.welcome{padding-bottom:22px}.avatar-wrap{min-height:190px}.avatar{height:215px;width:205px}.days{gap:7px}.day{border-radius:13px}.day .num{font-size:.94rem}.day .icon{font-size:1rem}.today-card{grid-template-columns:1fr}.today-card .primary{width:100%}.board-top{align-items:center}.progress-ring{width:68px;height:68px}.actions>*{flex:1}.modal{padding-top:50px}}
   </style>
 </head>
 <body>
   <main class="shell">
     <header>
       <div class="brand"><span class="brand-mark">家</span><span>開心愛家園療癒</span></div>
-      <button class="ghost" id="resetBtn" type="button">重新開始</button>
+      <nav class="header-actions" aria-label="遊戲頁面導覽">
+        <a class="nav-pill" href="index.html">🏡 返回首頁</a>
+        <a class="nav-pill" href="healing.html">💜 療癒服務</a>
+        <button class="ghost" id="resetBtn" type="button">重新開始</button>
+      </nav>
     </header>
     <section class="game" aria-label="21天內在家園小遊戲">
       <article class="welcome">
