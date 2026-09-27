@@ -54,9 +54,10 @@
     .number{
       position:absolute;left:50%;top:66.55%;transform:translate(-50%,-50%);
       min-width:46%;padding:.02em .08em;text-align:center;
-      color:#3a170c;font:900 clamp(2.45rem,13.8vw,5rem)/1 "Arial Black",Impact,sans-serif;
+      color:#ffe27a;font:900 clamp(2.45rem,13.8vw,5rem)/1 "Arial Black",Impact,sans-serif;
       letter-spacing:.08em;font-variant-numeric:tabular-nums;
-      text-shadow:0 2px 0 rgba(255,241,176,.62),0 4px 8px rgba(67,19,8,.25)
+      -webkit-text-stroke:1.5px #71310d;
+      text-shadow:0 2px 0 #fff4b5,0 0 10px rgba(255,204,58,.9),0 4px 8px rgba(67,19,8,.38)
     }
     .number.rolling{animation:pulse .28s ease-in-out infinite alternate}
     @keyframes pulse{from{filter:brightness(.9)}to{filter:brightness(1.28)}}
@@ -76,9 +77,24 @@
       margin:16px 2px 0;padding:14px 16px;border-radius:18px;background:rgba(255,255,255,.66);
       font-size:.9rem;line-height:1.65;color:#795e59
     }
+    .support-card{
+      margin:18px 0 0;padding:22px 18px;border:1px solid rgba(118,22,36,.12);border-radius:24px;
+      background:rgba(255,255,255,.84);text-align:center;box-shadow:0 14px 34px rgba(109,35,41,.1)
+    }
+    .support-card h2{margin:0 0 12px;color:var(--wine);font-size:1.3rem}
+    .support-card p{margin:9px 0;color:#6e504a;line-height:1.75}
+    .support-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
+    .support-button{
+      display:flex;align-items:center;justify-content:center;min-height:50px;padding:10px 13px;
+      border-radius:999px;text-decoration:none;font-weight:800;line-height:1.35
+    }
+    .support-button.healing{color:#fff;background:linear-gradient(135deg,#8c557e,#63345b)}
+    .support-button.gift{color:#5c321c;background:linear-gradient(135deg,#ffe9a9,#f5c453)}
+    .support-button:focus-visible{outline:4px solid rgba(245,176,48,.55);outline-offset:3px}
+    .support-small{display:block;margin-top:12px;color:#8a716b;font-size:.82rem;line-height:1.6}
     footer{text-align:center;margin-top:18px;font-size:.82rem;color:#806660;line-height:1.7}
     footer a{margin:0 5px}
-    @media (max-width:390px){.page{padding-inline:10px}.nav-link{font-size:.78rem;padding-inline:5px}}
+    @media (max-width:390px){.page{padding-inline:10px}.nav-link{font-size:.78rem;padding-inline:5px}.support-actions{grid-template-columns:1fr}}
     @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}.number.rolling{animation:none}}
   </style>
 </head>
@@ -108,6 +124,18 @@
         </div>
         <p class="result" id="result" aria-live="polite">讓心先靜一下，再開始。</p>
       </div>
+    </section>
+
+    <section class="support-card" aria-labelledby="support-title">
+      <h2 id="support-title">需要陪伴，或想支持我們？</h2>
+      <p>如果你最近正面對金錢或生活上的困擾，歡迎了解 BoBo 的療癒陪伴服務，包括金錢關係整理與金錢靈氣療癒。</p>
+      <p>這組四位數字只是輕鬆有趣的隨機互動，不代表任何預測或中獎保證。如果它為你帶來一點好心情，或你日後剛好迎來生活中的好消息，也歡迎隨心支持網站維護與活動創作。</p>
+      <p>每一份自願的鼓勵，都會成為我們繼續分享溫暖內容的動力。💛</p>
+      <div class="support-actions">
+        <a class="support-button healing" href="https://happylovehomehealing.org/healing.html">💜 了解療癒服務</a>
+        <a class="support-button gift" href="https://payhip.com/b/irUbV" target="_blank" rel="noopener">🌻 隨心支持網站創作</a>
+      </div>
+      <small class="support-small">支持完全自願，請依自己的情況量力而為。</small>
     </section>
 
     <p class="note">溫馨提醒：這是趣味互動與自我覺察練習，數字為隨機產生，不代表預測、投資或財務建議，也不保證任何結果。</p>
