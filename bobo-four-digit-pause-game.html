@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>BoBo 四位數字按停互動｜開心愛家園療癒</title>
+  <meta name="description" content="按下開始，讓四位數字跳動；在你想停下來的時候按停止，看看今天遇見哪一組趣味數字。">
+  <link rel="canonical" href="https://happylovehomehealing.org/bobo-four-digit-pause-game.html">
+  <meta property="og:title" content="BoBo 四位數字按停互動">
+  <meta property="og:description" content="按開始、憑直覺按停，看看今天遇見哪一組四位數字。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://happylovehomehealing.org/bobo-four-digit-pause-game.html">
+  <meta property="og:image" content="https://happylovehomehealing.org/bobo-four-digit-pause-game.webp">
+  <style>
+    :root{
+      --wine:#761624;
+      --wine-dark:#4c0b16;
+      --gold:#f7c95b;
+      --cream:#fff8e9;
+      --ink:#44231e;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      min-height:100vh;
+      color:var(--ink);
+      font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+      background:
+        radial-gradient(circle at 15% 5%,rgba(255,220,128,.45),transparent 26rem),
+        linear-gradient(150deg,#fff8ea,#fce7df 52%,#f7d3cb);
+    }
+    a{color:inherit}
+    .page{width:min(100%,620px);margin:auto;padding:18px 16px 36px}
+    .topbar{display:flex;justify-content:space-between;gap:10px;margin-bottom:14px}
+    .nav-link{
+      display:inline-flex;align-items:center;justify-content:center;
+      min-height:44px;padding:9px 15px;border:1px solid rgba(118,22,36,.18);
+      border-radius:999px;background:rgba(255,255,255,.78);text-decoration:none;
+      font-weight:700;box-shadow:0 8px 24px rgba(104,34,34,.08)
+    }
+    .hero{text-align:center;margin:0 0 14px}
+    .hero h1{margin:0;font-size:clamp(1.55rem,6vw,2.25rem);color:var(--wine)}
+    .hero p{margin:8px 0 0;line-height:1.7;color:#76534c}
+    .game-card{
+      overflow:hidden;border:1px solid rgba(118,22,36,.14);border-radius:28px;
+      background:rgba(255,255,255,.85);box-shadow:0 20px 50px rgba(109,35,41,.16)
+    }
+    .stage{
+      position:relative;width:100%;aspect-ratio:941/1672;overflow:hidden;
+      background:#971d2a url("bobo-four-digit-pause-game.webp") center/cover no-repeat;
+      cursor:pointer;touch-action:manipulation
+    }
+    .number{
+      position:absolute;left:50%;top:62.65%;transform:translate(-50%,-50%);
+      min-width:46%;padding:.02em .08em;text-align:center;
+      color:#3a170c;font:900 clamp(2.45rem,13.8vw,5rem)/1 "Arial Black",Impact,sans-serif;
+      letter-spacing:.08em;font-variant-numeric:tabular-nums;
+      text-shadow:0 2px 0 rgba(255,241,176,.62),0 4px 8px rgba(67,19,8,.25)
+    }
+    .number.rolling{animation:pulse .28s ease-in-out infinite alternate}
+    @keyframes pulse{from{filter:brightness(.9)}to{filter:brightness(1.28)}}
+    .controls{padding:18px 18px 20px;text-align:center}
+    .instruction{margin:0 0 14px;font-size:1rem;line-height:1.6;color:#6e4c45}
+    .buttons{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    button{
+      min-height:54px;border:0;border-radius:999px;padding:12px 18px;
+      font:800 1.08rem/1.2 inherit;cursor:pointer;touch-action:manipulation
+    }
+    .primary{color:#fff;background:linear-gradient(135deg,#aa2636,var(--wine-dark));box-shadow:0 10px 22px rgba(105,14,31,.24)}
+    .secondary{color:#5a2c22;background:linear-gradient(135deg,#ffe4a0,var(--gold));box-shadow:0 10px 22px rgba(155,103,20,.18)}
+    button:disabled{opacity:.45;cursor:not-allowed;box-shadow:none}
+    button:focus-visible,.nav-link:focus-visible{outline:4px solid rgba(245,176,48,.55);outline-offset:3px}
+    .result{min-height:1.7em;margin:14px 0 0;font-weight:800;color:var(--wine)}
+    .note{
+      margin:16px 2px 0;padding:14px 16px;border-radius:18px;background:rgba(255,255,255,.66);
+      font-size:.9rem;line-height:1.65;color:#795e59
+    }
+    footer{text-align:center;margin-top:18px;font-size:.82rem;color:#806660;line-height:1.7}
+    footer a{margin:0 5px}
+    @media (max-width:390px){.page{padding-inline:10px}.topbar{font-size:.9rem}.nav-link{padding-inline:12px}}
+    @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}.number.rolling{animation:none}}
+  </style>
+</head>
+<body>
+  <main class="page">
+    <nav class="topbar" aria-label="頁面導覽">
+      <a class="nav-link" href="index.html">← 返回首頁</a>
+      <a class="nav-link" href="free.html">🎁 免費資源</a>
+    </nav>
+
+    <header class="hero">
+      <h1>BoBo 四位數字按停互動</h1>
+      <p>按下開始，憑直覺停在此刻遇見的數字。</p>
+    </header>
+
+    <section class="game-card" aria-labelledby="game-title">
+      <h2 id="game-title" hidden>四位數字按停遊戲</h2>
+      <div class="stage" id="stage" role="button" tabindex="0" aria-label="點一下開始或停止數字">
+        <div class="number" id="number" aria-hidden="true">----</div>
+      </div>
+      <div class="controls">
+        <p class="instruction" id="instruction">準備好後按「開始跳動」，想停的時候再按「停止」。</p>
+        <div class="buttons">
+          <button class="primary" id="startButton" type="button">▶ 開始跳動</button>
+          <button class="secondary" id="stopButton" type="button" disabled>■ 停止</button>
+        </div>
+        <p class="result" id="result" aria-live="polite">讓心先靜一下，再開始。</p>
+      </div>
+    </section>
+
+    <p class="note">溫馨提醒：這是趣味互動與自我覺察練習，數字為隨機產生，不代表預測、投資或財務建議，也不保證任何結果。</p>
+
+    <footer>
+      © 開心愛家園療癒 happylovehomehealing.org<br>
+      <a href="policy.html">政策與條款</a> · <a href="policy.html#ethics">療癒服務倫理</a>
+    </footer>
+  </main>
+
+  <script>
+    (() => {
+      "use strict";
+      const number = document.getElementById("number");
+      const result = document.getElementById("result");
+      const startButton = document.getElementById("startButton");
+      const stopButton = document.getElementById("stopButton");
+      const stage = document.getElementById("stage");
+      let timer = null;
+
+      function randomFourDigits() {
+        const values = new Uint16Array(1);
+        if (window.crypto && window.crypto.getRandomValues) {
+          window.crypto.getRandomValues(values);
+          return String(values[0] % 10000).padStart(4, "0");
+        }
+        return String(Math.floor(Math.random() * 10000)).padStart(4, "0");
+      }
+
+      function rollOnce() {
+        number.textContent = randomFourDigits();
+      }
+
+      function start() {
+        if (timer) return;
+        rollOnce();
+        timer = window.setInterval(rollOnce, 115);
+        number.classList.add("rolling");
+        result.textContent = "數字跳動中……憑直覺按停止。";
+        startButton.disabled = true;
+        stopButton.disabled = false;
+        stage.setAttribute("aria-label", "點一下停止數字");
+      }
+
+      function stop() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+        number.classList.remove("rolling");
+        startButton.disabled = false;
+        stopButton.disabled = true;
+        startButton.textContent = "↻ 再玩一次";
+        result.textContent = `你停在 ${number.textContent}。收下這一刻的相遇。`;
+        stage.setAttribute("aria-label", "點一下再玩一次");
+      }
+
+      function toggle() {
+        if (timer) stop(); else start();
+      }
+
+      startButton.addEventListener("click", start);
+      stopButton.addEventListener("click", stop);
+      stage.addEventListener("click", toggle);
+      stage.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          toggle();
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
