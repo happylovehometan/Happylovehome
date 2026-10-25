@@ -60,6 +60,20 @@ input,button{font-family:inherit} input{min-width:0;padding:15px 17px;border-rad
   background:linear-gradient(135deg,#8f62d6,#ad6de0);
 }
 
+
+.ai-guide{margin-top:20px;padding:20px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(135deg,rgba(143,98,214,.07),rgba(94,188,172,.09));line-height:1.85;overflow-wrap:anywhere}
+.ai-guide h2{margin:0 0 10px;font-size:clamp(21px,4vw,26px);line-height:1.5}
+.ai-guide h3{margin:18px 0 7px;font-size:18px;line-height:1.6}
+.ai-guide p{margin:8px 0}
+.ai-guide .guide-note{color:var(--muted)}
+.ai-guide blockquote{margin:10px 0;padding:12px 15px;border-left:3px solid var(--accent);border-radius:0 12px 12px 0;background:var(--card)}
+.ai-guide ul{margin:8px 0;padding-left:22px}
+.ai-guide li+li{margin-top:7px}
+.ai-guide details{margin-top:14px;border-top:1px solid var(--line);padding-top:12px}
+.ai-guide summary{cursor:pointer;font-weight:800;color:var(--text);padding:4px 0}
+.ai-guide summary:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+@media(max-width:480px){.ai-guide{padding:16px}}
+
 </style>
 </head>
 <body>
@@ -68,6 +82,32 @@ input,button{font-family:inherit} input{min-width:0;padding:15px 17px;border-rad
 <section class="hero">
 <div class="brand"><div class="logo">✨</div><div><h1>把自己抱回來<br>互動療癒指令館</h1><p class="lead">情緒安撫・內在小孩・關係覺察・自我價值・金錢關係・生活支持</p></div></div>
 <div class="notice">這些提問是自我整理工具，不是心理或醫療診斷，也不取代專業協助。請避免輸入身分證、住址、金融資料、密碼或他人的私人資料。你可以把 Prompt 複製到自己使用的 AI 對話工具，再依當下需要修改。</div>
+<section class="ai-guide" aria-labelledby="ai-guide-title">
+<h2 id="ai-guide-title">🌿 跟 AI 說話，可以很簡單</h2>
+<p><strong>你不需要先學會專業術語，也不用把指令寫得很厲害。</strong>用平常說話的方式，告訴 AI「我遇到什麼、想得到什麼幫助」，就可以開始。這裡的 Prompt（提示詞）是提問範例，你可以複製、修改，也可以完全用自己的話說。</p>
+<blockquote>「我現在有點亂，不知道怎麼說。請一次問我一個簡單問題，陪我整理。」</blockquote>
+<p class="guide-note">回答太長、太難或不合適時，可以接著說：「請簡單一點」「給我一個生活例子」或「你理解錯了，我的意思是……」。不必一次就問得完美。</p>
+<details>
+<summary>不知道怎麼問？可以請 AI 幫忙</summary>
+<p>你可以直接說出卡住的地方，請 AI 協助整理問題；如果你使用的工具支援網路搜尋，也可以請它搜尋參考資料。</p>
+<blockquote>「我想了解＿＿，但不知道從哪裡開始。請先幫我整理問題，再搜尋相關資料，附上可點開的來源、作者或機構與日期。如果無法上網查證，請直接告訴我。」</blockquote>
+<p class="guide-note">AI 是否能上網，取決於工具與當下可用功能。若不能搜尋，可以請它提供關鍵字，再自行查找；不能把它列出的資料當成已經查證。</p>
+</details>
+<details>
+<summary>摘要、計畫、學習卡，用中文就能提出</summary>
+<p>例如：「幫我整理五個重點」「把這個想法拆成可執行步驟」「做成十張一問一答的複習卡」。</p>
+<p>你也可能看到 <code>/summary</code>、<code>/blueprint</code>、<code>/flashcard</code> 這類寫法。它們可以表達想要的格式；是否為內建功能，要看平台或自訂設定。<strong>加上斜線本身，不代表回答會更正確。</strong></p>
+</details>
+<h3>🔎 願意提問，也保留自己的判斷</h3>
+<p><strong>AI 的回答是查找與思考的起點。正確的知識，仍需要多方求證。</strong>無論資訊來自 AI、網紅、老師，或這個網站，都值得確認；說得肯定、講得動聽，不代表內容就正確。</p>
+<ul>
+<li><strong>看原始來源：</strong>實際打開連結，確認資料存在，而且真的支持那個說法。AI 也可能答錯，或列出不存在的來源。</li>
+<li><strong>比較獨立資料：</strong>優先參考原始研究、官方資料或具相關專業的來源。幾篇文章若都轉述同一個人，並不算多方驗證。</li>
+<li><strong>留意日期與適用情況：</strong>分清楚可查證的事實、個人經驗、意見與推測；有疑問時，請 AI 說明不確定之處與不同觀點。</li>
+</ul>
+<p class="guide-note">涉及健康、心理、法律或財務等重要決定時，請再向具相關資格的專業人士確認。你可以借助 AI 整理資訊，也始終保有選擇、暫停與求證的權利。</p>
+</section>
+
 <div class="tools"><input id="search" type="search" placeholder="搜尋：傷心、不被理解、關係、金錢、休息……"><button class="iconbtn" id="theme" aria-label="切換深淺色">🌙</button><button class="iconbtn" id="random" aria-label="隨機一則">🎲</button></div>
 <div class="categories" id="categories">
 <button class="chip active" data-cat="全部">全部</button><button class="chip" data-cat="情緒安撫">情緒安撫</button><button class="chip" data-cat="內在小孩">內在小孩</button><button class="chip" data-cat="關係覺察">關係覺察</button><button class="chip" data-cat="自我價值">自我價值</button><button class="chip" data-cat="金錢關係">金錢關係</button><button class="chip" data-cat="生活支持">生活支持</button>
